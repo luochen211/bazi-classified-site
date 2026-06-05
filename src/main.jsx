@@ -208,6 +208,21 @@ const topics = {
 
 const topicList = Object.entries(topics);
 
+const basicsDirectoryItems = [
+  {
+    label: "五行基础",
+    href: "/basics/elements/overview",
+    children: [
+      { label: "五行总论", href: "/basics/elements/overview" },
+      { label: "生克关系", href: "/basics/elements/relations" },
+      { label: "五行象法", href: "/basics/elements/patterns" }
+    ]
+  },
+  { label: "十天干", href: "/basics/stems" },
+  { label: "十二地支", href: "/basics/branches" },
+  { label: "十神", href: "/basics/ten-gods" }
+];
+
 const elementBasics = [
   {
     formula: "水多木浮",
@@ -271,6 +286,21 @@ const elementBasics = [
   }
 ];
 
+const elementOverview = [
+  ["木", "生发、条达、成长、规划、关系的生机。"],
+  ["火", "光明、表达、热情、名声、行动与显现。"],
+  ["土", "承载、稳定、资产、家庭、落实与边界。"],
+  ["金", "规则、判断、技术、制度、收敛与锋芒。"],
+  ["水", "流动、智慧、信息、资源、迁移与情绪。"]
+];
+
+const elementRelations = [
+  ["相生", "木生火、火生土、土生金、金生水、水生木。生是提供来源，但太过也会成病。"],
+  ["相克", "木克土、土克水、水克火、火克金、金克木。克是约束秩序，不一定都是坏事。"],
+  ["太过", "某一行太旺，可能让被生者漂、塞、焦、埋、浊，也可能让被克者受伤。"],
+  ["不及", "某一行太弱，主题没有源头、没有承载、没有力量，事情难以成形。"]
+];
+
 const heavenlyStems = [
   ["甲", "阳木", "大树、栋梁、向上生发", "重在根气与疏通，怕被金伤，也怕水泛木浮。"],
   ["乙", "阴木", "花草、藤蔓、柔韧生长", "重在依附与环境，喜有水养、火发、支中有根。"],
@@ -329,6 +359,15 @@ const stateRules = [
       ["混喜清", "原局混杂，喜运年去杂留清，让主题变得可用。"],
       ["阴见阳", "阴性信息遇阳，事情容易外显、明朗、被推动。"],
       ["阳见阴", "阳性信息遇阴，事情容易内化、沉淀、转入暗线。"]
+    ]
+  },
+  {
+    title: "流通",
+    items: [
+      ["源要续", "生扶链条要有源头，源头断了，后面的十神难以持续发力。"],
+      ["承要住", "被生出来的财官食印，要看日主、根气和环境能不能承载。"],
+      ["战要通", "两股力量相战时，喜中间有一气通关，把冲突转成可用路径。"],
+      ["塞要疏", "一处太旺堵住全局时，重点看泄、化、冲开之后能不能重新流动。"]
     ]
   },
   {
@@ -638,6 +677,12 @@ function SiteShell() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/basics" element={<BasicsPage />} />
+        <Route path="/basics/elements/overview" element={<ElementOverviewPage />} />
+        <Route path="/basics/elements/relations" element={<ElementRelationsPage />} />
+        <Route path="/basics/elements/patterns" element={<ElementPatternsPage />} />
+        <Route path="/basics/stems" element={<HeavenlyStemsPage />} />
+        <Route path="/basics/branches" element={<EarthlyBranchesPage />} />
+        <Route path="/basics/ten-gods" element={<TenGodsPage />} />
         <Route path="/advanced" element={<AdvancedPage />} />
         <Route path="/classified" element={<ClassifiedIndexPage />} />
         <Route path="/classified/:topicKey" element={<ClassifiedTopicPage />} />
@@ -662,33 +707,66 @@ function HomePage() {
 
 function BasicsPage() {
   return (
+    <BasicsLayout title="基础篇" copy="先把五行、十天干、十二地支、十神的基础关系看明白，再进入状态和分类占。">
+      <BasicsIndex />
+    </BasicsLayout>
+  );
+}
+
+function ElementOverviewPage() {
+  return (
+    <BasicsLayout title="五行总论" copy="五行先看木、火、土、金、水各自代表什么气，再看它在命局里是太过、不及，还是可用。">
+      <ElementOverview />
+    </BasicsLayout>
+  );
+}
+
+function ElementRelationsPage() {
+  return (
+    <BasicsLayout title="生克关系" copy="生克不是简单吉凶。生是来源，克是约束，太过和不及都会让象发生变化。">
+      <ElementRelations />
+    </BasicsLayout>
+  );
+}
+
+function ElementPatternsPage() {
+  return (
+    <BasicsLayout title="五行象法" copy="水多木浮、木多火塞这类口诀，属于五行生克太过、不及之后形成的具体象。">
+      <ElementPatterns />
+    </BasicsLayout>
+  );
+}
+
+function HeavenlyStemsPage() {
+  return (
+    <BasicsLayout title="十天干" copy="天干看外显之气。透在天上，事情容易被看见；有没有根，要回到地支判断。">
+      <HeavenlyStems />
+    </BasicsLayout>
+  );
+}
+
+function EarthlyBranchesPage() {
+  return (
+    <BasicsLayout title="十二地支" copy="地支看根基、环境与暗线。支中藏干决定主题是已显、藏待透，还是等待引动。">
+      <EarthlyBranches />
+    </BasicsLayout>
+  );
+}
+
+function TenGodsPage() {
+  return (
+    <BasicsLayout title="十神" copy="十神以日主为中心，不是固定吉凶标签，而是五行生克落到人的行为动力和现实角色。">
+      <TenGods />
+    </BasicsLayout>
+  );
+}
+
+function BasicsLayout({ title, copy, children }) {
+  return (
     <main className="page-shell">
-      <PageHeader
-        eyebrow="Basics"
-        title="基础篇"
-        copy="先把五行、十天干、十二地支、十神的基础关系看明白，再进入状态和分类占。"
-      />
-      <ContentLayout
-        title="基础篇目录"
-        items={[
-          {
-            label: "五行基础",
-            href: "#element-basics",
-            children: [
-              { label: "五行总论", href: "#element-overview" },
-              { label: "生克关系", href: "#element-relations" },
-              { label: "五行象法", href: "#element-patterns" }
-            ]
-          },
-          { label: "十天干", href: "#heavenly-stems" },
-          { label: "十二地支", href: "#earthly-branches" },
-          { label: "十神", href: "#ten-gods" }
-        ]}
-      >
-        <ElementBasics />
-        <HeavenlyStems />
-        <EarthlyBranches />
-        <TenGods />
+      <PageHeader eyebrow="Basics" title={title} copy={copy} />
+      <ContentLayout title="基础篇目录" items={basicsDirectoryItems}>
+        {children}
       </ContentLayout>
     </main>
   );
@@ -878,7 +956,7 @@ function Intro() {
           <strong>4</strong> 组基础模块
         </span>
         <span>
-          <strong>24</strong> 条状态口诀
+          <strong>28</strong> 条状态口诀
         </span>
         <span>
           <strong>8</strong> 大分类占
@@ -930,22 +1008,67 @@ function HomeEntries() {
   );
 }
 
+function BasicsIndex() {
+  const entries = [
+    {
+      title: "五行总论",
+      href: "/basics/elements/overview",
+      eyebrow: "Five Elements",
+      copy: "木火土金水各自代表什么气，先建立五行的基本象。"
+    },
+    {
+      title: "生克关系",
+      href: "/basics/elements/relations",
+      eyebrow: "Relations",
+      copy: "相生、相克、太过、不及，是后面所有判断的底层结构。"
+    },
+    {
+      title: "五行象法",
+      href: "/basics/elements/patterns",
+      eyebrow: "Patterns",
+      copy: "水多木浮、木多火塞等，归在五行太过与不及的具体象。"
+    },
+    {
+      title: "十天干",
+      href: "/basics/stems",
+      eyebrow: "Stems",
+      copy: "天干看外显之气，先定阴阳五行，再看有没有根。"
+    },
+    {
+      title: "十二地支",
+      href: "/basics/branches",
+      eyebrow: "Branches",
+      copy: "地支看根基、环境与暗线，支中藏干决定主题如何被引动。"
+    },
+    {
+      title: "十神",
+      href: "/basics/ten-gods",
+      eyebrow: "Ten Gods",
+      copy: "十神不是吉凶标签，而是以日主为中心的行为动力。"
+    }
+  ];
+
+  return (
+    <section className="home-entries basics-index" aria-labelledby="basics-index-title">
+      <div className="section-heading">
+        <p className="eyebrow">Basics Index</p>
+        <h2 id="basics-index-title">基础篇目录</h2>
+      </div>
+      <div className="entry-grid">
+        {entries.map((entry) => (
+          <NavLink className="entry-card" key={entry.href} to={entry.href}>
+            <span>{entry.eyebrow}</span>
+            <h3>{entry.title}</h3>
+            <p>{entry.copy}</p>
+            <small>进入</small>
+          </NavLink>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ElementBasics() {
-  const elementOverview = [
-    ["木", "生发、条达、成长、规划、关系的生机。"],
-    ["火", "光明、表达、热情、名声、行动与显现。"],
-    ["土", "承载、稳定、资产、家庭、落实与边界。"],
-    ["金", "规则、判断、技术、制度、收敛与锋芒。"],
-    ["水", "流动、智慧、信息、资源、迁移与情绪。"]
-  ];
-
-  const elementRelations = [
-    ["相生", "木生火、火生土、土生金、金生水、水生木。生是提供来源，但太过也会成病。"],
-    ["相克", "木克土、土克水、水克火、火克金、金克木。克是约束秩序，不一定都是坏事。"],
-    ["太过", "某一行太旺，可能让被生者漂、塞、焦、埋、浊，也可能让被克者受伤。"],
-    ["不及", "某一行太弱，主题没有源头、没有承载、没有力量，事情难以成形。"]
-  ];
-
   return (
     <section className="element-basics" id="element-basics" aria-labelledby="element-basics-title">
       <div className="section-heading">
@@ -961,30 +1084,71 @@ function ElementBasics() {
           查看五行基础篇
         </a>
       </div>
-      <section className="element-subsection" id="element-overview" aria-labelledby="element-overview-title">
-        <h3 id="element-overview-title">五行总论</h3>
-        <div className="element-overview-grid">
-          {elementOverview.map(([name, meaning]) => (
-            <article className="element-overview-card" key={name}>
-              <strong>{name}</strong>
-              <p>{meaning}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section className="element-subsection" id="element-relations" aria-labelledby="element-relations-title">
-        <h3 id="element-relations-title">生克关系</h3>
-        <div className="relation-grid">
-          {elementRelations.map(([name, meaning]) => (
-            <article className="relation-card" key={name}>
-              <strong>{name}</strong>
-              <p>{meaning}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section className="element-subsection" id="element-patterns" aria-labelledby="element-patterns-title">
-        <h3 id="element-patterns-title">五行象法</h3>
+      <ElementOverview />
+      <ElementRelations />
+      <ElementPatterns />
+    </section>
+  );
+}
+
+function ElementOverview() {
+  return (
+    <section className="element-basics" id="element-overview" aria-labelledby="element-overview-title">
+      <div className="section-heading">
+        <p className="eyebrow">Five Elements</p>
+        <h2 id="element-overview-title">五行总论</h2>
+      </div>
+      <div className="element-lead">
+        <p>五行不是五种物质，而是五种气的运动方式。看八字先看这个气在命局里是生发、显现、承载、收敛，还是流动。</p>
+      </div>
+      <div className="element-overview-grid">
+        {elementOverview.map(([name, meaning]) => (
+          <article className="element-overview-card" key={name}>
+            <strong>{name}</strong>
+            <p>{meaning}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ElementRelations() {
+  return (
+    <section className="element-basics" id="element-relations" aria-labelledby="element-relations-title">
+      <div className="section-heading">
+        <p className="eyebrow">Relations</p>
+        <h2 id="element-relations-title">生克关系</h2>
+      </div>
+      <div className="element-lead">
+        <p>生不是一定好，克也不是一定坏。关键在于是否适度：太过会偏，不及会虚，适中才可用。</p>
+      </div>
+      <div className="relation-grid">
+        {elementRelations.map(([name, meaning]) => (
+          <article className="relation-card" key={name}>
+            <strong>{name}</strong>
+            <p>{meaning}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ElementPatterns() {
+  return (
+    <section className="element-basics" id="element-patterns" aria-labelledby="element-patterns-title">
+      <div className="section-heading">
+        <p className="eyebrow">Patterns</p>
+        <h2 id="element-patterns-title">五行象法</h2>
+      </div>
+      <div className="element-lead">
+        <p>五行象法是把生克太过、不及落成可观察的判断。比如水能生木，但水太多就不是单纯生木，而是水多木浮。</p>
+        <a className="source-link" href={assetUrl("/content/五行基础篇.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看五行基础篇
+        </a>
+      </div>
       <div className="element-grid">
         {elementBasics.map((item) => (
           <article className="element-card" id={`element-${item.formula}`} key={item.formula}>
@@ -995,7 +1159,6 @@ function ElementBasics() {
           </article>
         ))}
       </div>
-      </section>
     </section>
   );
 }
@@ -1265,7 +1428,7 @@ function CaseStudies({ detail, items }) {
                   }
                   type="button"
                 >
-                  <img src={assetUrl(image)} alt={`${item.id} 原图 ${index + 1}`} loading="lazy" />
+                  <img src={assetUrl(image)} alt={`${item.id} 原图 ${index + 1}`} decoding="async" />
                 </button>
               ))}
             </div>
