@@ -4,6 +4,7 @@
 
 网站页面对应关系：
 
+- 实战流程：`/basics/practice-flow`
 - 分类总目录：`/classified`
 - 婚姻感情：`/classified/marriage`
 - 财运赚钱：`/classified/wealth`
@@ -13,6 +14,22 @@
 - 健康倾向：`/classified/health`
 - 大运流年：`/classified/luck`
 - 性格底盘：`/classified/temperament`
+- 四季木：`/basics/elements/seasonal-wood`
+- 四季火：`/basics/elements/seasonal-fire`
+- 四季土：`/basics/elements/seasonal-earth`
+- 四季金：`/basics/elements/seasonal-metal`
+- 四季水：`/basics/elements/seasonal-water`
+- 干支作用：`/advanced/stem-branch-actions`
+- 胎命身：`/advanced/fetal-life-body`
+
+## 00 理论基础补充
+
+新增课件理论已拆成以下模块：
+
+- 实战流程：先立日元太极点，再定月令气候、用神基调、四柱宫位与岁运触发。
+- 四季取用：木、火、土、金、水五篇，按春夏秋冬整理调候、通关、扶抑、格局与 PPT 图示。
+- 干支作用：整理天干合化、地支三会三合六合、六冲、刑害破与作用顺序。
+- 胎命身：胎元看先天秉气，命宫看后天自我，身宫看财富行运。
 
 ## 01 婚姻感情
 

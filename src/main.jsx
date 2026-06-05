@@ -209,18 +209,397 @@ const topics = {
 const topicList = Object.entries(topics);
 
 const basicsDirectoryItems = [
+  { label: "实战流程", href: "/basics/practice-flow" },
   {
     label: "五行基础",
     href: "/basics/elements/overview",
     children: [
       { label: "五行总论", href: "/basics/elements/overview" },
       { label: "生克关系", href: "/basics/elements/relations" },
-      { label: "五行象法", href: "/basics/elements/patterns" }
+      { label: "五行象法", href: "/basics/elements/patterns" },
+      { label: "四季取用", href: "/basics/elements/seasonal-wood" }
     ]
   },
   { label: "十天干", href: "/basics/stems" },
   { label: "十二地支", href: "/basics/branches" },
   { label: "十神", href: "/basics/ten-gods" }
+];
+
+const advancedDirectoryItems = [
+  { label: "状态理论诀", href: "/advanced" },
+  { label: "流通专题", href: "/advanced/flow" },
+  { label: "干支作用", href: "/advanced/stem-branch-actions" },
+  { label: "胎命身", href: "/advanced/fetal-life-body" },
+  { label: "分析框架", href: "/advanced#method" }
+];
+
+const practiceFlow = [
+  {
+    title: "太极点",
+    text: "以日柱天干为日元，也就是命局里的“我”。所有十神、六亲、喜忌和事件，都先回到这个中心点来判断。"
+  },
+  {
+    title: "定用神基调",
+    text: "先看日元在出生月令下的先天状态：气候寒暖燥湿如何，环境适不适合它发展，再决定调候、扶抑、通关或格局取用。"
+  },
+  {
+    title: "看相邻干支",
+    text: "天干看外显，地支看根基和暗线。相邻干支的生克合冲，会把十神六亲具象成现实关系、经济帮助、情感亲疏和事件压力。"
+  },
+  {
+    title: "四柱分宫",
+    text: "年柱看祖上与幼年，月柱看社会关系与青年，日支看夫妻宫和中年，时柱看子女、晚年归宿与后续结果。"
+  },
+  {
+    title: "原局到岁运",
+    text: "四柱原局是先天固定格局，大运是后天阶段气候，流年负责触发具体事件。原局埋伏，岁运引动，最后用反馈复盘。"
+  }
+];
+
+const pillarMeanings = [
+  ["年干", "父亲家族背景、祖父系祖，也可看 1-9 岁左右的喜忌阶段。"],
+  ["年支", "母亲家族背景、外祖父系祖，也可看 10-18 岁左右的喜忌阶段。"],
+  ["月干", "兄姊、同龄中年长者、同行前辈，约 19-27 岁阶段。"],
+  ["月支", "弟妹、同龄中年幼者、同行后进，也看月令气候，约 28-36 岁阶段。"],
+  ["日支", "夫妻宫，配偶性情、配偶家族、婚后经济能力与中年状态。"],
+  ["时柱", "子女宫、晚年归宿与 55 岁之后阶段，时干偏长子女，时支偏次子女。"]
+];
+
+const seasonalWood = [
+  {
+    season: "三春之木",
+    focus: "余寒犹存，先要火温，再借水资扶。",
+    items: [
+      ["正月", "寒木向阳，余寒未除。喜火温暖，需水资扶，木才能花繁叶茂。"],
+      ["二月", "木开枝发芽，根须尚薄。重在以土培根，水火配合，不让木气漂浮。"],
+      ["春末", "木气已盛，湿土、水气、余寒都要合看，重点从“生发”转向“扎根”。"]
+    ],
+    examples: ["辛卯 庚寅 甲午 丙寅", "丁亥 癸卯 甲寅 戊辰", "丙午 壬辰 甲寅 丙寅", "己卯 丙寅 乙未 癸未", "壬辰 癸卯 乙酉 丙戌"]
+  },
+  {
+    season: "三夏之木",
+    focus: "根干叶燥，火旺招焚，水为急用，土宜薄不宜厚。",
+    items: [
+      ["巳月", "甲木退气，丙火司权。见火容易焦燥，需水相佐。"],
+      ["午未", "夏火更烈，土厚为灾，金虽不喜但不可全无。水润、薄土、适度金克，才可成材。"],
+      ["取用", "先救燥热，再谈扶抑。水是润局关键，湿土可酌情护木，厚土会反成压根之病。"]
+    ],
+    examples: ["辛卯 癸巳 乙丑 戊寅", "壬辰 乙巳 甲戌 丙寅", "丙申 癸巳 乙未 庚辰", "己卯 辛未 乙亥 丁亥", "甲子 辛未 甲辰 丁卯"]
+  },
+  {
+    season: "三秋之木",
+    focus: "气渐凋零，形渐凄凉，甲木重成器，乙木重培元。",
+    items: [
+      ["申酉", "金气当令，木形凋零。不能只怕金，要看金是否修削成材，根基是否被护住。"],
+      ["戌月", "身衰财重，燥土压木，常以印为用，重在润土固根。"],
+      ["取用", "秋木先固本，再看成器。甲木可得金削，乙木更重水印与根气。"]
+    ],
+    examples: ["丁丑 己酉 甲寅 戊辰", "丙戌 戊戌 乙酉 丙戌"]
+  },
+  {
+    season: "三冬之木",
+    focus: "恶水泛滥，寒气侵根，火土同来，暖候筑堤。",
+    items: [
+      ["亥月", "初冬寒气渐入，木复命归根，火土相佐可暖局护根。"],
+      ["子月", "水令冲奔，水多木浮，火土同来才有堤岸与温度。"],
+      ["丑月", "冻土厚实，伤木根基，以火为尊，暖土温木。"]
+    ],
+    examples: ["戊子 癸亥 甲子 甲戌", "庚子 戊子 甲午 辛未", "壬寅 癸丑 甲戌 丙寅"]
+  }
+];
+
+const seasonalEarthIntro = [
+  ["土主信", "土代表中正厚德，其性稼穑，价值在孕育、承载、包容与平衡。"],
+  ["戊土", "戊土为阳，稳固高亢，象泰山、城墙、堤坝、道路、基石，重坚实与防护。"],
+  ["己土", "己土为阴，卑湿蓄藏，象田园畜牧之土，松散可形变，重滋养与转化。"],
+  ["土居中", "土为坤、艮之象，时在四季之交，方位居中，能纳污秽之阴暗，养万物之生机。"]
+];
+
+const seasonalEarth = [
+  {
+    season: "三春之土",
+    focus: "春土承接木气，初春需火暖身，仲春木盛土衰，暮春湿土最宜培木，但土木相持时要调和。",
+    items: [
+      ["初春", "仍带冬季寒气，先要火来暖土，金木可作辅助；土未温，承载力难开。"],
+      ["仲春", "木盛土衰，木克土明显，宜以火化木生土，财官才有承接空间。"],
+      ["暮春辰土", "辰为湿土，是培木最佳土壤，也容易形成土木相持，需金来调和，使结构有裁制。"]
+    ],
+    examples: ["庚午 戊寅 戊午 戊午", "戊午 乙卯 己卯 乙亥", "辛亥 壬辰 己巳 庚午"]
+  },
+  {
+    season: "三夏之土",
+    focus: "夏季火旺土燥，先解决燥热，土的孕育价值才显出来；燥土不能只当作有力。",
+    items: [
+      ["火旺土燥", "夏火过盛，土容易焦燥板结，先要水润燥热，再谈扶抑格局。"],
+      ["缓冲过渡", "未月土在夏秋之间，有缓冲、过渡、温养蓄势之意，但仍怕火土过燥。"],
+      ["取用重点", "水能润土，金可泄秀，木可疏土；但要先看燥热是否已经被处理。"]
+    ],
+    examples: ["丙午 癸巳 戊子 己未", "乙未 壬午 己酉 乙亥", "己卯 辛未 戊寅 乙卯"]
+  },
+  {
+    season: "三秋之土",
+    focus: "秋土偏向育金与收获。初秋火气未除，金焦土燥需水润；仲秋金旺盗泄，需火助；戌月宜金水泄秀。",
+    items: [
+      ["初秋", "火气未尽，金焦土燥，以水润之，让秋土不至于燥裂。"],
+      ["仲秋", "金气专旺会盗泄土之真元，需要火来助土，使产物有源。"],
+      ["戌月", "土金并旺，收获已成，土气需休养，优先金水泄秀；慎用木疏土，因秋木凋零无力。"],
+      ["干湿之辨", "秋土偏好干爽松软，过湿会使产物腐烂；湿土泄秀优于燥土，但湿过亦病。"]
+    ],
+    examples: ["丁亥 戊申 戊辰 丙辰", "己酉 癸酉 己亥 癸酉", "甲申 甲戌 己巳 辛未"]
+  },
+  {
+    season: "三冬之土",
+    focus: "冬土寒冻，首重火暖。亥月防水患，子月身虚财强，丑月寒土冻藏，木火兼用才有复生之机。",
+    items: [
+      ["亥月", "水寒土冻，首要价值在防水患；调候必须用火暖局，土才有堤岸功能。"],
+      ["子月", "严冬水旺，身虚财强，需火土融合，才可能把寒财转成可承接之财。"],
+      ["丑月", "寒冬之土，冻藏保护，待时节复生；必须木火兼用，单用木则寒局难解。"],
+      ["冬土取用", "火为尊，木为生机，土为堤岸。无火则冻，无土则泛，无木则复生不足。"]
+    ],
+    examples: ["丁酉 辛亥 戊申 丁巳", "癸未 甲子 己巳 丙寅", "戊辰 乙丑 己巳 戊辰"]
+  }
+];
+
+const seasonalFireIntro = [
+  ["火主礼", "火代表文明教化、礼仪传达、智慧传播与驱散阴暗。"],
+  ["丙火", "丙火为阳，太阳之精，象烈日阳光，喜壬水映衬，成水辅阳光之象。"],
+  ["丁火", "丁火为阴，象灯烛炉火，性昭融而守阴，常以甲木为载体。"],
+  ["火无形", "火向四周发散传扬，价值在绽放光芒、温暖气氛、传递思想。"]
+];
+
+const seasonalFire = [
+  {
+    season: "三春之火",
+    focus: "春火阳回大地，丙重壬水映照，丁不离甲。正月壬水为主，二月专用壬水，三月土重用甲木。",
+    items: [
+      ["丙火", "三春丙火能欺霜侮雪，专用壬水，日照江河，显出丙火威风。癸水配丙多成不晴不雨。"],
+      ["丁火", "丁不离甲，甲不离庚，庚不离丁。丁火要有木为载，才不虚浮。"],
+      ["春火取用", "火象无形，以木为载；正月印旺，仁礼育化万物。"]
+    ],
+    examples: ["戊戌 甲寅 丙戌 壬辰", "辛巳 辛卯 丁亥 辛丑", "庚午 庚辰 丁未 己酉"]
+  },
+  {
+    season: "三夏之火",
+    focus: "夏火威烈无比，丙专用壬水解炎威，丁用甲木引火、庚金劈甲，喜壬出干制丙。",
+    items: [
+      ["丙火", "三夏丙火火势炎炎，宜专用壬水，解炎威之力，成既济之功。"],
+      ["丁火", "三夏丁火忌丙夺丁光，喜甲木引丁，庚金劈甲，壬水制丙。"],
+      ["水源", "亥宫在三夏无力，巳亥相冲故不用；可用申宫长生之壬水。"]
+    ],
+    examples: ["丙午 癸巳 丙戌 戊戌", "丙午 甲午 丁巳 庚戌", "己丑 辛未 丙午 戊子"]
+  },
+  {
+    season: "三秋之火",
+    focus: "秋火日近西山，见土则晦，日照湖海则有光。丁火赖木为载，三秋气寒，需丙暖金晒木。",
+    items: [
+      ["丙火", "三秋丙火日近西山，土多则晦，得壬水湖海映照则有幕夜光天之象。"],
+      ["丁火", "三秋丁火专用甲木，不离庚金，不忌丙夺丁光，反喜丙暖金晒木。"],
+      ["取用", "秋火先看光能否显，土厚会晦火，水面可映火，木载可续火。"]
+    ],
+    examples: ["乙丑 甲申 丙午 壬辰", "壬寅 己酉 丁丑 乙巳", "丁酉 庚戌 丁亥 甲辰"]
+  },
+  {
+    season: "三冬之火",
+    focus: "冬火气微，离不开甲木生助，庚金为辅。冬水泛滥，火至绝地，甲木为药，戊土治水。",
+    items: [
+      ["火气微弱", "三冬火入寒水之地，先求有木生火，再看火能否暖局。"],
+      ["湿木无焰", "有木还要看木是否湿寒，湿木难燃，需火土配合。"],
+      ["治水", "冬水泛滥时，戊土治水，甲木为药，庚金为辅。"]
+    ],
+    examples: ["庚午 丁亥 丙申 戊子", "癸巳 甲子 丙辰 庚寅", "辛卯 辛丑 丁亥 庚子"]
+  }
+];
+
+const seasonalMetalIntro = [
+  ["金主义", "金曰从革，其性刚，其情烈，重收敛、肃降、规则与行动。"],
+  ["庚金", "庚金重发挥、行动、鞭策、管理和引导，如导师之象。"],
+  ["辛金", "辛金重磨练、镀金、熔炼、包装，形成综合性能力。"],
+  ["金赖土生", "金为有形之物，赖土蕴含集中之密度而生金之精华。"]
+];
+
+const seasonalMetal = [
+  {
+    season: "三春之金",
+    focus: "春木火旺，金收敛肃降而不得志，多身弱财重，需比劫助身担财，或土金并用。",
+    items: [
+      ["春金身弱", "春天属木，火气渐起，金多不得令，容易财重身轻。"],
+      ["取用", "先看金能否立身。身弱要比劫、土来助；金旺则要岁运配合驾驭木火财官。"],
+      ["调候", "春寒未尽，仍需火解冻，也可用水淘洗，但不可失根。"]
+    ],
+    examples: ["乙酉 戊寅 辛卯 壬辰", "己未 丁卯 辛丑 戊子", "庚辰 庚辰 庚辰 丁亥"]
+  },
+  {
+    season: "三夏之金",
+    focus: "夏火当令，土燥金脆，多身弱。首重湿土引化烈火，不能只用积水克火。",
+    items: [
+      ["火逼金行", "火太烈则金脆，若水无根不能制火，反成奔流下贱之象。"],
+      ["湿土润照", "夏金先要湿土承火生金；只有燥土时，再考虑用水润土。"],
+      ["制杀", "火杀旺时，壬水有根可成食神制杀，金得救而成器。"]
+    ],
+    examples: ["壬寅 乙巳 庚戌 丙戌", "壬申 丙午 庚午 甲申", "壬辰 丁未 辛丑 甲午"]
+  },
+  {
+    season: "三秋之金",
+    focus: "秋金当令，最能体现价值。成器有两路：庚喜火炼，辛喜水淘，金白水清。",
+    items: [
+      ["庚金", "庚金旺而需火炼，丁火可炼庚成器。"],
+      ["辛金", "辛金喜壬水淘洗，金水清则秀。"],
+      ["火水分工", "火炼、水淘各有对象，不能一概而论；身旺还要看是否有制、有泄。"]
+    ],
+    examples: ["甲午 壬申 辛卯 癸巳", "丙子 丁酉 庚子 丙子", "壬午 庚戌 辛酉 甲午"]
+  },
+  {
+    season: "三冬之金",
+    focus: "冬水当令，金休囚，身弱多被水盗气。先用土治水成伤官配印，再用火温土附木。",
+    items: [
+      ["水盗金气", "冬金若弱，多因水旺泄气过重，需土来制水护金。"],
+      ["火土为用", "亥子月精神弱，常以火土为用；火暖土，土治水。"],
+      ["调候", "金温水暖自然有成；丑月土出干，仍需火暖局、水泄秀、木破土。"]
+    ],
+    examples: ["壬辰 辛亥 庚辰 丙子", "乙卯 戊子 庚寅 戊寅", "乙未 己丑 辛亥 丙申"]
+  }
+];
+
+const seasonalWaterIntro = [
+  ["水主智", "水性润下，其情聪，重流动、灵动、资源整合与纳百川归海。"],
+  ["壬水", "壬水象江河大海，贵在流动有度，喜有源、有堤岸。"],
+  ["癸水", "癸水象雨露精华，性至柔，贵在有金源与火暖。"],
+  ["水贵有源", "只要有金生，水不绝源；只要有戊土，水不泛滥。水火均匀，有既济之功。"]
+];
+
+const seasonalWater = [
+  {
+    season: "三春之水",
+    focus: "春水易泛，壬水有比劫更有崩堤之势，需厚土防患；癸水如春雨，先辛金生源，次丙火照暖。",
+    items: [
+      ["壬水", "寅月壬水宜庚金发水源，但要戊土规范、丙火照暖，庚丙戊齐透为佳。"],
+      ["癸水", "寅月癸水，春雨贵如油，先辛金发源，再丙火照暖，成阴阳和合。"],
+      ["取用", "喜一点金生助，不喜金多；要一点火配合，又不能火多；喜生木，也喜土制水。"]
+    ],
+    examples: ["辛卯 庚寅 壬申 戊申", "己丑 丁卯 癸丑 丙辰", "戊辰 丙辰 癸丑 壬子"]
+  },
+  {
+    season: "三夏之水",
+    focus: "夏水多身弱，取金水为先；若金水反弱为强，则不宜再行金水，改用木火泄秀或土来规范。",
+    items: [
+      ["身弱", "夏火旺，水易枯竭，多取金水帮身。"],
+      ["反弱为强", "若地支得根、金水成势，则不能再走金水之地，要看木火土如何疏泄制化。"],
+      ["杀印相生", "午月癸水若庚壬透、日坐湿土藏辛，可见杀印相生。"]
+    ],
+    examples: ["庚辰 壬午 癸丑 乙卯", "辛丑 癸巳 壬子 庚子"]
+  },
+  {
+    season: "三秋之水",
+    focus: "秋金生水，水通常偏强，需要疏导直流，用木泄或土制。",
+    items: [
+      ["金水汪洋", "秋水得金生，若印旺无制，气势寒冷孤贫。"],
+      ["用土", "身旺印旺时，专用戊土制水，能把水势纳入现实承载。"],
+      ["用木", "水喜流向木，木能泄水成生机，但木旺也会泄耗过多。"]
+    ],
+    examples: ["辛酉 丙申 癸酉 辛酉", "壬子 己酉 壬子 庚戌"]
+  },
+  {
+    season: "三冬之水",
+    focus: "冬水当令，需要火来暖局，以达水火既济；土能治水，木可泄秀生财。",
+    items: [
+      ["火暖局", "冬水寒盛，必须有火暖局，否则水冷无生机。"],
+      ["土治水", "戊己土可制水成堤岸，尤其丑月水寒土冻时更要火土配合。"],
+      ["木火生发", "水旺有木泄、火财透，运行南方火地可发达发福。"]
+    ],
+    examples: ["戊午 乙丑 壬申 乙巳", "己未 乙亥 癸亥 丙辰"]
+  }
+];
+
+const seasonalImageGroups = {
+  wood: {
+    intro: [1, 2, 3, 4],
+    charts: [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27],
+    sections: [[5, 6, 7], [8, 9], [10], [11, 12, 13]]
+  },
+  fire: {
+    intro: [1, 2, 3, 4, 5],
+    charts: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+    sections: [[18], [19], [20], [21, 22, 23, 24, 25]]
+  },
+  earth: {
+    intro: [1, 2, 3, 4],
+    charts: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+    sections: [[23], [], [24], [25, 26]]
+  },
+  metal: {
+    intro: [1, 2],
+    charts: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    sections: [[], [], [], []]
+  },
+  water: {
+    intro: [1, 2],
+    charts: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    sections: [[], [], [], []]
+  }
+};
+
+const stemBranchActions = [
+  {
+    title: "天干合化",
+    items: [
+      ["甲己合土", "中正合，主宽厚平直；若五行无气又带杀，则容易任性动怒。"],
+      ["乙庚合金", "仁义合，生旺则果敢有守；死绝带杀则意气好勇。"],
+      ["丙辛合水", "威制合，主威肃与控制感；失衡时易寡恩少义。"],
+      ["丁壬合木", "多情之合，容易情动、人际牵连，也要防志向不专。"],
+      ["戊癸合火", "无情合，重形貌与现实牵合，男女关系中常看年龄、姿态与吸引。"]
+    ]
+  },
+  {
+    title: "地支会合冲刑害破",
+    items: [
+      ["三会", "亥子丑水、寅卯辰木、巳午未火、申酉戌金。三会力量最大，先看是否成局。"],
+      ["三合", "申子辰水、亥卯未木、寅午戌火、巳酉丑金。三合重在主题成势。"],
+      ["六合", "子丑土、寅亥木、卯戌火、辰酉金、巳申水、午未随火土旺势。"],
+      ["六冲", "子午、丑未、寅申、卯酉、辰戌、巳亥。子午卯酉偏地域冲，辰戌丑未偏职业冲，寅申巳亥职地皆动。"],
+      ["刑害破", "子卯无礼，寅巳申恃势，丑戌未无恩；害看貌合神离，破看环境与关系裂缝。"]
+    ]
+  },
+  {
+    title: "看作用顺序",
+    items: [
+      ["强弱顺序", "三会大于三合，其后看冲、半合、六合、刑、害、破。"],
+      ["先合后冲", "先看是否被合住、合化，再看刑冲是否能冲开、冲破。合能解冲，但也可能把主题合走。"],
+      ["宫位落点", "同一组冲刑合害，落在年、月、日、时，分别对应祖上幼年、社会关系、夫妻中年、子女晚年。"]
+    ]
+  }
+];
+
+const fetalLifeBody = [
+  {
+    title: "胎元",
+    subtitle: "先天秉气",
+    text: "胎元代表命主体质、父母、祖籍与祖屋。胎元有禄，多主家境衣食；胎元空亡，则六亲助力弱。胎元与大运流年作用，常落在家庭成员、身体健康和疾病相关主题。"
+  },
+  {
+    title: "命宫",
+    subtitle: "后天自我",
+    text: "命宫代表思想、工作、行动力、后天房产与机遇圈。命宫与某柱相合，容易获得该柱象意人的看重认可；与命局、大运、流年刑冲，多看人际、事业单位、官司纠纷。"
+  },
+  {
+    title: "身宫",
+    subtitle: "财富运气宫",
+    text: "身宫看后天行运方位、财帛运势、生意经营头脑。身宫与命局喜神相合，可看经济合作往来；刑冲穿绝则多看财务纷争或财来财去。"
+  }
+];
+
+const lifePalaceStars = [
+  ["子", "天贵星", "志气不凡，富裕清吉。"],
+  ["丑", "天厄星", "先难后吉，离祖劳心，晚年见吉。"],
+  ["寅", "天权星", "聪明大器，中年有权柄。"],
+  ["卯", "天赦星", "慷慨大方，得权时需谦虚。"],
+  ["辰", "天如星", "事多反复，计谋多能。"],
+  ["巳", "天文星", "文章奋发，女命有好夫。"],
+  ["午", "天福星", "荣华吉命。"],
+  ["未", "天驿星", "一生劳碌，离祖始安。"],
+  ["申", "天孤星", "不宜早婚，女命需防夫缘压力。"],
+  ["酉", "天秘星", "性情刚直，时有是非。"],
+  ["戌", "天艺星", "心性平和，艺道有名。"],
+  ["亥", "天寿星", "心慈明悟，克己助人。"]
 ];
 
 const elementBasics = [
@@ -330,16 +709,76 @@ const earthlyBranches = [
 ];
 
 const tenGods = [
-  ["比肩", "同我、同阴阳", "自我、同辈、坚持、分担", "可成帮身，也可成竞争，要看日主强弱与财官状态。"],
-  ["劫财", "同我、异阴阳", "夺财、行动、朋友、冲劲", "身弱可助身，身旺易争财，合伙与现金流要谨慎。"],
-  ["食神", "我生、同阴阳", "表达、享受、作品、福气", "偏稳定输出，能生财，也能制杀，但怕被枭印夺食。"],
-  ["伤官", "我生、异阴阳", "才华、锋芒、反规则、突破", "有创造力，也容易冲官，必须看是否有财印承接。"],
-  ["偏财", "我克、同阴阳", "机会财、市场、人脉、父亲", "偏流动和机会，身弱不胜财时反成压力。"],
-  ["正财", "我克、异阴阳", "稳定收入、经营、妻星、责任", "重秩序与现实回报，怕比劫夺财，也怕财多身弱。"],
-  ["七杀", "克我、同阴阳", "压力、竞争、风险、权力", "杀要制化，制得好是胆识与执行，失控则成压迫。"],
-  ["正官", "克我、异阴阳", "规则、职位、名分、约束", "喜清不喜混，官印相生多见体系路径与资质保护。"],
-  ["偏印", "生我、同阴阳", "灵感、偏门、保护、孤高", "能护身也能夺食，常看学习方式与非标准资源。"],
-  ["正印", "生我、异阴阳", "学历、贵人、吸收、安全感", "主系统支持与资质，太重则依赖保守、输出不足。"]
+  ["比肩", "同我、同阴阳", "自我、同辈、坚持、分担", "可成帮身，也可成竞争，要看日主强弱与财官状态。", {
+    kin: "合伙人、同性朋友、兄弟、股东。",
+    favorable: "果断、有压力、执行力强，自我意识清楚，竞争中可得同辈帮助。",
+    unfavorable: "爱面子、虚荣、据理力争，身强为忌时合作破财、伤妻损财。",
+    function: "帮身、任官杀、代泄、制财。身弱可借比劫帮身，身强则喜官杀制之。",
+    pillars: "年上比肩多看祖业压力；月上可独立创业；日支比肩不利配偶；时上比肩晚福需慎看。"
+  }],
+  ["劫财", "同我、异阴阳", "夺财、行动、朋友、冲劲", "身弱可助身，身旺易争财，合伙与现金流要谨慎。", {
+    kin: "竞争对手、异性朋友、女命兄弟、男命姐妹、同辈。",
+    favorable: "自信、豪爽、直率，朋友多，竞争得利，事业有成。",
+    unfavorable: "冲动、好斗、对手多，易破财、克父克妻，投资与合作要谨慎。",
+    function: "帮身、任官杀、代泄、夺财。日干弱时可帮身任事，日干强时易夺财惹纷争。",
+    pillars: "年劫财多看祖业耗散；月为社会朋友借财；日为分居离婚概率；时为晚年财源压力。"
+  }],
+  ["食神", "我生、同阴阳", "表达、享受、作品、福气", "偏稳定输出，能生财，也能制杀，但怕被枭印夺食。", {
+    kin: "晚辈、学生、下属，男命孙子，女命女儿。",
+    favorable: "温和斯文、细腻宽容、有口福，有作品与稳定输出能力。",
+    unfavorable: "幻想多、做得少，自尊心强，贪享受；太过则懒散或肥胖。",
+    function: "泄身、生财、制杀、损官。身强喜食神流通到财，杀重身轻时可用食神制杀。",
+    pillars: "年上食神看祖上福荫；月干食神支官可发达；日支食神配偶温和；时上食神晚年享福。"
+  }],
+  ["伤官", "我生、异阴阳", "才华、锋芒、反规则、突破", "有创造力，也容易冲官，必须看是否有财印承接。", {
+    kin: "晚辈、学生、下属，男命祖母孙女，女命儿子。",
+    favorable: "聪明、悟性高、上进，表现欲、创新力和个人魅力强。",
+    unfavorable: "争强好胜、不服管束、三分热度，持才傲物，口舌官非需防。",
+    function: "泄身、生财、制杀、损官。身强喜伤官生财，身弱怕泄，需印绶制化。",
+    pillars: "年伤官看早年不稳；月看官司口舌；日看夫妻争执；时看子女与晚运压力。"
+  }],
+  ["偏财", "我克、同阴阳", "机会财、市场、人脉、父亲", "偏流动和机会，身弱不胜财时反成压力。", {
+    kin: "富翁、商人、男人的情人、女人的婆婆。",
+    favorable: "财运、事业、生活富裕，多才多艺，重情义、豁达、人缘和异性缘佳。",
+    unfavorable: "破财、铺张、赌性、感情烂桃花，正偏财混杂时关系不稳。",
+    function: "生官杀、泄食伤、制枭、坏印。身强喜财生官，身弱财重则喜印比承接。",
+    pillars: "年偏财常离家发展；月干偏财父亲能干；日支偏财配偶带财也带桃花；时柱偏财晚年发财。"
+  }],
+  ["正财", "我克、异阴阳", "稳定收入、经营、妻星、责任", "重秩序与现实回报，怕比劫夺财，也怕财多身弱。", {
+    kin: "富翁、商人、男人的妻子、女人的父亲。",
+    favorable: "勤俭持家、踏实专一、守本分，重细节和现实回报。",
+    unfavorable: "保守、小气、过度计较；财坏印时不利学识，身弱不胜财则难发财。",
+    function: "生官杀、泄食伤、制枭、坏印。身强可用财生官，身弱财坏印则需比劫护印。",
+    pillars: "年柱正财身旺多看祖上富裕；月柱勤俭得荫；日支妻子贤惠致富；时柱子女富裕。"
+  }],
+  ["七杀", "克我、同阴阳", "压力、竞争、风险、权力", "杀要制化，制得好是胆识与执行，失控则成压迫。", {
+    kin: "男命儿子，女命情人；也看武职、军警、法院、危险工具。",
+    favorable: "有魄力、目标感强，敢想敢干，务实且有权谋。",
+    unfavorable: "多疑、冲动、走捷径，好斗；杀重无制则灾伤、牢狱、小人压力。",
+    function: "耗财、生印、攻身、制劫。身弱喜印化杀或食神制杀，身强杀可为权力与执行。",
+    pillars: "七杀无制在天干多突发，在地支多慢性压力；正官多遇官运也可能转杀象。"
+  }],
+  ["正官", "克我、异阴阳", "规则、职位、名分、约束", "喜清不喜混，官印相生多见体系路径与资质保护。", {
+    kin: "领导、上司、一把手，男命女儿，女命老公。",
+    favorable: "自律稳健、遵循规则，公道有责任心，利仕途、公职与名声。",
+    unfavorable: "悲观多虑、虚伪、不善变通，官多则强迫、固执、怕事。",
+    function: "引财、生印、拘身、制劫。身强喜官来约束成名，身弱怕官压身，宜印化。",
+    pillars: "年柱正官少年得志；月柱学业功名；日柱男得贤妻女得贵夫；时柱子女出息。"
+  }],
+  ["偏印", "生我、同阴阳", "灵感、偏门、保护、孤高", "能护身也能夺食，常看学习方式与非标准资源。", {
+    kin: "军师参谋，男命祖父，女命母亲。",
+    favorable: "精明、领悟强、观察细，适合钻研、思想、宗教哲学与偏门学术。",
+    unfavorable: "孤独、不合群、心机重、多疑，枭印夺食时需看子女、生育和输出受阻。",
+    function: "生身、泄官杀、御伤官、挫食神。身弱可得印生，身强印重则喜财制印。",
+    pillars: "年柱偏印看祖业家风压力；月柱适合偏业才艺；日支为忌不利良缘；时柱子女叛逆难教。"
+  }],
+  ["正印", "生我、异阴阳", "学历、贵人、吸收、安全感", "主系统支持与资质，太重则依赖保守、输出不足。", {
+    kin: "长辈、贵人、师长，男命母亲，女命祖父。",
+    favorable: "仁慈善良、平和、有修养和智慧，代表学历、荣誉、证书、靠山、房子、地位。",
+    unfavorable: "懒惰、依赖、行动力差，优柔寡断；印太重时不思进取、输出不足。",
+    function: "生身、泄官杀、御伤官、挫食神。身弱最喜正印，身强印重则需财来制印。",
+    pillars: "年柱正印看早年学习与家族权力；月柱文章名声；日支妻家助力；时柱子女仁慈聪敏。"
+  }]
 ];
 
 const stateRules = [
@@ -359,15 +798,6 @@ const stateRules = [
       ["混喜清", "原局混杂，喜运年去杂留清，让主题变得可用。"],
       ["阴见阳", "阴性信息遇阳，事情容易外显、明朗、被推动。"],
       ["阳见阴", "阳性信息遇阴，事情容易内化、沉淀、转入暗线。"]
-    ]
-  },
-  {
-    title: "流通",
-    items: [
-      ["源要续", "生扶链条要有源头，源头断了，后面的十神难以持续发力。"],
-      ["承要住", "被生出来的财官食印，要看日主、根气和环境能不能承载。"],
-      ["战要通", "两股力量相战时，喜中间有一气通关，把冲突转成可用路径。"],
-      ["塞要疏", "一处太旺堵住全局时，重点看泄、化、冲开之后能不能重新流动。"]
     ]
   },
   {
@@ -404,6 +834,52 @@ const stateRules = [
       ["成局破", "已经成局时，重点看哪里被冲破、刑破、穿破。"],
       ["一冲三", "一个流年或大运冲动三方，事情牵连面大。"],
       ["三冲一", "三方压力集中冲一处，主题容易爆发。"]
+    ]
+  }
+];
+
+const flowSections = [
+  {
+    title: "流通看什么",
+    intro: "流通看的是命局里的气能不能从源头走到结果。五行相生只是路径，真正要判断的是这条路径有没有源、有没有承载、有没有被截断。",
+    items: [
+      ["有源", "源头不是越多越好，而是能持续供给。比如水生木，要先看水是否有根、有生助、是否被土困或被火耗干。"],
+      ["有路", "相生链条要能接上。木能生火，火能生土，但中间如果被冲、合、刑、克阻断，气就走不到结果。"],
+      ["有承载", "被生出来的东西要有人接得住。食伤生财，也要看日主能不能担财，财星有没有落地场景。"],
+      ["有结果", "流通不是好听的顺生，而是能不能落实成事：财能成收入，官能成职位，印能成资质，食伤能成作品。"]
+    ]
+  },
+  {
+    title: "不流通的几种样子",
+    intro: "命局不流通，不一定是五行缺失，更多时候是太旺、太弱、相战、被合住、被堵住，导致一个象停在半路。",
+    items: [
+      ["源断", "前面没有生扶，主题像无水之木、无木之火，看似出现，难以持续。"],
+      ["路断", "生克链中间被冲克、合走或隔断，前面的资源到不了后面的结果。"],
+      ["气塞", "某一行太旺堵住全局，比如土重水滞、木多火塞、金寒水冷，事情难展开。"],
+      ["相战", "两股力量直接对打，没有中间一气通关，表现为内耗、关系冲突、事业反复。"],
+      ["泄尽", "一路泄出去没有回收，能力、资源、情绪不断外流，最后承载不足。"]
+    ]
+  },
+  {
+    title: "通关与用神",
+    intro: "所谓通关，是在两股相战的力量之间找到一条能转化冲突的中间气。它不是机械补缺，而是让结构重新能走。",
+    items: [
+      ["金木战", "金克木太急，喜水通关。水能泄金生木，把硬碰硬转成滋养与调节。"],
+      ["木土战", "木克土太急，喜火通关。火泄木生土，让规划、压力、落实之间有转换。"],
+      ["水火战", "水火相冲，常看木能不能通关。木泄水生火，让情绪、智慧转成表达与行动。"],
+      ["火金战", "火克金太烈，常看土能不能通关。土泄火生金，让热度落成规则、技术和制度。"],
+      ["土水战", "土克水太重，常看金能不能通关。金泄土生水，让堵塞转成路径、工具和信息。"]
+    ]
+  },
+  {
+    title: "分类占里怎么用",
+    intro: "看流通的目的，是把抽象五行落到具体问题。问财，就看能力能否流到收入；问事业，就看压力能否流到职位；问婚姻，就看关系能否流到稳定互动。",
+    items: [
+      ["财运", "重点看食伤能不能生财、财能不能被日主承接、比劫是否截财。流通好，是能力进入市场；不流通，是忙、耗、漏、破。"],
+      ["事业", "重点看官杀、印、食伤、财之间有没有路径。官印相生偏体系资质，食伤生财偏技能变现，杀印相生要看杀是否被化。"],
+      ["婚姻", "重点看配偶星与夫妻宫是否能形成稳定互动。星宫相战、被合走、被冲散，都属于关系气机不顺。"],
+      ["学业", "重点看印能不能吸收，食伤能不能表达，官杀能不能形成纪律。印食官流通，学习才容易从输入变成成绩。"],
+      ["健康", "只做倾向提醒。寒暖燥湿、五行偏枯和气机堵塞，都要结合现实身体状态，不能替代医学判断。"]
     ]
   }
 ];
@@ -677,13 +1153,22 @@ function SiteShell() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/basics" element={<BasicsPage />} />
+        <Route path="/basics/practice-flow" element={<PracticeFlowPage />} />
         <Route path="/basics/elements/overview" element={<ElementOverviewPage />} />
         <Route path="/basics/elements/relations" element={<ElementRelationsPage />} />
         <Route path="/basics/elements/patterns" element={<ElementPatternsPage />} />
+        <Route path="/basics/elements/seasonal-wood" element={<SeasonalWoodPage />} />
+        <Route path="/basics/elements/seasonal-fire" element={<SeasonalFirePage />} />
+        <Route path="/basics/elements/seasonal-earth" element={<SeasonalEarthPage />} />
+        <Route path="/basics/elements/seasonal-metal" element={<SeasonalMetalPage />} />
+        <Route path="/basics/elements/seasonal-water" element={<SeasonalWaterPage />} />
         <Route path="/basics/stems" element={<HeavenlyStemsPage />} />
         <Route path="/basics/branches" element={<EarthlyBranchesPage />} />
         <Route path="/basics/ten-gods" element={<TenGodsPage />} />
         <Route path="/advanced" element={<AdvancedPage />} />
+        <Route path="/advanced/flow" element={<FlowPage />} />
+        <Route path="/advanced/stem-branch-actions" element={<StemBranchActionsPage />} />
+        <Route path="/advanced/fetal-life-body" element={<FetalLifeBodyPage />} />
         <Route path="/classified" element={<ClassifiedIndexPage />} />
         <Route path="/classified/:topicKey" element={<ClassifiedTopicPage />} />
       </Routes>
@@ -713,6 +1198,14 @@ function BasicsPage() {
   );
 }
 
+function PracticeFlowPage() {
+  return (
+    <BasicsLayout title="实战流程" copy="先立日元太极点，再定月令气候与用神基调，最后用四柱宫位和大运流年落到事件。">
+      <PracticeFlow />
+    </BasicsLayout>
+  );
+}
+
 function ElementOverviewPage() {
   return (
     <BasicsLayout title="五行总论" copy="五行先看木、火、土、金、水各自代表什么气，再看它在命局里是太过、不及，还是可用。">
@@ -733,6 +1226,46 @@ function ElementPatternsPage() {
   return (
     <BasicsLayout title="五行象法" copy="水多木浮、木多火塞这类口诀，属于五行生克太过、不及之后形成的具体象。">
       <ElementPatterns />
+    </BasicsLayout>
+  );
+}
+
+function SeasonalWoodPage() {
+  return (
+    <BasicsLayout title="四季取用：木" copy="木的取用不能离开月份气候：春木重温养扎根，夏木重润燥，秋木重固本成器，冬木重暖土筑堤。">
+      <SeasonalWood />
+    </BasicsLayout>
+  );
+}
+
+function SeasonalFirePage() {
+  return (
+    <BasicsLayout title="四季取用：火" copy="火的价值在文明传达与光明照耀，但四季火势有强弱：春火要显，夏火要济，秋火要载，冬火要生。">
+      <SeasonalFire />
+    </BasicsLayout>
+  );
+}
+
+function SeasonalEarthPage() {
+  return (
+    <BasicsLayout title="四季取用：土" copy="土的价值在承载孕育，但四季状态不同：春土培木，夏土润燥，秋土育金，冬土暖藏防水。">
+      <SeasonalEarth />
+    </BasicsLayout>
+  );
+}
+
+function SeasonalMetalPage() {
+  return (
+    <BasicsLayout title="四季取用：金" copy="金重收敛成器，春金先立身，夏金怕火逼，秋金可火炼水淘，冬金要火土护持。">
+      <SeasonalMetal />
+    </BasicsLayout>
+  );
+}
+
+function SeasonalWaterPage() {
+  return (
+    <BasicsLayout title="四季取用：水" copy="水贵有源、有度、有去处。春防泛滥，夏防枯竭，秋防过旺，冬重火土成既济。">
+      <SeasonalWater />
     </BasicsLayout>
   );
 }
@@ -782,14 +1315,65 @@ function AdvancedPage() {
       />
       <ContentLayout
         title="进阶目录"
-        items={[
-          { label: "状态理论诀", href: "#state-rules" },
-          ...stateRules.map((group) => ({ label: group.title, href: `#state-${group.title}` })),
-          { label: "分析框架", href: "#method" }
-        ]}
+        items={advancedDirectoryItems.map((item) => ({
+          ...item,
+          href: item.href === "/advanced" ? "#state-rules" : item.href,
+          active: item.href === "/advanced"
+        }))}
       >
         <StateRules />
         <Method />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function FlowPage() {
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Flow"
+        title="流通"
+        copy="流通看命局里的气能不能从源头走到结果：有源、有路、有承载，才是真正能成事。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/flow" })),
+          ...flowSections.map((section) => ({ label: section.title, href: `#flow-${section.title}` }))
+        ]}
+      >
+        <FlowTheory />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function StemBranchActionsPage() {
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Actions"
+        title="干支作用"
+        copy="干支作用先看会合成势，再看冲刑害破如何引动宫位。合能成事，也能合走；冲能破局，也能冲开。"
+      />
+      <ContentLayout title="进阶目录" items={advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/stem-branch-actions" }))}>
+        <StemBranchActions />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function FetalLifeBodyPage() {
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Palace"
+        title="胎命身"
+        copy="胎元看先天秉气，命宫看后天自我，身宫看财帛行运。它们不是主线断法，但能补充体质、房产、人际和财运侧面。"
+      />
+      <ContentLayout title="进阶目录" items={advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/fetal-life-body" }))}>
+        <FetalLifeBody />
       </ContentLayout>
     </main>
   );
@@ -832,7 +1416,6 @@ function ClassifiedTopicPage() {
           ...(topicCases.length > 0 ? [{ label: "案例复盘", href: "#case-studies" }] : [])
         ]}
       >
-        <TopicNav activeTopic={topicKey} />
         <DetailPanel detail={detail} />
         {topicCases.length > 0 ? <CaseStudies detail={detail} items={topicCases} /> : null}
       </ContentLayout>
@@ -956,7 +1539,7 @@ function Intro() {
           <strong>4</strong> 组基础模块
         </span>
         <span>
-          <strong>28</strong> 条状态口诀
+          <strong>24</strong> 条状态口诀
         </span>
         <span>
           <strong>8</strong> 大分类占
@@ -1011,6 +1594,12 @@ function HomeEntries() {
 function BasicsIndex() {
   const entries = [
     {
+      title: "实战流程",
+      href: "/basics/practice-flow",
+      eyebrow: "Practice",
+      copy: "从日元太极点、月令气候、四柱宫位到岁运触发，建立实战判断顺序。"
+    },
+    {
       title: "五行总论",
       href: "/basics/elements/overview",
       eyebrow: "Five Elements",
@@ -1027,6 +1616,36 @@ function BasicsIndex() {
       href: "/basics/elements/patterns",
       eyebrow: "Patterns",
       copy: "水多木浮、木多火塞等，归在五行太过与不及的具体象。"
+    },
+    {
+      title: "四季木",
+      href: "/basics/elements/seasonal-wood",
+      eyebrow: "Seasonal",
+      copy: "春木温养扎根，夏木润燥，秋木固本成器，冬木暖土筑堤。"
+    },
+    {
+      title: "四季火",
+      href: "/basics/elements/seasonal-fire",
+      eyebrow: "Seasonal",
+      copy: "丙重壬水映照，丁重甲木为载，四季先看火势强弱。"
+    },
+    {
+      title: "四季土",
+      href: "/basics/elements/seasonal-earth",
+      eyebrow: "Seasonal",
+      copy: "春土培木，夏土润燥，秋土育金，冬土暖藏防水。"
+    },
+    {
+      title: "四季金",
+      href: "/basics/elements/seasonal-metal",
+      eyebrow: "Seasonal",
+      copy: "春金立身，夏金润照，秋金火炼水淘，冬金火土护持。"
+    },
+    {
+      title: "四季水",
+      href: "/basics/elements/seasonal-water",
+      eyebrow: "Seasonal",
+      copy: "水贵有源，有土不泛，有火成既济，有木成去处。"
     },
     {
       title: "十天干",
@@ -1063,6 +1682,44 @@ function BasicsIndex() {
             <small>进入</small>
           </NavLink>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function PracticeFlow() {
+  return (
+    <section className="basics-module" id="practice-flow" aria-labelledby="practice-flow-title">
+      <div className="section-heading">
+        <p className="eyebrow">Practice Flow</p>
+        <h2 id="practice-flow-title">实战判断流程</h2>
+      </div>
+      <div className="basics-lead">
+        <p>实战不是见一个字就断，而是先定“我”和环境，再看四柱宫位、十神六亲、岁运触发。</p>
+        <a className="source-link" href={assetUrl("/content/实战流程.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看实战流程
+        </a>
+      </div>
+      <div className="theory-grid">
+        {practiceFlow.map((item, index) => (
+          <article className="theory-card" key={item.title}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="matrix-panel" id="pillar-meanings">
+        <h3>四柱宫位速览</h3>
+        <div className="matrix-list">
+          {pillarMeanings.map(([name, text]) => (
+            <div className="matrix-row" key={name}>
+              <strong>{name}</strong>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -1163,6 +1820,159 @@ function ElementPatterns() {
   );
 }
 
+function SeasonalWood() {
+  return (
+    <SeasonalElement
+      data={seasonalWood}
+      elementKey="wood"
+      intro="同样是木，春夏秋冬的状态完全不同。取用先看月令气候，再谈扶抑、通关和格局。"
+      markdown="/content/四季取用-木.md"
+      title="木的四季取用"
+    />
+  );
+}
+
+function SeasonalFire() {
+  return (
+    <SeasonalElement
+      data={seasonalFire}
+      elementKey="fire"
+      intro="同样是火，春夏秋冬的火势有显、烈、衰、微之别。丙火重壬水映照，丁火重甲木承载。"
+      introCards={seasonalFireIntro}
+      markdown="/content/四季取用-火.md"
+      title="火的四季取用"
+    />
+  );
+}
+
+function SeasonalEarth() {
+  return (
+    <SeasonalElement
+      data={seasonalEarth}
+      elementKey="earth"
+      intro="同样是土，辰、未、戌、丑四季交接之土各有气候。土不只是“厚重”，还要分寒暖燥湿、承载对象和泄秀方向。"
+      introCards={seasonalEarthIntro}
+      markdown="/content/四季取用-土.md"
+      title="土的四季取用"
+    />
+  );
+}
+
+function SeasonalMetal() {
+  return (
+    <SeasonalElement
+      data={seasonalMetal}
+      elementKey="metal"
+      intro="同样是金，春夏秋冬的成器方式不同。春金先立身，夏金防火逼，秋金可火炼水淘，冬金要火土护持。"
+      introCards={seasonalMetalIntro}
+      markdown="/content/四季取用-金.md"
+      title="金的四季取用"
+    />
+  );
+}
+
+function SeasonalWater() {
+  return (
+    <SeasonalElement
+      data={seasonalWater}
+      elementKey="water"
+      intro="同样是水，四季最怕失去源头、尺度和去处。春防泛滥，夏防枯竭，秋防过旺，冬重既济。"
+      introCards={seasonalWaterIntro}
+      markdown="/content/四季取用-水.md"
+      title="水的四季取用"
+    />
+  );
+}
+
+function SeasonalElement({ data, elementKey, intro, introCards = null, markdown, title }) {
+  const groups = seasonalImageGroups[elementKey];
+
+  return (
+    <section className="element-basics" id={`seasonal-${elementKey}`} aria-labelledby={`seasonal-${elementKey}-title`}>
+      <div className="section-heading">
+        <p className="eyebrow">Seasonal {elementKey}</p>
+        <h2 id={`seasonal-${elementKey}-title`}>{title}</h2>
+      </div>
+      <div className="element-lead">
+        <p>{intro}</p>
+        <a className="source-link" href={assetUrl(markdown)}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看 Markdown
+        </a>
+      </div>
+      {introCards ? (
+        <div className="element-overview-grid">
+          {introCards.map(([cardTitle, text]) => (
+            <article className="element-overview-card" key={cardTitle}>
+              <strong>{cardTitle}</strong>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      ) : null}
+      <SeasonalImageStrip elementKey={elementKey} imageNumbers={groups.intro} title={`${title} 概论图`} />
+      <SeasonalImageStrip elementKey={elementKey} imageNumbers={groups.charts} title="干支图示与例盘素材" />
+      <div className="flow-sections seasonal-sections">
+        {data.map((section, sectionIndex) => (
+          <article className="flow-section" id={`${elementKey}-${section.season}`} key={section.season}>
+            <div>
+              <p className="eyebrow">{elementKey}</p>
+              <h3>{section.season}</h3>
+              <p>{section.focus}</p>
+            </div>
+            <div>
+              <div className="flow-items">
+                {section.items.map(([title, text]) => (
+                  <div className="flow-item" key={title}>
+                    <strong>{title}</strong>
+                    <p>{text}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="example-pillar-list" aria-label={`${section.season}例盘`}>
+                {(section.examples || []).map((example) => (
+                  <span key={example}>{example}</span>
+                ))}
+              </div>
+              <SeasonalImageStrip
+                elementKey={elementKey}
+                imageNumbers={groups.sections[sectionIndex] || []}
+                title={`${section.season} PPT 图`}
+              />
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function SeasonalImageStrip({ elementKey, imageNumbers, title }) {
+  if (!imageNumbers.length) return null;
+
+  const images = imageNumbers.map((number) => {
+    const padded = String(number).padStart(2, "0");
+    return {
+      number: padded,
+      path: `/assets/seasonal/${elementKey}/${elementKey}-${padded}.jpg`
+    };
+  });
+
+  return (
+    <div className="seasonal-image-strip" aria-label={title}>
+      <h4>{title}</h4>
+      <div className="seasonal-image-grid">
+        {images.map((image) => (
+          <a href={assetUrl(image.path)} key={image.path} target="_blank" rel="noreferrer">
+            <img src={assetUrl(image.path)} alt={`${title} ${image.number}`} decoding="async" loading="lazy" />
+            <span>{image.number}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function HeavenlyStems() {
   return (
     <section className="basics-module" id="heavenly-stems" aria-labelledby="heavenly-stems-title">
@@ -1222,16 +2032,103 @@ function TenGods() {
         <p>十神以日主为中心，不是固定吉凶标签，而是五行生克关系落到人的行为动力和现实角色。</p>
       </div>
       <div className="ten-god-list">
-        {tenGods.map(([name, relation, image, note]) => (
+        {tenGods.map(([name, relation, image, note, detail]) => (
           <article className="ten-god-item" key={name}>
             <div>
               <strong>{name}</strong>
               <span>{relation}</span>
             </div>
             <p>{image}</p>
-            <small>{note}</small>
+            <div className="ten-god-detail">
+              <small>{note}</small>
+              {detail ? (
+                <>
+                  <small><b>六亲取象：</b>{detail.kin}</small>
+                  <small><b>为喜：</b>{detail.favorable}</small>
+                  <small><b>为忌：</b>{detail.unfavorable}</small>
+                  <small><b>功能：</b>{detail.function}</small>
+                  <small><b>柱位提示：</b>{detail.pillars}</small>
+                </>
+              ) : null}
+            </div>
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function StemBranchActions() {
+  return (
+    <section className="flow-theory" id="stem-branch-actions" aria-labelledby="stem-branch-actions-title">
+      <div className="section-heading">
+        <p className="eyebrow">Stem Branch</p>
+        <h2 id="stem-branch-actions-title">干支作用要点</h2>
+      </div>
+      <div className="flow-lead">
+        <p>干支应用的关键，是把合、会、冲、刑、害、破放回宫位和十神中看：谁被引动，谁被合住，谁被冲开。</p>
+        <a className="source-link" href={assetUrl("/content/干支作用.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看干支作用
+        </a>
+      </div>
+      <div className="flow-sections">
+        {stemBranchActions.map((section) => (
+          <article className="flow-section" id={`action-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">Actions</p>
+              <h3>{section.title}</h3>
+              <p>先辨作用类型，再看力量大小、宫位落点和喜忌方向。</p>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FetalLifeBody() {
+  return (
+    <section className="state-rules" id="fetal-life-body" aria-labelledby="fetal-life-body-title">
+      <div className="section-heading">
+        <p className="eyebrow">Fetal / Life / Body</p>
+        <h2 id="fetal-life-body-title">胎元、命宫、身宫</h2>
+      </div>
+      <div className="rules-lead">
+        <p>胎命身属于辅助观察：看先天体质、后天自我、财帛行运。使用时仍要回到原局结构和岁运作用。</p>
+        <a className="source-link" href={assetUrl("/content/胎命身.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看胎命身
+        </a>
+      </div>
+      <div className="theory-grid">
+        {fetalLifeBody.map((item) => (
+          <article className="theory-card" key={item.title}>
+            <span>{item.subtitle}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="matrix-panel" id="life-palace-stars">
+        <h3>命宫十二星</h3>
+        <div className="palace-grid">
+          {lifePalaceStars.map(([branch, star, text]) => (
+            <article className="palace-card" key={branch}>
+              <strong>{branch}</strong>
+              <span>{star}</span>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -1258,6 +2155,51 @@ function StateRules() {
                 <div className="rule-pair" key={formula}>
                   <strong>{formula}</strong>
                   <span>{meaning}</span>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FlowTheory() {
+  const checkpoints = ["源头从哪里来", "中间有没有路", "主题是否被截断", "结果能否承载", "运年是疏通还是添堵"];
+
+  return (
+    <section className="flow-theory" id="flow-theory" aria-labelledby="flow-theory-title">
+      <div className="section-heading">
+        <p className="eyebrow">Flow Theory</p>
+        <h2 id="flow-theory-title">流通不是顺生，而是成事路径</h2>
+      </div>
+      <div className="flow-lead">
+        <p>
+          八字看流通，不是看到木生火、火生土就说好。真正要看的是一股气从哪里来，经过哪里，在哪里被挡住，最后能不能落成现实结果。
+        </p>
+      </div>
+      <div className="flow-checklist" aria-label="流通五问">
+        {checkpoints.map((item, index) => (
+          <div className="flow-check" key={item}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{item}</strong>
+          </div>
+        ))}
+      </div>
+      <div className="flow-sections">
+        {flowSections.map((section) => (
+          <article className="flow-section" id={`flow-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">Flow</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
                 </div>
               ))}
             </div>

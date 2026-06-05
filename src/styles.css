@@ -218,6 +218,7 @@ h1 {
 .home-entries,
 .element-basics,
 .state-rules,
+.flow-theory,
 .catalog-section,
 .detail-panel,
 .case-studies,
@@ -420,6 +421,8 @@ h1 {
 .content-main > .element-basics,
 .content-main > .basics-module,
 .content-main > .state-rules,
+.content-main > .flow-theory,
+.content-main > .theory-section,
 .content-main > .catalog-section,
 .content-main > .detail-panel,
 .content-main > .case-studies,
@@ -468,6 +471,10 @@ h1 {
   background: #fffaf2;
 }
 
+.flow-theory {
+  background: #fffaf2;
+}
+
 .section-heading {
   display: flex;
   align-items: end;
@@ -487,6 +494,7 @@ h1 {
 .element-lead,
 .basics-lead,
 .rules-lead,
+.flow-lead,
 .case-lead {
   max-width: 880px;
   margin-bottom: 32px;
@@ -495,6 +503,7 @@ h1 {
 .element-lead p,
 .basics-lead p,
 .rules-lead p,
+.flow-lead p,
 .case-lead p {
   margin: 0;
   color: var(--muted);
@@ -554,6 +563,148 @@ h1 {
   margin: 0;
   color: var(--muted);
   line-height: 1.75;
+}
+
+.flow-checklist {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  margin-bottom: 46px;
+  background: var(--line);
+}
+
+.flow-check {
+  min-height: 150px;
+  padding: 22px;
+  background: #f5efe5;
+}
+
+.flow-check span {
+  display: block;
+  margin-bottom: 28px;
+  color: var(--gold);
+  font: 700 13px/1 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.flow-check strong {
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.flow-sections {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+}
+
+.seasonal-sections {
+  margin-top: 34px;
+}
+
+.flow-section {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.25fr);
+  gap: 36px;
+  padding: clamp(28px, 4vw, 46px);
+  background: #fffaf2;
+  scroll-margin-top: 96px;
+}
+
+.flow-section h3 {
+  margin-bottom: 18px;
+  font-size: clamp(28px, 4vw, 44px);
+}
+
+.flow-section > div:first-child p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.flow-items {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+}
+
+.flow-item {
+  padding: 22px;
+  background: #f5efe5;
+}
+
+.flow-item strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--red);
+  font-size: 21px;
+}
+
+.flow-item p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.example-pillar-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+.example-pillar-list span {
+  border: 1px solid rgba(143, 47, 37, 0.26);
+  padding: 7px 10px;
+  color: var(--red);
+  background: #fffaf2;
+  font: 700 13px/1.2 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.seasonal-image-strip {
+  margin-top: 24px;
+  min-width: 0;
+}
+
+.seasonal-image-strip h4 {
+  margin: 0 0 12px;
+  color: var(--red);
+  font-size: 18px;
+}
+
+.seasonal-image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+}
+
+.seasonal-image-grid a {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  background: #fffaf2;
+  overflow: hidden;
+}
+
+.seasonal-image-grid img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fffaf2;
+}
+
+.seasonal-image-grid span {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  padding: 5px 7px;
+  background: rgba(24, 18, 13, 0.74);
+  color: var(--white);
+  font: 700 12px/1 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .element-card {
@@ -651,7 +802,7 @@ h1 {
 
 .ten-god-item {
   display: grid;
-  grid-template-columns: minmax(120px, 0.8fr) minmax(180px, 1fr) minmax(260px, 1.6fr);
+  grid-template-columns: minmax(120px, 0.6fr) minmax(180px, 0.8fr) minmax(280px, 1.8fr);
   gap: 24px;
   align-items: start;
   padding: 22px 24px;
@@ -679,9 +830,124 @@ h1 {
 }
 
 .ten-god-item small {
+  display: block;
   color: var(--muted);
   font-size: 14px;
   line-height: 1.65;
+}
+
+.ten-god-detail {
+  display: grid;
+  gap: 8px;
+}
+
+.ten-god-detail b {
+  color: var(--ink);
+}
+
+.theory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-bottom: 42px;
+  background: var(--line);
+}
+
+.theory-card {
+  min-height: 260px;
+  padding: 24px;
+  background: #f5efe5;
+}
+
+.theory-card span {
+  display: block;
+  margin-bottom: 34px;
+  color: var(--gold);
+  font: 700 13px/1.35 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.theory-card h3 {
+  margin-bottom: 16px;
+  color: var(--red);
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.theory-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.matrix-panel {
+  margin-top: 42px;
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+}
+
+.matrix-panel h3 {
+  margin-bottom: 20px;
+  font-size: clamp(24px, 3vw, 36px);
+}
+
+.matrix-list {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+}
+
+.matrix-row {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.24fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding: 20px 24px;
+  background: #fffaf2;
+}
+
+.matrix-row strong {
+  color: var(--red);
+  font-size: 22px;
+}
+
+.matrix-row p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.palace-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+}
+
+.palace-card {
+  min-height: 180px;
+  padding: 22px;
+  background: #fffaf2;
+}
+
+.palace-card strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--red);
+  font-size: 34px;
+  line-height: 1;
+}
+
+.palace-card span {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--gold);
+  font: 700 13px/1.35 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.palace-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 .rule-groups {
@@ -1155,6 +1421,10 @@ body.modal-open {
   .branches-grid,
   .catalog-grid,
   .rule-groups,
+  .theory-grid,
+	  .palace-grid,
+	  .seasonal-image-grid,
+	  .flow-checklist,
   .case-grid,
   .steps,
   .divination-board {
@@ -1165,13 +1435,14 @@ body.modal-open {
     grid-template-columns: minmax(110px, 0.8fr) minmax(0, 1fr);
   }
 
-  .ten-god-item small {
+  .ten-god-detail {
     grid-column: 1 / -1;
   }
 
   .content-layout,
   .intro,
   .detail-panel,
+  .flow-section,
   .page-header,
   .topic-header {
     grid-template-columns: minmax(0, 1fr);
@@ -1274,6 +1545,11 @@ body.modal-open {
   .entry-grid,
   .catalog-grid,
   .rule-groups,
+  .theory-grid,
+	  .palace-grid,
+	  .seasonal-image-grid,
+	  .flow-checklist,
+  .flow-section,
   .detail-columns,
   .case-grid,
   .steps,
@@ -1286,12 +1562,20 @@ body.modal-open {
     gap: 12px;
   }
 
+  .matrix-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
   .topic,
   .element-overview-card,
   .relation-card,
   .element-card,
   .symbol-card,
   .rule-group,
+  .theory-card,
+  .palace-card,
+  .flow-check,
   .case-card,
   .steps li,
   .board-cell {
