@@ -1548,31 +1548,45 @@ body.modal-open {
   }
 
   .side-directory {
-    position: sticky;
-    top: 68px;
-    z-index: 4;
+    position: static;
     min-height: 0;
     border-right: 0;
     border-bottom: 1px solid var(--line);
-    padding: 12px 18px;
+    padding: 10px 14px;
   }
 
   .side-directory h2 {
-    margin-bottom: 10px;
-    font-size: 16px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: var(--gold);
   }
 
   .side-directory nav {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     overflow-x: auto;
-    padding-bottom: 4px;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .side-directory nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .directory-item {
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  .directory-children {
+    display: none;
   }
 
   .side-directory a {
     white-space: nowrap;
     border-left: 0;
     border-bottom: 2px solid transparent;
+    padding: 8px 10px;
   }
 }
 
@@ -1606,10 +1620,6 @@ body.modal-open {
 
   .header-actions {
     justify-content: start;
-  }
-
-  .side-directory {
-    top: 64px;
   }
 
   .topic-nav {
