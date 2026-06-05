@@ -271,6 +271,47 @@ const elementBasics = [
   }
 ];
 
+const heavenlyStems = [
+  ["甲", "阳木", "大树、栋梁、向上生发", "重在根气与疏通，怕被金伤，也怕水泛木浮。"],
+  ["乙", "阴木", "花草、藤蔓、柔韧生长", "重在依附与环境，喜有水养、火发、支中有根。"],
+  ["丙", "阳火", "太阳、光明、外放热力", "重在照耀与显达，怕被水晦，也怕土厚晦光。"],
+  ["丁", "阴火", "灯火、炉火、细密温度", "重在持续与专注，喜木来续焰，怕湿寒压灭。"],
+  ["戊", "阳土", "高山、堤坝、厚重承载", "重在稳定与边界，喜火暖土，怕木重疏土太过。"],
+  ["己", "阴土", "田园、湿土、包容孕育", "重在培植与转化，喜温润平衡，怕寒湿泥滞。"],
+  ["庚", "阳金", "刀斧、矿石、刚健执行", "重在锻炼与决断，喜火炼土生，怕土厚金埋。"],
+  ["辛", "阴金", "珠玉、首饰、精致规则", "重在清洁与雕琢，喜水洗火炼，怕浊土埋没。"],
+  ["壬", "阳水", "江河、大海、奔流信息", "重在流动与格局，喜有堤岸，怕泛滥无归。"],
+  ["癸", "阴水", "雨露、泉水、细密滋养", "重在渗透与润泽，喜金源木承，怕土浊水塞。"]
+];
+
+const earthlyBranches = [
+  ["子", "水", "冬至前后", "癸", "水气专旺，主流动、信息、暗线与情绪。"],
+  ["丑", "湿土", "冬末", "己、癸、辛", "寒湿之库，藏土水金，常看蓄积、迟滞与收纳。"],
+  ["寅", "木", "初春", "甲、丙、戊", "木气发动，带火土生机，主开始、扩张与行动。"],
+  ["卯", "木", "仲春", "乙", "木气纯粹，主生发、人缘、审美与关系牵连。"],
+  ["辰", "湿土", "春末", "戊、乙、癸", "水库兼湿土，藏木水余气，主转折、蓄水与复杂关系。"],
+  ["巳", "火", "初夏", "丙、戊、庚", "火气渐旺，藏金受炼，主表达、技术、变化与外显。"],
+  ["午", "火", "仲夏", "丁、己", "火气极旺，主热度、名声、礼法，也看燥烈过度。"],
+  ["未", "燥土", "夏末", "己、丁、乙", "木库兼燥土，藏火木余气，主承接、养成与内在牵挂。"],
+  ["申", "金", "初秋", "庚、壬、戊", "金气发动，带水土，主规则、工具、竞争与机动。"],
+  ["酉", "金", "仲秋", "辛", "金气纯粹，主精确、审美、边界、口舌与制度。"],
+  ["戌", "燥土", "秋末", "戊、辛、丁", "火库兼燥土，藏金火余气，主收束、防守与旧事复燃。"],
+  ["亥", "水", "初冬", "壬、甲", "水气发动，藏木生机，主迁移、暗流、远方与孕育。"]
+];
+
+const tenGods = [
+  ["比肩", "同我、同阴阳", "自我、同辈、坚持、分担", "可成帮身，也可成竞争，要看日主强弱与财官状态。"],
+  ["劫财", "同我、异阴阳", "夺财、行动、朋友、冲劲", "身弱可助身，身旺易争财，合伙与现金流要谨慎。"],
+  ["食神", "我生、同阴阳", "表达、享受、作品、福气", "偏稳定输出，能生财，也能制杀，但怕被枭印夺食。"],
+  ["伤官", "我生、异阴阳", "才华、锋芒、反规则、突破", "有创造力，也容易冲官，必须看是否有财印承接。"],
+  ["偏财", "我克、同阴阳", "机会财、市场、人脉、父亲", "偏流动和机会，身弱不胜财时反成压力。"],
+  ["正财", "我克、异阴阳", "稳定收入、经营、妻星、责任", "重秩序与现实回报，怕比劫夺财，也怕财多身弱。"],
+  ["七杀", "克我、同阴阳", "压力、竞争、风险、权力", "杀要制化，制得好是胆识与执行，失控则成压迫。"],
+  ["正官", "克我、异阴阳", "规则、职位、名分、约束", "喜清不喜混，官印相生多见体系路径与资质保护。"],
+  ["偏印", "生我、同阴阳", "灵感、偏门、保护、孤高", "能护身也能夺食，常看学习方式与非标准资源。"],
+  ["正印", "生我、异阴阳", "学历、贵人、吸收、安全感", "主系统支持与资质，太重则依赖保守、输出不足。"]
+];
+
 const stateRules = [
   {
     title: "显隐",
@@ -625,16 +666,22 @@ function BasicsPage() {
       <PageHeader
         eyebrow="Basics"
         title="基础篇"
-        copy="先把五行生克、太过不及、源头承载看明白，再进入状态和分类占。"
+        copy="先把五行、十天干、十二地支、十神的基础关系看明白，再进入状态和分类占。"
       />
       <ContentLayout
         title="基础篇目录"
         items={[
           { label: "五行基础", href: "#element-basics" },
+          { label: "十天干", href: "#heavenly-stems" },
+          { label: "十二地支", href: "#earthly-branches" },
+          { label: "十神", href: "#ten-gods" },
           ...elementBasics.map((item) => ({ label: item.formula, href: `#element-${item.formula}` }))
         ]}
       >
         <ElementBasics />
+        <HeavenlyStems />
+        <EarthlyBranches />
+        <TenGods />
       </ContentLayout>
     </main>
   );
@@ -802,7 +849,7 @@ function Intro() {
       <p>这个网站不是玄学断语合集，而是一个分类占写作系统：同一个八字，每次只围绕一个问题重组命局。</p>
       <div className="intro-stats" aria-label="目录统计">
         <span>
-          <strong>10</strong> 个五行象法
+          <strong>4</strong> 组基础模块
         </span>
         <span>
           <strong>24</strong> 条状态口诀
@@ -880,6 +927,80 @@ function ElementBasics() {
             <h3>{item.formula}</h3>
             <p>{item.meaning}</p>
             <small>{item.use}</small>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function HeavenlyStems() {
+  return (
+    <section className="basics-module" id="heavenly-stems" aria-labelledby="heavenly-stems-title">
+      <div className="section-heading">
+        <p className="eyebrow">Heavenly Stems</p>
+        <h2 id="heavenly-stems-title">十天干</h2>
+      </div>
+      <div className="basics-lead">
+        <p>天干看外显之气：透在天上，事情容易被看见。先定阴阳五行，再看有没有地支给根。</p>
+      </div>
+      <div className="symbol-grid stems-grid">
+        {heavenlyStems.map(([name, nature, image, note]) => (
+          <article className="symbol-card" key={name}>
+            <strong>{name}</strong>
+            <span>{nature}</span>
+            <p>{image}</p>
+            <small>{note}</small>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function EarthlyBranches() {
+  return (
+    <section className="basics-module earthy" id="earthly-branches" aria-labelledby="earthly-branches-title">
+      <div className="section-heading">
+        <p className="eyebrow">Earthly Branches</p>
+        <h2 id="earthly-branches-title">十二地支</h2>
+      </div>
+      <div className="basics-lead">
+        <p>地支看根基、环境与暗线。支中藏干决定一个主题是已经透出、藏待透，还是要等大运流年引动。</p>
+      </div>
+      <div className="symbol-grid branches-grid">
+        {earthlyBranches.map(([name, element, season, hidden, note]) => (
+          <article className="symbol-card branch-card" key={name}>
+            <strong>{name}</strong>
+            <span>{element} · {season}</span>
+            <p>藏干：{hidden}</p>
+            <small>{note}</small>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function TenGods() {
+  return (
+    <section className="basics-module" id="ten-gods" aria-labelledby="ten-gods-title">
+      <div className="section-heading">
+        <p className="eyebrow">Ten Gods</p>
+        <h2 id="ten-gods-title">十神</h2>
+      </div>
+      <div className="basics-lead">
+        <p>十神以日主为中心，不是固定吉凶标签，而是五行生克关系落到人的行为动力和现实角色。</p>
+      </div>
+      <div className="ten-god-list">
+        {tenGods.map(([name, relation, image, note]) => (
+          <article className="ten-god-item" key={name}>
+            <div>
+              <strong>{name}</strong>
+              <span>{relation}</span>
+            </div>
+            <p>{image}</p>
+            <small>{note}</small>
           </article>
         ))}
       </div>

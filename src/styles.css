@@ -350,6 +350,9 @@ h1 {
   display: grid;
   grid-template-columns: minmax(210px, 260px) minmax(0, 1fr);
   align-items: start;
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
   background: var(--paper);
 }
 
@@ -360,6 +363,8 @@ h1 {
   border-right: 1px solid var(--line);
   padding: 28px 22px;
   background: #fffaf2;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .side-directory h2 {
@@ -390,9 +395,11 @@ h1 {
 
 .content-main {
   min-width: 0;
+  max-width: 100%;
 }
 
 .content-main > .element-basics,
+.content-main > .basics-module,
 .content-main > .state-rules,
 .content-main > .catalog-section,
 .content-main > .detail-panel,
@@ -426,6 +433,14 @@ h1 {
   background: #efe3d2;
 }
 
+.basics-module {
+  background: #fffaf2;
+}
+
+.basics-module.earthy {
+  background: #f5efe5;
+}
+
 .case-studies {
   background: #efe3d2;
 }
@@ -451,6 +466,7 @@ h1 {
 }
 
 .element-lead,
+.basics-lead,
 .rules-lead,
 .case-lead {
   max-width: 880px;
@@ -458,6 +474,7 @@ h1 {
 }
 
 .element-lead p,
+.basics-lead p,
 .rules-lead p,
 .case-lead p {
   margin: 0;
@@ -501,6 +518,102 @@ h1 {
   border-top: 1px solid var(--line);
   padding-top: 14px;
   color: var(--red);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.symbol-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+}
+
+.stems-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.branches-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.symbol-card {
+  min-height: 250px;
+  padding: 24px;
+  background: #fffaf2;
+}
+
+.symbol-card strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--red);
+  font-size: 42px;
+  line-height: 1;
+}
+
+.symbol-card span {
+  display: block;
+  margin-bottom: 28px;
+  color: var(--gold);
+  font: 700 13px/1.35 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.symbol-card p {
+  margin-bottom: 18px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.symbol-card small {
+  display: block;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.branch-card {
+  min-height: 270px;
+}
+
+.ten-god-list {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+}
+
+.ten-god-item {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.8fr) minmax(180px, 1fr) minmax(260px, 1.6fr);
+  gap: 24px;
+  align-items: start;
+  padding: 22px 24px;
+  background: #f5efe5;
+}
+
+.ten-god-item strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--red);
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+.ten-god-item span {
+  color: var(--gold);
+  font: 700 13px/1.35 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.ten-god-item p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.ten-god-item small {
+  color: var(--muted);
   font-size: 14px;
   line-height: 1.65;
 }
@@ -883,6 +996,8 @@ ol {
 @media (max-width: 980px) {
   .entry-grid,
   .element-grid,
+  .stems-grid,
+  .branches-grid,
   .catalog-grid,
   .rule-groups,
   .case-grid,
@@ -891,12 +1006,20 @@ ol {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .ten-god-item {
+    grid-template-columns: minmax(110px, 0.8fr) minmax(0, 1fr);
+  }
+
+  .ten-god-item small {
+    grid-column: 1 / -1;
+  }
+
   .content-layout,
   .intro,
   .detail-panel,
   .page-header,
   .topic-header {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .side-directory {
@@ -989,6 +1112,8 @@ ol {
   }
 
   .element-grid,
+  .stems-grid,
+  .branches-grid,
   .entry-grid,
   .catalog-grid,
   .rule-groups,
@@ -999,8 +1124,14 @@ ol {
     grid-template-columns: 1fr;
   }
 
+  .ten-god-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
   .topic,
   .element-card,
+  .symbol-card,
   .rule-group,
   .case-card,
   .steps li,
