@@ -1590,6 +1590,16 @@ body.modal-open {
   }
 }
 
+@media (hover: none), (pointer: coarse) {
+  .content-layout {
+    display: block;
+  }
+
+  .side-directory {
+    display: none;
+  }
+}
+
 @media (max-width: 680px) {
   .site-header {
     align-items: center;
