@@ -671,7 +671,15 @@ function BasicsPage() {
       <ContentLayout
         title="基础篇目录"
         items={[
-          { label: "五行基础", href: "#element-basics" },
+          {
+            label: "五行基础",
+            href: "#element-basics",
+            children: [
+              { label: "五行总论", href: "#element-overview" },
+              { label: "生克关系", href: "#element-relations" },
+              { label: "五行象法", href: "#element-patterns" }
+            ]
+          },
           { label: "十天干", href: "#heavenly-stems" },
           { label: "十二地支", href: "#earthly-branches" },
           { label: "十神", href: "#ten-gods" }
@@ -793,23 +801,42 @@ function PageHeader({ eyebrow, title, copy }) {
 }
 
 function ContentLayout({ title, items, children }) {
+  const renderDirectoryItem = (item) => {
+    const link = item.href.startsWith("/") ? (
+      <NavLink className={item.active ? "is-active" : ""} to={item.href}>
+        {item.label}
+      </NavLink>
+    ) : (
+      <a href={item.href}>{item.label}</a>
+    );
+
+    return (
+      <div className="directory-item" key={item.href}>
+        {link}
+        {item.children ? (
+          <div className="directory-children">
+            {item.children.map((child) =>
+              child.href.startsWith("/") ? (
+                <NavLink className={child.active ? "is-active" : ""} key={child.href} to={child.href}>
+                  {child.label}
+                </NavLink>
+              ) : (
+                <a key={child.href} href={child.href}>
+                  {child.label}
+                </a>
+              )
+            )}
+          </div>
+        ) : null}
+      </div>
+    );
+  };
+
   return (
     <div className="content-layout">
       <aside className="side-directory">
         <h2>{title}</h2>
-        <nav aria-label={title}>
-          {items.map((item) =>
-            item.href.startsWith("/") ? (
-              <NavLink className={item.active ? "is-active" : ""} key={item.href} to={item.href}>
-                {item.label}
-              </NavLink>
-            ) : (
-              <a key={item.href} href={item.href}>
-                {item.label}
-              </a>
-            )
-          )}
-        </nav>
+        <nav aria-label={title}>{items.map(renderDirectoryItem)}</nav>
       </aside>
       <div className="content-main">{children}</div>
     </div>
@@ -904,6 +931,21 @@ function HomeEntries() {
 }
 
 function ElementBasics() {
+  const elementOverview = [
+    ["木", "生发、条达、成长、规划、关系的生机。"],
+    ["火", "光明、表达、热情、名声、行动与显现。"],
+    ["土", "承载、稳定、资产、家庭、落实与边界。"],
+    ["金", "规则、判断、技术、制度、收敛与锋芒。"],
+    ["水", "流动、智慧、信息、资源、迁移与情绪。"]
+  ];
+
+  const elementRelations = [
+    ["相生", "木生火、火生土、土生金、金生水、水生木。生是提供来源，但太过也会成病。"],
+    ["相克", "木克土、土克水、水克火、火克金、金克木。克是约束秩序，不一定都是坏事。"],
+    ["太过", "某一行太旺，可能让被生者漂、塞、焦、埋、浊，也可能让被克者受伤。"],
+    ["不及", "某一行太弱，主题没有源头、没有承载、没有力量，事情难以成形。"]
+  ];
+
   return (
     <section className="element-basics" id="element-basics" aria-labelledby="element-basics-title">
       <div className="section-heading">
@@ -919,6 +961,30 @@ function ElementBasics() {
           查看五行基础篇
         </a>
       </div>
+      <section className="element-subsection" id="element-overview" aria-labelledby="element-overview-title">
+        <h3 id="element-overview-title">五行总论</h3>
+        <div className="element-overview-grid">
+          {elementOverview.map(([name, meaning]) => (
+            <article className="element-overview-card" key={name}>
+              <strong>{name}</strong>
+              <p>{meaning}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="element-subsection" id="element-relations" aria-labelledby="element-relations-title">
+        <h3 id="element-relations-title">生克关系</h3>
+        <div className="relation-grid">
+          {elementRelations.map(([name, meaning]) => (
+            <article className="relation-card" key={name}>
+              <strong>{name}</strong>
+              <p>{meaning}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="element-subsection" id="element-patterns" aria-labelledby="element-patterns-title">
+        <h3 id="element-patterns-title">五行象法</h3>
       <div className="element-grid">
         {elementBasics.map((item) => (
           <article className="element-card" id={`element-${item.formula}`} key={item.formula}>
@@ -929,6 +995,7 @@ function ElementBasics() {
           </article>
         ))}
       </div>
+      </section>
     </section>
   );
 }
