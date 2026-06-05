@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Navigate, NavLink, Route, Routes, useParams } from "react-router-dom";
-import { ArrowLeft, BookOpen, ChevronRight, ScrollText, Tags } from "lucide-react";
+import { ArrowLeft, BookOpen, ChevronRight, ScrollText, Tags, X } from "lucide-react";
 import "./styles.css";
 
 const assetUrl = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
@@ -674,8 +674,7 @@ function BasicsPage() {
           { label: "五行基础", href: "#element-basics" },
           { label: "十天干", href: "#heavenly-stems" },
           { label: "十二地支", href: "#earthly-branches" },
-          { label: "十神", href: "#ten-gods" },
-          ...elementBasics.map((item) => ({ label: item.formula, href: `#element-${item.formula}` }))
+          { label: "十神", href: "#ten-gods" }
         ]}
       >
         <ElementBasics />
@@ -1144,6 +1143,26 @@ function ListColumn({ title, items }) {
 }
 
 function CaseStudies({ detail, items }) {
+  const [preview, setPreview] = React.useState(null);
+
+  React.useEffect(() => {
+    if (!preview) return undefined;
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setPreview(null);
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.body.classList.add("modal-open");
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.classList.remove("modal-open");
+    };
+  }, [preview]);
+
   return (
     <section className="case-studies" id="case-studies" aria-labelledby="case-studies-title">
       <div className="section-heading">
@@ -1166,9 +1185,21 @@ function CaseStudies({ detail, items }) {
           <article className="case-card" key={item.id}>
             <div className="case-images" aria-label={`${item.id} 原图`}>
               {item.images.map((image, index) => (
-                <a href={assetUrl(image)} key={image} target="_blank" rel="noreferrer">
+                <button
+                  aria-label={`查看${item.id} 原图 ${index + 1}`}
+                  key={image}
+                  onClick={() =>
+                    setPreview({
+                      alt: `${item.id} 原图 ${index + 1}`,
+                      image,
+                      title: item.title,
+                      meta: `${item.id} · 第 ${index + 1} 张`
+                    })
+                  }
+                  type="button"
+                >
                   <img src={assetUrl(image)} alt={`${item.id} 原图 ${index + 1}`} loading="lazy" />
-                </a>
+                </button>
               ))}
             </div>
             <div className="case-card-header">
@@ -1186,6 +1217,23 @@ function CaseStudies({ detail, items }) {
           </article>
         ))}
       </div>
+      {preview ? (
+        <div className="image-modal" aria-label="案例原图预览" aria-modal="true" role="dialog">
+          <button className="image-modal-backdrop" aria-label="关闭预览" onClick={() => setPreview(null)} type="button" />
+          <div className="image-modal-panel">
+            <div className="image-modal-header">
+              <div>
+                <span>{preview.meta}</span>
+                <strong>{preview.title}</strong>
+              </div>
+              <button aria-label="关闭预览" className="image-modal-close" onClick={() => setPreview(null)} type="button">
+                <X size={22} aria-hidden="true" />
+              </button>
+            </div>
+            <img src={assetUrl(preview.image)} alt={preview.alt} />
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
