@@ -414,6 +414,159 @@ const caseStudies = [
     images: ["/assets/cases/case-analysis-2/case-081-01.jpeg"],
     point: "财星多，婚姻宫刑得明显，关系对象不唯一，婚姻承载点也不稳定。",
     feedback: "1999 己卯、2009 己丑、2021 辛丑，三婚。"
+  },
+  {
+    topics: ["career", "health", "study"],
+    id: "案例 2",
+    title: "土晦火光，水木为真用",
+    tags: ["调候", "官杀生印", "学历"],
+    images: ["/assets/cases/case-analysis-1/case-002-01.jpeg"],
+    point: "丙火生戌月，地支一片土晦火光，妙在壬水透出，水木为真用神。",
+    feedback: "癸亥大运寅亥合木，官杀生印枭，水木喜神，学历可以。"
+  },
+  {
+    topics: ["health", "temperament", "marriage"],
+    id: "案例 5",
+    title: "枭神夺食与身心问题",
+    tags: ["枭神夺食", "纯阴", "夫妻宫伏吟"],
+    images: ["/assets/cases/case-analysis-1/case-005-01.jpeg"],
+    point: "冬季辛金冻，病在土重；偏印多，枭神夺食，身心与生殖系统都要看。",
+    feedback: "偏印忌神见抑郁、敏感通阴；卯木受伤、夫妻宫伏吟，婚姻不好。"
+  },
+  {
+    topics: ["family", "marriage", "health"],
+    id: "案例 9",
+    title: "比劫夺财与家庭落难",
+    tags: ["比劫夺财", "水泛滥", "夫妻子女宫"],
+    images: ["/assets/cases/case-analysis-1/case-009-01.jpeg"],
+    point: "比劫夺财，周围汪洋水，子午冲冲夫妻子女宫。",
+    feedback: "妻子父亲落水落难，水泛滥时取土为用。"
+  },
+  {
+    topics: ["wealth", "family", "marriage", "health", "luck"],
+    id: "案例 10",
+    title: "身杀两停与多主题应期",
+    tags: ["身杀两停", "兄弟宫", "妻星应期"],
+    images: ["/assets/cases/case-analysis-1/case-010-01.jpeg"],
+    point: "比劫抗住官杀旺，子午冲兄弟宫；没有妻星、子午冲夫妻宫，等流年来送。",
+    feedback: "丁未年见妻星应期；2019 己亥大运己亥流年，巳亥冲用神，脸部受伤。"
+  },
+  {
+    topics: ["wealth", "temperament"],
+    id: "案例 51",
+    title: "有钱不会用，聪明反被聪明误",
+    tags: ["食伤盗气", "土晦火光", "主见"],
+    images: [
+      "/assets/cases/case-analysis-2/case-051-01.jpeg",
+      "/assets/cases/case-analysis-2/case-051-02.jpeg"
+    ],
+    point: "食伤盗气、土晦火光，甲木又没有庚金，容易有钱不会用。",
+    feedback: "没有庚只能按部就班，推一步走一步；有庚后主见才出来。"
+  },
+  {
+    topics: ["study", "career", "wealth", "health"],
+    id: "案例 52",
+    title: "水多木漂，根基不足",
+    tags: ["寒局", "水多木漂", "学历职业"],
+    images: ["/assets/cases/case-analysis-2/case-052-01.jpeg"],
+    point: "命局寒，水多木漂，冻水伤根基，扎根的土也没有。",
+    feedback: "初中毕业，当兵出来当辅警，一个月 2100。"
+  },
+  {
+    topics: ["luck", "career", "health"],
+    id: "案例 53",
+    title: "官杀克身与牢狱应期",
+    tags: ["官杀克身", "天罗地网", "牢狱"],
+    images: ["/assets/cases/case-analysis-2/case-053-01.jpeg"],
+    point: "官杀克身严重，巳带天罗地网、官杀傍身，失去自由的信息明显。",
+    feedback: "火土为关押应期，申也能引动。"
+  },
+  {
+    topics: ["wealth", "luck"],
+    id: "案例 55",
+    title: "丁酉年被坑钱",
+    tags: ["身弱", "食伤盗气", "破财"],
+    images: ["/assets/cases/case-analysis-2/case-055-01.jpeg"],
+    point: "身弱食伤盗气，用火土；丁壬合杀，通关的水被合走，金木相战。",
+    feedback: "丁酉年被坑钱，身弱只能靠比劫硬抗。"
+  },
+  {
+    topics: ["study", "career"],
+    id: "案例 56",
+    title: "未月炎燥与学历层次",
+    tags: ["学历", "癸水", "土厚木折"],
+    images: ["/assets/cases/case-analysis-2/case-056-01.jpeg"],
+    point: "未月炎燥，癸水第一用，庚金发水为第二用，土厚木折为病。",
+    feedback: "一本大学，水木庚都可用。"
+  },
+  {
+    topics: ["career", "study", "luck"],
+    id: "案例 57",
+    title: "金木相战与职位提升",
+    tags: ["职业提升", "金木相战", "磨练"],
+    images: ["/assets/cases/case-analysis-2/case-057-01.jpeg"],
+    point: "身旺，病在金木相战；水火可用，火为辛金的锻炼磨练，水让辛金发亮。",
+    feedback: "大专学历，当年得到磨练和提升，职位从助理转医师。"
+  },
+  {
+    topics: ["health", "family", "temperament"],
+    id: "案例 58",
+    title: "纯阳八字与祖坟信号",
+    tags: ["纯阳", "十恶大败", "祖坟"],
+    images: [
+      "/assets/cases/case-analysis-2/case-058-01.jpeg",
+      "/assets/cases/case-analysis-2/case-058-02.jpeg"
+    ],
+    point: "纯阳八字，杀旺食神泄身，寅月初春寒气，有杀先用印火。",
+    feedback: "一片竹林，祖坟让树根穿了；小时候曾从三楼掉下来。"
+  },
+  {
+    topics: ["wealth", "career", "luck"],
+    id: "案例 63",
+    title: "创业发财后赌博破财",
+    tags: ["创业", "赌博破财", "金木相战"],
+    images: ["/assets/cases/case-analysis-2/case-063-01.jpeg"],
+    point: "辛金虽身弱，有水盗气，但需要火炼；水洗金清脆，火锻金成器。",
+    feedback: "做手机通讯生意，01 年创业开店，08 年左右赌博破财，输了几千万。"
+  },
+  {
+    topics: ["marriage", "health", "career"],
+    id: "案例 66",
+    title: "财旺身弱与旺夫命",
+    tags: ["旺夫", "枭神夺食", "人际圈"],
+    images: ["/assets/cases/case-analysis-2/case-066-01.jpeg"],
+    point: "辛有壬，出身可以；亥卯未木旺，财旺身弱论，用火即可。",
+    feedback: "人际交往圈子大，是旺夫命；今年丑未、子丑引动，枭神夺食，不是怀孕就是打胎。"
+  },
+  {
+    topics: ["career", "study", "family"],
+    id: "案例 67",
+    title: "杀印相生与医学博士",
+    tags: ["杀印相生", "医学", "学历"],
+    images: ["/assets/cases/case-analysis-2/case-067-01.jpeg"],
+    point: "杀印相生，地支成水局，官杀不杂、气纯，层次不错。",
+    feedback: "早运木火助长土势，出身不好；后运起来，医学博士。"
+  },
+  {
+    topics: ["career", "study", "marriage"],
+    id: "案例 70",
+    title: "职业不错但婚姻未落地",
+    tags: ["律师", "杀纯", "未婚"],
+    images: ["/assets/cases/case-analysis-2/case-070-01.jpeg"],
+    point: "坐下一片根气，官杀不杂，身旺杀旺，得月令强根，用火土。",
+    feedback: "北京律师，中等偏上层次；童子煞、华盖在婚姻宫，未婚。"
+  },
+  {
+    topics: ["career", "study", "wealth", "marriage"],
+    id: "案例 75",
+    title: "杀印相生与执行力",
+    tags: ["高学历", "七杀", "财旺出轨"],
+    images: [
+      "/assets/cases/case-analysis-2/case-075-01.jpeg",
+      "/assets/cases/case-analysis-2/case-075-02.jpeg"
+    ],
+    point: "乙坐卯强根，杀有力，杀印相生可用，官杀不杂，七杀气纯。",
+    feedback: "断高学历，精力满、执行力强；财旺、墙外桃花、桃花比劫，异性缘多，容易出轨。"
   }
 ];
 
@@ -534,7 +687,7 @@ function ClassifiedTopicPage() {
     return <Navigate to="/classified/marriage" replace />;
   }
 
-  const topicCases = caseStudies.filter((item) => item.topics.includes(topicKey));
+  const topicCases = caseStudies.filter((item) => item.topic === topicKey || item.topics?.includes(topicKey));
 
   return (
     <main className="page-shell">
@@ -563,10 +716,16 @@ function TopicHeader({ topicKey, detail }) {
         <h1>{detail.title}</h1>
         <p>{detail.summary}</p>
       </div>
-      <NavLink className="button ghost dark" to="/classified">
-        <BookOpen size={18} aria-hidden="true" />
-        返回分类目录
-      </NavLink>
+      <div className="header-actions">
+        <NavLink className="button ghost dark" to="/">
+          <ArrowLeft size={18} aria-hidden="true" />
+          返回首页
+        </NavLink>
+        <NavLink className="button ghost dark" to="/classified">
+          <BookOpen size={18} aria-hidden="true" />
+          分类目录
+        </NavLink>
+      </div>
     </section>
   );
 }
@@ -574,10 +733,40 @@ function TopicHeader({ topicKey, detail }) {
 function PageHeader({ eyebrow, title, copy }) {
   return (
     <section className="page-header">
-      <p className="eyebrow">{eyebrow}</p>
-      <h1>{title}</h1>
-      <p>{copy}</p>
+      <div>
+        <p className="eyebrow">{eyebrow}</p>
+        <h1>{title}</h1>
+        <p>{copy}</p>
+      </div>
+      <NavLink className="button ghost dark" to="/">
+        <ArrowLeft size={18} aria-hidden="true" />
+        返回首页
+      </NavLink>
     </section>
+  );
+}
+
+function ContentLayout({ title, items, children }) {
+  return (
+    <div className="content-layout">
+      <aside className="side-directory">
+        <h2>{title}</h2>
+        <nav aria-label={title}>
+          {items.map((item) =>
+            item.href.startsWith("/") ? (
+              <NavLink className={item.active ? "is-active" : ""} key={item.href} to={item.href}>
+                {item.label}
+              </NavLink>
+            ) : (
+              <a key={item.href} href={item.href}>
+                {item.label}
+              </a>
+            )
+          )}
+        </nav>
+      </aside>
+      <div className="content-main">{children}</div>
+    </div>
   );
 }
 
@@ -626,6 +815,48 @@ function Intro() {
   );
 }
 
+function HomeEntries() {
+  const entries = [
+    {
+      title: "基础篇",
+      href: "/basics",
+      eyebrow: "Basics",
+      copy: "五行基础、太过不及、源头承载。先看五行，不急着断事。"
+    },
+    {
+      title: "进阶",
+      href: "/advanced",
+      eyebrow: "Advanced",
+      copy: "状态理论诀、显隐动静、盛衰出入、成破与五步框架。"
+    },
+    {
+      title: "分类占",
+      href: "/classified",
+      eyebrow: "Classified",
+      copy: "婚姻、财运、事业、学业、六亲、健康、大运流年。"
+    }
+  ];
+
+  return (
+    <section className="home-entries" aria-labelledby="home-entries-title">
+      <div className="section-heading">
+        <p className="eyebrow">Structure</p>
+        <h2 id="home-entries-title">学习结构</h2>
+      </div>
+      <div className="entry-grid">
+        {entries.map((entry) => (
+          <NavLink className="entry-card" key={entry.href} to={entry.href}>
+            <span>{entry.eyebrow}</span>
+            <h3>{entry.title}</h3>
+            <p>{entry.copy}</p>
+            <small>进入</small>
+          </NavLink>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ElementBasics() {
   return (
     <section className="element-basics" id="element-basics" aria-labelledby="element-basics-title">
@@ -644,7 +875,7 @@ function ElementBasics() {
       </div>
       <div className="element-grid">
         {elementBasics.map((item) => (
-          <article className="element-card" key={item.formula}>
+          <article className="element-card" id={`element-${item.formula}`} key={item.formula}>
             <span>{item.relation}</span>
             <h3>{item.formula}</h3>
             <p>{item.meaning}</p>
@@ -670,7 +901,7 @@ function StateRules() {
       </div>
       <div className="rule-groups">
         {stateRules.map((group) => (
-          <article className="rule-group" key={group.title}>
+          <article className="rule-group" id={`state-${group.title}`} key={group.title}>
             <h3>{group.title}</h3>
             <div className="rule-pairs">
               {group.items.map(([formula, meaning]) => (
@@ -799,10 +1030,10 @@ function CaseStudies({ detail, items }) {
         <h2 id="case-studies-title">{detail.title}案例复盘</h2>
       </div>
       <div className="case-lead">
-        <p>案例按“原图、编号、标签、断点、反馈”收纳。原图全部归档，精选婚姻案例直接带图复盘。</p>
-        <a className="source-link" href={assetUrl("/content/婚姻案例索引.md")}>
+        <p>案例按“原图、编号、标签、断点、反馈”收纳。同一案例可以进入多个分类，页面只显示当前分类相关案例。</p>
+        <a className="source-link" href={assetUrl("/content/案例总索引.md")}>
           <ScrollText size={18} aria-hidden="true" />
-          查看婚姻案例索引
+          查看案例总索引
         </a>
         <a className="source-link" href={assetUrl("/assets/cases/manifest.tsv")}>
           <ScrollText size={18} aria-hidden="true" />
