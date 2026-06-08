@@ -3240,6 +3240,26 @@ function TenGodDetail({ god }) {
 }
 
 function TenGodRelatedCases({ cases, name }) {
+  const [preview, setPreview] = React.useState(null);
+
+  React.useEffect(() => {
+    if (!preview) return undefined;
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setPreview(null);
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.body.classList.add("modal-open");
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.classList.remove("modal-open");
+    };
+  }, [preview]);
+
   if (!cases.length) return null;
 
   return (
@@ -3254,9 +3274,21 @@ function TenGodRelatedCases({ cases, name }) {
           <article className="case-card" key={item.id}>
             <div className="case-images" aria-label={`${item.id} 原图`}>
               {item.images.slice(0, 2).map((caseImage, index) => (
-                <a href={assetUrl(caseImage)} key={caseImage} target="_blank" rel="noreferrer" aria-label={`打开${item.id} 原图 ${index + 1}`}>
+                <button
+                  aria-label={`查看${item.id} 原图 ${index + 1}`}
+                  key={caseImage}
+                  onClick={() =>
+                    setPreview({
+                      alt: `${item.id} 原图 ${index + 1}`,
+                      image: caseImage,
+                      title: item.title,
+                      meta: `${item.id} · 第 ${index + 1} 张`
+                    })
+                  }
+                  type="button"
+                >
                   <img src={assetUrl(caseImage)} alt={`${item.id} 原图 ${index + 1}`} decoding="async" />
-                </a>
+                </button>
               ))}
             </div>
             <div className="case-card-header">
@@ -3274,6 +3306,23 @@ function TenGodRelatedCases({ cases, name }) {
           </article>
         ))}
       </div>
+      {preview ? (
+        <div className="image-modal" aria-label="案例原图预览" aria-modal="true" role="dialog">
+          <button className="image-modal-backdrop" aria-label="关闭预览" onClick={() => setPreview(null)} type="button" />
+          <div className="image-modal-panel">
+            <div className="image-modal-header">
+              <div>
+                <span>{preview.meta}</span>
+                <strong>{preview.title}</strong>
+              </div>
+              <button aria-label="关闭预览" className="image-modal-close" onClick={() => setPreview(null)} type="button">
+                <X size={22} aria-hidden="true" />
+              </button>
+            </div>
+            <img src={assetUrl(preview.image)} alt={preview.alt} />
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
