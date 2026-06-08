@@ -425,6 +425,7 @@ h1 {
 .content-main > .shen-sha-section,
 .content-main > .luck-cycle-section,
 .content-main > .practical-combinations-section,
+.content-main > .stem-classics-section,
 .content-main > .female-chart-section,
 .content-main > .pattern-use-god-section,
 .content-main > .theory-section,
@@ -489,6 +490,10 @@ h1 {
 }
 
 .practical-combinations-section {
+  background: #fffaf2;
+}
+
+.stem-classics-section {
   background: #fffaf2;
 }
 
@@ -676,6 +681,81 @@ h1 {
   margin-bottom: 10px;
   color: var(--red);
   font-size: 21px;
+}
+
+.stem-classic-principles {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.stem-classic-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+}
+
+.stem-classic-card {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.25fr) minmax(0, 1fr);
+  gap: 28px;
+  padding: clamp(24px, 4vw, 42px);
+  background: #f5efe5;
+  scroll-margin-top: 96px;
+}
+
+.stem-classic-symbol {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  border-right: 1px solid var(--line);
+  padding-right: 24px;
+}
+
+.stem-classic-symbol span {
+  color: var(--gold);
+  font: 800 13px/1.35 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.stem-classic-symbol strong {
+  color: var(--red);
+  font-size: clamp(72px, 9vw, 126px);
+  line-height: 0.9;
+}
+
+.stem-classic-body h3 {
+  margin: 8px 0 20px;
+  color: var(--red);
+  font-size: clamp(26px, 3.4vw, 42px);
+  line-height: 1.12;
+}
+
+.stem-classic-body dl {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  background: var(--line);
+}
+
+.stem-classic-body dl div {
+  display: grid;
+  grid-template-columns: minmax(96px, 0.22fr) minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px 20px;
+  background: #fffaf2;
+}
+
+.stem-classic-body dt {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.stem-classic-body dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.78;
+}
+
+.stem-classic-body .case-tags {
+  margin-top: 18px;
 }
 
 .flow-item p {
@@ -1790,6 +1870,7 @@ body.modal-open {
   .seasonal-image-grid,
   .ten-god-summary-grid,
   .combination-grid,
+  .stem-classic-principles,
   .flow-checklist,
   .case-grid,
   .steps,
@@ -1810,6 +1891,7 @@ body.modal-open {
   .detail-panel,
   .flow-section,
   .shen-sha-group,
+  .stem-classic-card,
   .combination-group-heading,
   .raw-theory-card,
   .ten-god-hero,
@@ -1936,6 +2018,7 @@ body.modal-open {
   .seasonal-image-grid,
   .ten-god-summary-grid,
   .combination-grid,
+  .stem-classic-principles,
   .shen-sha-entry-grid,
   .flow-checklist,
   .flow-section,
@@ -1953,9 +2036,22 @@ body.modal-open {
 
   .raw-theory-card,
   .shen-sha-group,
+  .stem-classic-card,
   .combination-group-heading,
   .ten-god-hero {
     grid-template-columns: 1fr;
+  }
+
+  .stem-classic-symbol {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding-right: 0;
+    padding-bottom: 18px;
+  }
+
+  .stem-classic-body dl div {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .matrix-row {

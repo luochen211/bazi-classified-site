@@ -249,9 +249,139 @@ const advancedDirectoryItems = [
   { label: "神煞", href: "/advanced/shen-sha" },
   { label: "大运流年", href: "/advanced/luck-cycle" },
   { label: "实务组合", href: "/advanced/practical-combinations" },
+  { label: "十干高级", href: "/advanced/stem-classics" },
   { label: "女命专题", href: "/advanced/female-chart" },
   { label: "格局用神", href: "/advanced/pattern-use-god" },
   { label: "分析框架", href: "/advanced#method" }
+];
+
+const stemClassicPrinciples = [
+  {
+    title: "秀",
+    subtitle: "财官印贵有根",
+    text: "《天元巫咸经》里反复出现的“秀”，不是漂亮话，而是财、官、印、日干、贵人等，在地支里得禄、库、长生或旺位。它决定一个结构有没有承接。"
+  },
+  {
+    title: "通月气",
+    subtitle: "先问年限与阶段",
+    text: "月支得气，多指三十岁前后能不能成；通时气，多看晚年承接。网站使用时，要把它和四柱年限、案例反馈一起读。"
+  },
+  {
+    title: "四见",
+    subtitle: "广多不是越多越好",
+    text: "所谓广、多、重逢，常指同类天干地支四见、有根又透干。它会让十神主题失衡，变成艰辛、漂泊、破财、病象或亲属压力。"
+  },
+  {
+    title: "不只调候",
+    subtitle: "日时统计与推理",
+    text: "这套资料不是单纯《穷通宝鉴》调候表，而是从日、时组合归纳吉凶。落站时应提炼推理，不照搬吓人的吉凶答案。"
+  }
+];
+
+const stemClassicEntries = [
+  {
+    stem: "甲",
+    element: "阳木",
+    source: "第二层次 / 天元巫咸经注释甲乙木",
+    classic: "阳金须广则艰辛；戊己根重为财；壬盛则水浮木漂；比劫四见不聚财。",
+    method: "甲木先看庚杀是否四见有根，再看戊己财是否由火土承接。水太盛时，不先论印生身，而先看漂泊、耗散和日主失根。",
+    risk: "庚金、壬水、比劫、辰戌重见都不能只说“有用神”，要看是否过多、透干、有根、带冲刑。",
+    cases: ["案例 12", "案例 65", "案例 81"]
+  },
+  {
+    stem: "乙",
+    element: "阴木",
+    source: "第二层次 / 天元巫咸经注释甲乙木",
+    classic: "己土偏财为厚福；癸水旺则漂流；乙庚合官须得秋气；逢龙则化。",
+    method: "乙木重柔韧和根气，喜财时偏重己土是否坐旺，喜官时看庚金是否成合而不伤身。水旺有智，但过旺则漂。",
+    risk: "乙木见丙辛合杀、戊土厚重、杀旺无根时，多成辛劳或体弱，不能单凭合官就说贵。",
+    cases: ["案例 61", "案例 65", "案例 70"]
+  },
+  {
+    stem: "丙",
+    element: "阳火",
+    source: "第二层次 / 天元巫咸经注释丙丁火戊己土",
+    classic: "衰乡透壬多孤；食神生偏财为福；比肩有旺根不利父财；火不西奔。",
+    method: "丙火先看壬水是映照还是七杀压身，再看戊食神能否制杀生财。寅午戌、巳午禄旺时，财杀才有承接。",
+    risk: "申子辰透壬、己伤官混壬、丙辛合财过多，容易从格局变成耗身、目疾、财散或亲属压力。",
+    cases: ["案例 2", "案例 51", "案例 84"]
+  },
+  {
+    stem: "丁",
+    element: "阴火",
+    source: "第二层次 / 天元巫咸经注释丙丁火戊己土",
+    classic: "丁不离甲；壬多争化；冬水旺则流落；偏印在时多孤。",
+    method: "丁火最先找甲木承载，再看庚金劈甲、壬水制丙是否成用。三宫有气且财官印贵有根，才从柔火转成可用之光。",
+    risk: "冬生会水局又透壬癸，或乙木柔弱不能生丁，容易成漂流、孤寡、子女缘薄或有名无实。",
+    cases: ["案例 12", "案例 35", "案例 62"]
+  },
+  {
+    stem: "戊",
+    element: "阳土",
+    source: "第二层次 / 天元巫咸经注释丙丁火戊己土",
+    classic: "戊土喜甲疏而忌甲旺伤土；癸合能滋；水财旺而无火土根则因财生祸。",
+    method: "戊土要先判断土是否有辰戌丑未、巳午承载，再看甲木是疏土还是克土。财在亥子旺时，必须问日主是否托得住。",
+    risk: "寅卯辰成木局透甲乙、身衰财旺、戊癸合而不化，都可能让财官从机会变压力。",
+    cases: ["案例 55", "案例 63", "案例 66"]
+  },
+  {
+    stem: "己",
+    element: "阴土",
+    source: "第二层次 / 天元巫咸经注释丙丁火戊己土",
+    classic: "己日重甲丙；忌乙木坐根；癸财重见多女人缘；四季得令可托财官。",
+    method: "己土先看丙火暖土、甲木成官，再看辰戌丑未是否得月气。财官虽好，但没有土根就难托福。",
+    risk: "乙木重、壬庚并见、比劫旺支在时，容易落成家财不保、身体不佳或长亲缘薄。",
+    cases: ["案例 13", "案例 38", "案例 68"]
+  },
+  {
+    stem: "庚",
+    element: "阳金",
+    source: "第二层次 / 天元巫咸经注释庚辛金壬癸水",
+    classic: "庚金必以丁甲为先；申子辰透壬灭丁；戊重土埋金；合财交杂不利家室。",
+    method: "庚金先问丁火能否炼金，再问甲木是否成偏财。日主有申酉根时可托财官，无根见明火则伤身。",
+    risk: "土重埋金、壬水灭丁、乙财合神交杂，都会让庚金失去清刚之用。",
+    cases: ["案例 58", "案例 67", "案例 77"]
+  },
+  {
+    stem: "辛",
+    element: "阴金",
+    source: "第二层次 / 天元巫咸经注释庚辛金壬癸水",
+    classic: "辛日重壬水；有喜也须有根；食神生财近月日则中年安稳；己丑劫库为忌。",
+    method: "辛金先看壬水淘洗，再看丙火是否合辛成官。金水清时可秀，火土浊时要看是否失根或用神被合。",
+    risk: "丁合壬、壬水太盛而辛无根、食神遇偏印，常见才华被压、婚财反复或身体压力。",
+    cases: ["案例 13", "案例 30", "案例 69"]
+  },
+  {
+    stem: "壬",
+    element: "阳水",
+    source: "第二层次 / 天元巫咸经注释庚辛金壬癸水",
+    classic: "壬水冬生用丙，不独用戊；水土混浊为忌；财官在时支可晚年有得。",
+    method: "壬水先看水势是否泛滥，再看丙火、巳午能否形成既济。土能堤水，但戊土透重反成困制。",
+    risk: "亥子丑透壬癸、申中壬戊同根透、水旺克财，都容易对应漂泊、妻财压力或吉凶混杂。",
+    cases: ["案例 53", "案例 55", "案例 63"]
+  },
+  {
+    stem: "癸",
+    element: "阴水",
+    source: "第二层次 / 天元巫咸经注释庚辛金壬癸水",
+    classic: "癸水喜庚辛为源，次喜乙木；水旺有智；财旺克印则母缘受压。",
+    method: "癸水先看金源，再看火财是否有戊土或丙火承接。水太旺可有才智，但需要乙木或火土把才智落成现实。",
+    risk: "比劫会水局、己杀重、辛金伤乙、财旺克印时，不宜直接论财官吉。",
+    cases: ["案例 56", "案例 64", "案例 76"]
+  }
+];
+
+const stemClassicCaseIds = [
+  "案例 2",
+  "案例 12",
+  "案例 13",
+  "案例 53",
+  "案例 56",
+  "案例 58",
+  "案例 63",
+  "案例 65",
+  "案例 67",
+  "案例 69"
 ];
 
 const practiceFlow = [
@@ -3376,6 +3506,7 @@ function SiteShell() {
         <Route path="/advanced/shen-sha" element={<ShenShaPage />} />
         <Route path="/advanced/luck-cycle" element={<LuckCyclePage />} />
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
+        <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
         <Route path="/advanced/female-chart" element={<FemaleChartPage />} />
         <Route path="/advanced/pattern-use-god" element={<PatternUseGodPage />} />
         <Route path="/cases" element={<CaseLibraryPage />} />
@@ -3679,6 +3810,32 @@ function PracticalCombinationsPage() {
       >
         <PracticalCombinations />
         <CaseStudies detail={{ title: "实务组合" }} items={combinationCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function StemClassicsPage() {
+  const stemCases = stemClassicCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Stem Classics"
+        title="十干高级"
+        copy="把《天元巫咸经》的十干注释转成现代读盘入口：秀、通月气、四见、合神、禄旺和案例承接。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/stem-classics" })),
+          { label: "古法总纲", href: "#stem-classic-principles" },
+          ...stemClassicEntries.map((entry) => ({ label: `${entry.stem}${entry.element}`, href: `#stem-classic-${entry.stem}` })),
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <StemClassics />
+        <CaseStudies detail={{ title: "十干高级" }} items={stemCases} />
       </ContentLayout>
     </main>
   );
@@ -4868,6 +5025,68 @@ function PracticalCombinations() {
                   <p>{text}</p>
                 </div>
               ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function StemClassics() {
+  return (
+    <section className="stem-classics-section" id="stem-classics" aria-labelledby="stem-classics-title">
+      <div className="section-heading">
+        <p className="eyebrow">Tian Yuan Wu Xian</p>
+        <h2 id="stem-classics-title">十干高级看“能否承接”</h2>
+      </div>
+      <div className="rules-lead">
+        <p>第二层次的《天元巫咸经》资料，不是基础象义表，而是把日主、日时、禄旺、合神、四见和年限放在一起判断。网站里只取可复盘的推理，不照搬古文里的恐吓式吉凶。</p>
+        <a className="source-link" href={assetUrl("/content/十干高级.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看十干高级整理稿
+        </a>
+      </div>
+
+      <div className="theory-grid stem-classic-principles" id="stem-classic-principles">
+        {stemClassicPrinciples.map((item) => (
+          <article className="theory-card" key={item.title}>
+            <span>{item.subtitle}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="stem-classic-grid">
+        {stemClassicEntries.map((entry) => (
+          <article className="stem-classic-card" id={`stem-classic-${entry.stem}`} key={entry.stem}>
+            <div className="stem-classic-symbol">
+              <span>{entry.element}</span>
+              <strong>{entry.stem}</strong>
+            </div>
+            <div className="stem-classic-body">
+              <p className="eyebrow">{entry.source}</p>
+              <h3>{entry.stem}日高级断点</h3>
+              <dl>
+                <div>
+                  <dt>古法摘点</dt>
+                  <dd>{entry.classic}</dd>
+                </div>
+                <div>
+                  <dt>判断入口</dt>
+                  <dd>{entry.method}</dd>
+                </div>
+                <div>
+                  <dt>使用边界</dt>
+                  <dd>{entry.risk}</dd>
+                </div>
+              </dl>
+              <div className="case-tags" aria-label={`${entry.stem}日相关案例`}>
+                {entry.cases.map((id) => (
+                  <span key={id}>{id}</span>
+                ))}
+              </div>
             </div>
           </article>
         ))}

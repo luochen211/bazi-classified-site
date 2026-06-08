@@ -9,6 +9,7 @@
 - 神煞：`/advanced/shen-sha`，资料稿 `/content/神煞.md`，条目库 `/content/神煞条目库.md`
 - 大运流年：`/advanced/luck-cycle`，资料稿 `/content/大运流年.md`
 - 实务组合：`/advanced/practical-combinations`，资料稿 `/content/实务组合.md`
+- 十干高级：`/advanced/stem-classics`，资料稿 `/content/十干高级.md`
 - 女命专题：`/advanced/female-chart`，资料稿 `/content/女命专题.md`
 - 格局用神：`/advanced/pattern-use-god`，资料稿 `/content/格局用神.md`
 - 案例库：`/cases`，资料稿 `/content/案例总索引.md`，原图清单 `/assets/cases/manifest.tsv`
