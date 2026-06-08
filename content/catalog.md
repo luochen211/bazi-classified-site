@@ -6,7 +6,14 @@
 
 - 资料审查总表：`/content/资料审查总表.md`
 - 逐文件审查索引：`/content/逐文件审查索引.md`
+- 神煞：`/advanced/shen-sha`，资料稿 `/content/神煞.md`，条目库 `/content/神煞条目库.md`
+- 大运流年：`/advanced/luck-cycle`，资料稿 `/content/大运流年.md`
+- 实务组合：`/advanced/practical-combinations`，资料稿 `/content/实务组合.md`
+- 女命专题：`/advanced/female-chart`，资料稿 `/content/女命专题.md`
+- 格局用神：`/advanced/pattern-use-god`，资料稿 `/content/格局用神.md`
+- 案例库：`/cases`，资料稿 `/content/案例总索引.md`，原图清单 `/assets/cases/manifest.tsv`
 - 实战流程：`/basics/practice-flow`
+- 十神组合断点：`/basics/ten-gods/combinations`，资料稿 `/content/十神组合断点.md`
 - 分类总目录：`/classified`
 - 婚姻感情：`/classified/marriage`
 - 财运赚钱：`/classified/wealth`

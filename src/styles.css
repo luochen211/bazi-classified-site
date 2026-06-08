@@ -233,7 +233,7 @@ h1 {
 
 .entry-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
   background: var(--line);
 }
@@ -422,6 +422,11 @@ h1 {
 .content-main > .basics-module,
 .content-main > .state-rules,
 .content-main > .flow-theory,
+.content-main > .shen-sha-section,
+.content-main > .luck-cycle-section,
+.content-main > .practical-combinations-section,
+.content-main > .female-chart-section,
+.content-main > .pattern-use-god-section,
 .content-main > .theory-section,
 .content-main > .catalog-section,
 .content-main > .detail-panel,
@@ -472,6 +477,26 @@ h1 {
 }
 
 .flow-theory {
+  background: #fffaf2;
+}
+
+.shen-sha-section {
+  background: #fffaf2;
+}
+
+.luck-cycle-section {
+  background: #fffaf2;
+}
+
+.practical-combinations-section {
+  background: #fffaf2;
+}
+
+.female-chart-section {
+  background: #fffaf2;
+}
+
+.pattern-use-god-section {
   background: #fffaf2;
 }
 
@@ -587,8 +612,21 @@ h1 {
 }
 
 .flow-check strong {
+  display: block;
+  margin-bottom: 12px;
   font-size: 22px;
   line-height: 1.35;
+}
+
+.flow-check p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.luck-cycle-layers {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 42px;
 }
 
 .flow-sections {
@@ -941,6 +979,73 @@ h1 {
   margin-bottom: 0;
 }
 
+.combination-groups {
+  display: grid;
+  gap: clamp(34px, 5vw, 58px);
+}
+
+.combination-group {
+  scroll-margin-top: 96px;
+}
+
+.combination-group-heading {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.34fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: end;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+}
+
+.combination-group-heading h3 {
+  margin: 0;
+  color: var(--red);
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.08;
+}
+
+.combination-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+}
+
+.combination-card {
+  display: grid;
+  align-content: start;
+  min-height: 390px;
+  padding: 24px;
+  background: #f5efe5;
+}
+
+.combination-card h4 {
+  margin: 0 0 16px;
+  color: var(--red);
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.combination-card strong {
+  display: block;
+  margin: 14px 0 8px;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.combination-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.combination-card .case-tags {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
 .theory-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1044,6 +1149,154 @@ h1 {
   margin: 0;
   color: var(--muted);
   line-height: 1.7;
+}
+
+.shen-sha-principles {
+  margin-bottom: 42px;
+}
+
+.shen-sha-groups {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+}
+
+.shen-sha-group {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+  gap: 34px;
+  padding: clamp(24px, 4vw, 42px);
+  background: #f5efe5;
+  scroll-margin-top: 96px;
+}
+
+.shen-sha-group h3 {
+  margin: 0;
+  color: var(--red);
+  font-size: clamp(26px, 3.6vw, 42px);
+  line-height: 1.12;
+}
+
+.shen-sha-group-body {
+  display: grid;
+  gap: 16px;
+}
+
+.shen-sha-group-body p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 19px;
+  line-height: 1.75;
+}
+
+.shen-sha-group-body small {
+  display: block;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.shen-sha-entry-panel {
+  margin-top: 42px;
+  border-top: 1px solid var(--line);
+  padding-top: 34px;
+  scroll-margin-top: 96px;
+}
+
+.shen-sha-entry-panel .section-heading {
+  max-width: 820px;
+}
+
+.shen-sha-entry-panel .section-heading h3 {
+  margin: 0 0 12px;
+  color: var(--red);
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.08;
+}
+
+.shen-sha-entry-panel .section-heading p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.shen-sha-entry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 24px;
+  margin-bottom: 22px;
+  background: var(--line);
+}
+
+.shen-sha-entry-card {
+  display: grid;
+  align-content: start;
+  min-height: 430px;
+  padding: 24px;
+  background: #f5efe5;
+}
+
+.entry-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.entry-card-head span,
+.entry-card-head strong {
+  color: var(--gold);
+  font: 700 13px/1.35 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.entry-card-head strong {
+  color: var(--red);
+}
+
+.shen-sha-entry-card h4 {
+  margin: 0 0 12px;
+  color: var(--red);
+  font-size: 28px;
+  line-height: 1.18;
+}
+
+.shen-sha-entry-card p {
+  margin: 0 0 18px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.shen-sha-entry-card dl {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+.shen-sha-entry-card dl div {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.shen-sha-entry-card dt {
+  margin-bottom: 6px;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.shen-sha-entry-card dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.shen-sha-entry-card .case-tags {
+  margin-top: 18px;
 }
 
 .rule-groups {
@@ -1536,6 +1789,7 @@ body.modal-open {
   .palace-grid,
   .seasonal-image-grid,
   .ten-god-summary-grid,
+  .combination-grid,
   .flow-checklist,
   .case-grid,
   .steps,
@@ -1555,6 +1809,8 @@ body.modal-open {
   .intro,
   .detail-panel,
   .flow-section,
+  .shen-sha-group,
+  .combination-group-heading,
   .raw-theory-card,
   .ten-god-hero,
   .page-header,
@@ -1679,6 +1935,8 @@ body.modal-open {
   .palace-grid,
   .seasonal-image-grid,
   .ten-god-summary-grid,
+  .combination-grid,
+  .shen-sha-entry-grid,
   .flow-checklist,
   .flow-section,
   .detail-columns,
@@ -1694,6 +1952,8 @@ body.modal-open {
   }
 
   .raw-theory-card,
+  .shen-sha-group,
+  .combination-group-heading,
   .ten-god-hero {
     grid-template-columns: 1fr;
   }

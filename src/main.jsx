@@ -226,6 +226,7 @@ const basicsDirectoryItems = [
     label: "十神",
     href: "/basics/ten-gods",
     children: [
+      { label: "组合断点", href: "/basics/ten-gods/combinations" },
       { label: "正印", href: "/basics/ten-gods/zheng-yin" },
       { label: "偏印", href: "/basics/ten-gods/pian-yin" },
       { label: "正财", href: "/basics/ten-gods/zheng-cai" },
@@ -245,6 +246,11 @@ const advancedDirectoryItems = [
   { label: "流通专题", href: "/advanced/flow" },
   { label: "干支作用", href: "/advanced/stem-branch-actions" },
   { label: "胎命身", href: "/advanced/fetal-life-body" },
+  { label: "神煞", href: "/advanced/shen-sha" },
+  { label: "大运流年", href: "/advanced/luck-cycle" },
+  { label: "实务组合", href: "/advanced/practical-combinations" },
+  { label: "女命专题", href: "/advanced/female-chart" },
+  { label: "格局用神", href: "/advanced/pattern-use-god" },
   { label: "分析框架", href: "/advanced#method" }
 ];
 
@@ -601,6 +607,487 @@ const fetalLifeBody = [
     text: "身宫看后天行运方位、财帛运势、生意经营头脑。身宫与命局喜神相合，可看经济合作往来；刑冲穿绝则多看财务纷争或财来财去。"
   }
 ];
+
+const shenShaPrinciples = [
+  {
+    title: "先定边界",
+    subtitle: "不是见煞就断凶",
+    text: "神煞只补充事件类型和应象，不替代格局、调候、十神、宫位和岁运。凡是灾厄、寿夭、健康类内容，只能作为风险提示和文献解释。"
+  },
+  {
+    title: "回到原局",
+    subtitle: "先看结构是否承接",
+    text: "同一个神煞，在身强身弱、喜忌、宫位、刑冲合会不同的命局里，落点完全不同。要先问它落在哪里、由什么十神承接、是否被岁运引动。"
+  },
+  {
+    title: "用案例复盘",
+    subtitle: "只在反馈里校正",
+    text: "神煞最怕孤立背诵。每一条都要回到案例：原局是否已有伏笔，大运是否成势，流年是否触发，反馈是否真的对应。"
+  }
+];
+
+const shenShaGroups = [
+  {
+    title: "灾厄与健康类",
+    source: "神煞探源一",
+    focus: "天火、伤残、刀刃血光、少年多灾、体弱多病、猝然临难、痼疾、破碎杀等。",
+    use: "放在健康、意外风险、生活提醒里使用；必须同时看五行偏枯、冲刑集中点和岁运重复引动。",
+    examples: ["案例 1", "案例 5", "案例 10", "案例 58"]
+  },
+  {
+    title: "古法风险神煞",
+    source: "神煞探源二",
+    focus: "平头、曲脚、悬针、破字、儿童关煞、鬼限、冲夭、夭年、急脚、截命。",
+    use: "保留为文献性专题，不做吓人断语；如果涉及寿夭与儿童关煞，只解释古法来源和使用限制。",
+    examples: []
+  },
+  {
+    title: "罗网、孤寡与空亡",
+    source: "神煞探源三",
+    focus: "天罗地网、孤辰寡宿、勾绞、白虎、元辰、大耗、空亡、四大空亡。",
+    use: "天罗地网进入失去自由、受限环境、官非牢狱；孤寡进入婚姻六亲；空亡进入状态理论。",
+    examples: ["案例 53", "案例 70", "案例 78", "案例 80"]
+  },
+  {
+    title: "羊刃、劫煞、亡神、驿马",
+    source: "神煞探源四",
+    focus: "羊刃从神煞进入格局，劫煞亡神有细分，驿马不是简单出远门，而是待用之气。",
+    use: "羊刃和比劫、健康、女命合看；驿马和迁动、职业变动、流年引动合看；劫煞亡神用来训练不能一眼论凶。",
+    examples: ["案例 1", "案例 22", "案例 66", "案例 78"]
+  },
+  {
+    title: "神煞源流与择日",
+    source: "神煞探源五",
+    focus: "神煞与择日、《协纪辨方书》辨伪、建除十二神：建、除、满、平、定、执、破、危、成、收、开、闭。",
+    use: "作为源流和辨伪页面，不直接拿来做八字分类占主线。价值在告诉用户哪些规则应该谨慎使用。",
+    examples: []
+  }
+];
+
+const shenShaEntries = [
+  {
+    name: "天火",
+    category: "灾厄健康",
+    source: "神煞探源一",
+    focus: "火象风险、火灾、烫伤、炎症与突发性热象。",
+    use: "先看命局火势是否偏枯，再看冲刑是否集中到日主、疾厄、住处或出行象。岁运再见火、冲、刑时，才进入风险提醒。",
+    boundary: "不能见天火就断火灾；没有五行偏枯和岁运引动，只保留为事件类型提示。",
+    cases: ["案例 58", "案例 10"]
+  },
+  {
+    name: "伤残、刀刃血光",
+    category: "灾厄健康",
+    source: "神煞探源一",
+    focus: "刀刃、血光、手术、硬伤、肢体损伤。",
+    use: "和七杀、羊刃、白虎、冲刑、金木交战合看。若案例反馈里有车祸、手术、外伤，再回头校验神煞落点。",
+    boundary: "只做健康与意外风险复盘，不做恐吓式断语。",
+    cases: ["案例 1", "案例 10", "案例 58"]
+  },
+  {
+    name: "少年多灾、体弱多病",
+    category: "灾厄健康",
+    source: "神煞探源一",
+    focus: "幼年体质、早年病灾、成长阶段反复小疾。",
+    use: "放在童限、父母宫、印星、日主根气、五行偏枯一起看。原局弱处被早运反复触动时，才落为早年健康主题。",
+    boundary: "不可单凭神煞判断儿童命运；更适合用于解释既有反馈。",
+    cases: ["案例 5", "案例 58"]
+  },
+  {
+    name: "猝然临难、痼疾",
+    category: "灾厄健康",
+    source: "神煞探源一",
+    focus: "突发危险、慢性病、长期不易根除的问题。",
+    use: "猝然临难看突发冲刑和流年触发，痼疾看原局长期偏枯、湿燥寒热失衡、病象十神反复出现。",
+    boundary: "健康类内容必须转成风险提示和复盘语言，不替代医学判断。",
+    cases: ["案例 10", "案例 53"]
+  },
+  {
+    name: "破碎杀",
+    category: "灾厄健康",
+    source: "神煞探源一",
+    focus: "破损、破相、器物损坏、身体某处受损。",
+    use: "与冲、刑、刃、杀同看，重点看被破的是哪一柱、哪一宫位、哪一类十神。",
+    boundary: "不独立论凶，只提供破损形态。",
+    cases: ["案例 1", "案例 58"]
+  },
+  {
+    name: "咸池",
+    category: "桃花人际",
+    source: "神煞探源一",
+    focus: "桃花、人际吸引、欲望、情感曝光。",
+    use: "和财官、夫妻宫、子午卯酉、合会、食伤表达一起看。女命和婚姻专题里可用来补充关系场景。",
+    boundary: "不能见咸池就断滥情；先看十神清浊与关系结构。",
+    cases: ["案例 22", "案例 33", "案例 75"]
+  },
+  {
+    name: "平头、曲脚、悬针、破字",
+    category: "古法风险",
+    source: "神煞探源二",
+    focus: "字形类神煞，偏文献性质，用来说明古法如何从字形取象。",
+    use: "放在资料库里解释源流，不进入核心断命流程。适合提醒用户：神煞体系有一部分来自取象传统。",
+    boundary: "不作为网站自动断语依据。",
+    cases: []
+  },
+  {
+    name: "儿童关煞",
+    category: "古法风险",
+    source: "神煞探源二",
+    focus: "童年风险、关口、古法养育禁忌。",
+    use: "只做文献说明，若要结合案例，也只能从已发生的童年健康反馈做复盘。",
+    boundary: "涉及儿童与寿夭，必须极度克制，不做结论化预测。",
+    cases: []
+  },
+  {
+    name: "鬼限、冲夭、夭年、急脚、截命",
+    category: "古法风险",
+    source: "神煞探源二",
+    focus: "古法寿夭与急灾类条目。",
+    use: "作为边界页：讲来源、讲限制、讲为什么现代网站不能直接拿来吓人。",
+    boundary: "不进入普通用户的吉凶输出；只用于学术整理和风险语言规范。",
+    cases: []
+  },
+  {
+    name: "十恶大败",
+    category: "罗网空亡",
+    source: "神煞探源三",
+    focus: "败象、根基耗损、祖业或风水类古法联想。",
+    use: "和财库、印星、祖业宫位、房产反馈结合。若无家宅、祖业、财务败象反馈，不强行套入。",
+    boundary: "不要把古法名称直接翻译成命运结论。",
+    cases: ["案例 31", "案例 32", "案例 58"]
+  },
+  {
+    name: "天罗地网",
+    category: "罗网空亡",
+    source: "神煞探源三",
+    focus: "受限、困住、牢狱、官非、环境限制。",
+    use: "先看官杀、刑冲、岁运是否形成限制结构，再判断是法律、单位、家庭、疾病还是心理困局。",
+    boundary: "不见罗网就断牢狱；必须有官非结构或案例反馈支撑。",
+    cases: ["案例 53"]
+  },
+  {
+    name: "孤辰寡宿",
+    category: "婚姻六亲",
+    source: "神煞探源三",
+    focus: "孤独感、六亲缘薄、婚姻距离、亲密关系难贴近。",
+    use: "进入婚姻与六亲时，和夫妻宫、官杀财星、印比隔绝、岁运分离一起看。",
+    boundary: "不能直接断孤独终老；更多是关系体验与距离感。",
+    cases: ["案例 70", "案例 80"]
+  },
+  {
+    name: "勾绞、白虎、暗金的杀",
+    category: "罗网空亡",
+    source: "神煞探源三",
+    focus: "纠缠、硬伤、血光、冲突性事件。",
+    use: "白虎偏硬伤血光，勾绞偏纠缠牵连，暗金的杀偏隐性伤害。和七杀、羊刃、冲刑叠加时才加强。",
+    boundary: "分清事件形态，不把所有风险都说成一个凶字。",
+    cases: ["案例 1", "案例 10"]
+  },
+  {
+    name: "元辰、大耗",
+    category: "破耗消散",
+    source: "神煞探源三",
+    focus: "耗散、破财、拖累、资源被消耗。",
+    use: "进入财运、事业和家庭拖累时，和财星、劫财、印耗、岁运破财点同看。",
+    boundary: "有耗不一定是破产，也可能是为家庭、事业、健康持续付出。",
+    cases: ["案例 55", "案例 63"]
+  },
+  {
+    name: "空亡、四大空亡",
+    category: "罗网空亡",
+    source: "神煞探源三",
+    focus: "落空、延迟、虚象、待填实。",
+    use: "放入状态理论：先判断空在哪里，再看合冲填实、岁运是否让虚象变成实事。",
+    boundary: "空亡不是没有，而是状态未实、应期未到或表达方式变虚。",
+    cases: ["案例 31", "案例 69"]
+  },
+  {
+    name: "羊刃",
+    category: "刃马劫亡",
+    source: "神煞探源四",
+    focus: "强硬、竞争、刀刃、比劫极旺、执行力与冲突。",
+    use: "从神煞进入格局时，要看日主强弱、比劫成势、是否有官杀制刃或食伤泄刃。",
+    boundary: "羊刃可以是风险，也可以是行动力；关键看有没有制化和落点。",
+    cases: ["案例 26", "案例 29", "案例 30"]
+  },
+  {
+    name: "劫煞",
+    category: "刃马劫亡",
+    source: "神煞探源四",
+    focus: "劫夺、突发竞争、资源被抢、关系中的强占感。",
+    use: "和劫财、财星、竞争环境、大运流年同看。分类占里可用于解释财务或关系被夺的过程。",
+    boundary: "不能只按名称断被劫；要看谁劫谁、劫的是什么资源。",
+    cases: ["案例 22", "案例 55"]
+  },
+  {
+    name: "亡神",
+    category: "刃马劫亡",
+    source: "神煞探源四",
+    focus: "隐忧、失落、消耗、精神牵挂。",
+    use: "与印星、官杀、病符、空亡同看时，偏心理压力、暗耗、难明说的损失。",
+    boundary: "亡神不等于死亡；网站必须把它解释成象意和状态。",
+    cases: ["案例 53", "案例 73"]
+  },
+  {
+    name: "驿马",
+    category: "刃马劫亡",
+    source: "神煞探源四",
+    focus: "迁动、出行、职业变动、外地资源、待用之气。",
+    use: "看马星是否被冲动、是否为喜用、是否承接财官印。案例里可对应搬迁、远行、岗位变化和跨地域机会。",
+    boundary: "不是见驿马就出远门；要看它有没有被岁运启动。",
+    cases: ["案例 1", "案例 61", "案例 65"]
+  },
+  {
+    name: "关煞与神煞差异",
+    category: "方法边界",
+    source: "神煞探源四",
+    focus: "区分古法关煞、一般神煞、格局十神三套语言。",
+    use: "作为学习提示：关煞多为特定风险规则，神煞偏取象，格局十神才是主干判断。",
+    boundary: "不要把不同体系混成一句断语。",
+    cases: []
+  },
+  {
+    name: "建除十二神",
+    category: "源流择日",
+    source: "神煞探源五",
+    focus: "建、除、满、平、定、执、破、危、成、收、开、闭。",
+    use: "放在源流和择日关系里讲，不直接变成八字分类占的核心判断。",
+    boundary: "择日系统和八字断命系统有关联，但不能互相替代。",
+    cases: []
+  },
+  {
+    name: "《协纪辨方书》辨伪",
+    category: "源流择日",
+    source: "神煞探源五",
+    focus: "神煞源流、择日文献、辨伪和使用限制。",
+    use: "用于告诉用户哪些神煞需要保留、哪些只适合做文献展示。",
+    boundary: "以资料整理为主，不产出直接吉凶判断。",
+    cases: []
+  }
+];
+
+const shenShaCaseIds = ["案例 53", "案例 58", "案例 70", "案例 78", "案例 80", "案例 1", "案例 10", "案例 66"];
+
+const luckCycleLayers = [
+  {
+    title: "原局伏笔",
+    subtitle: "先天结构",
+    text: "先看原局里已经存在什么矛盾、资源和等待条件。没有原局伏笔，岁运再热闹也难落成同一件事。"
+  },
+  {
+    title: "大运气候",
+    subtitle: "十年阶段",
+    text: "大运不是单年事件，而是十年环境。它负责把某类十神、宫位、合会刑冲长期推到前台。"
+  },
+  {
+    title: "流年触发",
+    subtitle: "具体年份",
+    text: "流年负责触发、冲开、合住、填实、引动。判断某年发生什么，要看它触发的是原局伏笔还是大运主题。"
+  },
+  {
+    title: "流月落点",
+    subtitle: "下一级应期",
+    text: "流月用于细化事件节点，尤其在大运流年已经成势时，流月看具体月份的合冲刑会与主题落地。"
+  }
+];
+
+const luckCycleRules = [
+  {
+    title: "命宫与四柱合看",
+    source: "梁湘润-大流年判例",
+    items: [
+      ["命宫", "命宫可补充后天自我、行动力、机遇圈与房产人际，不取代四柱主线。"],
+      ["四柱", "年、月、日、时分别落祖上幼年、社会关系、夫妻中年、子女晚年，岁运引动时要回到宫位。"],
+      ["喜忌", "命宫与四柱喜忌相合，容易得人事助力；刑冲穿绝则多看人际、事业、房产或纠纷。"]
+    ]
+  },
+  {
+    title: "大运依据",
+    source: "梁湘润-大流年判例 / 第三阶段金氏大运",
+    items: [
+      ["先看月支", "大运从月令延伸，月支是阶段气候的根。判断大运要先问它加强了原局哪一股气。"],
+      ["顺逆运", "顺逆不是只排盘，更是看人生阶段怎样把原局主题依次推出。"],
+      ["成势或破势", "大运可以成局、补缺、通关，也可以破格、加重相战、引出原局忌神。"]
+    ]
+  },
+  {
+    title: "流年论式",
+    source: "梁湘润-大流年判例 / 第二层次运岁流年",
+    items: [
+      ["不脱原局", "流年不能脱离原局和大运单看。同一年发财或破财，差别在原局能否承接。"],
+      ["触发方式", "常见触发是冲、合、刑、害、会、填实、出空、开库、成局、破局。"],
+      ["主题落点", "被触发的是财、官、印、食伤、比劫，还是夫妻宫、子女宫、父母宫，决定事件类别。"]
+    ]
+  },
+  {
+    title: "流月与复盘",
+    source: "第二层次格局不全、流月与大运",
+    items: [
+      ["先年后月", "流月不独立断大事，先确认大运流年已经把主题推出来，再用流月落具体节点。"],
+      ["反馈校正", "案例复盘要记录原局伏笔、大运成势、流年触发、流月落点，不能只记一句断语。"],
+      ["同象复现", "当原局、大运、流年、流月重复同一组冲合刑会，事件更容易显化。"]
+    ]
+  }
+];
+
+const luckCycleCaseIds = ["案例 10", "案例 15", "案例 53", "案例 55", "案例 57", "案例 63", "案例 64", "案例 80", "案例 81"];
+
+const practicalCombinationSections = [
+  {
+    title: "生旺库",
+    source: "第二层次实务提要",
+    intro: "四生、四旺、四库不是静态名词，而是看一股气从生发、旺盛到收纳的阶段。",
+    items: [
+      ["四生", "寅申巳亥多看发动、迁动、起因和变化，也常带职业地域双重动象。"],
+      ["四旺", "子午卯酉气专而强，主题容易纯粹、集中，也容易在冲合时明显显化。"],
+      ["四库", "辰戌丑未看收纳、蓄藏、开库、入墓。库不是一定有财，要看是否能被引动。"]
+    ],
+    cases: ["案例 64", "案例 80"]
+  },
+  {
+    title: "罗网会合期",
+    source: "第二层次 / 神煞探源三",
+    intro: "辰巳、戌亥一带的罗网，不能只背天罗地网，要看它是否被官杀、岁运、合会刑冲推成受限事件。",
+    items: [
+      ["罗网", "辰巳、戌亥常看受限、牵制、失去自由或陷入某种环境。"],
+      ["会合期", "大运流年把罗网相关地支合会出来时，事件更容易成形。"],
+      ["边界", "罗网不是见了就牢狱，要结合官杀克身、宫位、现实行业与反馈。"]
+    ],
+    cases: ["案例 53", "案例 78"]
+  },
+  {
+    title: "四见与缺一",
+    source: "第二层次四见、拱合、十神缺一",
+    intro: "四见看某一主题重复出现后的强度，缺一看结构差一步成局或差一步失衡。",
+    items: [
+      ["四见", "同一五行、十神或地支反复出现，先看它是否成势，再看是喜是忌。"],
+      ["多根", "多根不等于入格，仍要看透干、月令、清浊和是否被冲合破坏。"],
+      ["缺一", "结构差一个条件时，岁运补上就容易应事；补上的是喜还是忌，决定方向。"]
+    ],
+    cases: ["案例 10", "案例 15", "案例 81"]
+  },
+  {
+    title: "拱夹暗动",
+    source: "第二层次拱、夹特色",
+    intro: "拱夹不是明面出现，却能把藏着的象拱出来。它常对应出乎意料的关系、机会、阻力或应期。",
+    items: [
+      ["拱", "两支之间暗拱一字，要看被拱出的五行十神是否能进入主题。"],
+      ["夹", "两边夹住一宫一字，常让该宫位持续受压或被特别牵动。"],
+      ["暗动", "拱夹需要岁运点破才明显，不能在原局里孤立下结论。"]
+    ],
+    cases: ["案例 64", "案例 80"]
+  }
+];
+
+const practicalCombinationCaseIds = ["案例 10", "案例 15", "案例 53", "案例 64", "案例 78", "案例 80", "案例 81"];
+
+const femaleChartSections = [
+  {
+    title: "夫星清浊",
+    source: "第一层级女命正官、七杀 / 传承班女命",
+    intro: "女命看婚姻，不能只问有没有正官。要看官杀是否清、是否有根、是否被食伤直接克制，财能否生官。",
+    items: [
+      ["正官", "偏向名分、稳定关系、规则承诺，但也要看是否受伤、混杂、坐绝或被冲。"],
+      ["七杀", "偏向压力、吸引、强势对象和竞争环境，杀有制化可用，杀乱无制则关系压力大。"],
+      ["官杀混杂", "不等于必然婚乱，要看清浊、远近、透藏、宫位和岁运何时引动。"]
+    ],
+    cases: ["案例 3", "案例 4", "案例 70", "案例 80"]
+  },
+  {
+    title: "食伤与子女",
+    source: "第一层级食神、伤官",
+    intro: "食伤在女命里既看表达、才华、子女，也看对官杀的制克。它是能力，也是关系中的冲突点。",
+    items: [
+      ["食神", "偏稳定输出、子女、享受、温和制杀；但被枭印夺食时，身心、子女和生殖主题都要谨慎。"],
+      ["伤官", "偏强表达、反规则、技术才华；伤官见官要看是否直接克到夫星。"],
+      ["子女宫", "时柱与食伤同看，不能只凭一个食神或伤官断子女。"]
+    ],
+    cases: ["案例 1", "案例 3", "案例 5", "案例 66"]
+  },
+  {
+    title: "财印与旺夫",
+    source: "第一层级偏财格 / 正印正财 / 传承班",
+    intro: "所谓旺夫，不是抽象好听，而是财印食伤官杀之间能否形成可承接的现实资源和关系支持。",
+    items: [
+      ["财星", "财能生官，也能代表资源、人际和现实承接；财旺身弱要看是否有火土或印比承接。"],
+      ["印星", "印可护身、承接官杀，也可能压制食伤，形成枭神夺食。"],
+      ["旺夫", "要看命主是否能带来资源、社交圈、事业助力，而不是只看一句神煞或一句格局。"]
+    ],
+    cases: ["案例 33", "案例 66", "案例 75"]
+  },
+  {
+    title: "婚姻宫与岁运",
+    source: "婚姻资料 / 第二层次运岁流年",
+    intro: "女命婚姻仍要回到日支夫妻宫。宫位被冲、合、刑、会时，要看是动成关系，还是动坏承载。",
+    items: [
+      ["静局喜动", "原局关系结构稳定时，岁运引动可能成恋爱、订婚、结婚。"],
+      ["动局喜静", "原局夫妻宫动荡时，反而需要岁运合住、扶住或化解冲刑。"],
+      ["应期", "官杀、夫妻宫、子女星与大运流年同动时，关系事件更容易落地。"]
+    ],
+    cases: ["案例 64", "案例 78", "案例 80", "案例 81"]
+  }
+];
+
+const femaleChartCaseIds = ["案例 1", "案例 3", "案例 4", "案例 5", "案例 33", "案例 64", "案例 66", "案例 70", "案例 75", "案例 78", "案例 80", "案例 81"];
+
+const patternUseGodSections = [
+  {
+    title: "先辨格局",
+    source: "第一层级八格总论 / 传承班",
+    intro: "格局不是标签，而是看月令、透干、根气、清浊和顺逆用之间有没有组织关系。",
+    items: [
+      ["月令", "月令决定先天气候和主导气势，取格取用不能跳过月令。"],
+      ["透干", "透出才容易成为外显主题；藏在支中则要等岁运引动。"],
+      ["清浊", "格局清不清，要看同类混杂、冲合破坏和是否能形成稳定路径。"]
+    ],
+    cases: ["案例 2", "案例 67", "案例 75"]
+  },
+  {
+    title: "调候与扶抑",
+    source: "渊海随笔 / 四季取用",
+    intro: "调候解决寒暖燥湿，扶抑解决强弱承载。两者冲突时，要先判断哪个问题更急。",
+    items: [
+      ["调候", "寒局先暖，燥局先润，湿滞先通，气候不对时，强弱判断会失真。"],
+      ["扶抑", "身弱看能否承接财官食伤，身强看是否需要泄秀、制化或成局。"],
+      ["优先级", "不是缺什么补什么，而是看当前结构最卡在哪里。"]
+    ],
+    cases: ["案例 2", "案例 52", "案例 56"]
+  },
+  {
+    title: "格局休囚",
+    source: "第三阶段子平秘要",
+    intro: "格局成了也要看是否休囚，日主、用神、格局所在之气是否有生机和承载。",
+    items: [
+      ["休囚", "一个格局名义上成立，但主气休囚无力，现实层次仍然有限。"],
+      ["临界", "调候、格局、强弱方向不一致时，要看哪一方是救命条件。"],
+      ["岁运", "休囚之格遇到岁运扶起，可能阶段性显达；遇到岁运再压，则主题不落地。"]
+    ],
+    cases: ["案例 57", "案例 63"]
+  },
+  {
+    title: "四联合参",
+    source: "第三阶段四联用神",
+    intro: "余、沈、徐杨、万氏等用神体系不是互相替代，而是用来校正同一命局的不同侧面。",
+    items: [
+      ["多家比较", "同一命局可以从调候、格局、扶抑、财官印食不同角度取用。"],
+      ["不机械", "看到结论不同，不急着选一个背诵，要问它解决的是哪个问题。"],
+      ["复盘", "用案例反馈校正：哪套取用能解释原局、运势和实际事件。"]
+    ],
+    cases: ["案例 2", "案例 57", "案例 67"]
+  },
+  {
+    title: "方法论边界",
+    source: "梁湘润-渊海随笔",
+    intro: "用神有历史沿革，不同法脉定义不完全一样。高级页要帮助用户理解边界，而不是制造万能口诀。",
+    items: [
+      ["史观", "明清子平法、禄命法、格局法之间有差异，不能混成一句口号。"],
+      ["双边用神", "有些命局不是一个用神能解决，要看两股力量如何互相成全或牵制。"],
+      ["落地", "方法论最终要回到分类占：问财、问婚姻、问职业时，取用落点不同。"]
+    ],
+    cases: ["案例 52", "案例 63", "案例 75"]
+  }
+];
+
+const patternUseGodCaseIds = ["案例 2", "案例 52", "案例 56", "案例 57", "案例 63", "案例 67", "案例 75"];
 
 const lifePalaceStars = [
   ["子", "天贵星", "志气不凡，富裕清吉。"],
@@ -1879,6 +2366,171 @@ const tenGodAppliedSections = {
   ]
 };
 
+const tenGodCombinationBreakpoints = [
+  {
+    group: "比劫财星",
+    title: "比肩过多",
+    source: "命学精华 / 第一层级比肩",
+    gods: ["比肩", "财星", "官杀"],
+    trigger: "比肩多、日主又旺，财星无护或官杀不制。",
+    reading: "同辈、朋友、合伙、竞争者变成财务压力。男命还要看妻星被分夺，事业上看股东和同业竞争。",
+    cases: ["案例 10", "案例 22", "案例 78"]
+  },
+  {
+    group: "比劫财星",
+    title: "劫财夺财",
+    source: "命学精华 / 第一层级劫财羊刃",
+    gods: ["劫财", "财星"],
+    trigger: "劫财贴近财星，或大运流年再见劫财。",
+    reading: "常见破财、朋友借钱、投资失手、合伙分账、男命妻星被争。若有官杀制劫或土制水，凶象可缓。",
+    cases: ["案例 6", "案例 9", "案例 55", "案例 78"]
+  },
+  {
+    group: "比劫财星",
+    title: "比劫临财与第三方",
+    source: "婚姻案例 / 比劫财星",
+    gods: ["比肩", "劫财", "正财", "偏财"],
+    trigger: "财星被比劫贴近、合动、冲动，夫妻宫再见暗合相害。",
+    reading: "关系里容易出现第三方、争夺、涉入他人关系，或伴侣资源被同辈带走。",
+    cases: ["案例 22", "案例 75", "案例 78"]
+  },
+  {
+    group: "食伤官杀",
+    title: "食神制杀",
+    source: "传承班 / 食神七杀",
+    gods: ["食神", "七杀"],
+    trigger: "七杀有力，食神也有力，二者距离和力量可形成制化。",
+    reading: "高压环境可被专业、技术、规则处理，适合医疗、法律、工程、管理、竞技等场景。",
+    cases: ["案例 1", "案例 10", "案例 58"]
+  },
+  {
+    group: "食伤官杀",
+    title: "食伤克官杀",
+    source: "第一层级食神伤官 / 女命官杀",
+    gods: ["食神", "伤官", "正官", "七杀"],
+    trigger: "女命夫星透出或坐夫妻宫，而食伤直接克到官杀。",
+    reading: "婚姻里表现为夫星受伤、关系承载弱、伴侣劳累或名分难稳；事业上表现为对规则和上级的冲突。",
+    cases: ["案例 3", "案例 4", "案例 23", "案例 80"]
+  },
+  {
+    group: "食伤官杀",
+    title: "伤官见官",
+    source: "命学精华 / 伤官正官",
+    gods: ["伤官", "正官"],
+    trigger: "伤官与正官同见，且无财通关、印制伤或格局承接。",
+    reading: "容易有口舌、制度冲突、职位压力、官非、婚姻冲撞。若有财通关，可转为商业表达和专业变现。",
+    cases: ["案例 18", "案例 34", "案例 55"]
+  },
+  {
+    group: "食伤财星",
+    title: "食伤生财",
+    source: "第一层级食神伤官 / 财星",
+    gods: ["食神", "伤官", "正财", "偏财"],
+    trigger: "食伤有源有力，财星能承接，日主能担财。",
+    reading: "能力、技术、表达、产品、销售进入市场，形成收入。若身弱或财被劫，则变成忙、耗、漏、破。",
+    cases: ["案例 13", "案例 15", "案例 28", "案例 51"]
+  },
+  {
+    group: "印食健康",
+    title: "枭神夺食",
+    source: "命学精华 / 第一层级偏印",
+    gods: ["偏印", "食神"],
+    trigger: "偏印贴近食神，食神无力或被岁运再次压制。",
+    reading: "输出、快乐、食欲、子女、作品和表达受压。健康倾向上看消化、情绪、睡眠、生殖与身心问题。",
+    cases: ["案例 5", "案例 34", "案例 35", "案例 66"]
+  },
+  {
+    group: "印食健康",
+    title: "印重压食伤",
+    source: "传承班 / 印食关系",
+    gods: ["正印", "偏印", "食神", "伤官"],
+    trigger: "印星过重，食伤不透或被压住。",
+    reading: "吸收多、表达慢，想得多做得少；学业未必差，但输出、行动、作品和子女主题容易被拖住。",
+    cases: ["案例 35", "案例 73", "案例 82"]
+  },
+  {
+    group: "官印格局",
+    title: "官印相生",
+    source: "传承班 / 正官正印",
+    gods: ["正官", "正印"],
+    trigger: "官星清、有根，印星能承接官杀压力。",
+    reading: "规则、考试、单位、证照、资质、贵人相连。适合体系路径、学历认证、专业岗位。",
+    cases: ["案例 2", "案例 6", "案例 67"]
+  },
+  {
+    group: "官印格局",
+    title: "杀印相生",
+    source: "传承班 / 七杀正印",
+    gods: ["七杀", "正印", "偏印"],
+    trigger: "七杀有力，印星能化杀，日主能承接。",
+    reading: "高压环境转成专业资质和权责路径。常见医学、法律、军警、公检法、技术管理等方向。",
+    cases: ["案例 67", "案例 70", "案例 75"]
+  },
+  {
+    group: "财印冲突",
+    title: "财坏印",
+    source: "命学精华 / 财印",
+    gods: ["正财", "偏财", "正印", "偏印"],
+    trigger: "财星克印，印为命局保护或学历资质之用。",
+    reading: "现实赚钱、资源、人情和家庭压力冲击学习、母亲、房产、贵人或名誉。身强印重时，财反而能让人落地。",
+    cases: ["案例 73", "案例 83"]
+  },
+  {
+    group: "财印冲突",
+    title: "偏印坐财",
+    source: "命学精华 / 偏印财星",
+    gods: ["偏印", "偏财", "正财"],
+    trigger: "偏印与财星同柱或贴近，财能制印或财来坏印。",
+    reading: "一边有想法、偏门技能和安全感，一边被现实资源拉扯。为喜可把偏门能力商业化，为忌则想法被钱事压住。",
+    cases: ["案例 5", "案例 66", "案例 72"]
+  },
+  {
+    group: "女命关系",
+    title: "官杀混杂",
+    source: "第一层级女命 / 传承班女命",
+    gods: ["正官", "七杀"],
+    trigger: "女命正官、七杀同现，清浊、远近、透藏和宫位不明。",
+    reading: "不是一见混杂就婚乱，要看夫星是否清、有根、被食伤克、被合走，以及岁运如何引动。",
+    cases: ["案例 70", "案例 72", "案例 80", "案例 81"]
+  },
+  {
+    group: "女命关系",
+    title: "财生官杀",
+    source: "第一层级偏财格 / 女命专题",
+    gods: ["财星", "正官", "七杀"],
+    trigger: "财星能生夫星或事业官杀，且日主能承接。",
+    reading: "现实资源、人际圈、市场关系能转化成婚姻名分、事业权责或伴侣助力。财旺身弱则反成压力和消耗。",
+    cases: ["案例 33", "案例 66", "案例 72", "案例 75"]
+  },
+  {
+    group: "羊刃神煞",
+    title: "劫财羊刃同柱",
+    source: "第一层级劫财羊刃 / 神煞探源四",
+    gods: ["劫财", "羊刃"],
+    trigger: "劫财与羊刃同见，日主强旺，岁运再引动。",
+    reading: "行动力、竞争、冲动、刀刃、血光、合伙破财都要看。若官杀制刃，可转成军警、执行、管理。",
+    cases: ["案例 26", "案例 29", "案例 30"]
+  },
+  {
+    group: "状态断点",
+    title: "坐空亡",
+    source: "命学精华 / 状态理论",
+    gods: ["十神", "空亡"],
+    trigger: "某十神或宫位落空亡，岁运等待填实、冲实、出空。",
+    reading: "该十神代表的人事先虚、迟、空、弱，等运年来填实才落地。要看落的是财、官、印、食伤还是六亲宫位。",
+    cases: ["案例 31", "案例 69"]
+  },
+  {
+    group: "状态断点",
+    title: "同柱冲合",
+    source: "命学精华 / 干支作用",
+    gods: ["十神", "合冲刑害"],
+    trigger: "十神同柱自合、暗合、相冲，或被运年冲开合住。",
+    reading: "同柱信息更贴身，合则牵连、冲则动荡、刑则纠缠。必须结合宫位和所问主题。",
+    cases: ["案例 8", "案例 23", "案例 64", "案例 68"]
+  }
+];
+
 const stateRules = [
   {
     title: "显隐",
@@ -2206,7 +2858,10 @@ const caseStudies = [
     id: "案例 66",
     title: "财旺身弱与旺夫命",
     tags: ["旺夫", "枭神夺食", "人际圈"],
-    images: ["/assets/cases/case-analysis-2/case-066-01.jpeg"],
+    images: [
+      "/assets/cases/case-analysis-2/case-066-01.jpeg",
+      "/assets/cases/case-analysis-2/case-066-02.jpeg"
+    ],
     point: "辛有壬，出身可以；亥卯未木旺，财旺身弱论，用火即可。",
     feedback: "人际交往圈子大，是旺夫命；今年丑未、子丑引动，枭神夺食，不是怀孕就是打胎。"
   },
@@ -2239,8 +2894,412 @@ const caseStudies = [
     ],
     point: "乙坐卯强根，杀有力，杀印相生可用，官杀不杂，七杀气纯。",
     feedback: "断高学历，精力满、执行力强；财旺、墙外桃花、桃花比劫，异性缘多，容易出轨。"
+  },
+  {
+    topics: ["career", "wealth", "family", "temperament"],
+    id: "案例 6",
+    title: "官印相生但劫财夺财",
+    tags: ["官印相生", "劫财夺财", "克父"],
+    images: ["/assets/cases/case-analysis-1/case-006-01.jpeg"],
+    point: "官杀不杂，妙在官印相生；但癸水劫财夺财，有克父信号。",
+    feedback: "周围土能制劫财，父亲得救；用金通关，土生金生水，比劫也可用。"
+  },
+  {
+    topics: ["career", "family", "luck", "temperament"],
+    id: "案例 7",
+    title: "辰戌冲与事业收款应期",
+    tags: ["辰戌冲", "不从格", "事业应期"],
+    images: ["/assets/cases/case-analysis-1/case-007-01.jpeg"],
+    point: "身旺，辰戌冲；但年空亡戌，不伤水根气辰土，天干壬癸水，金多少能帮水，不成从格。",
+    feedback: "四面土，土多木折，父亲确诊肠道肿瘤；2022 壬寅年寅辰拱乙、三方会木，事业吉利，收回货款。"
+  },
+  {
+    topics: ["family", "luck", "study"],
+    id: "案例 8",
+    title: "戊癸合火与长子应象",
+    tags: ["身弱用木火", "长子", "合化应期"],
+    images: ["/assets/cases/case-analysis-1/case-008-01.jpeg"],
+    point: "丁火生于戌月，身弱，用木火；巳时看长子。",
+    feedback: "癸亥大运中，戊癸合火、寅亥合木，火气生扶，适合看合化如何补起命局。"
+  },
+  {
+    topics: ["wealth", "career", "temperament"],
+    id: "案例 11",
+    title: "金白水清，水为真用神",
+    tags: ["金白水清", "水暖金温", "制土"],
+    images: ["/assets/cases/case-analysis-1/case-011-01.jpeg"],
+    point: "巳有根、戊是印，从不了；金白水清、水暖金温，制土即可。",
+    feedback: "辛金如宝石，讲究清秀；层次还行，水木都能用，透壬水最美，水为真用神。"
+  },
+  {
+    topics: ["study", "career", "health"],
+    id: "案例 12",
+    title: "未月有根，用甲木为先",
+    tags: ["丁火", "甲木", "庚金劈甲"],
+    images: ["/assets/cases/case-analysis-1/case-012-01.jpeg"],
+    point: "有印、未月有根气，不从；用甲木为先，庚金劈木引丁。",
+    feedback: "没有甲木可以论弱；又是女生，家里东北方有兔子玩偶，易感冒、呼吸道疾病。"
+  },
+  {
+    topics: ["study", "wealth", "family", "luck"],
+    id: "案例 13",
+    title: "比劫成群，以木克制",
+    tags: ["比劫成群", "食伤吐秀", "伤官生财"],
+    images: ["/assets/cases/case-analysis-1/case-013-01.jpeg"],
+    point: "比劫成群为忌，直接用木克；要丙火透干暖局，巳丑拱辛，食伤吐秀。",
+    feedback: "有学历，今年流年喜用较舒服；伤官生财，家境好，父亲从事技术性职业。"
+  },
+  {
+    topics: ["wealth", "career", "health", "temperament"],
+    id: "案例 14",
+    title: "火炎土燥，身极旺用金水",
+    tags: ["火炎土燥", "稼穑", "用金水"],
+    images: ["/assets/cases/case-analysis-1/case-014-01.jpeg"],
+    point: "土曰稼穑，要湿润才能养育万物；病于火炎土燥，专旺成格须有湿土丑辰。",
+    feedback: "身极旺，用金水；起因在土食伤、吃东西，辛亥运好，前面土金运也无碍，层次平平。"
+  },
+  {
+    topics: ["wealth", "luck", "career"],
+    id: "案例 16",
+    title: "病在食伤盗气，丙寅运起富",
+    tags: ["食伤盗气", "木为真用", "发财大运"],
+    images: ["/assets/cases/case-analysis-1/case-016-01.jpeg"],
+    point: "木为真用，庚金适当引用；病在食伤盗气。",
+    feedback: "丙寅大运开始富，适合放入财运和大运流年复盘。"
+  },
+  {
+    topics: ["career", "health", "temperament"],
+    id: "案例 17",
+    title: "午根被坏，身杀两停不成",
+    tags: ["身杀两停", "根气受损", "官杀"],
+    images: ["/assets/cases/case-analysis-1/case-017-01.jpeg"],
+    point: "原本可看身杀两停，但午根气被坏，结构承接不足。",
+    feedback: "用于说明杀旺格局不能只看官杀强，也要看日主根气是否被伤。"
+  },
+  {
+    topics: ["study", "wealth", "career"],
+    id: "案例 18",
+    title: "身弱用印，高考过一本线",
+    tags: ["身弱用印", "文昌受冲", "学业"],
+    images: ["/assets/cases/case-analysis-1/case-018-01.jpeg"],
+    point: "年柱截脚、地支相冲，身弱用印；伤官伤尽须身强、官杀不混、地支不伤。",
+    feedback: "卯酉冲，文昌受冲；巳酉半合金、暗合，辛金得禄以生弱癸，高考过一本线。"
+  },
+  {
+    topics: ["study", "family", "luck", "health"],
+    id: "案例 19",
+    title: "从儿格与长寿应象",
+    tags: ["从儿格", "母亲教师", "长寿"],
+    images: [
+      "/assets/cases/case-analysis-1/case-019-01.jpeg",
+      "/assets/cases/case-analysis-1/case-019-02.jpeg"
+    ],
+    point: "原局还行，从儿，真从；用水，丙火极弱，水辅阳光。",
+    feedback: "母亲是教师，甲子运好运；大限己未运丁巳年，丁合去壬，反馈长寿。"
+  },
+  {
+    topics: ["wealth", "career", "temperament"],
+    id: "案例 21",
+    title: "寅卯辰三会，从弱不漂亮",
+    tags: ["寅卯辰三会", "辛金", "从弱"],
+    images: ["/assets/cases/case-analysis-1/case-021-01.jpeg"],
+    point: "寅卯辰三会，辛金讲究清脆；层次从弱，但不那么漂亮。",
+    feedback: "只能顺着才生，适合说明三会成势后不可逆势硬取。"
+  },
+  {
+    topics: ["study", "marriage", "wealth"],
+    id: "案例 23",
+    title: "官清印正，女命被撬墙角",
+    tags: ["官清印正", "暗合", "被出轨"],
+    images: ["/assets/cases/case-analysis-1/case-023-01.jpeg"],
+    point: "官清印正，原局不错，本科学历、小康家庭；午亥暗合，地支有情。",
+    feedback: "烂桃花、倒贴；隔合导致丁壬丙辛都不成，女命会被撬墙角，属于被出轨结构。"
+  },
+  {
+    topics: ["wealth", "career", "luck"],
+    id: "案例 24",
+    title: "身弱食伤盗气，用水不宜木",
+    tags: ["身弱", "食伤盗气", "用水"],
+    images: [
+      "/assets/cases/case-analysis-1/case-024-01.jpeg",
+      "/assets/cases/case-analysis-1/case-024-02.jpeg"
+    ],
+    point: "命局身弱，食伤盗气；用木松土不可行，寅戌拱、卯戌合，火气带生土。",
+    feedback: "最终用水；适合说明身弱食伤盗气时，不是所有木都能救局。"
+  },
+  {
+    topics: ["career", "marriage", "wealth", "shenSha"],
+    id: "案例 26",
+    title: "羊刃暗合与军队高官",
+    tags: ["羊刃", "暗合", "军队高官"],
+    images: ["/assets/cases/case-analysis-1/case-026-01.jpeg"],
+    point: "羊刃子巳暗合，火通气，用木火；有军队高官、文职部门象。",
+    feedback: "去年影响官运；巳亥影响婚姻宫，比劫成群有被绿信息，妙在财官通气、财生官。"
+  },
+  {
+    topics: ["wealth", "career", "health"],
+    id: "案例 27",
+    title: "午月见禄格，水来兜得住",
+    tags: ["见禄格", "己土", "根基稳"],
+    images: ["/assets/cases/case-analysis-1/case-027-01.jpeg"],
+    point: "身旺，己土田园土，论阳光、燥湿、水汽都有；午月见禄格。",
+    feedback: "火土为忌但不会溃堤，地支根基稳固，水来了兜得住。"
+  },
+  {
+    topics: ["wealth", "career", "luck"],
+    id: "案例 28",
+    title: "身财两停，食伤生财",
+    tags: ["身财两停", "申子辰", "食伤生财"],
+    images: ["/assets/cases/case-analysis-1/case-028-01.jpeg"],
+    point: "八字不错，身旺，有金引水通关，身财两停。",
+    feedback: "申子辰合水，食伤生财，适合财运专题作为结构顺畅案例。"
+  },
+  {
+    topics: ["wealth", "career", "study"],
+    id: "案例 29",
+    title: "身杀两旺，金融家庭有钱",
+    tags: ["身杀两旺", "制杀", "金融"],
+    images: ["/assets/cases/case-analysis-1/case-029-01.jpeg"],
+    point: "身杀两旺，用金水、忌木；现在土金运，做金融，家里有钱。",
+    feedback: "官杀不杂、印不杂，气很纯；纯阴八字，重在制杀，印化杀、食伤制杀，禄透杀，制杀有功。"
+  },
+  {
+    topics: ["wealth", "career", "family", "study"],
+    id: "案例 30",
+    title: "申子辰合水，从格不纯",
+    tags: ["申子辰", "羊刃身旺", "子女能力"],
+    images: ["/assets/cases/case-analysis-1/case-030-01.jpeg"],
+    point: "从了，申子辰合水；可惜不是亥子丑月，不能论润下。",
+    feedback: "此人杀猪肉，百万以上；论羊刃身旺。甲戌大运坏学运，时上金水，子女能力可以。"
+  },
+  {
+    topics: ["career", "family", "health"],
+    id: "案例 31",
+    title: "木土两旺，申金坏局",
+    tags: ["身官两停", "申金坏局", "风水"],
+    images: ["/assets/cases/case-analysis-1/case-031-01.jpeg"],
+    point: "命局木土两旺，可说身官两停；不该再来金，泄身又克官，主要申中庚金坏局。",
+    feedback: "爷爷风水有利大利小之说；日柱十恶大败，多有风水问题，体现在父母兄弟姐妹辈过得不好。"
+  },
+  {
+    topics: ["family", "health", "luck"],
+    id: "案例 32",
+    title: "十恶大败与祖坟因素",
+    tags: ["十恶大败", "祖坟", "用火"],
+    images: ["/assets/cases/case-analysis-1/case-032-01.jpeg"],
+    point: "癸丙两透，命局有层次；十恶大败，有祖坟因素。",
+    feedback: "身弱在秋天，还是用火为主；才生杀临身路线压力大，周围人苛刻。"
+  },
+  {
+    topics: ["health", "temperament", "family"],
+    id: "案例 34",
+    title: "食神过多论伤官，枭神夺食",
+    tags: ["枭神夺食", "精神问题", "母亲"],
+    images: ["/assets/cases/case-analysis-1/case-034-01.jpeg"],
+    point: "五行平衡，但食神过多论伤官；枭神夺食，见精神问题。",
+    feedback: "寅亥合木，印星在月柱，少年多与母亲接触；地支有合，朋友关系多。"
+  },
+  {
+    topics: ["health", "study", "family", "temperament"],
+    id: "案例 35",
+    title: "木旺火塞，调候为先",
+    tags: ["木旺火塞", "调候", "枭神夺食"],
+    images: ["/assets/cases/case-analysis-1/case-035-01.jpeg"],
+    point: "木旺火塞，癸湿木，木不能助长火，层次不高；这里要考虑调候。",
+    feedback: "表现为磨磨唧唧、优柔寡断；枭神夺食，求子女难，走到庚辛西方运可以。"
+  },
+  {
+    topics: ["career", "luck", "wealth"],
+    id: "案例 36",
+    title: "春寒用丙，金不可土埋",
+    tags: ["春寒", "丙火调候", "金不被埋"],
+    images: [
+      "/assets/cases/case-analysis-1/case-036-01.jpeg",
+      "/assets/cases/case-analysis-1/case-036-02.jpeg"
+    ],
+    point: "春寒，丙火调候；怕冬天庚金冻过后钝，金不要被土埋，戊己不要混杂。",
+    feedback: "运走得奇怪仍能好，丙火作用很大；没有土就行，壬戌运不行。"
+  },
+  {
+    topics: ["health", "career", "wealth"],
+    id: "案例 38",
+    title: "夏木枝繁叶茂，先用水润",
+    tags: ["夏木", "水润木", "金发水源"],
+    images: ["/assets/cases/case-analysis-1/case-038-01.jpeg"],
+    point: "夏季的木，枝繁叶茂；阳光毒辣会导致起火，首先用水润木。",
+    feedback: "金能发水源，适合放入四季取用和健康倾向，说明夏木不能只看木旺。"
+  },
+  {
+    topics: ["health", "wealth", "temperament"],
+    id: "案例 54",
+    title: "金水泛滥成灾，用火土",
+    tags: ["金水泛滥", "局寒", "用火土"],
+    images: [
+      "/assets/cases/case-analysis-2/case-054-01.jpeg",
+      "/assets/cases/case-analysis-2/case-054-02.jpeg"
+    ],
+    point: "身旺，辰酉合金，金水泛滥成灾，局寒。",
+    feedback: "取用火土，适合放入健康、调候和财运承载的反面案例。"
+  },
+  {
+    topics: ["career", "study", "family", "marriage"],
+    id: "案例 59",
+    title: "女同，土木研究生坐办公室",
+    tags: ["女同", "研究生", "父母教授"],
+    images: ["/assets/cases/case-analysis-2/case-059-01.jpeg"],
+    point: "反馈为女同，土木研究生，坐办公室，父母教授。",
+    feedback: "取用木火，适合补入婚姻关系多样性、学业职业和家庭出身案例。"
+  },
+  {
+    topics: ["career", "wealth", "temperament"],
+    id: "案例 60",
+    title: "辰土保身，水暖金温",
+    tags: ["辰土保身", "金白水清", "赌博风险"],
+    images: ["/assets/cases/case-analysis-2/case-060-01.jpeg"],
+    point: "透出丙壬出格局，妙在辰土保身，用水即可，壬辰不错。",
+    feedback: "辛金讲究发亮，按穷通取法看水暖金温、金白水清；比劫硬抗容易赌博并牵连公检法。"
+  },
+  {
+    topics: ["career", "luck", "wealth"],
+    id: "案例 61",
+    title: "当兵退伍，水运发挥",
+    tags: ["当兵", "火为磨练", "水运发挥"],
+    images: [
+      "/assets/cases/case-analysis-2/case-061-01.jpeg",
+      "/assets/cases/case-analysis-2/case-061-02.jpeg"
+    ],
+    point: "反馈当兵、已退伍；官杀烈日，现在当兵就是磨练，辛金的火是磨练打造。",
+    feedback: "遇到水运就发挥作用，20 年搞网络赚了不少，适合事业与运势复盘。"
+  },
+  {
+    topics: ["career", "family", "study"],
+    id: "案例 62",
+    title: "无食伤，比劫只干活",
+    tags: ["无食伤", "官家出身", "当兵"],
+    images: ["/assets/cases/case-analysis-2/case-062-01.jpeg"],
+    point: "没有食伤，比劫只干活，做事一板一眼，不够圆滑，也符合官家出身。",
+    feedback: "食伤主聪明伶俐和灵活性；杀刃格局适合以后送去当兵，赶上西南运没问题。"
+  },
+  {
+    topics: ["luck", "career", "marriage"],
+    id: "案例 65",
+    title: "两午冲子，申酉运不佳",
+    tags: ["两午冲子", "大运不佳", "上进"],
+    images: ["/assets/cases/case-analysis-2/case-065-01.jpeg"],
+    point: "两午冲子，原局可以，但大运不大好；现在走申酉运，运不好。",
+    feedback: "人很上进，后文以生肖冲合提醒不可单论生肖支，要看冲喜神还是忌神。"
+  },
+  {
+    topics: ["career", "marriage", "health", "shenSha"],
+    id: "案例 68",
+    title: "官杀不纯，红艳煞与拘留风险",
+    tags: ["官杀不纯", "红艳煞", "公检法"],
+    images: ["/assets/cases/case-analysis-2/case-068-01.jpeg"],
+    point: "可惜官杀气不纯，但有官印生身；自合暗合能增加五行气，容易通气。",
+    feedback: "戊癸藏干合，官食通气、红艳煞；提醒别在外面碰黄，否则容易公检法拘留。"
+  },
+  {
+    topics: ["family", "health", "luck"],
+    id: "案例 69",
+    title: "子女宫空亡，胎像不稳",
+    tags: ["子女", "空亡", "辰戌冲"],
+    images: ["/assets/cases/case-analysis-2/case-069-01.jpeg"],
+    point: "看子女，戌空亡在子女宫，有胎像不稳的象。",
+    feedback: "遇戌填实、辰戌冲冲空，可作为子女与流年填实案例。"
+  },
+  {
+    topics: ["career", "study", "luck"],
+    id: "案例 71",
+    title: "乙庚合不化，日禄强根",
+    tags: ["乙庚合", "日禄强根", "学历"],
+    images: ["/assets/cases/case-analysis-2/case-071-01.jpeg"],
+    point: "乙庚合而不化，日禄强根，层次不会差；禄透官，学识有。",
+    feedback: "甲申大运藤萝系甲，用金水生可以，现阶段就有些学历，遇到甲木也不错。"
+  },
+  {
+    topics: ["wealth", "marriage", "study", "career"],
+    id: "案例 72",
+    title: "财旺身弱，异性缘与被骗钱",
+    tags: ["财旺身弱", "异性缘", "考编"],
+    images: ["/assets/cases/case-analysis-2/case-072-01.jpeg"],
+    point: "命局财旺身弱，现在秋季不利；官杀入局，容易有异性缘，但经济或体力会乏困。",
+    feedback: "秋季有异性缘，也要防被骗钱；问考编时，禄透财又有癸水，其实也容易考。"
+  },
+  {
+    topics: ["family", "health", "wealth", "career"],
+    id: "案例 73",
+    title: "早年贫寒，比劫多且才多坏印",
+    tags: ["早年贫寒", "才多坏印", "父母健康"],
+    images: [
+      "/assets/cases/case-analysis-2/case-073-01.jpeg",
+      "/assets/cases/case-analysis-2/case-073-02.jpeg"
+    ],
+    point: "早年家境贫寒，比劫多，又穷又能生，又寒又奔荡。",
+    feedback: "命局才多坏印，印透干不利母，体现在心脑血管、肠胃问题；年柱天罗灾星流霞、寡宿披麻，不利父母辈。"
+  },
+  {
+    topics: ["wealth", "family", "luck", "career"],
+    id: "案例 76",
+    title: "润下格成格，辛卯运最佳",
+    tags: ["润下格", "申子辰", "辛卯运"],
+    images: [
+      "/assets/cases/case-analysis-2/case-076-01.jpeg",
+      "/assets/cases/case-analysis-2/case-076-02.jpeg"
+    ],
+    point: "润下格成格，好八字；家中老二，申子辰合水、卯申暗合金、丙辛合水。",
+    feedback: "辛卯运最佳，小时候差一些，父亲身体不太好；不走土运就好，魁罡最忌戌冲辰。"
+  },
+  {
+    topics: ["marriage", "career", "luck"],
+    id: "案例 77",
+    title: "男同，身弱杀旺用辛金水木",
+    tags: ["男同", "身弱杀旺", "丙申大运"],
+    images: ["/assets/cases/case-analysis-2/case-077-01.jpeg"],
+    point: "反馈男同。身弱杀旺，用辛金、水木，不用庚金，因庚伐木。",
+    feedback: "丙申大运好，丙辛、巳申合水，可放入婚姻关系多样性和大运复盘。"
+  },
+  {
+    topics: ["family", "wealth", "luck"],
+    id: "案例 79",
+    title: "父子八字，子女经济不用担心",
+    tags: ["父子", "子女星", "用水木"],
+    images: [
+      "/assets/cases/case-analysis-2/case-079-01.jpeg",
+      "/assets/cases/case-analysis-2/case-079-02.jpeg"
+    ],
+    point: "一对父子八字。父亲用水木，时柱用神，子女经济不用担心，自有福气。",
+    feedback: "官杀子女星为喜用，和子女关系好，适合六亲与子女专题。"
+  },
+  {
+    topics: ["study", "career", "temperament"],
+    id: "案例 82",
+    title: "身旺食伤吐秀，技艺爱好多",
+    tags: ["食伤吐秀", "印绶", "技艺"],
+    images: ["/assets/cases/case-analysis-2/case-082-01.jpeg"],
+    point: "春月、财不透，身旺，有丙癸、巳午未、辰透甲，身旺食伤吐秀又有印绶。",
+    feedback: "专科但技艺多、爱好多；印枭杂多不专，大运火吐秀没问题，金不透干就好。"
+  },
+  {
+    topics: ["wealth", "career", "marriage", "luck"],
+    id: "案例 83",
+    title: "差八字易看错，壬寅年得车",
+    tags: ["土忌", "用壬甲", "工资六千"],
+    images: ["/assets/cases/case-analysis-2/case-083-01.jpeg"],
+    point: "差八字，易看错。土为忌，用神先壬后甲；木无力又没水。",
+    feedback: "工资六千；2022 壬寅年老婆家给买了一辆 SUV，2025 年起辛丑大运为忌。"
+  },
+  {
+    topics: ["study", "family", "health", "temperament"],
+    id: "案例 84",
+    title: "身强用金水，土晦火光近视",
+    tags: ["身强", "用金水", "土晦火光"],
+    images: ["/assets/cases/case-analysis-2/case-084-01.jpeg"],
+    point: "身强，用金水；本科学历，父亲懂一些玄学。",
+    feedback: "土晦火光，反馈近视；身高 178，比较胖，适合健康与性格底盘补例。"
   }
 ];
+
+const caseNumber = (id) => Number(id.replace(/\D/g, ""));
 
 const tenGodCaseMap = {
   比肩: ["案例 10", "案例 22", "案例 78"],
@@ -2289,6 +3348,7 @@ function SiteShell() {
           <NavLink to="/basics">基础篇</NavLink>
           <NavLink to="/advanced">进阶</NavLink>
           <NavLink to="/classified">分类占</NavLink>
+          <NavLink to="/cases">案例库</NavLink>
         </nav>
       </header>
 
@@ -2307,11 +3367,18 @@ function SiteShell() {
         <Route path="/basics/stems" element={<HeavenlyStemsPage />} />
         <Route path="/basics/branches" element={<EarthlyBranchesPage />} />
         <Route path="/basics/ten-gods" element={<Navigate to="/basics/ten-gods/zheng-yin" replace />} />
+        <Route path="/basics/ten-gods/combinations" element={<TenGodCombinationsPage />} />
         <Route path="/basics/ten-gods/:godKey" element={<TenGodDetailPage />} />
         <Route path="/advanced" element={<AdvancedPage />} />
         <Route path="/advanced/flow" element={<FlowPage />} />
         <Route path="/advanced/stem-branch-actions" element={<StemBranchActionsPage />} />
         <Route path="/advanced/fetal-life-body" element={<FetalLifeBodyPage />} />
+        <Route path="/advanced/shen-sha" element={<ShenShaPage />} />
+        <Route path="/advanced/luck-cycle" element={<LuckCyclePage />} />
+        <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
+        <Route path="/advanced/female-chart" element={<FemaleChartPage />} />
+        <Route path="/advanced/pattern-use-god" element={<PatternUseGodPage />} />
+        <Route path="/cases" element={<CaseLibraryPage />} />
         <Route path="/classified" element={<ClassifiedIndexPage />} />
         <Route path="/classified/:topicKey" element={<ClassifiedTopicPage />} />
       </Routes>
@@ -2445,6 +3512,17 @@ function TenGodDetailPage() {
   );
 }
 
+function TenGodCombinationsPage() {
+  return (
+    <BasicsLayout
+      title="十神组合断点"
+      copy="把散在讲义里的过多、坐空亡、羊刃、枭神夺食、食伤克官等细则，整理成可查、可复盘、可连接案例的组合卡片。"
+    >
+      <TenGodCombinations />
+    </BasicsLayout>
+  );
+}
+
 function BasicsLayout({ title, copy, children }) {
   return (
     <main className="page-shell">
@@ -2525,6 +3603,156 @@ function FetalLifeBodyPage() {
       />
       <ContentLayout title="进阶目录" items={advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/fetal-life-body" }))}>
         <FetalLifeBody />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function ShenShaPage() {
+  const shenShaCases = shenShaCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Shen Sha"
+        title="神煞"
+        copy="神煞不是单独论吉凶的标签，而是补足事件类型、风险形态和古法源流的辅助系统。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/shen-sha" })),
+          ...shenShaGroups.map((group) => ({ label: group.title, href: `#shen-sha-${group.title}` })),
+          { label: "具体条目库", href: "#shen-sha-entries" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <ShenSha />
+        <CaseStudies detail={{ title: "神煞" }} items={shenShaCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function LuckCyclePage() {
+  const luckCases = luckCycleCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Luck Cycle"
+        title="大运流年"
+        copy="原局埋伏，大运成势，流年触发，流月落点。应期不是看单一年份，而是看四层如何接力。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/luck-cycle" })),
+          ...luckCycleRules.map((rule) => ({ label: rule.title, href: `#luck-${rule.title}` })),
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <LuckCycle />
+        <CaseStudies detail={{ title: "大运流年" }} items={luckCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function PracticalCombinationsPage() {
+  const combinationCases = practicalCombinationCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Combinations"
+        title="实务组合"
+        copy="第二层次重点不在背更多名词，而是看生旺库、罗网、四见、拱夹如何在运岁里成事。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/practical-combinations" })),
+          ...practicalCombinationSections.map((section) => ({ label: section.title, href: `#combination-${section.title}` })),
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <PracticalCombinations />
+        <CaseStudies detail={{ title: "实务组合" }} items={combinationCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function FemaleChartPage() {
+  const femaleCases = femaleChartCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Female Chart"
+        title="女命专题"
+        copy="女命不只看夫星。夫星清浊、食伤子女、财印承接、婚姻宫岁运，要合在一张图里看。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/female-chart" })),
+          ...femaleChartSections.map((section) => ({ label: section.title, href: `#female-${section.title}` })),
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <FemaleChart />
+        <CaseStudies detail={{ title: "女命专题" }} items={femaleCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function PatternUseGodPage() {
+  const patternCases = patternUseGodCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Pattern"
+        title="格局用神"
+        copy="格局、调候、扶抑、休囚、四联合参，是为了找到结构最卡的地方，不是为了背一个万能用神。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/pattern-use-god" })),
+          ...patternUseGodSections.map((section) => ({ label: section.title, href: `#pattern-${section.title}` })),
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <PatternUseGod />
+        <CaseStudies detail={{ title: "格局用神" }} items={patternCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function CaseLibraryPage() {
+  const allCases = [...caseStudies].sort((a, b) => caseNumber(a.id) - caseNumber(b.id));
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Case Library"
+        title="案例库"
+        copy="所有原始案例图片统一归档在这里。专题页会抽取其中一部分，案例库保留完整原图入口。"
+      />
+      <ContentLayout
+        title="案例目录"
+        items={[
+          { label: "全部案例", href: "#case-studies" },
+          { label: "案例总索引", href: assetUrl("/content/案例总索引.md") },
+          { label: "原图清单", href: assetUrl("/assets/cases/manifest.tsv") }
+        ]}
+      >
+        <CaseStudies detail={{ title: "全部案例" }} items={allCases} />
       </ContentLayout>
     </main>
   );
@@ -2690,10 +3918,10 @@ function Intro() {
           <strong>4</strong> 组基础模块
         </span>
         <span>
-          <strong>24</strong> 条状态口诀
+          <strong>5</strong> 组神煞资料
         </span>
         <span>
-          <strong>8</strong> 大分类占
+          <strong>68</strong> 个案例归档
         </span>
       </div>
     </section>
@@ -2712,13 +3940,19 @@ function HomeEntries() {
       title: "进阶",
       href: "/advanced",
       eyebrow: "Advanced",
-      copy: "状态理论诀、显隐动静、盛衰出入、成破与五步框架。"
+      copy: "状态理论诀、流通、干支作用、胎命身、神煞与五步框架。"
     },
     {
       title: "分类占",
       href: "/classified",
       eyebrow: "Classified",
       copy: "婚姻、财运、事业、学业、六亲、健康、大运流年。"
+    },
+    {
+      title: "案例库",
+      href: "/cases",
+      eyebrow: "Cases",
+      copy: "68 个原始案例编号、88 张原图统一归档，专题页按需要抽取复盘。"
     }
   ];
 
@@ -3239,6 +4473,64 @@ function TenGodDetail({ god }) {
   );
 }
 
+function TenGodCombinations() {
+  const grouped = tenGodCombinationBreakpoints.reduce((acc, item) => {
+    acc[item.group] = [...(acc[item.group] ?? []), item];
+    return acc;
+  }, {});
+
+  return (
+    <section className="basics-module ten-god-combinations-section" id="ten-god-combinations" aria-labelledby="ten-god-combinations-title">
+      <div className="section-heading">
+        <p className="eyebrow">Ten God Combinations</p>
+        <h2 id="ten-god-combinations-title">组合断点不是单字断语</h2>
+      </div>
+      <div className="rules-lead">
+        <p>同一个十神，单独看是行为动力，组合起来才会落成财务、婚姻、职业、健康和应期。这里先给第一版可查断点。</p>
+        <a className="source-link" href={assetUrl("/content/十神组合断点.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看十神组合断点整理稿
+        </a>
+      </div>
+      <div className="combination-groups">
+        {Object.entries(grouped).map(([group, items]) => (
+          <section className="combination-group" id={`combination-${group}`} key={group} aria-labelledby={`combination-${group}-title`}>
+            <div className="combination-group-heading">
+              <p className="eyebrow">Breakpoint Group</p>
+              <h3 id={`combination-${group}-title`}>{group}</h3>
+            </div>
+            <div className="combination-grid">
+              {items.map((item) => (
+                <article className="combination-card" key={item.title}>
+                  <div className="case-card-header">
+                    <span>{item.source}</span>
+                    <Tags size={18} aria-hidden="true" />
+                  </div>
+                  <h4>{item.title}</h4>
+                  <div className="tag-list" aria-label={`${item.title}涉及十神`}>
+                    {item.gods.map((god) => (
+                      <span key={god}>{god}</span>
+                    ))}
+                  </div>
+                  <strong>触发</strong>
+                  <p>{item.trigger}</p>
+                  <strong>断点</strong>
+                  <p>{item.reading}</p>
+                  <div className="tag-list case-tags" aria-label={`${item.title}相关案例`}>
+                    {item.cases.map((id) => (
+                      <span key={id}>{id}</span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function TenGodRelatedCases({ cases, name }) {
   const [preview, setPreview] = React.useState(null);
 
@@ -3398,6 +4690,271 @@ function FetalLifeBody() {
             </article>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function ShenSha() {
+  return (
+    <section className="shen-sha-section" id="shen-sha" aria-labelledby="shen-sha-title">
+      <div className="section-heading">
+        <p className="eyebrow">Shen Sha</p>
+        <h2 id="shen-sha-title">神煞要先立边界</h2>
+      </div>
+      <div className="rules-lead">
+        <p>神煞资料单独成模块：它可以提示火灾、伤残、孤寡、罗网、迁动、空亡等具体象，但必须回到原局、宫位、十神和岁运触发。</p>
+        <a className="source-link" href={assetUrl("/content/神煞.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看神煞整理稿
+        </a>
+      </div>
+
+      <div className="theory-grid shen-sha-principles">
+        {shenShaPrinciples.map((item) => (
+          <article className="theory-card" key={item.title}>
+            <span>{item.subtitle}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="shen-sha-groups">
+        {shenShaGroups.map((group) => (
+          <article className="shen-sha-group" id={`shen-sha-${group.title}`} key={group.title}>
+            <div>
+              <p className="eyebrow">{group.source}</p>
+              <h3>{group.title}</h3>
+            </div>
+            <div className="shen-sha-group-body">
+              <p>{group.focus}</p>
+              <small>{group.use}</small>
+              {group.examples.length ? (
+                <div className="tag-list" aria-label={`${group.title}相关案例`}>
+                  {group.examples.map((id) => (
+                    <span key={id}>{id}</span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="shen-sha-entry-panel" id="shen-sha-entries">
+        <div className="section-heading compact">
+          <p className="eyebrow">Entry Library</p>
+          <h3>具体条目库</h3>
+          <p>每个条目都按“象意、用法、边界、案例”拆开，避免神煞变成一句吓人的标签。</p>
+        </div>
+        <div className="shen-sha-entry-grid">
+          {shenShaEntries.map((entry) => (
+            <article className="shen-sha-entry-card" key={`${entry.source}-${entry.name}`}>
+              <div className="entry-card-head">
+                <span>{entry.source}</span>
+                <strong>{entry.category}</strong>
+              </div>
+              <h4>{entry.name}</h4>
+              <p>{entry.focus}</p>
+              <dl>
+                <div>
+                  <dt>用法</dt>
+                  <dd>{entry.use}</dd>
+                </div>
+                <div>
+                  <dt>边界</dt>
+                  <dd>{entry.boundary}</dd>
+                </div>
+              </dl>
+              {entry.cases.length ? (
+                <div className="case-tags" aria-label={`${entry.name}相关案例`}>
+                  {entry.cases.map((id) => (
+                    <span key={id}>{id}</span>
+                  ))}
+                </div>
+              ) : null}
+            </article>
+          ))}
+        </div>
+        <a className="source-link" href={assetUrl("/content/神煞条目库.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看神煞条目库整理稿
+        </a>
+      </div>
+    </section>
+  );
+}
+
+function LuckCycle() {
+  return (
+    <section className="luck-cycle-section" id="luck-cycle" aria-labelledby="luck-cycle-title">
+      <div className="section-heading">
+        <p className="eyebrow">Luck Cycle</p>
+        <h2 id="luck-cycle-title">应期要分四层看</h2>
+      </div>
+      <div className="rules-lead">
+        <p>大运流年不是单看某一年干支，而是把原局伏笔、大运气候、流年触发和流月落点串起来复盘。</p>
+        <a className="source-link" href={assetUrl("/content/大运流年.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看大运流年整理稿
+        </a>
+      </div>
+
+      <div className="flow-checklist luck-cycle-layers" aria-label="大运流年四层">
+        {luckCycleLayers.map((layer, index) => (
+          <div className="flow-check" key={layer.title}>
+            <span>{String(index + 1).padStart(2, "0")} / {layer.subtitle}</span>
+            <strong>{layer.title}</strong>
+            <p>{layer.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="flow-sections">
+        {luckCycleRules.map((rule) => (
+          <article className="flow-section" id={`luck-${rule.title}`} key={rule.title}>
+            <div>
+              <p className="eyebrow">{rule.source}</p>
+              <h3>{rule.title}</h3>
+              <p>先定层级，再看触发方式，最后回到案例反馈。</p>
+            </div>
+            <div className="flow-items">
+              {rule.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function PracticalCombinations() {
+  return (
+    <section className="practical-combinations-section" id="practical-combinations" aria-labelledby="practical-combinations-title">
+      <div className="section-heading">
+        <p className="eyebrow">Practice Combinations</p>
+        <h2 id="practical-combinations-title">组合要看成势和触发</h2>
+      </div>
+      <div className="rules-lead">
+        <p>第二层次资料的核心，是把地支状态、合会冲刑、暗拱夹带和岁运触发合起来看，判断一个主题何时成、何时破。</p>
+        <a className="source-link" href={assetUrl("/content/实务组合.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看实务组合整理稿
+        </a>
+      </div>
+      <div className="flow-sections">
+        {practicalCombinationSections.map((section) => (
+          <article className="flow-section" id={`combination-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((id) => (
+                  <span key={id}>{id}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FemaleChart() {
+  return (
+    <section className="female-chart-section" id="female-chart" aria-labelledby="female-chart-title">
+      <div className="section-heading">
+        <p className="eyebrow">Female Chart</p>
+        <h2 id="female-chart-title">女命要宫星运同看</h2>
+      </div>
+      <div className="rules-lead">
+        <p>女命专题把夫星、子女、财印、人际资源和婚姻宫放在同一套顺序里，不用单个“官杀”或“桃花”粗暴定性。</p>
+        <a className="source-link" href={assetUrl("/content/女命专题.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看女命专题整理稿
+        </a>
+      </div>
+      <div className="flow-sections">
+        {femaleChartSections.map((section) => (
+          <article className="flow-section" id={`female-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((id) => (
+                  <span key={id}>{id}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function PatternUseGod() {
+  return (
+    <section className="pattern-use-god-section" id="pattern-use-god" aria-labelledby="pattern-use-god-title">
+      <div className="section-heading">
+        <p className="eyebrow">Pattern / Use God</p>
+        <h2 id="pattern-use-god-title">先找结构卡点</h2>
+      </div>
+      <div className="rules-lead">
+        <p>格局用神页先处理方法论：格局是否成形，气候是否失衡，强弱能否承接，用神解决的是哪一个问题。</p>
+        <a className="source-link" href={assetUrl("/content/格局用神.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看格局用神整理稿
+        </a>
+      </div>
+      <div className="flow-sections">
+        {patternUseGodSections.map((section) => (
+          <article className="flow-section" id={`pattern-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((id) => (
+                  <span key={id}>{id}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );
