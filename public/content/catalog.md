@@ -4,6 +4,8 @@
 
 网站页面对应关系：
 
+- 资料审查总表：`/content/资料审查总表.md`
+- 逐文件审查索引：`/content/逐文件审查索引.md`
 - 实战流程：`/basics/practice-flow`
 - 分类总目录：`/classified`
 - 婚姻感情：`/classified/marriage`
