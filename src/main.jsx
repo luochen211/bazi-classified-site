@@ -250,10 +250,96 @@ const advancedDirectoryItems = [
   { label: "大运流年", href: "/advanced/luck-cycle" },
   { label: "实务组合", href: "/advanced/practical-combinations" },
   { label: "十干高级", href: "/advanced/stem-classics" },
+  { label: "学习批命", href: "/advanced/reading-method" },
   { label: "女命专题", href: "/advanced/female-chart" },
   { label: "格局用神", href: "/advanced/pattern-use-god" },
   { label: "分析框架", href: "/advanced#method" }
 ];
+
+const readingMethodStages = [
+  {
+    title: "第一阶段",
+    subtitle: "基础背熟",
+    text: "熟诵刑冲合会、十神生克、六亲引坐、十干禄绝和女命基础。这个阶段解决的是语言和符号，不急着批终身。"
+  },
+  {
+    title: "第二阶段",
+    subtitle: "命学常识",
+    text: "进入格局顺逆用、日主五行喜忌、调候喜忌和三命通会选读。此处建立判断词汇，但仍然只是常识层。"
+  },
+  {
+    title: "第三阶段",
+    subtitle: "实务应用",
+    text: "重点转向生旺库、四见、拱夹、流年、流月和《天元巫咸经》。要从书本术语转成能回答具体问题的流程。"
+  },
+  {
+    title: "第四阶段",
+    subtitle: "细批终身",
+    text: "涵盖大运、流年、流月、六亲、职业、婚姻、健康与史观。此阶段不是堆断语，而是把命局、运岁、现实反馈合成报告。"
+  }
+];
+
+const readingMethodRules = [
+  {
+    title: "越过强弱旋涡",
+    source: "第二层次序言",
+    intro: "实务中不必一开始就陷入身强身弱的模糊争论，只抓两个极限和一个中庸标准。",
+    items: [
+      ["极旺", "刃、禄、印三全，天干又透比劫，常成身旺无依。"],
+      ["极弱", "日主无根，又见财杀当令，才是明确的身弱不能托福。"],
+      ["中庸", "日主有根、不见冲刑，有一柱财官得地，五行齐备且有调候，即可按水平之命推论。"]
+    ]
+  },
+  {
+    title: "格局术语要落到现实",
+    source: "第二层次序言",
+    intro: "伤官见官、财印二战、枭印夺食这些词只是入口，不能停在术语互相套术语。",
+    items: [
+      ["顺用", "财、官、食神、正印顺用，用通关和保护来维持结构。"],
+      ["逆用", "杀、伤、偏印、羊刃逆用，要看制化、病药和承接。"],
+      ["实务", "多格混用、从旺从势、特别格，不是普通来访者的主流判断。"]
+    ]
+  },
+  {
+    title: "批命要有报告结构",
+    source: "何重建先生批命例式",
+    intro: "完整批命不是一段断语，而是从命局指标、用神、运程、六亲、健康、流年和现实建议逐层输出。",
+    items: [
+      ["命局指标", "先列吉利或风险结构，例如长生禄旺、干临支合、日贵格、隐冲等。"],
+      ["调候用神", "再说明五行配合，哪些是第一紧要，哪些藏而不透，哪些为忌。"],
+      ["运年节点", "按大运与重点流年拆转折点，并说明好中之忧、坏中之机。"]
+    ]
+  }
+];
+
+const readingReportSections = [
+  {
+    title: "命局运势",
+    text: "先列四柱内部的核心结构：吉利指标、格局承接、长生禄旺、贵人德曜、冲合隐患。"
+  },
+  {
+    title: "五行调候",
+    text: "说明日主所处气候、病在哪里、第一用神是什么，藏干有无但不透干时要写出缺憾。"
+  },
+  {
+    title: "大运主线",
+    text: "按每步大运写事业、财禄、贵气、辛劳与隐忧，不只说吉凶，还要说明为什么这一运会转折。"
+  },
+  {
+    title: "性格六亲",
+    text: "把年柱、月柱、日支、时柱、比劫财官印食伤转换成家世、婚姻、子女、贵人和个性。"
+  },
+  {
+    title: "重点流年",
+    text: "只挑有刑冲拱合、岁运并临、双冲双合、三刑、桃花、驿马等明显触发的年份。"
+  },
+  {
+    title: "现实建议",
+    text: "建议要写边界：行业、合作、颜色风水可以作辅助，但必须说明命理准确率和个人努力的伸缩空间。"
+  }
+];
+
+const readingMethodCaseIds = ["案例 53", "案例 64", "案例 78", "案例 80", "案例 81"];
 
 const stemClassicPrinciples = [
   {
@@ -3507,6 +3593,7 @@ function SiteShell() {
         <Route path="/advanced/luck-cycle" element={<LuckCyclePage />} />
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
         <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
+        <Route path="/advanced/reading-method" element={<ReadingMethodPage />} />
         <Route path="/advanced/female-chart" element={<FemaleChartPage />} />
         <Route path="/advanced/pattern-use-god" element={<PatternUseGodPage />} />
         <Route path="/cases" element={<CaseLibraryPage />} />
@@ -3836,6 +3923,33 @@ function StemClassicsPage() {
       >
         <StemClassics />
         <CaseStudies detail={{ title: "十干高级" }} items={stemCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function ReadingMethodPage() {
+  const methodCases = readingMethodCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Reading Method"
+        title="学习批命"
+        copy="第二层次不只是更多术语，而是把基础常识转成实务流程：怎样学习，怎样下判断，怎样写一份完整批命。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/reading-method" })),
+          { label: "学习阶段", href: "#reading-stages" },
+          ...readingMethodRules.map((rule) => ({ label: rule.title, href: `#reading-rule-${rule.title}` })),
+          { label: "批命例式", href: "#reading-report" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <ReadingMethod />
+        <CaseStudies detail={{ title: "学习批命" }} items={methodCases} />
       </ContentLayout>
     </main>
   );
@@ -5090,6 +5204,71 @@ function StemClassics() {
             </div>
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function ReadingMethod() {
+  return (
+    <section className="reading-method-section" id="reading-method" aria-labelledby="reading-method-title">
+      <div className="section-heading">
+        <p className="eyebrow">Learning Path</p>
+        <h2 id="reading-method-title">从会看书到会批命</h2>
+      </div>
+      <div className="rules-lead">
+        <p>第二层次序言把学习分成基础、常识、实务、细批终身四段；何重建先生批命例式则提供了一份完整报告的骨架。这个页面把两者合成网站的学习与写作模板。</p>
+        <a className="source-link" href={assetUrl("/content/学习批命.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看学习批命整理稿
+        </a>
+      </div>
+
+      <div className="learning-stage-grid" id="reading-stages">
+        {readingMethodStages.map((stage) => (
+          <article className="learning-stage-card" key={stage.title}>
+            <span>{stage.subtitle}</span>
+            <h3>{stage.title}</h3>
+            <p>{stage.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="flow-sections">
+        {readingMethodRules.map((rule) => (
+          <article className="flow-section" id={`reading-rule-${rule.title}`} key={rule.title}>
+            <div>
+              <p className="eyebrow">{rule.source}</p>
+              <h3>{rule.title}</h3>
+              <p>{rule.intro}</p>
+            </div>
+            <div className="flow-items">
+              {rule.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="report-template-panel" id="reading-report">
+        <div className="section-heading compact">
+          <p className="eyebrow">Report Template</p>
+          <h3>批命例式拆成六段</h3>
+          <p>何重建先生例式的价值，不在某一句断语，而在报告顺序：先结构，后用神，再运年，最后给现实边界。</p>
+        </div>
+        <div className="report-template-grid">
+          {readingReportSections.map((section, index) => (
+            <article className="report-template-card" key={section.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h4>{section.title}</h4>
+              <p>{section.text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -426,6 +426,7 @@ h1 {
 .content-main > .luck-cycle-section,
 .content-main > .practical-combinations-section,
 .content-main > .stem-classics-section,
+.content-main > .reading-method-section,
 .content-main > .female-chart-section,
 .content-main > .pattern-use-god-section,
 .content-main > .theory-section,
@@ -494,6 +495,10 @@ h1 {
 }
 
 .stem-classics-section {
+  background: #fffaf2;
+}
+
+.reading-method-section {
   background: #fffaf2;
 }
 
@@ -756,6 +761,96 @@ h1 {
 
 .stem-classic-body .case-tags {
   margin-top: 18px;
+}
+
+.learning-stage-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-bottom: 42px;
+  background: var(--line);
+}
+
+.learning-stage-card {
+  min-height: 300px;
+  padding: 24px;
+  background: #f5efe5;
+}
+
+.learning-stage-card span {
+  display: block;
+  margin-bottom: 34px;
+  color: var(--gold);
+  font: 800 13px/1.35 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.learning-stage-card h3 {
+  margin: 0 0 16px;
+  color: var(--red);
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.15;
+}
+
+.learning-stage-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.report-template-panel {
+  margin-top: 42px;
+  border-top: 1px solid var(--line);
+  padding-top: 34px;
+  scroll-margin-top: 96px;
+}
+
+.report-template-panel .section-heading {
+  max-width: 840px;
+}
+
+.report-template-panel .section-heading h3 {
+  margin: 0 0 12px;
+  color: var(--red);
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.08;
+}
+
+.report-template-panel .section-heading p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.report-template-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 24px;
+  background: var(--line);
+}
+
+.report-template-card {
+  min-height: 260px;
+  padding: 24px;
+  background: #f5efe5;
+}
+
+.report-template-card span {
+  color: var(--gold);
+  font: 900 13px/1.35 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.report-template-card h4 {
+  margin: 28px 0 14px;
+  color: var(--red);
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.report-template-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
 }
 
 .flow-item p {
@@ -1871,6 +1966,8 @@ body.modal-open {
   .ten-god-summary-grid,
   .combination-grid,
   .stem-classic-principles,
+  .learning-stage-grid,
+  .report-template-grid,
   .flow-checklist,
   .case-grid,
   .steps,
@@ -2019,6 +2116,8 @@ body.modal-open {
   .ten-god-summary-grid,
   .combination-grid,
   .stem-classic-principles,
+  .learning-stage-grid,
+  .report-template-grid,
   .shen-sha-entry-grid,
   .flow-checklist,
   .flow-section,
