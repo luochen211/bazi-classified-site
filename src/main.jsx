@@ -255,6 +255,7 @@ const advancedDirectoryItems = [
   { label: "流年架构", href: "/advanced/luck-cycle-structure" },
   { label: "十神细则", href: "/advanced/ten-god-rules" },
   { label: "比劫禄刃", href: "/advanced/peer-rob-wealth" },
+  { label: "食伤坐引", href: "/advanced/food-hurt-output" },
   { label: "实务组合", href: "/advanced/practical-combinations" },
   { label: "十干高级", href: "/advanced/stem-classics" },
   { label: "日时组合", href: "/advanced/day-hour-classics" },
@@ -2216,6 +2217,161 @@ const femalePoemExamples = [
 ];
 
 const femalePoemCaseIds = ["案例 3", "案例 4", "案例 33", "案例 64", "案例 66", "案例 70", "案例 75", "案例 80", "案例 81"];
+
+const foodHurtOutputPrinciples = [
+  {
+    title: "先从问事下手",
+    text: "第八节先讲坐、引、拱，是因为来问者常问子女、婚姻、行业和近年结果。此时不必先展开全部格局喜忌，先把相关十神引到柱位和地支。"
+  },
+  {
+    title: "食神伤官同源不同用",
+    text: "二者都是日主所生，但食神偏温和、承福、稳定输出；伤官偏才艺、锋芒、破规则。不能把食伤混成一句“会表达”。"
+  },
+  {
+    title: "女命子息重时柱",
+    text: "女命以食伤为子星，但子女成就通常要父母五十岁后才看得见，所以重点落在时柱、时支、食伤禄绝和印克食伤。"
+  },
+  {
+    title: "食伤要有财和身根",
+    text: "食神格、伤官格都要财来承接，也要日主有根。食伤生财若日主无根，容易变成贫困、带疾或能力消耗。"
+  }
+];
+
+const foodHurtOutputSections = [
+  {
+    title: "坐引总纲",
+    source: "第一层级第八节 / 全方位坐引",
+    intro: "坐是同柱上下同根，引是天干十神对其余地支。它的价值，是把某一六亲或某件事落到人生阶段，而不是只背十神性格。",
+    items: [
+      ["四项流程", "先定来问的六亲或事项，再看根本好坏、近一至三年现状，最后把四柱坐引代入年限。"],
+      ["坐的两层", "一看天干十神坐生旺库绝，二看天干十神坐到地支禄位换出的十神。"],
+      ["引的两类", "天干引地支看某十神在别支旺绝，地支引地支则看禄旺死绝、叠旺叠绝和假设性引比。"],
+      ["实务边界", "坐引是局部范围，不替代全局格局、调候、刑冲合会和神煞，只负责把问事落点变清楚。"]
+    ],
+    cases: ["案例 3", "案例 15", "案例 64"]
+  },
+  {
+    title: "食神性格",
+    source: "第一层级第八节 / 食神",
+    intro: "食神的入门优势，是性格和现实福业较容易辨识；但它不是天然富贵，仍要看财、身根和偏印破格。",
+    items: [
+      ["性情", "食神成格多温和、宽宏、稳定输出，若无冲刑与偏印反克，可作寿星、爵星、进神看。"],
+      ["长辈妻子", "食神在年、月，可得长辈荫助；在日、时，可得妻与子之福，仍需看是否被冲破。"],
+      ["生财条件", "食神生财而日主有根，能力能落成收入；日主无根则泄尽日主，反成劳弱或贫困。"],
+      ["破格风险", "偏印破食，常见有始无终、心性偏狭、多学少成；女命还要看子女和身体。"]
+    ],
+    cases: ["案例 13", "案例 15", "案例 28"]
+  },
+  {
+    title: "伤官性格",
+    source: "第一层级第八节 / 伤官",
+    intro: "伤官不是只有“伤官见官”一句。它首先是才艺、锋芒、表达与反规则，其成败取决于有没有财印承接。",
+    items: [
+      ["才艺锋芒", "伤官格多才多艺、气高、自信，贵命有气势，平常命则易言辞刻薄、口舌是非。"],
+      ["弄巧成拙", "伤官常因轻敌、逞口才、看低他人而招忌，尤其在文书、合同、名誉和人际上应验。"],
+      ["财印承接", "伤官须配财或印，一偏一正不相战，才能把锋芒变成市场、作品、资质或保护。"],
+      ["柱位差异", "年伤官多看父母，月伤官女命重婚姻，日坐伤官主夫妻不和，时伤官则重子女刚强或有成。"]
+    ],
+    cases: ["案例 3", "案例 34", "案例 51"]
+  },
+  {
+    title: "女命子息",
+    source: "第一层级第八节 / 六亲",
+    intro: "食伤在男命不直接代表一类六亲；在女命则是子女星。女命看子息，要以时柱与食伤旺衰为主轴。",
+    items: [
+      ["看时柱", "子女是否有成，父母通常在五十岁以后才看得见，所以时柱比年、月、日更贴近子息成就。"],
+      ["禄绝", "庚日女命以壬癸为子星，亥子时为子旺，巳午时为子衰；其他日主也按我生者之禄绝推。"],
+      ["印克食伤", "时柱偏印，或时支为偏印旺支，皆作克制子星之论；若有财制印，再看是否缓解。"],
+      ["时伤官", "女命时柱伤官重，未必按妨夫看，常转向子女刚强、子女有成或晚年因子女而忙。"]
+    ],
+    cases: ["案例 5", "案例 35", "案例 66", "案例 69"]
+  },
+  {
+    title: "格局喜忌",
+    source: "第一层级第八节 / 格局",
+    intro: "第八节对食神格、伤官格只给初阶规则：食伤都要财，也都要日主强；离开这两点，才华未必能成福。",
+    items: [
+      ["都要财", "没有财的食神格，实质福业不足；伤官无财印承接，也容易只剩锋芒和冲突。"],
+      ["都要身强", "食伤泄日主，日主无根时，输出越多越耗身；两支食神当令且日主无根，尤其要谨慎。"],
+      ["制杀边界", "食神制专位七杀，或自坐食神又时支专位七杀而不透干，多成多败，不能只看一句制杀为吉。"],
+      ["财来财去", "食神专位成格而少财，常见财来财去；日支自坐食神库，也容易总觉钱不够用。"]
+    ],
+    cases: ["案例 10", "案例 24", "案例 58"]
+  },
+  {
+    title: "问事落点",
+    source: "第一层级第八节 / 实务问事",
+    intro: "坐引法特别适合处理单项问题：欠款、行业、婚期、子女、某段关系的现实条件。它要求把抽象十神变成具体场景。",
+    items: [
+      ["只问一事", "若只问债能否回来，先抓财星、比劫、食伤生财和岁运触发，不必把整套命局全部铺开。"],
+      ["盲点问事", "对长期压抑而问“我适合什么行业”“哪年结婚”的问题，先找最贴近事项的十神坐引。"],
+      ["现实条件", "婚姻不美满时，还要问哪个阶段、哪类伴侣条件更好，不用一句无夫或夫绝遮住现实差异。"],
+      ["案例复盘", "食伤页应优先连接婚姻、子女、财运、学业和性格案例，让用户看到同一食伤如何落成不同问题。"]
+    ],
+    cases: ["案例 1", "案例 51", "案例 55", "案例 80"]
+  }
+];
+
+const foodHurtOutputComparisons = [
+  {
+    title: "食神",
+    text: "温和输出、承福、口福、作品、学生与女命子女；喜财来承接，忌偏印夺食与日主无根。"
+  },
+  {
+    title: "伤官",
+    text: "强表达、才艺、技术、锋芒与反规则；要财印转化，否则易口舌、文书、婚姻和规则冲突。"
+  },
+  {
+    title: "食伤生财",
+    text: "能力进入市场的路径，但必须看日主是否能担、财是否有根、输出是否被印星截断。"
+  },
+  {
+    title: "印克食伤",
+    text: "吸收、保护或压力压住输出；在女命子息、健康、作品、表达和行动力上都要谨慎。"
+  }
+];
+
+const foodHurtOutputWorkflow = [
+  {
+    title: "定问事",
+    text: "先问是子女、婚姻、财运、职业、学业，还是单一债务或应期。不同问题使用的食伤落点不同。"
+  },
+  {
+    title: "分食伤",
+    text: "食神偏稳定输出，伤官偏强表达和破规则。先分性情和功能，再看格局名。"
+  },
+  {
+    title: "查坐引",
+    text: "看食伤落在哪一柱、坐什么地支、引到何处旺绝，并换算到年限和六亲。"
+  },
+  {
+    title: "看财印",
+    text: "食伤要财承接，也怕印截断。财、印、日主根气决定才华是成事、耗身还是反复。"
+  },
+  {
+    title: "接案例",
+    text: "最后用案例原图复盘：同一食伤，可以应在婚姻、子女、钱财、学业、性格或健康。"
+  }
+];
+
+const foodHurtOutputCaseIds = [
+  "案例 1",
+  "案例 3",
+  "案例 5",
+  "案例 10",
+  "案例 13",
+  "案例 15",
+  "案例 24",
+  "案例 28",
+  "案例 34",
+  "案例 35",
+  "案例 51",
+  "案例 55",
+  "案例 58",
+  "案例 66",
+  "案例 69",
+  "案例 80"
+];
 
 const peerRobWealthPrinciples = [
   {
@@ -5239,6 +5395,7 @@ function SiteShell() {
         <Route path="/advanced/luck-cycle-structure" element={<LuckCycleStructurePage />} />
         <Route path="/advanced/ten-god-rules" element={<TenGodRulesPage />} />
         <Route path="/advanced/peer-rob-wealth" element={<PeerRobWealthPage />} />
+        <Route path="/advanced/food-hurt-output" element={<FoodHurtOutputPage />} />
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
         <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
         <Route path="/advanced/day-hour-classics" element={<DayHourClassicsPage />} />
@@ -5718,6 +5875,34 @@ function PeerRobWealthPage() {
       >
         <PeerRobWealth />
         <CaseStudies detail={{ title: "比劫禄刃" }} items={peerCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function FoodHurtOutputPage() {
+  const foodHurtCases = foodHurtOutputCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Food Hurt"
+        title="食伤坐引"
+        copy="把第八节食神、伤官拆成坐引流程、性格差异、女命子息、格局喜忌和单项问事的实务判断。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/food-hurt-output" })),
+          { label: "判断原则", href: "#food-hurt-principles" },
+          ...foodHurtOutputSections.map((section) => ({ label: section.title, href: `#food-hurt-${section.title}` })),
+          { label: "四类对照", href: "#food-hurt-comparisons" },
+          { label: "判断流程", href: "#food-hurt-workflow" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <FoodHurtOutput />
+        <CaseStudies detail={{ title: "食伤坐引" }} items={foodHurtCases} />
       </ContentLayout>
     </main>
   );
@@ -7665,6 +7850,90 @@ function PeerRobWealth() {
         </div>
         <div className="family-rule-grid">
           {peerRobWealthWorkflow.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FoodHurtOutput() {
+  return (
+    <section className="food-hurt-section" id="food-hurt-output" aria-labelledby="food-hurt-title">
+      <div className="section-heading">
+        <p className="eyebrow">Food / Hurt Output</p>
+        <h2 id="food-hurt-title">食伤不是只看才华</h2>
+      </div>
+      <div className="rules-lead">
+        <p>第八节真正重要的，是把食神、伤官放进坐、引、拱的流程里：先看问事，再看柱位年限、六亲、财印承接和案例反馈。</p>
+        <a className="source-link" href={assetUrl("/content/食伤坐引.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看食伤坐引整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="food-hurt-principles">
+        {foodHurtOutputPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections food-hurt-flow">
+        {foodHurtOutputSections.map((section) => (
+          <article className="flow-section" id={`food-hurt-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="food-hurt-comparisons">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Comparison</p>
+            <h3>食神、伤官、财印四类对照</h3>
+          </div>
+          <p>同样是输出，实务里要分温和承福、锋芒破规、市场承接和印星截断。</p>
+        </div>
+        <div className="family-rule-grid">
+          {foodHurtOutputComparisons.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="report-template-panel" id="food-hurt-workflow">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Workflow</p>
+            <h3>食伤坐引五步判断</h3>
+          </div>
+          <p>先把问题收窄，再分食神伤官，随后查坐引、财印和案例，不让术语盖过现实问题。</p>
+        </div>
+        <div className="family-rule-grid">
+          {foodHurtOutputWorkflow.map((item) => (
             <article className="family-rule-card" key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.text}</p>

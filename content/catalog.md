@@ -16,6 +16,7 @@
 - 十干高级：`/advanced/stem-classics`，资料稿 `/content/十干高级.md`
 - 日时组合：`/advanced/day-hour-classics`，资料稿 `/content/日时组合.md`
 - 比劫禄刃：`/advanced/peer-rob-wealth`，资料稿 `/content/比劫禄刃.md`
+- 食伤坐引：`/advanced/food-hurt-output`，资料稿 `/content/食伤坐引.md`
 - 学习批命：`/advanced/reading-method`，资料稿 `/content/学习批命.md`
 - 基层命学：`/advanced/grassroots-method`，资料稿 `/content/基层命学.md`
 - 女命专题：`/advanced/female-chart`，资料稿 `/content/女命专题.md`
