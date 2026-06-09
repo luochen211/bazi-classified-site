@@ -250,6 +250,7 @@ const advancedDirectoryItems = [
   { label: "神煞源流", href: "/advanced/shen-sha-origin" },
   { label: "大运流年", href: "/advanced/luck-cycle" },
   { label: "流年细表", href: "/advanced/luck-cycle-tables" },
+  { label: "十神细则", href: "/advanced/ten-god-rules" },
   { label: "实务组合", href: "/advanced/practical-combinations" },
   { label: "十干高级", href: "/advanced/stem-classics" },
   { label: "学习批命", href: "/advanced/reading-method" },
@@ -1393,6 +1394,137 @@ const luckCycleDetailRules = [
 ];
 
 const luckCycleDetailCaseIds = ["案例 10", "案例 15", "案例 55", "案例 57", "案例 63", "案例 80", "案例 81"];
+
+const tenGodRulePrinciples = [
+  {
+    title: "过多先定标准",
+    text: "《命学精华》常用“干支双透二柱以上”“四柱三见以上”“四见以上”作为过多或重逢的入口，先定量，再谈吉凶。"
+  },
+  {
+    title: "同柱最贴身",
+    text: "十神坐比劫、坐食伤、坐财官印，和单独出现不同。同柱代表同一件现实关系里同时带两股力量。"
+  },
+  {
+    title: "空亡与十二运只补状态",
+    text: "坐空亡、坐长生、沐浴、墓、绝等，不直接替代格局喜忌，而是说明该十神代表的人事强弱、迟速和虚实。"
+  },
+  {
+    title: "六亲定位不做泛化",
+    text: "原文多次强调六亲定位是一对一的现实取象：父、母、妻、夫、子、兄弟各自回到对应十神，不把所有规则混成一句吉凶。"
+  }
+];
+
+const tenGodRuleCards = [
+  {
+    god: "比肩",
+    source: "命学精华 / 比肩",
+    excess: "干支双透二柱以上，或四柱三见以上。天干三见成天元一气者另论。",
+    rules: ["过多主兄弟少助、夫妻不和、贵格亦劳碌。", "有相等官杀制比，可减轻过多之象。", "比肩坐空亡，不利父亲与妻星；比肩逢阳刃、支逢刑冲，风险加重。"],
+    family: "兄弟、同辈、朋友、竞争者；男命也要回看妻财是否被分夺。",
+    cases: ["案例 10", "案例 22", "案例 78"]
+  },
+  {
+    god: "劫财",
+    source: "命学精华 / 劫财",
+    excess: "天干透二柱，或一地支透二天干，皆可视为劫财气重。",
+    rules: ["多劫财主高傲、取巧、是非、因小失大。", "根坐日支或干支同柱，夫妇多不圆满，合作有始无终。", "劫财、伤官、阳刃同柱最忌，财务、婚姻和晚年子息都要谨慎。"],
+    family: "同辈、竞争者、合作人；能克偏财，常牵动父亲、钱财、妻星。",
+    cases: ["案例 9", "案例 55", "案例 78"]
+  },
+  {
+    god: "偏印",
+    source: "命学精华 / 偏印",
+    excess: "根透二柱，多主孤独、病象、作事有始无终。",
+    rules: ["偏印在年干支俱透，不利长亲。", "日坐偏印专位，不论男女，姻缘要谨慎。", "偏印坐伤官，女命重看夫子；偏印得财星、月德同柱，可凶变为吉。"],
+    family: "偏母、长亲、偏门资源、精神保护；贴食神时看枭神夺食。",
+    cases: ["案例 5", "案例 66", "案例 72"]
+  },
+  {
+    god: "正印",
+    source: "命学精华 / 正印",
+    excess: "正印过多，男命看妻子息，女命看母亲；印旺身旺也可能孤寂贫困。",
+    rules: ["月柱干支透正印，聪明有谋，但容易以己为中心。", "正印在月，大忌年时正财冲刑，母家凋败，也忌食伤。", "印有比肩不怕财运，无比肩畏财。"],
+    family: "母亲、长辈、贵人、学历、房产、系统保护。",
+    cases: ["案例 2", "案例 67", "案例 73"]
+  },
+  {
+    god: "偏财",
+    source: "命学精华 / 偏财",
+    excess: "偏财过多，重情欲、好酒色；合咸池或遇刑冲，容易因财色引祸。",
+    rules: ["偏财根旺，为人慷慨重义，有财缘女缘。", "偏财坐比劫，父去他乡或财被同辈耗散。", "时柱偏财而年月见比劫，荡败家产、伤妻刑子，入比劫运尤忌。"],
+    family: "父亲、机会财、情缘、市场资源；女命也看婆家关系。",
+    cases: ["案例 15", "案例 66", "案例 75"]
+  },
+  {
+    god: "正财",
+    source: "命学精华 / 正财",
+    excess: "正财过多，女人散财、克母；财多身弱，常见惧内、妻有权或财务压力。",
+    rules: ["正财首须日干强，始可论福。", "日支正财遇刑冲，妻不得力；正财入空亡，晚年败，妻缘淡薄。", "月柱正财大忌冲刑或阳刃运。"],
+    family: "妻星、稳定收入、父亲、现实责任、现金流。",
+    cases: ["案例 15", "案例 33", "案例 81"]
+  },
+  {
+    god: "正官",
+    source: "命学精华 / 正官",
+    excess: "四见正官，主虚名虚利；四柱皆正官再行正官运，主凶。",
+    rules: ["一位正官，无七杀、伤官、冲刑，主为人笃厚。", "正官坐伤官，多损眷属；女命尤其看夫星受伤。", "正官被大运六合者，失职；岁运冲正官，易见讼诉纷争。"],
+    family: "女命夫星、男命女儿、职位、规则、名分、上级。",
+    cases: ["案例 2", "案例 6", "案例 70"]
+  },
+  {
+    god: "七杀",
+    source: "命学精华 / 七杀",
+    excess: "七杀过多，好酒争色、固执不纳人言；杀重无制，先看压力和风险。",
+    rules: ["月柱七杀坐阳刃，父母缘薄，忌冲刑。", "七杀、食神、阳刃全者可发，但以食前杀后为宜。", "女命七杀坐空亡夫缘薄，七杀逢三刑夫妇不和。"],
+    family: "男命儿子、女命偏缘、风险压力、权力竞争、危险工具。",
+    cases: ["案例 10", "案例 58", "案例 75"]
+  },
+  {
+    god: "食神",
+    source: "命学精华 / 食神",
+    excess: "食神过多作伤官论；四见食神以上，穷困、二亲缘薄。",
+    rules: ["食神在先、七杀在后，名利皆全。", "食神与偏印同柱，孤寂；食神、七杀、偏印同柱，不贫则短寿。", "食神入空亡或冲刑者，早离母、多劳心。"],
+    family: "女命子女、男命输出福气、作品、学生、享受与口福。",
+    cases: ["案例 1", "案例 5", "案例 51"]
+  },
+  {
+    god: "伤官",
+    source: "命学精华 / 伤官",
+    excess: "伤官多，手艺自视不凡；四柱多伤官，有子难留，行伤官运有灾。",
+    rules: ["伤官须配财、印，且一偏一正，不致相战。", "伤官坐阳刃为背禄，不吉。", "女命伤官无财，夫妻易散；日坐伤官，夫星要谨慎。"],
+    family: "女命儿子、男命祖母孙女、才华表达、规则冲突、子息压力。",
+    cases: ["案例 3", "案例 4", "案例 55"]
+  }
+];
+
+const tenGodFamilyRules = [
+  {
+    title: "父母",
+    items: ["偏财为父，正印为母；比劫重则克偏财，财重则破印。", "七杀能生正印，母亲晚景可看杀印相生；伤官能生偏财，父亲晚景可看伤官生财。"]
+  },
+  {
+    title: "夫妻",
+    items: ["男命正财为妻，财旺身强，夫妻易偕老；日支正财遇刑冲，妻不得力。", "女命正官为夫，伤官重则伤夫星；官杀混杂、七杀三刑，都要回到清浊远近。"]
+  },
+  {
+    title: "子息",
+    items: ["男命以官杀看子息，食神过多会制杀过度。", "女命以食伤为子息，印旺能克食伤，见财制印时可缓。"]
+  },
+  {
+    title: "兄弟",
+    items: ["比肩、劫财为兄弟同类；比肩逢禄，兄弟名高。", "官鬼重则制比劫，兄弟易消疏；月日冲刑，也主兄弟六亲无力。"]
+  },
+  {
+    title: "六亲冲刑",
+    items: ["年冲月，祖上根基不守；日冲时，妻子难为。", "外冲看六亲无力，内冲多看夫妇不协；刑者损六亲。"]
+  },
+  {
+    title: "财官印全",
+    items: ["岁月财官印全，常作三代祖先富贵或出身有力。", "日时煞刃逢枭，则半路妻儿亏损，要看具体宫位和冲刑。"]
+  }
+];
+
+const tenGodRulesCaseIds = ["案例 1", "案例 3", "案例 5", "案例 10", "案例 15", "案例 22", "案例 55", "案例 66", "案例 70", "案例 78", "案例 81"];
 
 const practicalCombinationSections = [
   {
@@ -3840,6 +3972,7 @@ function SiteShell() {
         <Route path="/advanced/shen-sha-origin" element={<ShenShaOriginPage />} />
         <Route path="/advanced/luck-cycle" element={<LuckCyclePage />} />
         <Route path="/advanced/luck-cycle-tables" element={<LuckCycleTablesPage />} />
+        <Route path="/advanced/ten-god-rules" element={<TenGodRulesPage />} />
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
         <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
         <Route path="/advanced/reading-method" element={<ReadingMethodPage />} />
@@ -4176,6 +4309,33 @@ function LuckCycleTablesPage() {
       >
         <LuckCycleTables />
         <CaseStudies detail={{ title: "流年细表" }} items={detailCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function TenGodRulesPage() {
+  const ruleCases = tenGodRulesCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Ten Gods"
+        title="十神细则"
+        copy="把《命学精华》的十神过多、同柱、空亡、十二运和六亲定位整理成可检索的进阶规则。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/ten-god-rules" })),
+          { label: "使用边界", href: "#ten-god-rule-principles" },
+          { label: "十神细则", href: "#ten-god-rule-cards" },
+          { label: "六亲定位", href: "#ten-god-family-rules" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <TenGodRules />
+        <CaseStudies detail={{ title: "十神细则" }} items={ruleCases} />
       </ContentLayout>
     </main>
   );
@@ -5560,6 +5720,89 @@ function LuckCycleTables() {
             </div>
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function TenGodRules() {
+  return (
+    <section className="ten-god-rules-section" id="ten-god-rules" aria-labelledby="ten-god-rules-title">
+      <div className="section-heading">
+        <p className="eyebrow">Ten Gods Rules</p>
+        <h2 id="ten-god-rules-title">从基础十神进入细则判断</h2>
+      </div>
+      <div className="rules-lead">
+        <p>十神基础页解决“这是什么”，细则页解决“什么时候过多、坐什么会变、对应哪位六亲、岁运怎么引动”。</p>
+        <a className="source-link" href={assetUrl("/content/十神细则.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看十神细则整理稿
+        </a>
+      </div>
+
+      <div className="source-matrix" id="ten-god-rule-principles">
+        {tenGodRulePrinciples.map((item) => (
+          <article className="source-matrix-card" key={item.title}>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="ten-god-rule-grid" id="ten-god-rule-cards">
+        {tenGodRuleCards.map((item) => (
+          <article className="ten-god-rule-card" id={`ten-god-rule-${item.god}`} key={item.god}>
+            <div className="ten-god-rule-head">
+              <p className="eyebrow">{item.source}</p>
+              <h3>{item.god}</h3>
+            </div>
+            <dl>
+              <div>
+                <dt>过多标准</dt>
+                <dd>{item.excess}</dd>
+              </div>
+              <div>
+                <dt>细则断点</dt>
+                <dd>
+                  <ul>
+                    {item.rules.map((rule) => (
+                      <li key={rule}>{rule}</li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt>六亲落点</dt>
+                <dd>{item.family}</dd>
+              </div>
+            </dl>
+            <div className="case-tags" aria-label={`${item.god}相关案例`}>
+              {item.cases.map((caseId) => (
+                <span key={caseId}>{caseId}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="report-template-panel" id="ten-god-family-rules">
+        <div className="section-heading">
+          <p className="eyebrow">Family Mapping</p>
+          <h3>六亲定位要一对一回看</h3>
+          <p>《命学精华》的十神细则不是为了套标签，而是把父母、夫妻、子息、兄弟各自放回十神和宫位。</p>
+        </div>
+        <div className="family-rule-grid">
+          {tenGodFamilyRules.map((rule) => (
+            <article className="family-rule-card" key={rule.title}>
+              <h4>{rule.title}</h4>
+              <ul>
+                {rule.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

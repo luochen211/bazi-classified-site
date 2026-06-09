@@ -15,6 +15,7 @@
 - 基层命学：`/advanced/grassroots-method`，资料稿 `/content/基层命学.md`
 - 女命专题：`/advanced/female-chart`，资料稿 `/content/女命专题.md`
 - 格局用神：`/advanced/pattern-use-god`，资料稿 `/content/格局用神.md`
+- 十神细则：`/advanced/ten-god-rules`，资料稿 `/content/十神细则.md`
 - 案例库：`/cases`，资料稿 `/content/案例总索引.md`，原图清单 `/assets/cases/manifest.tsv`
 - 实战流程：`/basics/practice-flow`
 - 十神组合断点：`/basics/ten-gods/combinations`，资料稿 `/content/十神组合断点.md`
@@ -158,6 +159,7 @@
 建议文章：
 
 - 十神不是性格标签，而是行为动力
+- 十神细则：过多、同柱、空亡与六亲定位怎么合看
 - 印重、食伤旺、财旺、官杀重分别怎么表现
 - 身强身弱如何影响人的行动方式
 - 从命局结构写人物画像

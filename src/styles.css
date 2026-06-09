@@ -426,6 +426,7 @@ h1 {
 .content-main > .shen-sha-origin-section,
 .content-main > .luck-cycle-section,
 .content-main > .luck-cycle-table-section,
+.content-main > .ten-god-rules-section,
 .content-main > .practical-combinations-section,
 .content-main > .stem-classics-section,
 .content-main > .reading-method-section,
@@ -498,6 +499,10 @@ h1 {
 }
 
 .luck-cycle-table-section {
+  background: #fffaf2;
+}
+
+.ten-god-rules-section {
   background: #fffaf2;
 }
 
@@ -915,6 +920,97 @@ h1 {
   padding-top: 12px;
   color: var(--ink);
   line-height: 1.7;
+}
+
+.ten-god-rule-grid {
+  display: grid;
+  gap: 1px;
+  margin-top: 42px;
+  background: var(--line);
+}
+
+.ten-god-rule-card {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.22fr) minmax(0, 1fr) minmax(170px, 0.18fr);
+  gap: 28px;
+  padding: clamp(24px, 4vw, 42px);
+  background: #f5efe5;
+  scroll-margin-top: 96px;
+}
+
+.ten-god-rule-head h3 {
+  margin: 10px 0 0;
+  color: var(--red);
+  font-size: clamp(34px, 4.4vw, 56px);
+  line-height: 1;
+}
+
+.ten-god-rule-card dl {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  background: var(--line);
+}
+
+.ten-god-rule-card dl div {
+  display: grid;
+  grid-template-columns: minmax(96px, 0.2fr) minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px 20px;
+  background: #fffaf2;
+}
+
+.ten-god-rule-card dt {
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.ten-god-rule-card dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.ten-god-rule-card ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.ten-god-rule-card .case-tags {
+  align-content: start;
+  margin: 0;
+}
+
+.family-rule-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 24px;
+  background: var(--line);
+}
+
+.family-rule-card {
+  min-height: 250px;
+  padding: 24px;
+  background: #f5efe5;
+}
+
+.family-rule-card h4 {
+  margin: 0 0 18px;
+  color: var(--red);
+  font-size: 26px;
+  line-height: 1.18;
+}
+
+.family-rule-card ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.75;
 }
 
 .grassroots-system-grid {
@@ -2172,6 +2268,7 @@ body.modal-open {
   .learning-stage-grid,
   .report-template-grid,
   .month-hour-grid,
+  .family-rule-grid,
   .grassroots-rule-grid,
   .body-image-grid,
   .source-matrix,
@@ -2194,6 +2291,7 @@ body.modal-open {
   .intro,
   .detail-panel,
   .flow-section,
+  .ten-god-rule-card,
   .shen-sha-group,
   .stem-classic-card,
   .grassroots-system-card,
@@ -2327,6 +2425,7 @@ body.modal-open {
   .learning-stage-grid,
   .report-template-grid,
   .month-hour-grid,
+  .family-rule-grid,
   .grassroots-rule-grid,
   .body-image-grid,
   .source-matrix,
@@ -2346,6 +2445,8 @@ body.modal-open {
   }
 
   .raw-theory-card,
+  .ten-god-rule-card,
+  .ten-god-rule-card dl div,
   .shen-sha-group,
   .stem-classic-card,
   .grassroots-system-card,
