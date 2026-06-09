@@ -11,6 +11,7 @@
 - 神煞源流：`/advanced/shen-sha-origin`，资料稿 `/content/神煞源流.md`
 - 健康风险：`/advanced/health-risk`，资料稿 `/content/健康风险.md`
 - 大运流年：`/advanced/luck-cycle`，资料稿 `/content/大运流年.md`
+- 命宫流年：`/advanced/life-palace-cycle`，资料稿 `/content/命宫流年.md`
 - 流年架构：`/advanced/luck-cycle-structure`，资料稿 `/content/流年架构.md`
 - 比肩入门：`/advanced/peer-foundation`，资料稿 `/content/比肩入门.md`
 - 实务组合：`/advanced/practical-combinations`，资料稿 `/content/实务组合.md`

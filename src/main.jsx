@@ -251,6 +251,7 @@ const advancedDirectoryItems = [
   { label: "神煞源流", href: "/advanced/shen-sha-origin" },
   { label: "健康风险", href: "/advanced/health-risk" },
   { label: "大运流年", href: "/advanced/luck-cycle" },
+  { label: "命宫流年", href: "/advanced/life-palace-cycle" },
   { label: "流年细表", href: "/advanced/luck-cycle-tables" },
   { label: "流年架构", href: "/advanced/luck-cycle-structure" },
   { label: "十神细则", href: "/advanced/ten-god-rules" },
@@ -3860,6 +3861,132 @@ const lifePalaceStars = [
   ["亥", "天寿星", "心慈明悟，克己助人。"]
 ];
 
+const lifePalaceCyclePrinciples = [
+  {
+    title: "命宫只作辅助",
+    text: "命宫补后天自我、行动力、机遇圈、房产与人际，不替代四柱原局、格局喜忌和大运流年主线。"
+  },
+  {
+    title: "先查宫，再看星",
+    text: "《大流年判例》先用农历生月和生时查命宫，再以十二宫星给出性格与环境提示。星名只是入口，不是独立断语。"
+  },
+  {
+    title: "冲刑才入应事",
+    text: "命宫与四柱、大运、流年有冲刑时，才更容易落到人际、事业单位、房产、官司纠纷等现实事件。"
+  },
+  {
+    title: "命坐十二运",
+    text: "命坐长生、沐浴、冠带等，不按扶日主强弱粗断，而是看后天处世方式、稳定度、后悔感、独立心和承接环境。"
+  }
+];
+
+const lifePalaceCycleSections = [
+  {
+    title: "查法边界",
+    source: "大流年判例 / 命宫查表",
+    intro: "命宫查法以农历生月和生时对照。页面不把查表作为核心，而把查出的命宫如何进入判断流程讲清楚。",
+    items: [
+      ["查表入口", "例如三月生人、生时八点，原文示例为酉宫。查得宫位后再看十二星提示。"],
+      ["不用替代四柱", "命宫不能取代年、月、日、时四柱，也不能取代十神、格局和岁运。"],
+      ["先看合冲", "命宫与四柱有冲刑者不吉；若与四柱喜神相合，可看人事助力和后天机会。"],
+      ["接入岁运", "大运流年冲合命宫时，才把它放进应期流程，看是否触发房产、人际、单位或纠纷。"]
+    ],
+    cases: ["案例 10", "案例 53", "案例 80"]
+  },
+  {
+    title: "十二星",
+    source: "大流年判例 / 命宫吉凶对照表",
+    intro: "十二星是命宫的第一层提示：有的重贵气，有的重劳碌，有的重孤性，有的重文艺。要转成现代生活场景。",
+    items: [
+      ["子午轴", "子宫天贵星主志气清吉；午宫天福星主荣华福分。二者都不能脱离四柱承接。"],
+      ["丑未轴", "丑宫天厄星先难后吉，未宫天驿星劳碌离祖，都容易落到离乡、压力和后成。"],
+      ["申酉轴", "申宫天孤星不宜早婚，酉宫天秘星刚直是非，常与人际关系和婚姻节奏有关。"],
+      ["巳戌轴", "巳宫天文星主文章奋发，戌宫天艺星主艺道有名，适合接文艺、专业、表达类主题。"]
+    ],
+    cases: ["案例 33", "案例 67", "案例 75"]
+  },
+  {
+    title: "命坐十二运",
+    source: "大流年判例 / 双轨命学",
+    intro: "原文特别说明，命坐十二运不是简单扶身旺衰，而是后天处世气质。它更像个人进入世界的姿态。",
+    items: [
+      ["长生", "命坐长生，适合在保护性环境、大企业、现成基础上发展，不宜逆境硬闯。"],
+      ["沐浴", "命坐沐浴不是只看桃花，而是容易后悔、厌倦既有存在，对感情和事务都容易换念头。"],
+      ["临官", "命坐临官，自信有实力、喜独立、不愿领人情，先做后谈，不畏波折。"],
+      ["墓绝胎养", "墓主有条理且有距离；绝可极静极动，适合群体与军政；胎偏虚弱宜设计观察；养受母亲影响大。"]
+    ],
+    cases: ["案例 2", "案例 56", "案例 81"]
+  },
+  {
+    title: "四柱合看",
+    source: "胎命身 / 大流年判例",
+    intro: "命宫入判断时，要和年、月、日、时分工合看。它补充后天自我，不改变四柱各自的人生阶段。",
+    items: [
+      ["年柱", "命宫与年柱合冲，常看祖上、早年环境、家族保护和离祖信息。"],
+      ["月柱", "命宫与月柱合冲，常看青年社会入口、单位关系、父母助力和事业环境。"],
+      ["日柱", "命宫与日柱合冲，常看自我与配偶、中年选择、房产和关系摩擦。"],
+      ["时柱", "命宫与时柱合冲，常看晚年、子女、后期财务、人际圈和持续经营。"]
+    ],
+    cases: ["案例 15", "案例 57", "案例 63"]
+  },
+  {
+    title: "岁运触发",
+    source: "大运流年 / 命宫辅助",
+    intro: "命宫最适合放在岁运触发层：原局有伏笔，大运成势，流年冲合命宫时，才更容易出现具体事件。",
+    items: [
+      ["大运", "大运冲合命宫，先看这个十年是否改变生活圈、单位、房产、人际网络。"],
+      ["流年", "流年冲合命宫，常作为具体触发点，配合四柱宫位判断落在人、事、房、单位还是纠纷。"],
+      ["流月", "若大运流年已经成势，流月再冲合命宫，可作为更细的月份落点。"],
+      ["神煞", "命宫遇贵人、驿马、桃花、孤寡等，不直接断吉凶，仍要看日主、宫位和岁运承接。"]
+    ],
+    cases: ["案例 10", "案例 64", "案例 80"]
+  }
+];
+
+const lifePalaceCycleFortunes = [
+  {
+    title: "生发组",
+    text: "长生宜保护环境，沐浴多后悔厌倦，冠带有初生之犊的支配欲，临官自信独立。"
+  },
+  {
+    title: "旺衰组",
+    text: "帝旺有盛极欲退之象，衰能守成自谦，病知条件不如人而谨慎或试探，死外柔内刚能坚持到底。"
+  },
+  {
+    title: "收纳组",
+    text: "墓有条理但有距离，绝可极静极闹且适合群体，胎体型偏弱宜观察设计，养受母亲影响大且顾全大局。"
+  },
+  {
+    title: "现实转译",
+    text: "命坐十二运不拿来单独定富贵，而是转译成职业环境、关系稳定度、房产人际和岁运触发后的行为倾向。"
+  }
+];
+
+const lifePalaceCycleWorkflow = [
+  {
+    title: "先查命宫",
+    text: "用农历生月和生时查宫位，只确认后天自我与机遇圈的入口。"
+  },
+  {
+    title: "看十二星",
+    text: "把天贵、天厄、天权等星名转成现代处境，不直接照字面断吉凶。"
+  },
+  {
+    title: "接十二运",
+    text: "看命坐长生、沐浴、临官、墓绝等后天姿态，补性格和环境适配。"
+  },
+  {
+    title: "合四柱",
+    text: "命宫与年、月、日、时的合冲刑，分别落回早年、社会、夫妻、晚年。"
+  },
+  {
+    title: "验岁运",
+    text: "大运流年流月冲合命宫时，才进入应期复盘，和案例反馈互相校正。"
+  }
+];
+
+const lifePalaceCycleCaseIds = ["案例 2", "案例 10", "案例 15", "案例 33", "案例 53", "案例 56", "案例 57", "案例 63", "案例 64", "案例 67", "案例 75", "案例 80", "案例 81"];
+
 const elementBasics = [
   {
     formula: "水多木浮",
@@ -6134,6 +6261,7 @@ function SiteShell() {
         <Route path="/advanced/shen-sha-origin" element={<ShenShaOriginPage />} />
         <Route path="/advanced/health-risk" element={<HealthRiskPage />} />
         <Route path="/advanced/luck-cycle" element={<LuckCyclePage />} />
+        <Route path="/advanced/life-palace-cycle" element={<LifePalaceCyclePage />} />
         <Route path="/advanced/luck-cycle-tables" element={<LuckCycleTablesPage />} />
         <Route path="/advanced/luck-cycle-structure" element={<LuckCycleStructurePage />} />
         <Route path="/advanced/ten-god-rules" element={<TenGodRulesPage />} />
@@ -6514,6 +6642,35 @@ function LuckCyclePage() {
       >
         <LuckCycle />
         <CaseStudies detail={{ title: "大运流年" }} items={luckCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function LifePalaceCyclePage() {
+  const palaceCases = lifePalaceCycleCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Life Palace"
+        title="命宫流年"
+        copy="把《大流年判例》的命宫查法、十二星、命坐十二运和岁运冲刑，接到胎命身与大运流年的判断流程。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/life-palace-cycle" })),
+          { label: "使用原则", href: "#life-palace-principles" },
+          ...lifePalaceCycleSections.map((section) => ({ label: section.title, href: `#life-palace-${section.title}` })),
+          { label: "十二星表", href: "#life-palace-stars-table" },
+          { label: "十二运转译", href: "#life-palace-fortunes" },
+          { label: "判断流程", href: "#life-palace-workflow" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <LifePalaceCycle />
+        <CaseStudies detail={{ title: "命宫流年" }} items={palaceCases} />
       </ContentLayout>
     </main>
   );
@@ -8435,6 +8592,102 @@ function LuckCycle() {
             </div>
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function LifePalaceCycle() {
+  return (
+    <section className="life-palace-cycle-section" id="life-palace-cycle" aria-labelledby="life-palace-title">
+      <div className="section-heading">
+        <p className="eyebrow">Life Palace / Luck Cycle</p>
+        <h2 id="life-palace-title">命宫要接到岁运才有落点</h2>
+      </div>
+      <div className="rules-lead">
+        <p>命宫不是另起一套断命法，而是补充后天自我、机遇圈、房产人际和岁运触发。用它时仍要回到四柱主线。</p>
+        <a className="source-link" href={assetUrl("/content/命宫流年.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看命宫流年整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="life-palace-principles">
+        {lifePalaceCyclePrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections life-palace-flow">
+        {lifePalaceCycleSections.map((section) => (
+          <article className="flow-section" id={`life-palace-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="matrix-panel" id="life-palace-stars-table">
+        <h3>命宫十二星</h3>
+        <div className="palace-grid">
+          {lifePalaceStars.map(([branch, star, text]) => (
+            <article className="palace-card" key={branch}>
+              <strong>{branch}</strong>
+              <span>{star}</span>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="report-template-panel" id="life-palace-fortunes">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Twelve Fortunes</p>
+            <h3>命坐十二运的现实转译</h3>
+          </div>
+          <p>十二运在这里不直接等同扶身强弱，而是看后天姿态、环境适配和关系稳定度。</p>
+        </div>
+        <div className="family-rule-grid">
+          {lifePalaceCycleFortunes.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="report-template-panel" id="life-palace-workflow">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Workflow</p>
+            <h3>命宫流年五步判断</h3>
+          </div>
+          <p>从查宫位到岁运触发，命宫只作为辅助层进入复盘。</p>
+        </div>
+        <div className="family-rule-grid">
+          {lifePalaceCycleWorkflow.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

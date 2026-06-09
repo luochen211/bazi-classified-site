@@ -427,6 +427,7 @@ h1 {
 .content-main > .shen-sha-origin-section,
 .content-main > .health-risk-section,
 .content-main > .luck-cycle-section,
+.content-main > .life-palace-cycle-section,
 .content-main > .luck-cycle-table-section,
 .content-main > .luck-cycle-structure-section,
 .content-main > .ten-god-rules-section,
@@ -520,6 +521,10 @@ h1 {
 }
 
 .luck-cycle-section {
+  background: #fffaf2;
+}
+
+.life-palace-cycle-section {
   background: #fffaf2;
 }
 
@@ -623,6 +628,7 @@ h1 {
 .indirect-wealth-flow,
 .seal-wealth-flow,
 .officer-killing-flow,
+.life-palace-flow,
 .pattern-foundation-flow,
 .eight-pattern-flow,
 .two-sided-use-god-flow,
@@ -641,6 +647,7 @@ h1 {
 .indirect-wealth-section .family-rule-grid,
 .seal-wealth-section .family-rule-grid,
 .officer-killing-section .family-rule-grid,
+.life-palace-cycle-section .family-rule-grid,
 .pattern-foundation-section .family-rule-grid,
 .eight-pattern-section .family-rule-grid,
 .two-sided-use-god-section .family-rule-grid,
@@ -2672,6 +2679,10 @@ body.modal-open {
   }
 
   .officer-killing-section .family-rule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .life-palace-cycle-section .family-rule-grid {
     grid-template-columns: 1fr;
   }
 
