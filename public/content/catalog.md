@@ -17,6 +17,7 @@
 - 女命诗诀：`/advanced/female-chart-poems`，资料稿 `/content/女命诗诀.md`
 - 格局用神：`/advanced/pattern-use-god`，资料稿 `/content/格局用神.md`
 - 用神沿革：`/advanced/use-god-history`，资料稿 `/content/用神沿革.md`
+- 顺用格局：`/advanced/favorable-patterns`，资料稿 `/content/顺用格局.md`
 - 十神细则：`/advanced/ten-god-rules`，资料稿 `/content/十神细则.md`
 - 案例库：`/cases`，资料稿 `/content/案例总索引.md`，原图清单 `/assets/cases/manifest.tsv`
 - 实战流程：`/basics/practice-flow`

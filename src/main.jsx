@@ -259,6 +259,7 @@ const advancedDirectoryItems = [
   { label: "女命诗诀", href: "/advanced/female-chart-poems" },
   { label: "格局用神", href: "/advanced/pattern-use-god" },
   { label: "用神沿革", href: "/advanced/use-god-history" },
+  { label: "顺用格局", href: "/advanced/favorable-patterns" },
   { label: "分析框架", href: "/advanced#method" }
 ];
 
@@ -1877,6 +1878,109 @@ const useGodHistoryTranslations = [
 ];
 
 const useGodHistoryCaseIds = ["案例 2", "案例 52", "案例 56", "案例 57", "案例 63", "案例 67", "案例 75", "案例 81"];
+
+const favorablePatternPrinciples = [
+  {
+    title: "先分顺逆",
+    text: "正官格、正印格、食神格、财格属顺用，不宜被克；七杀、伤官、偏印、羊刃属逆用，可以制化。"
+  },
+  {
+    title: "先看月令",
+    text: "《三命通会》取格重天透地藏，月令为正。他柱可以参考，但不能把月令优先级抹掉。"
+  },
+  {
+    title: "先看破格",
+    text: "正官怕伤官、官杀混杂、合官、冲官；财格怕比劫、禄刃、合财、冲财；印格怕财无通关。"
+  },
+  {
+    title: "先看通关",
+    text: "顺用格被克时，不是硬说坏，要看财、印、官杀能否通关，或反对之神是否引到衰绝。"
+  }
+];
+
+const favorablePatternSections = [
+  {
+    title: "正官格",
+    source: "传承班 / 三命通会论正官",
+    intro: "正官格是顺用格，核心不是多见，而是清、专、有根、日主能承受。",
+    items: [
+      ["忌伤官", "正官被伤官克，是顺用格被破。若用财通关，伤官生财、财生官；若用印，是病药制伤。"],
+      ["忌官杀混杂", "正官用日主之禄，七杀用日主之刃。禄刃同时完整很少见，所以官杀混杂常使承载复杂。"],
+      ["忌合冲", "格局一合就不自由，一冲则长期不稳。合夫、合官在女命和格局里含义不同，不能混说。"],
+      ["喜有根", "日主不必极旺，但要有根能担官。比劫禄刃印都可扶身，但正官格最宜用禄。"]
+    ],
+    cases: ["案例 57", "案例 67", "案例 75"]
+  },
+  {
+    title: "财格",
+    source: "传承班 / 财格",
+    intro: "财格看财能否成格、能否不被夺、能否通到现实交易。它不是单看有财星。",
+    items: [
+      ["正偏财全", "正偏财俱见，往往不是只做一行，财源、关系和经营类型会变得多路。"],
+      ["忌比劫", "非财格见比劫多主破财；财格见比劫更重，是破格、破根。"],
+      ["忌禄刃印", "比劫禄刃争财，印会转向清高和保守，财格要看能否保持交易通道。"],
+      ["财逢食生", "财格带食伤，有人捧场，有输出带来交易；这是财星能进入市场的关键。"]
+    ],
+    cases: ["案例 15", "案例 33", "案例 63", "案例 81", "案例 83"]
+  },
+  {
+    title: "印格",
+    source: "传承班 / 印格",
+    intro: "印格讲清高、资质、文凭和保护，但单独的印不一定能转成现实成就。",
+    items: [
+      ["怕财", "印格怕财，不是人不能有钱，而是财来破印；没有官杀通关时，容易变成价值冲突。"],
+      ["用官杀", "财生官杀、官杀生印，印格就有现实承接。有官杀时，有财也能成为通关。"],
+      ["先财后印", "先财后印，钱到手后讲清高；先印后财，则容易先说清高，一见钱就破相。"],
+      ["忌日主太强", "印格本来扶身，日主再强则清高、挑剔、行动转弱，现实落点变窄。"]
+    ],
+    cases: ["案例 5", "案例 66", "案例 67", "案例 75", "案例 84"]
+  },
+  {
+    title: "食伤生财",
+    source: "传承班 / 食神伤官格",
+    intro: "食神、伤官单独成格不够，要打开罐头，把表达、技术、产品转成财。",
+    items: [
+      ["共同点", "食神和伤官都要生财，否则只是有才、有输出，未必变成收入。"],
+      ["食神怕比劫", "食神生财后，如果财被比劫克掉，输出有了，钱留不住。"],
+      ["伤官怕印", "伤官生财不太怕比劫，怕印来克伤官，把输出能力压住。"],
+      ["务实落点", "有财再谈破财，最怕不是破，而是根本没有交易、收入和市场承接。"]
+    ],
+    cases: ["案例 1", "案例 55", "案例 66", "案例 81"]
+  },
+  {
+    title: "读盘次序",
+    source: "传承班 / 看任何八字的次序",
+    intro: "顺用格局不能孤立看，要放进五行、冲刑、调候、流年架构里复盘。",
+    items: [
+      ["五行全不全", "先看五行和支藏天干，男命尤其看财，女命尤其看官杀。"],
+      ["冲刑有否", "冲刑会让格局不稳，合多也要看贵重还是牵缠。"],
+      ["顺逆通不通", "正官格有没有伤官，七杀格有没有食神，财格有没有被比劫破根。"],
+      ["调候与流年", "调候不是锦上添花；没有调候又见忌神，现实选择会受限。流年架构再决定哪年应事。"]
+    ],
+    cases: ["案例 10", "案例 57", "案例 63", "案例 81"]
+  }
+];
+
+const favorablePatternTranslations = [
+  {
+    title: "财格不是有财就富",
+    text: "要看财有没有根、有没有被比劫夺、有没有食伤生出来，以及能不能通到日时和真实交易。"
+  },
+  {
+    title: "印格不是读书就贵",
+    text: "印要有官杀承接，才容易变成资质、职位、名分和保护；单独印多，可能只是清高和内耗。"
+  },
+  {
+    title: "正官格不是官越多越好",
+    text: "正官贵在清专。多官、混杀、合官、冲官，都要回到日主能否承受和格局是否自由。"
+  },
+  {
+    title: "食伤要能生财",
+    text: "会表达、会技术、会作品还不够，要看市场、客户、代理、交易是否接上。"
+  }
+];
+
+const favorablePatternCaseIds = ["案例 1", "案例 5", "案例 10", "案例 15", "案例 33", "案例 55", "案例 57", "案例 63", "案例 66", "案例 67", "案例 75", "案例 81", "案例 83", "案例 84"];
 
 const lifePalaceStars = [
   ["子", "天贵星", "志气不凡，富裕清吉。"],
@@ -4175,6 +4279,7 @@ function SiteShell() {
         <Route path="/advanced/female-chart-poems" element={<FemalePoemsPage />} />
         <Route path="/advanced/pattern-use-god" element={<PatternUseGodPage />} />
         <Route path="/advanced/use-god-history" element={<UseGodHistoryPage />} />
+        <Route path="/advanced/favorable-patterns" element={<FavorablePatternsPage />} />
         <Route path="/cases" element={<CaseLibraryPage />} />
         <Route path="/classified" element={<ClassifiedIndexPage />} />
         <Route path="/classified/:topicKey" element={<ClassifiedTopicPage />} />
@@ -4741,6 +4846,33 @@ function UseGodHistoryPage() {
       >
         <UseGodHistory />
         <CaseStudies detail={{ title: "用神沿革" }} items={historyCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function FavorablePatternsPage() {
+  const patternCases = favorablePatternCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Pattern"
+        title="顺用格局"
+        copy="把传承班里的正官格、财格、印格、食伤生财整理成顺用格判断：先看能否成格，再看有没有破格和通关。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/favorable-patterns" })),
+          { label: "四个原则", href: "#favorable-pattern-principles" },
+          ...favorablePatternSections.map((section) => ({ label: section.title, href: `#favorable-pattern-${section.title}` })),
+          { label: "实务转译", href: "#favorable-pattern-translations" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <FavorablePatterns />
+        <CaseStudies detail={{ title: "顺用格局" }} items={patternCases} />
       </ContentLayout>
     </main>
   );
@@ -6501,6 +6633,73 @@ function UseGodHistory() {
         </div>
         <div className="family-rule-grid">
           {useGodHistoryTranslations.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FavorablePatterns() {
+  return (
+    <section className="favorable-pattern-section" id="favorable-patterns" aria-labelledby="favorable-pattern-title">
+      <div className="section-heading">
+        <p className="eyebrow">Favorable Patterns</p>
+        <h2 id="favorable-pattern-title">顺用格先看有没有被破</h2>
+      </div>
+      <div className="rules-lead">
+        <p>顺用格局不是把财官印食背成好字，而是看它能否成格、是否被克、有没有通关，以及最后能不能落到现实主题。</p>
+        <a className="source-link" href={assetUrl("/content/顺用格局.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看顺用格局整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="favorable-pattern-principles">
+        {favorablePatternPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections favorable-pattern-flow">
+        {favorablePatternSections.map((section) => (
+          <article className="flow-section" id={`favorable-pattern-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="favorable-pattern-translations">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Practice Translation</p>
+            <h3>把格局话转成现实话</h3>
+          </div>
+          <p>用户问的是钱、职位、婚姻和选择，不是术语本身。每条格局都要转成可复盘的现实机制。</p>
+        </div>
+        <div className="family-rule-grid">
+          {favorablePatternTranslations.map((item) => (
             <article className="family-rule-card" key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
