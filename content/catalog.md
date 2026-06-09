@@ -14,6 +14,7 @@
 - 学习批命：`/advanced/reading-method`，资料稿 `/content/学习批命.md`
 - 基层命学：`/advanced/grassroots-method`，资料稿 `/content/基层命学.md`
 - 女命专题：`/advanced/female-chart`，资料稿 `/content/女命专题.md`
+- 女命诗诀：`/advanced/female-chart-poems`，资料稿 `/content/女命诗诀.md`
 - 格局用神：`/advanced/pattern-use-god`，资料稿 `/content/格局用神.md`
 - 十神细则：`/advanced/ten-god-rules`，资料稿 `/content/十神细则.md`
 - 案例库：`/cases`，资料稿 `/content/案例总索引.md`，原图清单 `/assets/cases/manifest.tsv`

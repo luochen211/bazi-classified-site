@@ -432,6 +432,7 @@ h1 {
 .content-main > .reading-method-section,
 .content-main > .grassroots-method-section,
 .content-main > .female-chart-section,
+.content-main > .female-poem-section,
 .content-main > .pattern-use-god-section,
 .content-main > .theory-section,
 .content-main > .catalog-section,
@@ -523,6 +524,10 @@ h1 {
 }
 
 .female-chart-section {
+  background: #fffaf2;
+}
+
+.female-poem-section {
   background: #fffaf2;
 }
 

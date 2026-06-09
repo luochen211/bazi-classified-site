@@ -256,6 +256,7 @@ const advancedDirectoryItems = [
   { label: "学习批命", href: "/advanced/reading-method" },
   { label: "基层命学", href: "/advanced/grassroots-method" },
   { label: "女命专题", href: "/advanced/female-chart" },
+  { label: "女命诗诀", href: "/advanced/female-chart-poems" },
   { label: "格局用神", href: "/advanced/pattern-use-god" },
   { label: "分析框架", href: "/advanced#method" }
 ];
@@ -1623,6 +1624,105 @@ const femaleChartSections = [
 ];
 
 const femaleChartCaseIds = ["案例 1", "案例 3", "案例 4", "案例 5", "案例 33", "案例 64", "案例 66", "案例 70", "案例 75", "案例 78", "案例 80", "案例 81"];
+
+const femalePoemPrinciples = [
+  {
+    title: "先推夫子兴衰",
+    text: "女命先看夫星与子星是否在合适年龄段成气候。夫星重月令与日支，子星重时支，不能脱离人生阶段。"
+  },
+  {
+    title: "年轻看梦，中年看重",
+    text: "二十岁问婚姻和五十岁问婚姻，不是同一个问题。年轻多问可能性，中年多问现实陪伴和后半段承接。"
+  },
+  {
+    title: "官杀混杂看后果",
+    text: "官杀混杂不只等于男女关系乱，要看明暗、远近、透藏、有无根，以及是否真的造成现实后果。"
+  },
+  {
+    title: "三不谈要入边界",
+    text: "短命、绝子绝孙、未婚女子死夫离婚这类话不能直接抛给来问者，网站只保留结构风险和复盘边界。"
+  }
+];
+
+const femalePoemRules = [
+  {
+    title: "夫星兴衰",
+    source: "三命通会女命总论",
+    text: "夫星以官杀为主，但要看旺在何处。夫星在月令最贴近婚嫁年龄；在日支看婚后承接；在时支则偏后半段。年柱不宜直接作为婚嫁主轴。",
+    cues: ["月令夫旺：早年对象条件较有基础。", "日支夫旺：婚后承接较明显。", "时支夫旺：晚年仍有伴或后段关系。"]
+  },
+  {
+    title: "子星兴衰",
+    source: "三命通会女命总论",
+    text: "女命以食伤为子息，重点看时柱。子星在月令，容易表现为少年奖状、早期才艺；在时支才更贴近晚年能否靠子女。",
+    cues: ["食伤临时支旺地：子息条件强。", "时上印旺：印克食伤，子息或同住关系要谨慎。", "食神偏印同柱：不利子息，需要看财星能否制印。"]
+  },
+  {
+    title: "日主旺相",
+    source: "女命赋",
+    text: "日主临官、帝旺过多，容易夺夫权。这里不是简单说有钱没钱，而是说关系中自我太强，夫子容易被压住。",
+    cues: ["一个禄刃已强，两个更难柔顺。", "日上旺相，多在夫妻互动中显现。", "时上旺相，常扩展到亲属和晚年关系。"]
+  },
+  {
+    title: "官杀混杂",
+    source: "女命 / 官杀混杂",
+    text: "正官重名分与好话，七杀重能力与真本事。官杀混杂要看谁有根、谁坐绝、谁被合走，不能一见混杂就下道德判断。",
+    cues: ["年月天干混杂：三十岁前关系公开度较高。", "地支暗混：表面未必显露，重在暗线。", "合杀留官或合官留杀：看谁留下，谁退出。"]
+  },
+  {
+    title: "暗夫拱夹",
+    source: "传承班女命例解",
+    text: "原局无夫星时，拱夹可能引出暗夫。暗夫不是一定坏，而是名分、时间、公开程度和现实承接都要分开看。",
+    cues: ["无官杀但拱出夫星：不能直接断无伴。", "拱出之字等岁运填实，关系才明显。", "暗夫合到年上，常有家人或旧关系线索。"]
+  },
+  {
+    title: "墓库运",
+    source: "女命要重点 / 墓库运",
+    text: "辰戌丑未月出生者，行特定墓库运时，常有一段五年不易成事。女命问婚恋时，要把这段时间当成阶段气候看。",
+    cues: ["青春阶段入墓库，恋爱多不成。", "刚出墓库，不会马上顺。", "流月可用来收细节，但不先下手。"]
+  },
+  {
+    title: "三合三会",
+    source: "女命要重点 / 流年实务",
+    text: "三合三会在女命问事里常带变化，不一定直接断婚变。未婚看对象和机会，已婚看家务、关系、子女和外缘。",
+    cues: ["三合伤官前一年，常先有谈得来的对象或家务变化。", "三合夫星，关系主题被引动。", "有冲原局时，变化更难稳。"]
+  },
+  {
+    title: "神煞边界",
+    source: "女命赋 / 桃花驿马贵人",
+    text: "桃花、驿马、贵人本身只是现象，不自带固定吉凶。要看它与日主是生我、我生、克我、我克，还是比和。",
+    cues: ["正官桃花多作较好的关系象。", "贵人乘驿马，常是换人帮忙。", "神煞克身时，帮忙也可能带来代价。"]
+  }
+];
+
+const femalePoemExamples = [
+  {
+    title: "正官与七杀的对象心理",
+    text: "正官为夫的女命，多重名分、体面和被肯定；七杀为夫的女命，更看对方是否有能力、有担当。"
+  },
+  {
+    title: "无夫星不等于无男人",
+    text: "原局无官杀时，要看拱夹、岁运、流年是否引出夫星。没有名分和没有对象，是两件事。"
+  },
+  {
+    title: "财旺夫荣要分谁的财",
+    text: "父家资源、自己资源和婚后资源都可能生官，但现实后果不同：有的是择偶条件，有的是婚后承接。"
+  },
+  {
+    title: "印盛子衰要转成现实话",
+    text: "印旺克食伤，不必说绝对克子，可转成不喜带小孩、子女不在身边、晚年需自立技能等现实提醒。"
+  },
+  {
+    title: "合多不是一句坏话",
+    text: "合多代表人缘、牵连和选择增多；职业、舞台、人际可以用，婚姻名分则要谨慎。"
+  },
+  {
+    title: "墓库运看五年气候",
+    text: "墓库运不是一天凶，而是阶段迟滞。问恋爱、事业、钱财，都要看这五年里是否难落地。"
+  }
+];
+
+const femalePoemCaseIds = ["案例 3", "案例 4", "案例 33", "案例 64", "案例 66", "案例 70", "案例 75", "案例 80", "案例 81"];
 
 const patternUseGodSections = [
   {
@@ -3978,6 +4078,7 @@ function SiteShell() {
         <Route path="/advanced/reading-method" element={<ReadingMethodPage />} />
         <Route path="/advanced/grassroots-method" element={<GrassrootsMethodPage />} />
         <Route path="/advanced/female-chart" element={<FemaleChartPage />} />
+        <Route path="/advanced/female-chart-poems" element={<FemalePoemsPage />} />
         <Route path="/advanced/pattern-use-god" element={<PatternUseGodPage />} />
         <Route path="/cases" element={<CaseLibraryPage />} />
         <Route path="/classified" element={<ClassifiedIndexPage />} />
@@ -4466,6 +4567,33 @@ function FemaleChartPage() {
       >
         <FemaleChart />
         <CaseStudies detail={{ title: "女命专题" }} items={femaleCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function FemalePoemsPage() {
+  const poemCases = femalePoemCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Female Rules"
+        title="女命诗诀"
+        copy="把传承班里的女命诗诀拆成夫星、子息、官杀混杂、暗夫拱夹和岁运问事的细则。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/female-chart-poems" })),
+          { label: "使用边界", href: "#female-poem-principles" },
+          { label: "诗诀细则", href: "#female-poem-rules" },
+          { label: "现实转译", href: "#female-poem-examples" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <FemalePoems />
+        <CaseStudies detail={{ title: "女命诗诀" }} items={poemCases} />
       </ContentLayout>
     </main>
   );
@@ -6088,6 +6216,71 @@ function FemaleChart() {
             </div>
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function FemalePoems() {
+  return (
+    <section className="female-poem-section" id="female-poems" aria-labelledby="female-poem-title">
+      <div className="section-heading">
+        <p className="eyebrow">Female Rules</p>
+        <h2 id="female-poem-title">诗诀要转成问事顺序</h2>
+      </div>
+      <div className="rules-lead">
+        <p>传承班女命诗诀的重点，不是背几句古文，而是把夫星、子息、年龄、明暗关系和岁运变化转成可问、可验、可复盘的顺序。</p>
+        <a className="source-link" href={assetUrl("/content/女命诗诀.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看女命诗诀整理稿
+        </a>
+      </div>
+
+      <div className="source-matrix" id="female-poem-principles">
+        {femalePoemPrinciples.map((item) => (
+          <article className="source-matrix-card" key={item.title}>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="flow-sections" id="female-poem-rules">
+        {femalePoemRules.map((rule) => (
+          <article className="flow-section" id={`female-poem-${rule.title}`} key={rule.title}>
+            <div>
+              <p className="eyebrow">{rule.source}</p>
+              <h3>{rule.title}</h3>
+              <p>{rule.text}</p>
+            </div>
+            <div className="flow-items">
+              {rule.cues.map((cue) => (
+                <div className="flow-item" key={cue}>
+                  <strong>看点</strong>
+                  <p>{cue}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="report-template-panel" id="female-poem-examples">
+        <div className="section-heading">
+          <p className="eyebrow">Translation</p>
+          <h3>把诗诀翻译成现实话</h3>
+          <p>这些条目用于写案例和面对具体问题：尽量讲结构、阶段和选择，不把古籍里的重话直接丢给来问者。</p>
+        </div>
+        <div className="family-rule-grid">
+          {femalePoemExamples.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h4>{item.title}</h4>
+              <ul>
+                <li>{item.text}</li>
+              </ul>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
