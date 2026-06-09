@@ -275,6 +275,7 @@ const advancedDirectoryItems = [
   { label: "女命诗诀", href: "/advanced/female-chart-poems" },
   { label: "格局基础", href: "/advanced/pattern-foundation" },
   { label: "八格总论", href: "/advanced/eight-patterns" },
+  { label: "子平三波限", href: "/advanced/ziping-three-waves" },
   { label: "格局用神", href: "/advanced/pattern-use-god" },
   { label: "用神沿革", href: "/advanced/use-god-history" },
   { label: "双边用神", href: "/advanced/two-sided-use-god" },
@@ -3677,6 +3678,105 @@ const patternUseGodSections = [
 
 const patternUseGodCaseIds = ["案例 2", "案例 52", "案例 56", "案例 57", "案例 63", "案例 67", "案例 75"];
 
+const zipingThreeWavesPrinciples = [
+  {
+    title: "第一波是熟练，不是理解",
+    text: "会排盘只是形式入门。冲刑合会、十神六亲、生旺库禄绝、十神生克四组规则必须背熟，不能靠临时翻书。"
+  },
+  {
+    title: "第二波是双边冲突",
+    text: "日主强弱与格局喜忌分开看不难，难在调候、扶抑、格局顺逆放在同一张命盘时，结论并不总是同向。"
+  },
+  {
+    title: "第三波是临界定义",
+    text: "同一条规则有时凶、有时不凶。真正的高级判断，不是多背断语，而是找出冲提、羊刃、伤官见官等规则的适用边界。"
+  },
+  {
+    title: "格局休囚是校正器",
+    text: "名义成格不等于有用。格局、调候、日主、岁运彼此抵触时，要看哪一方休囚无力，哪一方是救命条件。"
+  }
+];
+
+const zipingThreeWavesSections = [
+  {
+    title: "第一波：基础法则",
+    source: "第三阶段摘抄1 / 命学第三波",
+    intro: "第一波不是理论玄谈，而是基本规则的熟练度。没有这一步，后面的日主、格局、用神都会停在似懂非懂。",
+    items: [
+      ["冲刑合会", "十干、十二地支的冲、刑、合、会先背熟，后面所有岁运引动都依赖它。"],
+      ["十神六亲", "正财为妻、正印为母、女命官杀为夫等，不是结论，而是取象入口。"],
+      ["生旺库禄绝", "五行生旺库和十干禄绝决定根气、阶段和承接力。"],
+      ["十神生克", "比劫生食伤、食伤生财、官杀克比劫等，必须形成即时反应。"]
+    ],
+    cases: ["案例 1", "案例 10", "案例 15"]
+  },
+  {
+    title: "第二波：日主与格局",
+    source: "第三阶段摘抄1 / 双边瓶颈",
+    intro: "第二波的难点，是日主强弱、调候用神和格局顺逆喜忌同时出现时，可能彼此抵触。",
+    items: [
+      ["日主有根", "得令、得地、得势，或见比劫禄刃印，都只是日主不至弱不堪扶的入口。"],
+      ["日主无根", "无根不一定只是扶抑问题，常转为调候问题。冬火、寒金、绝支都要分开看。"],
+      ["格局顺逆", "财官食印顺用，杀伤枭刃逆用；单独学不难，和日主调候合看才难。"],
+      ["双边抵触", "例如调候所需之字可能破格，格局漂亮也可能调候不宜。此时不能只选一个体系硬套。"]
+    ],
+    cases: ["案例 2", "案例 52", "案例 56"]
+  },
+  {
+    title: "第三波：临界定义",
+    source: "第三阶段摘抄1 / 定义临界处",
+    intro: "第三波要回答：同样的规则，什么条件下成立，什么条件下只作参考。",
+    items: [
+      ["冲提大运", "冲提不一定全凶，资料中特别指出真正论大凶的范围不到四分之一。"],
+      ["正官入刃", "正官格入羊刃运有时凶、有时不凶，必须限制在具体日主月令条件里看。"],
+      ["伤官见官", "伤官见官也不是一律大祸，不同日主、月令、专位和行运条件差别很大。"],
+      ["不落空谈", "高级判断不是自说自话，要把古籍差异、规则边界和案例反馈连起来。"]
+    ],
+    cases: ["案例 57", "案例 63", "案例 80"]
+  },
+  {
+    title: "格局休囚",
+    source: "第三阶段摘抄1 / 格局休囚论",
+    intro: "格局休囚是第三波之后的校正表：看名义格局是否真的有用，还是因气候、根气和用神冲突而无效。",
+    items: [
+      ["四层推论", "先看余氏调候，再看沈氏顺逆，再看二者用神是否抵触，最后查格局是否坐休囚绝地。"],
+      ["无用之格", "有些八字表面财官印俱全，但缺调候关键字，只能作虚表或平常。"],
+      ["表式价值", "格局休囚表不是秘本，而是减少思考时间，提醒常法解释不通的临界处。"],
+      ["案例转译", "网站只取其方法：看到漂亮格局时，仍要问气候、根气、岁运是否承接。"]
+    ],
+    cases: ["案例 2", "案例 67", "案例 75"]
+  }
+];
+
+const zipingThreeWavesWarnings = [
+  {
+    title: "不要把“会排盘”当入门完成",
+    text: "排盘软件解决的是形式，真正的第一波是四组基础法则熟练到能立刻进入观察。"
+  },
+  {
+    title: "不要把某一家用神当万能答案",
+    text: "余氏、沈氏、徐扬、万氏解决的问题不同。结论不同时，要先问它各自在解决哪一个矛盾。"
+  },
+  {
+    title: "不要把古法凶词直接搬给用户",
+    text: "夭疾、夭寿、伤官见官等词在网站里要转成结构风险、适用条件和案例复盘。"
+  },
+  {
+    title: "不要把临界规则写成绝对断语",
+    text: "第三波最重要的是边界：哪类日主、哪类月令、哪种格局和哪步运会触发。"
+  }
+];
+
+const zipingThreeWavesWorkflow = [
+  { title: "先问熟练度", text: "冲刑合会、十神六亲、生旺库禄绝、十神生克是否能不查书就用。" },
+  { title: "分开看两边", text: "日主、调候、格局顺逆先分开判断，再合并比较是否同向。" },
+  { title: "找抵触点", text: "调候用神是否破格，格局用神是否伤日主，岁运是否把矛盾放大。" },
+  { title: "查临界条件", text: "遇冲提、羊刃、伤官见官、格局休囚，不直接套断，先查适用边界。" },
+  { title: "回案例反馈", text: "用案例验证哪一套解释能同时解释原局、运势和现实事件。" }
+];
+
+const zipingThreeWavesCaseIds = ["案例 1", "案例 2", "案例 10", "案例 15", "案例 52", "案例 56", "案例 57", "案例 63", "案例 67", "案例 75", "案例 80"];
+
 const useGodHistoryPrinciples = [
   {
     title: "先问定义",
@@ -6412,6 +6512,7 @@ function SiteShell() {
         <Route path="/advanced/female-chart-poems" element={<FemalePoemsPage />} />
         <Route path="/advanced/pattern-foundation" element={<PatternFoundationPage />} />
         <Route path="/advanced/eight-patterns" element={<EightPatternsPage />} />
+        <Route path="/advanced/ziping-three-waves" element={<ZipingThreeWavesPage />} />
         <Route path="/advanced/pattern-use-god" element={<PatternUseGodPage />} />
         <Route path="/advanced/use-god-history" element={<UseGodHistoryPage />} />
         <Route path="/advanced/two-sided-use-god" element={<TwoSidedUseGodPage />} />
@@ -7370,6 +7471,34 @@ function PatternUseGodPage() {
       >
         <PatternUseGod />
         <CaseStudies detail={{ title: "格局用神" }} items={patternCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function ZipingThreeWavesPage() {
+  const waveCases = zipingThreeWavesCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Three Waves"
+        title="子平三波限"
+        copy="把第三阶段的学习瓶颈拆成三层：基础法则熟练、日主格局双边冲突、临界定义与格局休囚。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/ziping-three-waves" })),
+          { label: "四个原则", href: "#three-waves-principles" },
+          ...zipingThreeWavesSections.map((section) => ({ label: section.title, href: `#three-waves-${section.title}` })),
+          { label: "误区边界", href: "#three-waves-warnings" },
+          { label: "判断流程", href: "#three-waves-workflow" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <ZipingThreeWaves />
+        <CaseStudies detail={{ title: "子平三波限" }} items={waveCases} />
       </ContentLayout>
     </main>
   );
@@ -10353,6 +10482,90 @@ function PatternUseGod() {
             </div>
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function ZipingThreeWaves() {
+  return (
+    <section className="three-waves-section" id="ziping-three-waves" aria-labelledby="three-waves-title">
+      <div className="section-heading">
+        <p className="eyebrow">Three Waves</p>
+        <h2 id="three-waves-title">学习瓶颈要分层处理</h2>
+      </div>
+      <div className="rules-lead">
+        <p>子平三波限不是知识点清单，而是学习顺序：先熟规则，再合并日主与格局，最后处理临界定义。</p>
+        <a className="source-link" href={assetUrl("/content/子平三波限.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看子平三波限整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="three-waves-principles">
+        {zipingThreeWavesPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections three-waves-flow">
+        {zipingThreeWavesSections.map((section) => (
+          <article className="flow-section" id={`three-waves-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="three-waves-warnings">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Boundaries</p>
+            <h3>四个常见误区</h3>
+          </div>
+          <p>三波限的价值，是把学习卡点和断语边界说清楚。</p>
+        </div>
+        <div className="family-rule-grid">
+          {zipingThreeWavesWarnings.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="report-template-panel" id="three-waves-workflow">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Workflow</p>
+            <h3>三波限五步复盘</h3>
+          </div>
+          <p>从基础熟练度到临界条件，最后回到案例反馈。</p>
+        </div>
+        <div className="family-rule-grid">
+          {zipingThreeWavesWorkflow.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

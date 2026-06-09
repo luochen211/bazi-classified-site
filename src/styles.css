@@ -448,6 +448,7 @@ h1 {
 .content-main > .female-poem-section,
 .content-main > .pattern-foundation-section,
 .content-main > .eight-pattern-section,
+.content-main > .three-waves-section,
 .content-main > .pattern-use-god-section,
 .content-main > .use-god-history-section,
 .content-main > .two-sided-use-god-section,
@@ -605,6 +606,10 @@ h1 {
   background: #fffaf2;
 }
 
+.three-waves-section {
+  background: #fffaf2;
+}
+
 .pattern-use-god-section {
   background: #fffaf2;
 }
@@ -637,6 +642,7 @@ h1 {
 .life-palace-flow,
 .pattern-foundation-flow,
 .eight-pattern-flow,
+.three-waves-flow,
 .two-sided-use-god-flow,
 .favorable-pattern-flow,
 .shen-sha-basic-flow,
@@ -657,6 +663,7 @@ h1 {
 .life-palace-cycle-section .family-rule-grid,
 .pattern-foundation-section .family-rule-grid,
 .eight-pattern-section .family-rule-grid,
+.three-waves-section .family-rule-grid,
 .two-sided-use-god-section .family-rule-grid,
 .favorable-pattern-section .family-rule-grid,
 .shen-sha-basic-section .family-rule-grid,
@@ -2694,6 +2701,10 @@ body.modal-open {
   }
 
   .life-palace-cycle-section .family-rule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .three-waves-section .family-rule-grid {
     grid-template-columns: 1fr;
   }
 
