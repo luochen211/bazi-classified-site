@@ -249,6 +249,7 @@ const advancedDirectoryItems = [
   { label: "神煞", href: "/advanced/shen-sha" },
   { label: "神煞源流", href: "/advanced/shen-sha-origin" },
   { label: "大运流年", href: "/advanced/luck-cycle" },
+  { label: "流年细表", href: "/advanced/luck-cycle-tables" },
   { label: "实务组合", href: "/advanced/practical-combinations" },
   { label: "十干高级", href: "/advanced/stem-classics" },
   { label: "学习批命", href: "/advanced/reading-method" },
@@ -1267,6 +1268,131 @@ const luckCycleRules = [
 ];
 
 const luckCycleCaseIds = ["案例 10", "案例 15", "案例 53", "案例 55", "案例 57", "案例 63", "案例 64", "案例 80", "案例 81"];
+
+const luckCycleTablePrinciples = [
+  {
+    title: "月时对查只作参考",
+    text: "《大流年判例》明说这一组月、时对查不见于现代论性推理，偏向统计参考。入站时只放作辅助查表，不压过四柱主线。"
+  },
+  {
+    title: "大运忌支看冲动点",
+    text: "每个月时条目后多带一个“大运忌某支”，本质是在提示哪一类大运容易把原局与幼年、六亲、健康、婚姻的象引动。"
+  },
+  {
+    title: "先验后用",
+    text: "月时表容易吸引初学者直接套断，所以页面把它放在细表模块，并要求回到原局、运、岁、案例反馈三层验证。"
+  }
+];
+
+const luckCycleMonthHourTable = [
+  {
+    month: "正月",
+    focus: "兄弟排行、父母先后、幼年体弱与礼仪修饰象较多。",
+    avoid: "午、未、申、酉、戌、亥、子、丑、寅、卯、辰、巳随时支分列",
+    examples: ["子时：兄弟排行四，五岁体弱，父母双全，忌午运。", "巳时：二十岁以前有一大难，有养父母者为佳，忌亥运。", "未时：女命婚姻多吵架，男命不受祖产而独自成功，忌丑运。"]
+  },
+  {
+    month: "二月",
+    focus: "智慧早开、父母先后、虚惊体弱与园艺技艺象并见。",
+    avoid: "午、未、申、酉、戌、亥、子、丑、寅、卯、辰、巳随时支分列",
+    examples: ["子时：智慧早开，领悟力强，读书未必了了，母先亡，忌午运。", "巳时：恐因女色引祸，慎肺痨之疾，忌亥运。", "亥时：兄弟排行三、六，长兄先亡，晚运发达，忌巳运。"]
+  },
+  {
+    month: "三月",
+    focus: "婚姻口舌、父母不全、宗教艺术与白手立业象较明显。",
+    avoid: "午、未、申、酉、戌、亥、子、丑、寅、卯、辰、巳随时支分列",
+    examples: ["子时：女命婚姻多吵架，子女性格刚强，忌午运。", "未时：父母双亡，白手成家立业，忌丑运。", "亥时：智慧早开，读书敏捷，父先亡，忌巳运。"]
+  },
+  {
+    month: "四月",
+    focus: "父母双亡、肺疾脸伤、技艺与经商发达象交错出现。",
+    avoid: "午、未、申、酉、戌、亥、子、丑、寅、卯、辰、巳随时支分列",
+    examples: ["子时：父母双亡，慎肺部有疾，忌午运。", "辰时：忌酒色伤身，商人大发达，忌戌运。", "戌时：父母双亡，得妻财，中年发达，忌辰运。"]
+  },
+  {
+    month: "五月",
+    focus: "兄弟父母、婚姻口舌、远行与中年发达象较集中。",
+    avoid: "午、未、申、酉、戌、亥、子、丑、寅、卯、辰、巳随时支分列",
+    examples: ["丑时：婚姻多口舌之争，体弱，忌未运。", "辰时：忌酒色伤身，经商灵达，多远行之遇，忌戌运。", "亥时：女命仪表极佳，夫贵子荣，忌巳运。"]
+  },
+  {
+    month: "六月",
+    focus: "幼年艰辛、夜啼虚惊、父母兄弟与四肢眼目象较多。",
+    avoid: "午、未、申、酉、戌、亥、子、丑、寅、卯、辰、巳随时支分列",
+    examples: ["子时：先难后易，幼时极为艰辛，忌午运。", "辰时：六岁有关，慎四肢之伤，父母双全，忌戌运。", "亥时：慎眼目之疾，父母不全，忌巳运。"]
+  },
+  {
+    month: "七月",
+    focus: "远嫁、经商、技艺、官讼是非与四肢伤象较明显。",
+    avoid: "午、未、申、酉、戌、亥、子、丑、寅、卯、辰、巳随时支分列",
+    examples: ["子时：女命远嫁他乡，长子不利，忌午运。", "卯时：独子、妨妻，经商发达，忌酉运。", "酉时：不受祖业，忌多涉是非，防官讼，忌卯运。"]
+  },
+  {
+    month: "八月",
+    focus: "独子无兄弟、离乡谋生、佛道艺术与脸面四肢象并见。",
+    avoid: "午、未、申、酉、戌、亥、子、丑、寅、卯、辰、巳随时支分列",
+    examples: ["子时：独子，兄弟姊妹皆无，慎酒色伤身，忌午运。", "巳时：独子，有姊妹，喜佛道艺术典籍，忌亥运。", "亥时：兄弟排行三、六，十岁有关，慎四肢之疾，原文忌辰。"]
+  },
+  {
+    month: "九月",
+    focus: "幼年关煞、离乡背井、技艺成功与肺疾水火伤象较多。",
+    avoid: "午、未、申、酉、戌、亥、子、丑、寅、卯、辰、巳随时支分列",
+    examples: ["子时：一岁有关，吐奶、夜啼，忌午运。", "巳时：父母不全，兄弟雁行不靠，离乡独自发达，忌亥运。", "亥时：兄弟雁行无靠，父母双亡，技艺成功，忌巳运。"]
+  },
+  {
+    month: "十月",
+    focus: "言语迟、无兄弟、脸面伤、父母不全与中年亨通象并存。",
+    avoid: "午、未、申、酉、戌、亥、子、丑、寅、卯、辰、巳随时支分列",
+    examples: ["子时：二岁有关，言语迟，忌午运。", "卯时：无兄弟，有姊姊，妨妻，忌酉运。", "亥时：幼年困境，中年亨通，忌巳运。"]
+  },
+  {
+    month: "十一月",
+    focus: "独子父亡、天资文艺、白手立业、外乡发达与远行象较强。",
+    avoid: "午、未、申、酉、戌、亥、子、丑、寅、卯、辰、巳随时支分列",
+    examples: ["丑时：先困后吉，天资甚高，有文艺之功名，忌未运。", "酉时：背井离乡，外乡发达，老运弥吉，忌卯运。", "亥时：女命远嫁他乡，男命游历四方，忌巳运。"]
+  },
+  {
+    month: "十二月",
+    focus: "才智文章、白手立业、夜啼虚惊、肺疾与中年有成象明显。",
+    avoid: "午、未、申、酉、戌、亥、子、丑、寅、卯、辰、巳随时支分列",
+    examples: ["子时：才智超群，文章振发，少年得志，忌午运。", "卯时：先困后亨，白手立业，忌酉运。", "酉时：兄弟排行一、四，妨妻，中年有成，忌卯运。"]
+  }
+];
+
+const luckCycleDetailRules = [
+  {
+    title: "八字、大运、流年喜忌不可一条鞭",
+    source: "双边喜忌：流年批导",
+    text: "原局可以谈调候、格局、强弱，但流年必须落到事相。用神得地到底是婚、财、官、病，不能只用一句“吉”带过。"
+  },
+  {
+    title: "大运是仲介层",
+    source: "大运与流年",
+    text: "大运大体属于十年气候，重点在它与四柱的关系，或与流年共同引动哪一组刑冲合会。它不是小型八字，也不是单年事件。"
+  },
+  {
+    title: "不可合解的原局，大运只能避重",
+    source: "庚寅辛巳庚申案例段",
+    text: "若原局已成三刑、双冲、四角互碍，很多所谓合解会同时冲开另一处。此时大运不负责救全局，而是避免再遇更重的刑冲会绝。"
+  },
+  {
+    title: "吉年要看下一年是否接得住",
+    source: "戊戌日羊刃案例段",
+    text: "丁丑年与丙子大运干邻支合，可作解危之吉；但若下一年戊寅又拱午冲子，这一年只能算短暂休养，不能说从此安康。"
+  },
+  {
+    title: "流月只在成势后细断",
+    source: "流月批导段",
+    text: "流月以八字、流年一二年为主，不宜连续多年硬批。先确认大运流年已经成势，再用流月看月份的伏冲、合拱、重复触发。"
+  },
+  {
+    title: "神煞流年看五行生态",
+    source: "贵人、桃花、神煞命学",
+    text: "神煞在四柱和流年上的吉凶不完全相同。要看神煞所在干支与日主之间生克比和，以及大运流年是否把它三合、三会或冲动。"
+  }
+];
+
+const luckCycleDetailCaseIds = ["案例 10", "案例 15", "案例 55", "案例 57", "案例 63", "案例 80", "案例 81"];
 
 const practicalCombinationSections = [
   {
@@ -3713,6 +3839,7 @@ function SiteShell() {
         <Route path="/advanced/shen-sha" element={<ShenShaPage />} />
         <Route path="/advanced/shen-sha-origin" element={<ShenShaOriginPage />} />
         <Route path="/advanced/luck-cycle" element={<LuckCyclePage />} />
+        <Route path="/advanced/luck-cycle-tables" element={<LuckCycleTablesPage />} />
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
         <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
         <Route path="/advanced/reading-method" element={<ReadingMethodPage />} />
@@ -4022,6 +4149,33 @@ function LuckCyclePage() {
       >
         <LuckCycle />
         <CaseStudies detail={{ title: "大运流年" }} items={luckCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function LuckCycleTablesPage() {
+  const detailCases = luckCycleDetailCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Flow Tables"
+        title="流年细表"
+        copy="把《大流年判例》里的月时对查、双边喜忌、运岁流月和神煞流年拆成可检索的细表。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/luck-cycle-tables" })),
+          { label: "使用边界", href: "#luck-table-principles" },
+          { label: "月时对查", href: "#luck-month-hour" },
+          { label: "运岁规则", href: "#luck-detail-rules" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <LuckCycleTables />
+        <CaseStudies detail={{ title: "流年细表" }} items={detailCases} />
       </ContentLayout>
     </main>
   );
@@ -5334,6 +5488,75 @@ function LuckCycle() {
                   <p>{text}</p>
                 </div>
               ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function LuckCycleTables() {
+  return (
+    <section className="luck-cycle-table-section" id="luck-cycle-tables" aria-labelledby="luck-cycle-table-title">
+      <div className="section-heading">
+        <p className="eyebrow">Flow Tables</p>
+        <h2 id="luck-cycle-table-title">把细表放回应期流程里</h2>
+      </div>
+      <div className="rules-lead">
+        <p>这一页把《大流年判例》里可查、可复盘的内容拆开：月时对查先作辅助，真正断事仍看原局、大运、流年、流月四层接力。</p>
+        <a className="source-link" href={assetUrl("/content/流年细表.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看流年细表整理稿
+        </a>
+      </div>
+
+      <div className="source-matrix luck-principles-grid" id="luck-table-principles">
+        {luckCycleTablePrinciples.map((item) => (
+          <article className="source-matrix-card" key={item.title}>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="report-template-panel" id="luck-month-hour">
+        <div className="section-heading">
+          <p className="eyebrow">Month / Hour</p>
+          <h3>月时对查十二组</h3>
+          <p>每组保留该月的主象、忌运提示和三条代表性条目。完整原文仍以资料文件为准，网站先把可复盘的骨架立起来。</p>
+        </div>
+        <div className="month-hour-grid">
+          {luckCycleMonthHourTable.map((item) => (
+            <article className="month-hour-card" key={item.month}>
+              <div>
+                <span>{item.month}</span>
+                <h4>{item.focus}</h4>
+                <p>忌运提示：{item.avoid}</p>
+              </div>
+              <ul>
+                {item.examples.map((example) => (
+                  <li key={example}>{example}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="flow-sections" id="luck-detail-rules">
+        {luckCycleDetailRules.map((rule) => (
+          <article className="flow-section" key={rule.title}>
+            <div>
+              <p className="eyebrow">{rule.source}</p>
+              <h3>{rule.title}</h3>
+              <p>用于把查表、喜忌和案例反馈接到同一条判断链上。</p>
+            </div>
+            <div className="flow-items single">
+              <div className="flow-item">
+                <strong>断法</strong>
+                <p>{rule.text}</p>
+              </div>
             </div>
           </article>
         ))}

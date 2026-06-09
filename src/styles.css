@@ -425,6 +425,7 @@ h1 {
 .content-main > .shen-sha-section,
 .content-main > .shen-sha-origin-section,
 .content-main > .luck-cycle-section,
+.content-main > .luck-cycle-table-section,
 .content-main > .practical-combinations-section,
 .content-main > .stem-classics-section,
 .content-main > .reading-method-section,
@@ -493,6 +494,10 @@ h1 {
 }
 
 .luck-cycle-section {
+  background: #fffaf2;
+}
+
+.luck-cycle-table-section {
   background: #fffaf2;
 }
 
@@ -863,6 +868,55 @@ h1 {
   line-height: 1.75;
 }
 
+.month-hour-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 24px;
+  background: var(--line);
+}
+
+.month-hour-card {
+  display: grid;
+  align-content: space-between;
+  min-height: 390px;
+  padding: 24px;
+  background: #f5efe5;
+}
+
+.month-hour-card span {
+  color: var(--gold);
+  font: 900 13px/1.35 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.month-hour-card h4 {
+  margin: 24px 0 14px;
+  color: var(--red);
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.month-hour-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.month-hour-card ul {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.month-hour-card li {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
 .grassroots-system-grid {
   display: grid;
   gap: 1px;
@@ -996,6 +1050,10 @@ h1 {
   margin: 0;
   color: var(--muted);
   line-height: 1.75;
+}
+
+.luck-principles-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .flow-item p {
@@ -2113,6 +2171,7 @@ body.modal-open {
   .stem-classic-principles,
   .learning-stage-grid,
   .report-template-grid,
+  .month-hour-grid,
   .grassroots-rule-grid,
   .body-image-grid,
   .source-matrix,
@@ -2267,6 +2326,7 @@ body.modal-open {
   .stem-classic-principles,
   .learning-stage-grid,
   .report-template-grid,
+  .month-hour-grid,
   .grassroots-rule-grid,
   .body-image-grid,
   .source-matrix,
