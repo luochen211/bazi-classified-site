@@ -260,6 +260,7 @@ const advancedDirectoryItems = [
   { label: "偏印枭神", href: "/advanced/partial-seal-spirit" },
   { label: "偏财机会", href: "/advanced/indirect-wealth" },
   { label: "正印正财", href: "/advanced/seal-wealth-foundation" },
+  { label: "官杀秩序", href: "/advanced/officer-killing-order" },
   { label: "实务组合", href: "/advanced/practical-combinations" },
   { label: "十干高级", href: "/advanced/stem-classics" },
   { label: "日时组合", href: "/advanced/day-hour-classics" },
@@ -2324,6 +2325,156 @@ const sealWealthFoundationWorkflow = [
 ];
 
 const sealWealthFoundationCaseIds = ["案例 2", "案例 5", "案例 15", "案例 33", "案例 55", "案例 58", "案例 66", "案例 67", "案例 75", "案例 78", "案例 81", "案例 84"];
+
+const officerKillingOrderPrinciples = [
+  {
+    title: "官杀先分秩序与压力",
+    text: "正官是阴阳相制，重规则、名分、职位和温和约束；七杀是同性相制，重压力、竞争、风险和执行力。二者都克日主，但现实质感不同。"
+  },
+  {
+    title: "女命夫星只是入口",
+    text: "第七节以女命夫星为优先，是因为问命市场多问婚姻家运；但正官七杀同样可看男命子息、事业规则、官非压力和高压职业。"
+  },
+  {
+    title: "官杀混杂要看明暗年限",
+    text: "天干明见是公开关系和显性压力，地支禄位是暗处牵连；年月、月时、年时组合要按年限和人情解释，不能一律说乱。"
+  },
+  {
+    title: "顺逆用法不同",
+    text: "正官格属顺用，怕伤官、七杀、合官、冲刑；七杀格属逆用，可以食神制杀、羊刃架杀、杀印相生，重点是能不能被收束。"
+  }
+];
+
+const officerKillingOrderSections = [
+  {
+    title: "通用边界",
+    source: "第一层级第七节 / 官杀总论",
+    intro: "教材把正官、七杀提前讲，是因为官杀既是格局之首，又是女命夫星、男命子息、事业规则和压力风险的入口。",
+    items: [
+      ["先问主题", "问婚姻看夫星，问事业看规则职位，问健康风险看官杀攻身，问子息男命可看官杀旺衰。"],
+      ["家运优先", "女命问命多以家庭、丈夫、子女为先，不等于女命没有事业财务，而是实务入口不同。"],
+      ["理相事相", "同一个官杀结构，在庶民与贵室、普通行业与高压行业里落点不同，不能只用一句吉凶。"],
+      ["禄绝年限", "夫星子星要看旺绝与柱位。月支主三十岁前，日支主中年，时支主五十岁后。"]
+    ],
+    cases: ["案例 3", "案例 4", "案例 70"]
+  },
+  {
+    title: "正官规则",
+    source: "命学精华 / 传承班正官",
+    intro: "正官有拘束之力，重秩序、名分、职位、夫星和子息。一个清正的正官，要少冲刑、少混杂、少伤官破坏。",
+    items: [
+      ["一位为清", "一位正官，无七杀、伤官、冲刑，主笃厚；女命一位正官无冲刑合，坐天月德，可看贤淑贵夫。"],
+      ["过多为鬼", "正官过多则攻身，四见正官主虚名虚利；官多称鬼，也会制比劫而兄弟分散。"],
+      ["财印承接", "正官格顺用，喜财印。财可生官，印可护官生身，财官印全则结构更安定。"],
+      ["怕伤冲合", "正官怕伤官、七杀混杂、合官、冲刑。正官被大运六合可失职，岁运冲正官多讼诉纷争。"]
+    ],
+    cases: ["案例 2", "案例 3", "案例 80"]
+  },
+  {
+    title: "七杀压力",
+    source: "命学精华 / 传承班七杀",
+    intro: "七杀不是单纯凶神，它是高压、竞争、执行、伤灾、是非和权柄。关键不在有没有七杀，而在七杀是否被制化或承接。",
+    items: [
+      ["过多难驯", "七杀过多，固执不纳人言，好争好胜，身平常多灾；多根则终生难除，一辈子是非。"],
+      ["坐杀攻身", "日支坐杀称天元坐杀，性急伶俐，但若他柱多杀、无食神羊刃制合，容易体弱多病或阴诈多疑。"],
+      ["制化成权", "七杀、食神、羊刃全者可发，但以食前杀后为宜；七杀坐阳刃可秉权，七杀生印可精明练达。"],
+      ["柱位差异", "年上七杀看早年清贫、多疾或少年凶；时上七杀性直不屈，四十五岁后仍固执坚持。"]
+    ],
+    cases: ["案例 10", "案例 53", "案例 67"]
+  },
+  {
+    title: "官杀混杂",
+    source: "第一层级第七节 / 女命官杀混杂",
+    intro: "官杀混杂不是一个粗暴标签。要先分天干明见、地支禄位、月柱正官坐七杀，再按年限和明暗解释。",
+    items: [
+      ["年月明见", "年、月天干官杀混杂，多指三十岁以前感情、婚姻、交友过程有严重阻折，且与传统期待不合。"],
+      ["月时明见", "月、时相隔日柱，前后相距十五年，不必先作道德问题；更重左右临克日主，体弱多病。"],
+      ["年时明见", "年时官杀混杂，年干十五岁前非丈夫，时干五十岁后少风流艳事，多作头胎子女有伤夭之忧。"],
+      ["地支暗混", "天干不见而地支有官杀禄位，属于暗处牵连，通常不公开明说，更像个人隐情而非简单吉凶。"]
+    ],
+    cases: ["案例 4", "案例 70", "案例 80"]
+  },
+  {
+    title: "夫子兴衰",
+    source: "第一层级第七节 / 夫星子星轻重",
+    intro: "女命以正官、七杀为夫星，食神、伤官为子星。夫星重月支，子星重时支，必须把旺绝放回人生年限。",
+    items: [
+      ["夫星看月", "三十岁前夫旺为适时，晚年夫旺也好，但有失之大迟；夫星绝于月令，早年婚恋条件较弱。"],
+      ["子星看时", "子女成就通常五十岁后才明显，所以女命观子女，以时支为核心。"],
+      ["旺绝只是条件", "夫星旺绝只是丈夫条件，不等于婚姻一定长久；是否长久还要看冲、刑、合、混杂和反克。"],
+      ["家和标准", "教材强调夫妇和睦、子女健康、家运稳定，是一般女命问事的第一现实标准。"]
+    ],
+    cases: ["案例 3", "案例 4", "案例 75"]
+  },
+  {
+    title: "反克与制化",
+    source: "第一层级第七节 / 反克夫财子禄",
+    intro: "官杀的吉凶不只看旺衰，还要看谁反克谁。伤官反克正官、正官反克比劫、七杀反克比劫，落点完全不同。",
+    items: [
+      ["伤官反官", "天干二伤官，婚前说家人缺点，婚后数落丈夫；三十岁前是婚姻危险期。"],
+      ["正官反比劫", "天干二正官，一生为情字所困；地支正官禄位则丈夫条件尚佳，但与夫家兄弟姐妹难相处。"],
+      ["七杀反比劫", "天干二七杀，常见性格燥而不持久；地支七杀禄位，丈夫条件尚佳，对外急烈，对夫顺从。"],
+      ["制杀方式", "七杀可用食神制杀、羊刃架杀、杀印相生。女命用七杀，与用正官的相处心理也不同。"]
+    ],
+    cases: ["案例 10", "案例 66", "案例 70"]
+  },
+  {
+    title: "贵人与神煞",
+    source: "第一层级第七节 / 二德天乙文昌",
+    intro: "女命官杀不能只看夫星本身，还要看贵人和神煞如何承接。天月德增福，天乙解难，文昌偏文艺。",
+    items: [
+      ["天月德", "天德、月德是先天增福，父亲有钱、丈夫有钱、自然有福等，不像天乙那样只在困难时善后。"],
+      ["天乙贵人", "天乙是解难贵人，不是增福之神；女命多见天乙，传统上要防人情后遗症。"],
+      ["文昌", "文昌主文才。古代可落琴棋书画、歌舞名伶，现代可转译为学历、艺术、表达行业。"],
+      ["官星带贵", "正官为夫且不见伤官，又值天月德，夫星层次较高；但若冲刑太重，关系仍难持久。"]
+    ],
+    cases: ["案例 1", "案例 33", "案例 80"]
+  }
+];
+
+const officerKillingOrderComparisons = [
+  {
+    title: "正官",
+    text: "阴阳相制，重规则、名分、职位和体面。顺用，宜财印承接，怕伤官、七杀、合官、冲刑。"
+  },
+  {
+    title: "七杀",
+    text: "同性相制，重压力、竞争、风险和执行。逆用，可制可化，怕多根无制和攻身太过。"
+  },
+  {
+    title: "官杀混杂",
+    text: "明见在天干，多公开阻折；藏在地支，多暗处牵连。先分年限，再谈婚姻、身体或子息。"
+  },
+  {
+    title: "夫星子星",
+    text: "女命夫星看官杀，子星看食伤。夫星重月支适龄，子星重时支晚年，旺绝要结合冲刑合。"
+  }
+];
+
+const officerKillingOrderWorkflow = [
+  {
+    title: "先分正杀",
+    text: "正官看规则名分，七杀看压力竞争。不要把所有克日主的力量都说成同一种凶。"
+  },
+  {
+    title: "落到问事",
+    text: "问婚姻看夫星，问事业看职位规则，问健康看攻身，问子息男命可看官杀。"
+  },
+  {
+    title: "查明暗年限",
+    text: "天干明见公开，地支禄位暗藏；年月、月时、年时都按人生阶段解释。"
+  },
+  {
+    title: "看制化承接",
+    text: "正官顺用看财印与破格；七杀逆用看食神、羊刃、印星能不能收束。"
+  },
+  {
+    title: "回案例复盘",
+    text: "把官杀放进婚姻、事业、健康、六亲和大运流年案例，不用单句“官杀旺凶吉”收尾。"
+  }
+];
+
+const officerKillingOrderCaseIds = ["案例 1", "案例 2", "案例 3", "案例 4", "案例 10", "案例 33", "案例 53", "案例 66", "案例 67", "案例 70", "案例 75", "案例 80"];
 
 const practicalCombinationSections = [
   {
@@ -5992,6 +6143,7 @@ function SiteShell() {
         <Route path="/advanced/partial-seal-spirit" element={<PartialSealSpiritPage />} />
         <Route path="/advanced/indirect-wealth" element={<IndirectWealthPage />} />
         <Route path="/advanced/seal-wealth-foundation" element={<SealWealthFoundationPage />} />
+        <Route path="/advanced/officer-killing-order" element={<OfficerKillingOrderPage />} />
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
         <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
         <Route path="/advanced/day-hour-classics" element={<DayHourClassicsPage />} />
@@ -6611,6 +6763,34 @@ function SealWealthFoundationPage() {
       >
         <SealWealthFoundation />
         <CaseStudies detail={{ title: "正印正财" }} items={sealWealthCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function OfficerKillingOrderPage() {
+  const officerCases = officerKillingOrderCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Officer Killing"
+        title="官杀秩序"
+        copy="把第七节正官、七杀拆成规则压力、官杀混杂、夫子兴衰、反克制化、贵人神煞和案例复盘。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/officer-killing-order" })),
+          { label: "判断原则", href: "#officer-killing-principles" },
+          ...officerKillingOrderSections.map((section) => ({ label: section.title, href: `#officer-killing-${section.title}` })),
+          { label: "四类对照", href: "#officer-killing-comparisons" },
+          { label: "判断流程", href: "#officer-killing-workflow" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <OfficerKillingOrder />
+        <CaseStudies detail={{ title: "官杀秩序" }} items={officerCases} />
       </ContentLayout>
     </main>
   );
@@ -8978,6 +9158,90 @@ function SealWealthFoundation() {
         </div>
         <div className="family-rule-grid">
           {sealWealthFoundationWorkflow.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function OfficerKillingOrder() {
+  return (
+    <section className="officer-killing-section" id="officer-killing-order" aria-labelledby="officer-killing-title">
+      <div className="section-heading">
+        <p className="eyebrow">Officer / Seven Killing</p>
+        <h2 id="officer-killing-title">官杀先看能不能成秩序</h2>
+      </div>
+      <div className="rules-lead">
+        <p>第七节从女命夫星进入，但真正的价值，是把正官、七杀拆成规则、压力、混杂、制化、贵人和年限，不再只说“官杀旺”。</p>
+        <a className="source-link" href={assetUrl("/content/官杀秩序.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看官杀秩序整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="officer-killing-principles">
+        {officerKillingOrderPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections officer-killing-flow">
+        {officerKillingOrderSections.map((section) => (
+          <article className="flow-section" id={`officer-killing-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="officer-killing-comparisons">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Comparison</p>
+            <h3>正官、七杀、混杂、夫子四类对照</h3>
+          </div>
+          <p>官杀页的重点，是分清规则与压力、公开与暗藏、顺用与逆用、夫星与子星。</p>
+        </div>
+        <div className="family-rule-grid">
+          {officerKillingOrderComparisons.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="report-template-panel" id="officer-killing-workflow">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Workflow</p>
+            <h3>官杀秩序五步判断</h3>
+          </div>
+          <p>先分正杀，再落问事、年限、明暗、制化和案例，避免把官杀混成单一吉凶。</p>
+        </div>
+        <div className="family-rule-grid">
+          {officerKillingOrderWorkflow.map((item) => (
             <article className="family-rule-card" key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.text}</p>

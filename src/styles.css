@@ -436,6 +436,7 @@ h1 {
 .content-main > .partial-seal-section,
 .content-main > .indirect-wealth-section,
 .content-main > .seal-wealth-section,
+.content-main > .officer-killing-section,
 .content-main > .practical-combinations-section,
 .content-main > .stem-classics-section,
 .content-main > .day-hour-classics-section,
@@ -554,6 +555,10 @@ h1 {
   background: #fffaf2;
 }
 
+.officer-killing-section {
+  background: #fffaf2;
+}
+
 .practical-combinations-section {
   background: #fffaf2;
 }
@@ -617,6 +622,7 @@ h1 {
 .partial-seal-flow,
 .indirect-wealth-flow,
 .seal-wealth-flow,
+.officer-killing-flow,
 .pattern-foundation-flow,
 .eight-pattern-flow,
 .two-sided-use-god-flow,
@@ -634,6 +640,7 @@ h1 {
 .partial-seal-section .family-rule-grid,
 .indirect-wealth-section .family-rule-grid,
 .seal-wealth-section .family-rule-grid,
+.officer-killing-section .family-rule-grid,
 .pattern-foundation-section .family-rule-grid,
 .eight-pattern-section .family-rule-grid,
 .two-sided-use-god-section .family-rule-grid,
@@ -2661,6 +2668,10 @@ body.modal-open {
   }
 
   .seal-wealth-section .family-rule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .officer-killing-section .family-rule-grid {
     grid-template-columns: 1fr;
   }
 
