@@ -437,6 +437,7 @@ h1 {
 .content-main > .grassroots-method-section,
 .content-main > .female-chart-section,
 .content-main > .female-poem-section,
+.content-main > .eight-pattern-section,
 .content-main > .pattern-use-god-section,
 .content-main > .use-god-history-section,
 .content-main > .two-sided-use-god-section,
@@ -550,6 +551,10 @@ h1 {
   background: #fffaf2;
 }
 
+.eight-pattern-section {
+  background: #fffaf2;
+}
+
 .pattern-use-god-section {
   background: #fffaf2;
 }
@@ -571,6 +576,7 @@ h1 {
 }
 
 .use-god-history-flow,
+.eight-pattern-flow,
 .two-sided-use-god-flow,
 .favorable-pattern-flow,
 .shen-sha-basic-flow,
@@ -580,6 +586,7 @@ h1 {
 }
 
 .use-god-history-section .family-rule-grid,
+.eight-pattern-section .family-rule-grid,
 .two-sided-use-god-section .family-rule-grid,
 .favorable-pattern-section .family-rule-grid,
 .shen-sha-basic-section .family-rule-grid,
@@ -1136,6 +1143,7 @@ h1 {
   background: #f5efe5;
 }
 
+.family-rule-card h3,
 .family-rule-card h4 {
   margin: 0 0 18px;
   color: var(--red);

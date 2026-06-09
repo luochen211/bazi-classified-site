@@ -261,6 +261,7 @@ const advancedDirectoryItems = [
   { label: "基层命学", href: "/advanced/grassroots-method" },
   { label: "女命专题", href: "/advanced/female-chart" },
   { label: "女命诗诀", href: "/advanced/female-chart-poems" },
+  { label: "八格总论", href: "/advanced/eight-patterns" },
   { label: "格局用神", href: "/advanced/pattern-use-god" },
   { label: "用神沿革", href: "/advanced/use-god-history" },
   { label: "双边用神", href: "/advanced/two-sided-use-god" },
@@ -2213,6 +2214,153 @@ const femalePoemExamples = [
 ];
 
 const femalePoemCaseIds = ["案例 3", "案例 4", "案例 33", "案例 64", "案例 66", "案例 70", "案例 75", "案例 80", "案例 81"];
+
+const eightPatternPrinciples = [
+  {
+    title: "格局不是标签",
+    text: "八格要看月令、透干、根气、清浊和顺逆用。只说“某某格”，还没有进入判断。"
+  },
+  {
+    title: "先分两个层次",
+    text: "一层看四柱本身喜忌，一层看命局里多个格局并见时谁能成事、谁会破局。"
+  },
+  {
+    title: "术语不能混讲",
+    text: "官印双清、伤官见官是十神格局语言；火炎土燥、寒木向阳是五行气候语言，要分层使用。"
+  },
+  {
+    title: "顺逆决定用法",
+    text: "顺用格要保护，不可反克；逆用格要制化，不是见到杀、伤、枭、刃就直接断凶。"
+  }
+];
+
+const eightPatternRows = [
+  {
+    title: "正官格",
+    type: "顺用",
+    source: "第一层级八格总论",
+    intro: "正官格重名分、规则与社会承认。喜身能承官，再得财印相辅；忌伤官、官杀混杂、合官、冲官和身弱不能承。",
+    items: [
+      ["喜法", "身旺、印绶、食神有节、以财为引，逢官看财。"],
+      ["忌法", "伤官破官、偏官混杂、刑冲、泄气太多、官星被合走。"],
+      ["现实转译", "不是一见正官就贵，而是看职位、名分、规则压力能否被日主承接。"]
+    ],
+    cases: ["案例 2", "案例 67", "案例 75"]
+  },
+  {
+    title: "财格",
+    type: "顺用",
+    source: "第九节正财 / 传承班财格",
+    intro: "财格重资源、交易与现实承接。财星要有根、有路、有保护，不能只看财多。",
+    items: [
+      ["喜法", "食伤生财，官杀承财，日主有根能担财。"],
+      ["忌法", "比劫羊刃夺财、刑冲财根、财印相战无通关。"],
+      ["现实转译", "财旺不等于一定富，要看钱从哪里来、谁来守、是否被合伙竞争消耗。"]
+    ],
+    cases: ["案例 10", "案例 15", "案例 33", "案例 81"]
+  },
+  {
+    title: "正印格",
+    type: "顺用",
+    source: "第九节正印",
+    intro: "正印格重资质、保护、名誉与清气。印格宜有官杀或贵人承接，否则容易停在艺文清高。",
+    items: [
+      ["喜法", "官杀生印、天月德贵人、印星清而有现实落点。"],
+      ["忌法", "财破印无通关、日主太强再逢重印、孤印无职位资源承接。"],
+      ["现实转译", "印能带来学历、证照、系统保护，也可能形成保守、依赖和不接地气。"]
+    ],
+    cases: ["案例 2", "案例 63", "案例 67"]
+  },
+  {
+    title: "食神格",
+    type: "顺用",
+    source: "八格总论 / 食伤生财",
+    intro: "食神格重稳定输出、技艺、口福与生财路径。它要顺生，不宜被偏印夺食。",
+    items: [
+      ["喜法", "食神生财、食神制杀有序，输出能转成现实结果。"],
+      ["忌法", "偏印夺食、冲刑空亡、食神入库而不能发挥。"],
+      ["现实转译", "食神不是只说会享受，而是看技能、产品、内容和照顾能力能不能落地。"]
+    ],
+    cases: ["案例 55", "案例 57", "案例 83"]
+  },
+  {
+    title: "伤官格",
+    type: "逆用",
+    source: "八格总论",
+    intro: "伤官格先承认它会破规则、外放才气，再看能不能用印收束，或用财承接。",
+    items: [
+      ["喜法", "伤官佩印、伤官生财，才气有制度或市场接住。"],
+      ["忌法", "伤官见官无通关，表达直接破坏职位、名分和秩序。"],
+      ["现实转译", "伤官不是必灾，它更像不服管的输出力；关键是有没有出口和边界。"]
+    ],
+    cases: ["案例 1", "案例 5", "案例 55"]
+  },
+  {
+    title: "偏印格",
+    type: "逆用",
+    source: "八格总论",
+    intro: "偏印格重偏门、研究、敏感和孤高。逆用时常以财来制印，让思维落到现实交换。",
+    items: [
+      ["喜法", "用财制印，或用明确的事业场景让偏印有落点。"],
+      ["忌法", "枭印夺食、印多清孤、只思考不输出。"],
+      ["现实转译", "偏印可成研究、玄学、技术与冷门专长，也会带来孤僻和不稳定食禄。"]
+    ],
+    cases: ["案例 5", "案例 66", "案例 84"]
+  },
+  {
+    title: "七杀格",
+    type: "逆用",
+    source: "八格总论",
+    intro: "七杀格重压力、竞争、危险与权力。逆用不是消灭七杀，而是让它被制、被化、被驾驭。",
+    items: [
+      ["喜法", "食神制杀、杀印相生、羊刃驾杀、身杀两停。"],
+      ["忌法", "杀重无制、身弱不能承杀、杀混官而路径不清。"],
+      ["现实转译", "七杀可成高压专业、执行力和竞争力；无制时才变成压迫、伤害和风险。"]
+    ],
+    cases: ["案例 57", "案例 63", "案例 75"]
+  },
+  {
+    title: "羊刃格",
+    type: "逆用",
+    source: "八格总论校注",
+    intro: "原文逆用列表有一处重复正印，结合“羊刃格专喜七杀”的上下文，本页按羊刃格整理。",
+    items: [
+      ["喜法", "专喜七杀，以杀制刃，让强烈行动力进入责任和目标。"],
+      ["忌法", "无杀制刃、比劫争财、刃气只剩冲撞与争夺。"],
+      ["现实转译", "羊刃不是只断凶，它是强硬、自主和抗压；关键在有没有规则把力收住。"]
+    ],
+    cases: ["案例 22", "案例 55", "案例 78"]
+  }
+];
+
+const eightPatternWorkflow = [
+  { title: "定入口", text: "先看月令和透干，判断格局入口在哪里，不从术语印象出发。" },
+  { title: "分顺逆", text: "财、官、食神、正印重保护；杀、伤、偏印、羊刃重制化。" },
+  { title: "查破格", text: "看合、冲、刑、混杂、反克、夺食、夺财这些破坏点有没有通关。" },
+  { title: "看承载", text: "再问日主能不能承接格局带来的财、官、印、杀或输出压力。" },
+  { title: "入岁运", text: "最后进入调候、用神、岁运与案例复盘，不把原局结论说死。" }
+];
+
+const eightPatternTranslations = [
+  {
+    title: "官印双清不是直接贵",
+    text: "要看官是否真有力，印是否能承接职位和资质；只清而无现实入口，可能只是清高。"
+  },
+  {
+    title: "伤官见官不是必灾",
+    text: "若有印来收束，或财来承接输出，伤官反而能变成表达、产品和市场能力。"
+  },
+  {
+    title: "财旺不是一定富",
+    text: "财要有来源、有根、有守护，日主能担，才谈财富；否则只是资源压力或聚散。"
+  },
+  {
+    title: "杀印相生不是只看杀印同见",
+    text: "七杀要有压力源，印要能化杀成资质，中间不能断路，也不能杀重到日主承受不了。"
+  }
+];
+
+const eightPatternCaseIds = ["案例 2", "案例 10", "案例 15", "案例 22", "案例 33", "案例 55", "案例 57", "案例 63", "案例 67", "案例 75", "案例 78", "案例 81", "案例 83", "案例 84"];
 
 const patternUseGodSections = [
   {
@@ -4872,6 +5020,7 @@ function SiteShell() {
         <Route path="/advanced/grassroots-method" element={<GrassrootsMethodPage />} />
         <Route path="/advanced/female-chart" element={<FemaleChartPage />} />
         <Route path="/advanced/female-chart-poems" element={<FemalePoemsPage />} />
+        <Route path="/advanced/eight-patterns" element={<EightPatternsPage />} />
         <Route path="/advanced/pattern-use-god" element={<PatternUseGodPage />} />
         <Route path="/advanced/use-god-history" element={<UseGodHistoryPage />} />
         <Route path="/advanced/two-sided-use-god" element={<TwoSidedUseGodPage />} />
@@ -5497,6 +5646,34 @@ function FemalePoemsPage() {
       >
         <FemalePoems />
         <CaseStudies detail={{ title: "女命诗诀" }} items={poemCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function EightPatternsPage() {
+  const patternCases = eightPatternCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Eight Patterns"
+        title="八格总论"
+        copy="把正官、财、正印、食神、伤官、偏印、七杀、羊刃拆成顺逆用、破格和现实转译，作为格局用神页的前置入口。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/eight-patterns" })),
+          { label: "总原则", href: "#eight-pattern-principles" },
+          ...eightPatternRows.map((row) => ({ label: row.title, href: `#eight-pattern-${row.title}` })),
+          { label: "判断流程", href: "#eight-pattern-workflow" },
+          { label: "现实转译", href: "#eight-pattern-translations" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <EightPatterns />
+        <CaseStudies detail={{ title: "八格总论" }} items={patternCases} />
       </ContentLayout>
     </main>
   );
@@ -7540,6 +7717,91 @@ function FemalePoems() {
               <ul>
                 <li>{item.text}</li>
               </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function EightPatterns() {
+  return (
+    <section className="eight-pattern-section" id="eight-patterns" aria-labelledby="eight-pattern-title">
+      <div className="section-heading">
+        <p className="eyebrow">Eight Patterns</p>
+        <h2 id="eight-pattern-title">先分顺逆，再看成败</h2>
+      </div>
+      <div className="rules-lead">
+        <p>八格总论的目的，是把格局名词从“吉凶标签”拉回判断流程：月令入口、顺逆用、破格通关、日主承载和岁运触发。</p>
+        <a className="source-link" href={assetUrl("/content/八格总论.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看八格总论整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="eight-pattern-principles">
+        {eightPatternPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections eight-pattern-flow">
+        {eightPatternRows.map((row) => (
+          <article className="flow-section" id={`eight-pattern-${row.title}`} key={row.title}>
+            <div>
+              <p className="eyebrow">{row.source}</p>
+              <h3>{row.title}</h3>
+              <p>{row.intro}</p>
+              <div className="tag-list" aria-label={`${row.title}类型与案例`}>
+                <span>{row.type}</span>
+                {row.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {row.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="eight-pattern-workflow">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Workflow</p>
+            <h3>八格判断五步</h3>
+          </div>
+          <p>先把格局判清，再进入调候、扶抑、四联合参和岁运复盘。</p>
+        </div>
+        <div className="family-rule-grid">
+          {eightPatternWorkflow.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="report-template-panel" id="eight-pattern-translations">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Practice Translation</p>
+            <h3>把格局术语翻译成人话</h3>
+          </div>
+          <p>同一句古书术语，必须回到承接、路径、破坏点和现实场景。</p>
+        </div>
+        <div className="family-rule-grid">
+          {eightPatternTranslations.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
             </article>
           ))}
         </div>
