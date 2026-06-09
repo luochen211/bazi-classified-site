@@ -423,6 +423,7 @@ h1 {
 .content-main > .state-rules,
 .content-main > .flow-theory,
 .content-main > .shen-sha-section,
+.content-main > .shen-sha-basic-section,
 .content-main > .shen-sha-origin-section,
 .content-main > .luck-cycle-section,
 .content-main > .luck-cycle-table-section,
@@ -493,6 +494,10 @@ h1 {
   background: #fffaf2;
 }
 
+.shen-sha-basic-section {
+  background: #fffaf2;
+}
+
 .shen-sha-origin-section {
   background: #fffaf2;
 }
@@ -546,12 +551,14 @@ h1 {
 }
 
 .use-god-history-flow,
-.favorable-pattern-flow {
+.favorable-pattern-flow,
+.shen-sha-basic-flow {
   margin-top: 34px;
 }
 
 .use-god-history-section .family-rule-grid,
-.favorable-pattern-section .family-rule-grid {
+.favorable-pattern-section .family-rule-grid,
+.shen-sha-basic-section .family-rule-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -2469,6 +2476,10 @@ body.modal-open {
   }
 
   .favorable-pattern-section .family-rule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shen-sha-basic-section .family-rule-grid {
     grid-template-columns: 1fr;
   }
 

@@ -247,6 +247,7 @@ const advancedDirectoryItems = [
   { label: "干支作用", href: "/advanced/stem-branch-actions" },
   { label: "胎命身", href: "/advanced/fetal-life-body" },
   { label: "神煞", href: "/advanced/shen-sha" },
+  { label: "神煞入门", href: "/advanced/shen-sha-basics" },
   { label: "神煞源流", href: "/advanced/shen-sha-origin" },
   { label: "大运流年", href: "/advanced/luck-cycle" },
   { label: "流年细表", href: "/advanced/luck-cycle-tables" },
@@ -1149,6 +1150,109 @@ const shenShaEntries = [
 ];
 
 const shenShaCaseIds = ["案例 53", "案例 58", "案例 70", "案例 78", "案例 80", "案例 1", "案例 10", "案例 66"];
+
+const shenShaBasicPrinciples = [
+  {
+    title: "神煞只是现象",
+    text: "桃花、贵人、驿马本身不直接等于吉凶。它们先提示事件类型，再回到日主、十神、宫位和岁运。"
+  },
+  {
+    title: "先看克入克出",
+    text: "神煞生我、我生神煞、我克神煞、神煞克我，现实感受完全不同。最忌神煞克身。"
+  },
+  {
+    title: "再看是否成事",
+    text: "桃花可以身败名裂，也可以人财两得；驿马可以白跑，也可以赚钱；贵人可以帮忙，也可以带来麻烦。"
+  },
+  {
+    title: "最后转成现实话",
+    text: "不要说某神煞必然吉凶，要说它像什么场景：关系、人情、迁动、求助、交换、曝光或被迫行动。"
+  }
+];
+
+const shenShaBasicSections = [
+  {
+    title: "桃花",
+    source: "传承班 / 神煞记忆",
+    intro: "桃花不是一句烂桃花。它先是吸引、关系、人情和曝光，再看它与日主的生克合冲。",
+    items: [
+      ["咸池桃花", "常规桃花多从咸池看，进入关系、人际、欲望和外貌吸引。"],
+      ["外桃花", "子午卯酉日再见子午卯酉时，容易形成更外放的关系机会。"],
+      ["裸形桃花", "桃花带冲，外显、曝光、尺度感和关系边界更需要谨慎。"],
+      ["正官桃花", "正官桃花是少数可以转为较正面关系资源的桃花，但仍要看冲刑合会和格局承接。"]
+    ],
+    cases: ["案例 22", "案例 33", "案例 68", "案例 75"]
+  },
+  {
+    title: "驿马",
+    source: "传承班 / 神煞记忆",
+    intro: "驿马不是简单出远门，而是移动、调动、外地资源、被迫奔走或主动选择。",
+    items: [
+      ["驿马克我", "不想动也得动，像被任务、环境、订单推着走。"],
+      ["我克驿马", "主动权较高，想去就去，不想去就不去。"],
+      ["驿马生我", "外地、交通、机会主动来找我。"],
+      ["我生驿马", "自己去求人、跑关系、送资源，奔走成本在自己身上。"]
+    ],
+    cases: ["案例 1", "案例 61", "案例 65", "案例 78"]
+  },
+  {
+    title: "贵人",
+    source: "传承班 / 神煞记忆",
+    intro: "贵人也不是永远帮你。贵人是什么性质，要看谁生谁、谁克谁，以及贵人是否带马、带合、带混杂。",
+    items: [
+      ["贵人生我", "他人主动提供帮助、资源、位置、钱财或机会。"],
+      ["我生贵人", "自己送礼求人、主动投入资源，成本在我。"],
+      ["贵人克我", "帮助可能带条件、压力或风险，甚至变成洗钱、担责、被牵连。"],
+      ["贵人乘驿马", "贵人来得快、换得快，资源流动性强，未必稳定。"]
+    ],
+    cases: ["案例 53", "案例 57", "案例 67", "案例 70"]
+  },
+  {
+    title: "天月德",
+    source: "传承班 / 女命神煞",
+    intro: "天月德偏增福，和天乙贵人、文昌贵人不能混成一个意思。女命尤其要分清楚。",
+    items: [
+      ["天月德", "偏增福、明处可见，常和夫星、父家、夫家资源合看。"],
+      ["天乙贵人", "偏解难、求人帮助；用于女命时要更谨慎，不能一见贵人就说福厚。"],
+      ["文昌贵人", "偏读书聪明、文名信息，不等于婚姻或现实资源稳定。"],
+      ["贵众合多", "贵人多、合多，在现代可转成社交、名利场、人情资源多，也要看边界。"]
+    ],
+    cases: ["案例 70", "案例 75", "案例 80", "案例 81"]
+  },
+  {
+    title: "克身边界",
+    source: "传承班 / 神煞记忆",
+    intro: "神煞入门最重要的一句：所有神煞不能克日主。克身时，神煞才容易从现象变成压力。",
+    items: [
+      ["神煞克身", "事件像从外部压过来，人被迫承受，钱少时尤其明显。"],
+      ["两个神煞克身", "传承班特别提醒大耗、驿马等克身时要慎看，容易贫苦、奔波或破耗。"],
+      ["引到衰绝", "凶神恶煞若引到时支衰绝，力量可减，不要只看名字。"],
+      ["不替代主线", "最终仍要回到格局、调候、十神、宫位和岁运，神煞只补事件形态。"]
+    ],
+    cases: ["案例 1", "案例 10", "案例 53", "案例 58"]
+  }
+];
+
+const shenShaBasicTranslations = [
+  {
+    title: "不要见桃花就断感情乱",
+    text: "先看桃花和日主的关系，再看财官、夫妻宫、合冲刑会。桃花也可能是人缘、资源和曝光。"
+  },
+  {
+    title: "不要见驿马就断远行",
+    text: "驿马可能是岗位变动、跑客户、外地资源、交通奔波，也可能只是被事情推着动。"
+  },
+  {
+    title: "不要见贵人就说有人帮",
+    text: "贵人克身时，帮助可能变成条件、责任或牵连；贵人乘马也可能换来换去，不稳定。"
+  },
+  {
+    title: "不要把神煞当主判",
+    text: "神煞只能补场景。主判仍然是格局、十神、宫位、强弱、调候和大运流年。"
+  }
+];
+
+const shenShaBasicCaseIds = ["案例 1", "案例 10", "案例 22", "案例 33", "案例 53", "案例 57", "案例 58", "案例 61", "案例 65", "案例 67", "案例 68", "案例 70", "案例 75", "案例 78", "案例 80", "案例 81"];
 
 const shenShaOriginPrinciples = [
   ["卦理", "如天罗地网取乾巽两宫，男命戌亥、女命辰巳，重点在卦位阴阳极盛。"],
@@ -4267,6 +4371,7 @@ function SiteShell() {
         <Route path="/advanced/stem-branch-actions" element={<StemBranchActionsPage />} />
         <Route path="/advanced/fetal-life-body" element={<FetalLifeBodyPage />} />
         <Route path="/advanced/shen-sha" element={<ShenShaPage />} />
+        <Route path="/advanced/shen-sha-basics" element={<ShenShaBasicsPage />} />
         <Route path="/advanced/shen-sha-origin" element={<ShenShaOriginPage />} />
         <Route path="/advanced/luck-cycle" element={<LuckCyclePage />} />
         <Route path="/advanced/luck-cycle-tables" element={<LuckCycleTablesPage />} />
@@ -4531,6 +4636,33 @@ function ShenShaPage() {
       >
         <ShenSha />
         <CaseStudies detail={{ title: "神煞" }} items={shenShaCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function ShenShaBasicsPage() {
+  const basicCases = shenShaBasicCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Shen Sha Basics"
+        title="神煞入门"
+        copy="把传承班里的桃花、驿马、贵人、天月德讲法整理成入门纠偏：神煞先看现象，再看和日主的克入克出。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/shen-sha-basics" })),
+          { label: "四个原则", href: "#shen-sha-basic-principles" },
+          ...shenShaBasicSections.map((section) => ({ label: section.title, href: `#shen-sha-basic-${section.title}` })),
+          { label: "现实转译", href: "#shen-sha-basic-translations" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <ShenShaBasics />
+        <CaseStudies detail={{ title: "神煞入门" }} items={basicCases} />
       </ContentLayout>
     </main>
   );
@@ -5925,6 +6057,73 @@ function ShenSha() {
           <ScrollText size={18} aria-hidden="true" />
           查看神煞条目库整理稿
         </a>
+      </div>
+    </section>
+  );
+}
+
+function ShenShaBasics() {
+  return (
+    <section className="shen-sha-basic-section" id="shen-sha-basics" aria-labelledby="shen-sha-basic-title">
+      <div className="section-heading">
+        <p className="eyebrow">Shen Sha Basics</p>
+        <h2 id="shen-sha-basic-title">神煞先看“怎么作用到我”</h2>
+      </div>
+      <div className="rules-lead">
+        <p>桃花、驿马、贵人都不是单独的吉凶标签。先看它们是生我、我生、克我、我克，再判断它们落成关系、迁动、帮助还是压力。</p>
+        <a className="source-link" href={assetUrl("/content/神煞入门.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看神煞入门整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="shen-sha-basic-principles">
+        {shenShaBasicPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections shen-sha-basic-flow">
+        {shenShaBasicSections.map((section) => (
+          <article className="flow-section" id={`shen-sha-basic-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="shen-sha-basic-translations">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Practice Translation</p>
+            <h3>把神煞话转成现实话</h3>
+          </div>
+          <p>神煞入门最需要去掉吓人断语，转成可验证的生活场景。</p>
+        </div>
+        <div className="family-rule-grid">
+          {shenShaBasicTranslations.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
