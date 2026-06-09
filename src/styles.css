@@ -425,6 +425,7 @@ h1 {
 .content-main > .shen-sha-section,
 .content-main > .shen-sha-basic-section,
 .content-main > .shen-sha-origin-section,
+.content-main > .health-risk-section,
 .content-main > .luck-cycle-section,
 .content-main > .luck-cycle-table-section,
 .content-main > .luck-cycle-structure-section,
@@ -505,6 +506,10 @@ h1 {
   background: #fffaf2;
 }
 
+.health-risk-section {
+  background: #fffaf2;
+}
+
 .luck-cycle-section {
   background: #fffaf2;
 }
@@ -569,7 +574,8 @@ h1 {
 .two-sided-use-god-flow,
 .favorable-pattern-flow,
 .shen-sha-basic-flow,
-.luck-cycle-structure-flow {
+.luck-cycle-structure-flow,
+.health-risk-flow {
   margin-top: 34px;
 }
 
@@ -577,7 +583,8 @@ h1 {
 .two-sided-use-god-section .family-rule-grid,
 .favorable-pattern-section .family-rule-grid,
 .shen-sha-basic-section .family-rule-grid,
-.luck-cycle-structure-section .family-rule-grid {
+.luck-cycle-structure-section .family-rule-grid,
+.health-risk-section .family-rule-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -2589,6 +2596,10 @@ body.modal-open {
   }
 
   .luck-cycle-structure-section .family-rule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .health-risk-section .family-rule-grid {
     grid-template-columns: 1fr;
   }
 

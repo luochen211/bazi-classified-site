@@ -249,6 +249,7 @@ const advancedDirectoryItems = [
   { label: "神煞", href: "/advanced/shen-sha" },
   { label: "神煞入门", href: "/advanced/shen-sha-basics" },
   { label: "神煞源流", href: "/advanced/shen-sha-origin" },
+  { label: "健康风险", href: "/advanced/health-risk" },
   { label: "大运流年", href: "/advanced/luck-cycle" },
   { label: "流年细表", href: "/advanced/luck-cycle-tables" },
   { label: "流年架构", href: "/advanced/luck-cycle-structure" },
@@ -1529,6 +1530,87 @@ const shenShaOriginTexts = [
 ];
 
 const shenShaOriginCaseIds = ["案例 1", "案例 10", "案例 53", "案例 58", "案例 70", "案例 80"];
+
+const healthRiskPrinciples = [
+  {
+    title: "只做风险提示",
+    text: "健康、寿夭、灾厄类内容不能写成诊断或定数。网站只保留结构风险、触发条件和已发生案例复盘。"
+  },
+  {
+    title: "先看结构失衡",
+    text: "寒暖燥湿、五行偏枯、日主无根、食伤被夺、杀重无制、印食冲突，比单个神煞更重要。"
+  },
+  {
+    title: "再看岁运触发",
+    text: "原局有风险点，不等于当下发作。大运流年反复冲、刑、合动或填实，才进入年份提醒。"
+  },
+  {
+    title: "古法词汇先降级",
+    text: "鬼限、冲夭、急脚、截命、短寿等词，只作为文献名和风险语言边界，不直接对用户输出。"
+  }
+];
+
+const healthRiskSections = [
+  {
+    source: "神煞探源一",
+    title: "火灾、血光、伤残",
+    text: "天火、刀刃血光、白虎、羊刃、七杀、冲刑叠加时，才进入外伤、手术、交通、器械和火热风险的复盘。单见一项只提示事件形态。"
+  },
+  {
+    source: "神煞探源一 / 流年细表",
+    title: "幼年体弱与反复小疾",
+    text: "少年多灾、体弱多病、月时细表里的幼年关口，要和胎元、父母宫、印星、日主根气、早运冲刑一起看。儿童相关内容只做既有反馈解释。"
+  },
+  {
+    source: "十神细则",
+    title: "食神被夺与身心输出",
+    text: "偏印夺食、食神入空亡、食伤入库或受冲，常落在食欲、消化、表达、快乐感、睡眠和情绪舒展的倾向。必须写成生活提醒。"
+  },
+  {
+    source: "十神 / 神煞",
+    title: "杀重无制与慢性压力",
+    text: "七杀无制，在天干偏突发压力，在地支偏慢性压迫；若再叠羊刃、白虎、罗网、流年冲刑，才加强为伤灾、手术、官非或高压环境。"
+  },
+  {
+    source: "调候用神",
+    title: "寒暖燥湿与五行偏枯",
+    text: "金水泛滥、火炎土燥、木火过燥、土晦火光等，先作为体质和状态倾向看。调候失衡比“缺什么补什么”更可靠。"
+  },
+  {
+    source: "神煞源流",
+    title: "寿夭古词只做边界",
+    text: "鬼限、冲夭、夭年、急脚、截命、四大空亡等古词，不进入普通断语。页面只说明来源、限制和为什么现代网站不能恐吓式输出。"
+  }
+];
+
+const healthRiskWorkflow = [
+  "先问现实问题：是体质、慢性压力、外伤、手术、交通、情绪，还是亲属健康。",
+  "再找原局弱点：五行偏枯、调候失衡、食神被夺、杀重无制、比劫羊刃、罗网空亡。",
+  "定位宫位与十神：年看早年与长辈，月看成长环境，日看自身与伴侣，时看子女晚年。",
+  "确认岁运触发：大运流年是否冲刑同一处，是否把拱合虚字填实，是否连续数月发作。",
+  "输出时降级语言：用“留意、倾向、触发条件、复盘提示”，不用“必病、必死、必灾”。"
+];
+
+const healthRiskTranslations = [
+  {
+    title: "古法说短寿",
+    text: "网站改写为：这是寿夭类古法名目，只能做文献解释，不用于现代个体预测。"
+  },
+  {
+    title: "古法说血光",
+    text: "网站改写为：若再见冲刑、刃杀、岁运触发，可复盘外伤、手术、交通或器械风险。"
+  },
+  {
+    title: "古法说体弱",
+    text: "网站改写为：原局承接力不足，可能表现为体质敏感、恢复慢或早年反复小疾。"
+  },
+  {
+    title: "古法说痼疾",
+    text: "网站改写为：长期偏枯或寒湿燥热失衡，适合作为慢性状态倾向观察。"
+  }
+];
+
+const healthRiskCaseIds = ["案例 1", "案例 5", "案例 10", "案例 12", "案例 15", "案例 53", "案例 54", "案例 58", "案例 66", "案例 73", "案例 80"];
 
 const luckCycleLayers = [
   {
@@ -4778,6 +4860,7 @@ function SiteShell() {
         <Route path="/advanced/shen-sha" element={<ShenShaPage />} />
         <Route path="/advanced/shen-sha-basics" element={<ShenShaBasicsPage />} />
         <Route path="/advanced/shen-sha-origin" element={<ShenShaOriginPage />} />
+        <Route path="/advanced/health-risk" element={<HealthRiskPage />} />
         <Route path="/advanced/luck-cycle" element={<LuckCyclePage />} />
         <Route path="/advanced/luck-cycle-tables" element={<LuckCycleTablesPage />} />
         <Route path="/advanced/luck-cycle-structure" element={<LuckCycleStructurePage />} />
@@ -5098,6 +5181,33 @@ function ShenShaOriginPage() {
       >
         <ShenShaOrigin />
         <CaseStudies detail={{ title: "神煞源流" }} items={originCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function HealthRiskPage() {
+  const healthCases = healthRiskCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Health Risk"
+        title="健康风险"
+        copy="把神煞、十神、调候、岁运里的健康和灾厄内容改写成风险提示、触发条件和案例复盘，不做医学诊断。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/health-risk" })),
+          { label: "边界原则", href: "#health-risk-principles" },
+          { label: "风险类型", href: "#health-risk-flow" },
+          { label: "复盘流程", href: "#health-risk-workflow" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <HealthRisk />
+        <CaseStudies detail={{ title: "健康风险" }} items={healthCases} />
       </ContentLayout>
     </main>
   );
@@ -6667,6 +6777,79 @@ function ShenShaOrigin() {
         <div className="body-image-grid">
           {shenShaOriginTexts.map((item) => (
             <article className="body-image-card" key={item.title}>
+              <h4>{item.title}</h4>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HealthRisk() {
+  return (
+    <section className="health-risk-section" id="health-risk" aria-labelledby="health-risk-title">
+      <div className="section-heading">
+        <p className="eyebrow">Health Risk</p>
+        <h2 id="health-risk-title">先设边界，再谈风险</h2>
+      </div>
+      <div className="rules-lead">
+        <p>健康风险页不是算病页，而是把古法里最容易吓人的词，重新放回结构、宫位、岁运和已发生反馈里。</p>
+        <a className="source-link" href={assetUrl("/content/健康风险.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看健康风险整理稿
+        </a>
+      </div>
+
+      <div className="source-matrix" id="health-risk-principles">
+        {healthRiskPrinciples.map((item) => (
+          <article className="source-matrix-card" key={item.title}>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="flow-sections health-risk-flow" id="health-risk-flow">
+        {healthRiskSections.map((section) => (
+          <article className="flow-section" key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>把古法名目转成可复盘的风险形态。</p>
+            </div>
+            <div className="flow-items single">
+              <div className="flow-item">
+                <strong>读法</strong>
+                <p>{section.text}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="report-template-panel" id="health-risk-workflow">
+        <div className="section-heading">
+          <p className="eyebrow">Workflow</p>
+          <h3>健康风险五步复盘</h3>
+          <p>所有健康相关内容，都先经过这条流程再输出。</p>
+        </div>
+        <div className="flow-checklist">
+          {healthRiskWorkflow.map((item) => (
+            <div className="flow-check" key={item}>{item}</div>
+          ))}
+        </div>
+      </div>
+
+      <div className="report-template-panel">
+        <div className="section-heading">
+          <p className="eyebrow">Rewrite</p>
+          <h3>四类古法词汇的现代改写</h3>
+        </div>
+        <div className="family-rule-grid">
+          {healthRiskTranslations.map((item) => (
+            <article className="family-rule-card" key={item.title}>
               <h4>{item.title}</h4>
               <p>{item.text}</p>
             </article>
