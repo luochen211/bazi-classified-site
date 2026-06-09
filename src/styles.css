@@ -423,6 +423,7 @@ h1 {
 .content-main > .state-rules,
 .content-main > .flow-theory,
 .content-main > .shen-sha-section,
+.content-main > .shen-sha-origin-section,
 .content-main > .luck-cycle-section,
 .content-main > .practical-combinations-section,
 .content-main > .stem-classics-section,
@@ -484,6 +485,10 @@ h1 {
 }
 
 .shen-sha-section {
+  background: #fffaf2;
+}
+
+.shen-sha-origin-section {
   background: #fffaf2;
 }
 
@@ -962,6 +967,32 @@ h1 {
 }
 
 .body-image-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.source-matrix {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+}
+
+.source-matrix-card {
+  min-height: 250px;
+  padding: 24px;
+  background: #f5efe5;
+}
+
+.source-matrix-card h3 {
+  margin: 0 0 18px;
+  color: var(--red);
+  font-size: 26px;
+  line-height: 1.18;
+}
+
+.source-matrix-card p {
   margin: 0;
   color: var(--muted);
   line-height: 1.75;
@@ -2084,6 +2115,7 @@ body.modal-open {
   .report-template-grid,
   .grassroots-rule-grid,
   .body-image-grid,
+  .source-matrix,
   .flow-checklist,
   .case-grid,
   .steps,
@@ -2237,6 +2269,7 @@ body.modal-open {
   .report-template-grid,
   .grassroots-rule-grid,
   .body-image-grid,
+  .source-matrix,
   .shen-sha-entry-grid,
   .flow-checklist,
   .flow-section,

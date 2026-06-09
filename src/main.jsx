@@ -247,6 +247,7 @@ const advancedDirectoryItems = [
   { label: "干支作用", href: "/advanced/stem-branch-actions" },
   { label: "胎命身", href: "/advanced/fetal-life-body" },
   { label: "神煞", href: "/advanced/shen-sha" },
+  { label: "神煞源流", href: "/advanced/shen-sha-origin" },
   { label: "大运流年", href: "/advanced/luck-cycle" },
   { label: "实务组合", href: "/advanced/practical-combinations" },
   { label: "十干高级", href: "/advanced/stem-classics" },
@@ -1143,6 +1144,65 @@ const shenShaEntries = [
 ];
 
 const shenShaCaseIds = ["案例 53", "案例 58", "案例 70", "案例 78", "案例 80", "案例 1", "案例 10", "案例 66"];
+
+const shenShaOriginPrinciples = [
+  ["卦理", "如天罗地网取乾巽两宫，男命戌亥、女命辰巳，重点在卦位阴阳极盛。"],
+  ["日月行度", "如天月德贵人，来自周天度数和十二宫分配，属于天文历法取象。"],
+  ["奇偶方圆", "三合、四生、四旺、四库等系列，常由奇偶、方圆、三四结构组合出来。"],
+  ["统计累积", "某些干支组合来自经验归纳，如乙癸同丑、甲乙庚全、乙己癸全等。"],
+  ["象形字义", "平头、悬针、破字等偏字形取象，宜保留为源流，不宜直接吓人断命。"],
+  ["俯仰情理", "百日关、落井关等带有生活习俗和人情联想，需谨慎看待。"],
+  ["先天数理", "如驿马可由三合先天数推导，寅午戌合二十一位而取申为马。"],
+  ["特殊排列", "如三奇贵人、八专九丑、某些日时组合，理论稳定性不一，需逐条校验。"]
+];
+
+const shenShaOriginUses = [
+  {
+    title: "补格局所不能及",
+    text: "火灾、刀刃血光、官非诉讼、疑难杂症等事件类型，有时难从格局调候直接推出，神煞可作为事件形态补充。"
+  },
+  {
+    title: "优先处理健康风险",
+    text: "涉及夭折、伤残、痼疾、刀刃、血光等内容时，先转成风险提示和复盘语言，再谈富贵贫贱。"
+  },
+  {
+    title: "同词异义要辨源",
+    text: "大耗、天医、天喜等名称，在择日、阳宅、紫微、禄命里可能取法不同，不能拿一个系统套全部。"
+  },
+  {
+    title: "年日取法需说明",
+    text: "驿马、将星、劫煞等在明清之间有年支、日支取法差异。页面必须标注取法，不做无来源断语。"
+  }
+];
+
+const shenShaOriginTexts = [
+  {
+    title: "神白经",
+    text: "灾煞、驿马、父母取法、白虎临庭、六道滔虚、天后失行等，适合作为早期神煞散录。"
+  },
+  {
+    title: "烛神经",
+    text: "华盖、驿马、天乙、孤寡等条目，强调生旺死绝、并临空亡、夹贵等细节。"
+  },
+  {
+    title: "理愚歌",
+    text: "将星、亡神、华盖、学堂、羊刃、罗网等，常以诗诀方式记录吉凶组合。"
+  },
+  {
+    title: "三车一览",
+    text: "学堂、羊刃、六乙鼠贵、天月二德、华盖、马、天赦、福星、亡劫等多条源流。"
+  },
+  {
+    title: "壶中子",
+    text: "进退神、华盖、贵人昼夜、八专九丑、倒食、暗带、四大空亡等，适合做源流索引。"
+  },
+  {
+    title: "珞琭子与杂录",
+    text: "三奇、空亡、孤寡隔角、墓库、羊刃、金神、特别格起源等，宜作为高阶资料库。"
+  }
+];
+
+const shenShaOriginCaseIds = ["案例 1", "案例 10", "案例 53", "案例 58", "案例 70", "案例 80"];
 
 const luckCycleLayers = [
   {
@@ -3651,6 +3711,7 @@ function SiteShell() {
         <Route path="/advanced/stem-branch-actions" element={<StemBranchActionsPage />} />
         <Route path="/advanced/fetal-life-body" element={<FetalLifeBodyPage />} />
         <Route path="/advanced/shen-sha" element={<ShenShaPage />} />
+        <Route path="/advanced/shen-sha-origin" element={<ShenShaOriginPage />} />
         <Route path="/advanced/luck-cycle" element={<LuckCyclePage />} />
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
         <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
@@ -3909,6 +3970,33 @@ function ShenShaPage() {
       >
         <ShenSha />
         <CaseStudies detail={{ title: "神煞" }} items={shenShaCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function ShenShaOriginPage() {
+  const originCases = shenShaOriginCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Shen Sha Origin"
+        title="神煞源流"
+        copy="神煞不是一套单一规则，而是两千年卦理、历法、统计、字形、数理与特殊排列的混合体系。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/shen-sha-origin" })),
+          { label: "八种成因", href: "#shen-origin-principles" },
+          { label: "使用边界", href: "#shen-origin-uses" },
+          { label: "古籍源流", href: "#shen-origin-texts" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <ShenShaOrigin />
+        <CaseStudies detail={{ title: "神煞源流" }} items={originCases} />
       </ContentLayout>
     </main>
   );
@@ -5141,6 +5229,66 @@ function ShenSha() {
           <ScrollText size={18} aria-hidden="true" />
           查看神煞条目库整理稿
         </a>
+      </div>
+    </section>
+  );
+}
+
+function ShenShaOrigin() {
+  return (
+    <section className="shen-sha-origin-section" id="shen-sha-origin" aria-labelledby="shen-sha-origin-title">
+      <div className="section-heading">
+        <p className="eyebrow">Origin System</p>
+        <h2 id="shen-sha-origin-title">先辨源流，再谈应验</h2>
+      </div>
+      <div className="rules-lead">
+        <p>《子平秘要》摘抄 5 与照抄 6 的价值，不是再堆神煞名词，而是说明神煞为何混乱、如何成形、何时能补格局用神之不足。</p>
+        <a className="source-link" href={assetUrl("/content/神煞源流.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看神煞源流整理稿
+        </a>
+      </div>
+
+      <div className="source-matrix" id="shen-origin-principles">
+        {shenShaOriginPrinciples.map(([title, text]) => (
+          <article className="source-matrix-card" key={title}>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="report-template-panel" id="shen-origin-uses">
+        <div className="section-heading compact">
+          <p className="eyebrow">Boundaries</p>
+          <h3>使用边界</h3>
+          <p>神煞既不能轻信，也不能全弃。它的正确位置，是补足具体事件类型，并接受案例反馈校验。</p>
+        </div>
+        <div className="report-template-grid">
+          {shenShaOriginUses.map((item, index) => (
+            <article className="report-template-card" key={item.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h4>{item.title}</h4>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="body-image-panel" id="shen-origin-texts">
+        <div className="section-heading compact">
+          <p className="eyebrow">Source Texts</p>
+          <h3>古籍源流索引</h3>
+          <p>摘抄 5 是大量古籍散录，适合做源流索引，不适合把每条古文都直接变成现代断语。</p>
+        </div>
+        <div className="body-image-grid">
+          {shenShaOriginTexts.map((item) => (
+            <article className="body-image-card" key={item.title}>
+              <h4>{item.title}</h4>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

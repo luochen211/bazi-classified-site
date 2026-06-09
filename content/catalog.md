@@ -7,6 +7,7 @@
 - 资料审查总表：`/content/资料审查总表.md`
 - 逐文件审查索引：`/content/逐文件审查索引.md`
 - 神煞：`/advanced/shen-sha`，资料稿 `/content/神煞.md`，条目库 `/content/神煞条目库.md`
+- 神煞源流：`/advanced/shen-sha-origin`，资料稿 `/content/神煞源流.md`
 - 大运流年：`/advanced/luck-cycle`，资料稿 `/content/大运流年.md`
 - 实务组合：`/advanced/practical-combinations`，资料稿 `/content/实务组合.md`
 - 十干高级：`/advanced/stem-classics`，资料稿 `/content/十干高级.md`
