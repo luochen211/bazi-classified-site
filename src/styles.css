@@ -431,6 +431,7 @@ h1 {
 .content-main > .ten-god-rules-section,
 .content-main > .practical-combinations-section,
 .content-main > .stem-classics-section,
+.content-main > .day-hour-classics-section,
 .content-main > .reading-method-section,
 .content-main > .grassroots-method-section,
 .content-main > .female-chart-section,
@@ -521,6 +522,10 @@ h1 {
 }
 
 .stem-classics-section {
+  background: #fffaf2;
+}
+
+.day-hour-classics-section {
   background: #fffaf2;
 }
 
@@ -827,6 +832,87 @@ h1 {
 
 .stem-classic-body .case-tags {
   margin-top: 18px;
+}
+
+.day-hour-table-stack {
+  display: grid;
+  gap: 34px;
+  margin-top: 34px;
+}
+
+.day-hour-table-panel {
+  display: grid;
+  gap: 22px;
+  border-top: 1px solid var(--line);
+  padding-top: 26px;
+  scroll-margin-top: 96px;
+}
+
+.day-hour-table-head {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.day-hour-table-head h3 {
+  margin: 6px 0 10px;
+  color: var(--ink);
+  font-size: 32px;
+  line-height: 1.15;
+}
+
+.day-hour-table-head p:not(.eyebrow) {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.day-hour-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.day-hour-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+.day-hour-table th,
+.day-hour-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 16px 18px;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.7;
+}
+
+.day-hour-table thead th {
+  background: #efe4d2;
+  color: var(--red);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.day-hour-table tbody th {
+  width: 96px;
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.day-hour-table td {
+  color: var(--muted);
+}
+
+.day-hour-table tr:last-child th,
+.day-hour-table tr:last-child td {
+  border-bottom: 0;
 }
 
 .learning-stage-grid {
@@ -2340,6 +2426,7 @@ body.modal-open {
   .ten-god-rule-card,
   .shen-sha-group,
   .stem-classic-card,
+  .day-hour-table-head,
   .grassroots-system-card,
   .combination-group-heading,
   .raw-theory-card,
@@ -2531,6 +2618,14 @@ body.modal-open {
   .stem-classic-body dl div {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+
+  .day-hour-table-head {
+    grid-template-columns: 1fr;
+  }
+
+  .day-hour-table {
+    min-width: 680px;
   }
 
   .grassroots-system-card dl {
