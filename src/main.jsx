@@ -251,10 +251,71 @@ const advancedDirectoryItems = [
   { label: "实务组合", href: "/advanced/practical-combinations" },
   { label: "十干高级", href: "/advanced/stem-classics" },
   { label: "学习批命", href: "/advanced/reading-method" },
+  { label: "基层命学", href: "/advanced/grassroots-method" },
   { label: "女命专题", href: "/advanced/female-chart" },
   { label: "格局用神", href: "/advanced/pattern-use-god" },
   { label: "分析框架", href: "/advanced#method" }
 ];
+
+const grassrootsSystems = [
+  {
+    title: "财官论",
+    source: "第一层级 / 第十一节、第十二节",
+    focus: "明代赋文系统，财、官不是只指正财正官，而是泛指四柱里有用的财官旺支。",
+    method: "重地支，不重天干。只要四柱地支有日主财、官当令之支，就能在人生某个年限形成可用之处。",
+    boundary: "适合平民小康、闲话家常式论命，判断某个阶段是否顺手；不等同于完整格局富贵。"
+  },
+  {
+    title: "格局论",
+    source: "第一层级 / 第十一节、第十二节",
+    focus: "清代命学思维更重通关、病药、扶抑与格局成败。",
+    method: "看天透地藏、通根、三合三会、特别格，以及格局喜忌。正财格、正官格等需要同时看名利、喜忌、性格六亲。",
+    boundary: "格局论可以包含财官论，也可以不包含。它适合谈结构层次，不适合把每个普通八字都硬套富贵格。"
+  },
+  {
+    title: "十神定位论",
+    source: "第一层级 / 第十一节、第十二节",
+    focus: "清末平常百姓家论命的实务入口，主夫妻、子女、性格、弊病与眼前吉凶。",
+    method: "以同柱天干地支互为十神，尤其重月柱与时柱；先用十神定位开口，再回头补强格局和调候。",
+    boundary: "它不是格局的下位替代品，而是一套平行的基层命学语言，适合从纸上谈兵过渡到实务论命。"
+  }
+];
+
+const grassrootsRules = [
+  {
+    title: "财官重地支",
+    text: "天干见财官不一定有力，关键要看地支是否是财官禄旺之地。例如庚日见乙，乙卯才是真有根之财，乙酉则坐绝。"
+  },
+  {
+    title: "一柱也有年限",
+    text: "年、月、日、时各自承接人生阶段。普通人能有八年或十五年顺手，已经足以买房、积蓄、成家，不必一开口就谈荣华富贵。"
+  },
+  {
+    title: "格局要分三层",
+    text: "同一个正财格，要分名利喜忌、理法结构、性格六亲三层。只谈格局名，不等于能判断现实结果。"
+  },
+  {
+    title: "定位先能开口",
+    text: "十神定位的价值，是先让学习者能直接谈妻财子禄、性格弊病和眼前流年，再逐步回到用神喜忌。"
+  }
+];
+
+const bodyImageSources = [
+  {
+    title: "滴天髓十干",
+    text: "甲木参天、丙火猛烈、丁火柔中、戊土固重、辛金温润、壬水通河等，是后世调候和十干喜忌的重要象源。"
+  },
+  {
+    title: "神峰通考十干",
+    text: "甲为栋梁木、丙为太阳火、丁为灯烛火、戊为城墙堤岸土、己为田园土、庚为顽金、辛为珠玉等，补足十干体象。"
+  },
+  {
+    title: "十二地支体象",
+    text: "地支诗赋以月支为主，讲子水、丑土、寅木、辰湿土、巳火、申金、戌天罗、亥水源等，影响后来的调候和大运喜忌。"
+  }
+];
+
+const grassrootsCaseIds = ["案例 10", "案例 15", "案例 22", "案例 55", "案例 78"];
 
 const readingMethodStages = [
   {
@@ -3594,6 +3655,7 @@ function SiteShell() {
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
         <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
         <Route path="/advanced/reading-method" element={<ReadingMethodPage />} />
+        <Route path="/advanced/grassroots-method" element={<GrassrootsMethodPage />} />
         <Route path="/advanced/female-chart" element={<FemaleChartPage />} />
         <Route path="/advanced/pattern-use-god" element={<PatternUseGodPage />} />
         <Route path="/cases" element={<CaseLibraryPage />} />
@@ -3950,6 +4012,33 @@ function ReadingMethodPage() {
       >
         <ReadingMethod />
         <CaseStudies detail={{ title: "学习批命" }} items={methodCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function GrassrootsMethodPage() {
+  const methodCases = grassrootsCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Grassroots Method"
+        title="基层命学"
+        copy="第十一、十二节把财官论、格局论、十神定位论分开：三者术语相同，层次不同，不能混成一套话。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/grassroots-method" })),
+          ...grassrootsSystems.map((system) => ({ label: system.title, href: `#grassroots-${system.title}` })),
+          { label: "实务提要", href: "#grassroots-rules" },
+          { label: "干支体象", href: "#body-image-sources" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <GrassrootsMethod />
+        <CaseStudies detail={{ title: "基层命学" }} items={methodCases} />
       </ContentLayout>
     </main>
   );
@@ -5266,6 +5355,80 @@ function ReadingMethod() {
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h4>{section.title}</h4>
               <p>{section.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GrassrootsMethod() {
+  return (
+    <section className="grassroots-method-section" id="grassroots-method" aria-labelledby="grassroots-method-title">
+      <div className="section-heading">
+        <p className="eyebrow">Foundation Systems</p>
+        <h2 id="grassroots-method-title">三套系统不要混用</h2>
+      </div>
+      <div className="rules-lead">
+        <p>第十一、十二节的核心，是把“财官论、格局论、十神定位论”拆开。它们共用十神术语，但判断目的不同：有的看阶段有用，有的看结构成败，有的看普通人的夫妻、性格和现实吉凶。</p>
+        <a className="source-link" href={assetUrl("/content/基层命学.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看基层命学整理稿
+        </a>
+      </div>
+
+      <div className="grassroots-system-grid">
+        {grassrootsSystems.map((system) => (
+          <article className="grassroots-system-card" id={`grassroots-${system.title}`} key={system.title}>
+            <p className="eyebrow">{system.source}</p>
+            <h3>{system.title}</h3>
+            <dl>
+              <div>
+                <dt>看什么</dt>
+                <dd>{system.focus}</dd>
+              </div>
+              <div>
+                <dt>怎么用</dt>
+                <dd>{system.method}</dd>
+              </div>
+              <div>
+                <dt>边界</dt>
+                <dd>{system.boundary}</dd>
+              </div>
+            </dl>
+          </article>
+        ))}
+      </div>
+
+      <div className="report-template-panel" id="grassroots-rules">
+        <div className="section-heading compact">
+          <p className="eyebrow">Practice Notes</p>
+          <h3>基层实务提要</h3>
+          <p>这一页的目的不是再背术语，而是让用户知道：什么时候用财官，什么时候用格局，什么时候先用十神定位开口。</p>
+        </div>
+        <div className="report-template-grid grassroots-rule-grid">
+          {grassrootsRules.map((rule, index) => (
+            <article className="report-template-card" key={rule.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h4>{rule.title}</h4>
+              <p>{rule.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="body-image-panel" id="body-image-sources">
+        <div className="section-heading compact">
+          <p className="eyebrow">Body Images</p>
+          <h3>干支体象是源流，不是速断</h3>
+          <p>《滴天髓》《神峰通考》和十二地支体象，更多是调候、格局、用神的历史底层，不适合直接做一句断语。</p>
+        </div>
+        <div className="body-image-grid">
+          {bodyImageSources.map((item) => (
+            <article className="body-image-card" key={item.title}>
+              <h4>{item.title}</h4>
+              <p>{item.text}</p>
             </article>
           ))}
         </div>

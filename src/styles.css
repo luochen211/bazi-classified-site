@@ -427,6 +427,7 @@ h1 {
 .content-main > .practical-combinations-section,
 .content-main > .stem-classics-section,
 .content-main > .reading-method-section,
+.content-main > .grassroots-method-section,
 .content-main > .female-chart-section,
 .content-main > .pattern-use-god-section,
 .content-main > .theory-section,
@@ -499,6 +500,10 @@ h1 {
 }
 
 .reading-method-section {
+  background: #fffaf2;
+}
+
+.grassroots-method-section {
   background: #fffaf2;
 }
 
@@ -848,6 +853,115 @@ h1 {
 }
 
 .report-template-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.grassroots-system-grid {
+  display: grid;
+  gap: 1px;
+  margin-bottom: 42px;
+  background: var(--line);
+}
+
+.grassroots-system-card {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.28fr) minmax(0, 1fr);
+  gap: 28px;
+  padding: clamp(24px, 4vw, 42px);
+  background: #f5efe5;
+  scroll-margin-top: 96px;
+}
+
+.grassroots-system-card > .eyebrow {
+  align-self: start;
+}
+
+.grassroots-system-card h3 {
+  margin: 0;
+  color: var(--red);
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.05;
+}
+
+.grassroots-system-card dl {
+  grid-column: 2;
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  background: var(--line);
+}
+
+.grassroots-system-card dl div {
+  display: grid;
+  grid-template-columns: minmax(86px, 0.18fr) minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px 20px;
+  background: #fffaf2;
+}
+
+.grassroots-system-card dt {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.grassroots-system-card dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.grassroots-rule-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.body-image-panel {
+  margin-top: 42px;
+  border-top: 1px solid var(--line);
+  padding-top: 34px;
+  scroll-margin-top: 96px;
+}
+
+.body-image-panel .section-heading {
+  max-width: 840px;
+}
+
+.body-image-panel .section-heading h3 {
+  margin: 0 0 12px;
+  color: var(--red);
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.08;
+}
+
+.body-image-panel .section-heading p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.body-image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 24px;
+  background: var(--line);
+}
+
+.body-image-card {
+  min-height: 230px;
+  padding: 24px;
+  background: #f5efe5;
+}
+
+.body-image-card h4 {
+  margin: 0 0 16px;
+  color: var(--red);
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.body-image-card p {
   margin: 0;
   color: var(--muted);
   line-height: 1.75;
@@ -1968,6 +2082,8 @@ body.modal-open {
   .stem-classic-principles,
   .learning-stage-grid,
   .report-template-grid,
+  .grassroots-rule-grid,
+  .body-image-grid,
   .flow-checklist,
   .case-grid,
   .steps,
@@ -1989,6 +2105,7 @@ body.modal-open {
   .flow-section,
   .shen-sha-group,
   .stem-classic-card,
+  .grassroots-system-card,
   .combination-group-heading,
   .raw-theory-card,
   .ten-god-hero,
@@ -2118,6 +2235,8 @@ body.modal-open {
   .stem-classic-principles,
   .learning-stage-grid,
   .report-template-grid,
+  .grassroots-rule-grid,
+  .body-image-grid,
   .shen-sha-entry-grid,
   .flow-checklist,
   .flow-section,
@@ -2136,6 +2255,7 @@ body.modal-open {
   .raw-theory-card,
   .shen-sha-group,
   .stem-classic-card,
+  .grassroots-system-card,
   .combination-group-heading,
   .ten-god-hero {
     grid-template-columns: 1fr;
@@ -2149,6 +2269,15 @@ body.modal-open {
   }
 
   .stem-classic-body dl div {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .grassroots-system-card dl {
+    grid-column: auto;
+  }
+
+  .grassroots-system-card dl div {
     grid-template-columns: 1fr;
     gap: 8px;
   }
