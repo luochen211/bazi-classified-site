@@ -15,6 +15,7 @@
 - 流年架构：`/advanced/luck-cycle-structure`，资料稿 `/content/流年架构.md`
 - 比肩入门：`/advanced/peer-foundation`，资料稿 `/content/比肩入门.md`
 - 实务组合：`/advanced/practical-combinations`，资料稿 `/content/实务组合.md`
+- 四见缺一：`/advanced/four-see-missing-god`，资料稿 `/content/四见缺一.md`
 - 十干高级：`/advanced/stem-classics`，资料稿 `/content/十干高级.md`
 - 日时组合：`/advanced/day-hour-classics`，资料稿 `/content/日时组合.md`
 - 比劫禄刃：`/advanced/peer-rob-wealth`，资料稿 `/content/比劫禄刃.md`

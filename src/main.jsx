@@ -262,6 +262,7 @@ const advancedDirectoryItems = [
   { label: "偏财机会", href: "/advanced/indirect-wealth" },
   { label: "正印正财", href: "/advanced/seal-wealth-foundation" },
   { label: "官杀秩序", href: "/advanced/officer-killing-order" },
+  { label: "四见缺一", href: "/advanced/four-see-missing-god" },
   { label: "实务组合", href: "/advanced/practical-combinations" },
   { label: "十干高级", href: "/advanced/stem-classics" },
   { label: "日时组合", href: "/advanced/day-hour-classics" },
@@ -2476,6 +2477,132 @@ const officerKillingOrderWorkflow = [
 ];
 
 const officerKillingOrderCaseIds = ["案例 1", "案例 2", "案例 3", "案例 4", "案例 10", "案例 33", "案例 53", "案例 66", "案例 67", "案例 70", "案例 75", "案例 80"];
+
+const fourSeeMissingGodPrinciples = [
+  {
+    title: "四见先分入格与多根",
+    text: "同一五行或十神合计四处出现，不等于同一种结论。透干、三合三会、带禄旺，才可能进入格局层；不透干、不带禄旺，多落在性格和长期习惯。"
+  },
+  {
+    title: "透干是落名，禄旺是承接",
+    text: "四见若至少一位透出天干，可以取格；若又见禄、刃、临官、帝旺，则格局与局势可能混杂，实务上要防过多、身弱或主题失衡。"
+  },
+  {
+    title: "多根重终身难除",
+    text: "四见不入格而藏在地支，重点不是应期富贵，而是一种长期难改的性格或人事模式。食伤、财、印、官杀多根，各有不同现实形态。"
+  },
+  {
+    title: "缺一不是五行缺一",
+    text: "十神缺一常指正偏、阴阳、专用条件不能互相代替。总比没有好，只是弥补性替代，不等于原本结构已经完整。"
+  }
+];
+
+const fourSeeMissingGodSections = [
+  {
+    title: "四见入格",
+    source: "第二层次 / 四见",
+    intro: "四见入格要看天干透出、地支是否有三合三会或禄旺。它不是单纯数到四个，而是看这股气有没有在天干落名、在地支承接。",
+    items: [
+      ["透干可取格", "天干至少透出一位，地支藏干合计成四见，即使不见三合三会，也可按格局入口处理。"],
+      ["合会亦成格", "三合、三会、拱合会若透出官杀、食伤、印、财，可分别取七杀格、伤官格、偏印格、偏财格。"],
+      ["禄旺要加重", "四见透干又见临官、帝旺、禄刃，常不只是取格，而要看格局与局势混杂，是否变成过多。"],
+      ["实务看流年", "入格四见的重点在岁运触发：哪一年透出、填实、冲动或会全，主题就从结构走向事件。"]
+    ],
+    cases: ["案例 10", "案例 15", "案例 64"]
+  },
+  {
+    title: "四见多根",
+    source: "第二层次 / 多根",
+    intro: "四见若不透干，也不具禄旺或成局条件，就不能硬取格。此时更像一股长期藏在地支的倾向，反复出现但不一定公开成事。",
+    items: [
+      ["不透不取格", "地支藏干四见而天干不透，不能直接说成七杀格、伤官格或财格，只能说多根。"],
+      ["多根难除", "标准多根是地支各有同类藏干，长期存在、终身难除，但未必立刻形成明显事件。"],
+      ["食伤多根", "食伤多根可看刚柔不定、既不喜出透又不甘落后；食神多根也容易带伤官性格。"],
+      ["官杀多根", "官杀多根常看一生小人或压力环境，但也可能是本人不忌小人、反能借用复杂关系。"]
+    ],
+    cases: ["案例 53", "案例 78", "案例 80"]
+  },
+  {
+    title: "三式合论",
+    source: "生旺库、合会拱、四见",
+    intro: "第二级次把生旺库、合会拱、四见放在一起看。判断不是孤立术语，而是看三种结构共同把哪个十神推到前台。",
+    items: [
+      ["生旺库定阶段", "寅申巳亥看发动，子午卯酉看专旺，辰戌丑未看收纳和蓄藏。"],
+      ["合会拱定成局", "三合三会、半合、拱合会决定某五行是否成势，也决定事件是明现还是暗动。"],
+      ["四见定重复", "四见说明同一主题反复出现，若再遇岁运透出、填实、冲开，就容易从性格变成事件。"],
+      ["混杂要降级", "若格局、局势、岁运互相冲破，输出时要降成倾向和触发条件，不宜直接下定论。"]
+    ],
+    cases: ["案例 15", "案例 64", "案例 81"]
+  },
+  {
+    title: "十神缺一",
+    source: "第二层次 / 十神缺一",
+    intro: "十神缺一不是简单说没有某五行，而是某个正偏、阴阳、专用条件缺位。近似之神可以补一点，但不能完全替代。",
+    items: [
+      ["日主喜忌不可替代", "甲日喜庚不能用辛完全替代，丁日喜甲不能用乙完全替代；这类缺一重在性情和职业环境。"],
+      ["调候不可乱代", "午月甲木要癸水调候，不可随便用壬水等同；夏生庚金喜壬，也不可一概用癸替代。"],
+      ["六亲缺一看心理", "男命只有正财无偏财、女命只有七杀无正官，不只是有无对象，而是对关系角色的心理选择不同。"],
+      ["代用只是弥补", "缺一结构常有“总比没有好”的补救性，但实务上像胶水黏合，不等于原条件钉稳。"]
+    ],
+    cases: ["案例 10", "案例 70", "案例 81"]
+  },
+  {
+    title: "代用边界",
+    source: "日主无根、格局无根",
+    intro: "资料里把缺一延伸到日主无根、格局无根和代用规则。能代用，不代表同等；能归类，不代表经文上已经成格。",
+    items: [
+      ["日主无根", "只有劫财而无比肩时，需要印来承接；若连劫财也没有，有印也未必有效。"],
+      ["有根不等于强", "有根无根多看性格稳定度，日主强弱要放到格局里判断，不能脱离结构。"],
+      ["格局无根", "没有天透地藏、三合三会时，只能用近似五行勉强归类，不宜说成完整格局。"],
+      ["时支看后势", "古法可取最后一个地支的禄绝判断后势，这属于补充读法，不压过原局主线。"]
+    ],
+    cases: ["案例 56", "案例 60", "案例 84"]
+  }
+];
+
+const fourSeeMissingGodComparisons = [
+  {
+    title: "入格四见",
+    text: "有透干或合会成势，重格局和岁运触发。断法看哪个十神被推到前台，以及流年如何引动。"
+  },
+  {
+    title: "多根四见",
+    text: "地支藏干重复而不透不旺，重长期性格、人事环境和终身难除的习惯，不宜直接套富贵贫贱。"
+  },
+  {
+    title: "十神缺一",
+    text: "正偏、阴阳、日主喜忌、调候条件不能完全互代。近似之神只能补一点，不能抹平结构差异。"
+  },
+  {
+    title: "岁运补出",
+    text: "缺的一神被大运流年补出时，要看补的是喜、忌、格局条件还是六亲心理，结果方向并不固定。"
+  }
+];
+
+const fourSeeMissingGodWorkflow = [
+  {
+    title: "先数来源",
+    text: "把天干、地支本气、藏干、三合三会、拱合会分开数，确认是否真到四见。"
+  },
+  {
+    title: "定入格或多根",
+    text: "看有无透干、禄旺、三合三会。能落名才谈格局，只藏地支多按多根性格。"
+  },
+  {
+    title: "分十神主题",
+    text: "食伤、财、印、官杀四见多根的现实形态不同，不能只用“某五行太多”概括。"
+  },
+  {
+    title: "查缺一条件",
+    text: "日主喜忌、调候、六亲正偏、格局根气分别查，不把近似五行当成完全替代。"
+  },
+  {
+    title: "接岁运案例",
+    text: "入格四见看流年触发，多根四见看长期反馈，缺一看岁运补出后的事件方向。"
+  }
+];
+
+const fourSeeMissingGodCaseIds = ["案例 10", "案例 15", "案例 53", "案例 56", "案例 60", "案例 64", "案例 70", "案例 78", "案例 80", "案例 81", "案例 84"];
 
 const practicalCombinationSections = [
   {
@@ -6272,6 +6399,7 @@ function SiteShell() {
         <Route path="/advanced/indirect-wealth" element={<IndirectWealthPage />} />
         <Route path="/advanced/seal-wealth-foundation" element={<SealWealthFoundationPage />} />
         <Route path="/advanced/officer-killing-order" element={<OfficerKillingOrderPage />} />
+        <Route path="/advanced/four-see-missing-god" element={<FourSeeMissingGodPage />} />
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
         <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
         <Route path="/advanced/day-hour-classics" element={<DayHourClassicsPage />} />
@@ -6948,6 +7076,34 @@ function OfficerKillingOrderPage() {
       >
         <OfficerKillingOrder />
         <CaseStudies detail={{ title: "官杀秩序" }} items={officerCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function FourSeeMissingGodPage() {
+  const fourSeeCases = fourSeeMissingGodCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Four See"
+        title="四见缺一"
+        copy="把第二层次的四见、多根、三式合论和十神缺一拆成可判断的结构：先分入格与多根，再看缺的一神能否被岁运补出。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/four-see-missing-god" })),
+          { label: "判断原则", href: "#four-see-principles" },
+          ...fourSeeMissingGodSections.map((section) => ({ label: section.title, href: `#four-see-${section.title}` })),
+          { label: "四类对照", href: "#four-see-comparisons" },
+          { label: "判断流程", href: "#four-see-workflow" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <FourSeeMissingGod />
+        <CaseStudies detail={{ title: "四见缺一" }} items={fourSeeCases} />
       </ContentLayout>
     </main>
   );
@@ -9543,6 +9699,90 @@ function PracticalCombinations() {
             </div>
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function FourSeeMissingGod() {
+  return (
+    <section className="four-see-section" id="four-see-missing-god" aria-labelledby="four-see-title">
+      <div className="section-heading">
+        <p className="eyebrow">Four See / Missing God</p>
+        <h2 id="four-see-title">四见不是只数到四个</h2>
+      </div>
+      <div className="rules-lead">
+        <p>这一页把“四见”拆成入格、多根、混杂、岁运触发，也把“十神缺一”放回日主喜忌、调候、六亲和代用边界里。</p>
+        <a className="source-link" href={assetUrl("/content/四见缺一.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看四见缺一整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="four-see-principles">
+        {fourSeeMissingGodPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections four-see-flow">
+        {fourSeeMissingGodSections.map((section) => (
+          <article className="flow-section" id={`four-see-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="four-see-comparisons">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Comparison</p>
+            <h3>入格、多根、缺一、补出四类对照</h3>
+          </div>
+          <p>同样是数量或缺位，入格看事件，多根看习性，缺一看不可替代，补出看岁运方向。</p>
+        </div>
+        <div className="family-rule-grid">
+          {fourSeeMissingGodComparisons.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="report-template-panel" id="four-see-workflow">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Workflow</p>
+            <h3>四见缺一五步判断</h3>
+          </div>
+          <p>先定结构，再接十神、缺位、岁运和案例反馈。</p>
+        </div>
+        <div className="family-rule-grid">
+          {fourSeeMissingGodWorkflow.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
