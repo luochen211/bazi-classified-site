@@ -251,6 +251,7 @@ const advancedDirectoryItems = [
   { label: "神煞源流", href: "/advanced/shen-sha-origin" },
   { label: "大运流年", href: "/advanced/luck-cycle" },
   { label: "流年细表", href: "/advanced/luck-cycle-tables" },
+  { label: "流年架构", href: "/advanced/luck-cycle-structure" },
   { label: "十神细则", href: "/advanced/ten-god-rules" },
   { label: "实务组合", href: "/advanced/practical-combinations" },
   { label: "十干高级", href: "/advanced/stem-classics" },
@@ -1502,6 +1503,91 @@ const luckCycleDetailRules = [
 ];
 
 const luckCycleDetailCaseIds = ["案例 10", "案例 15", "案例 55", "案例 57", "案例 63", "案例 80", "案例 81"];
+
+const luckCycleStructurePrinciples = [
+  {
+    title: "先看架构，不先看单字",
+    text: "流年推断先回到原局已经有的四正、四生、四库、三合三会、夹拱与格局，再看大运流年是否把它补齐或冲动。"
+  },
+  {
+    title: "冲八字是旧事，冲大运是新事",
+    text: "流年冲原局，多数是旧伏问题被翻起；流年冲大运，常见当下新发生的事。合也同理，合原局偏旧事，合大运偏新事。"
+  },
+  {
+    title: "流月只看大运成势",
+    text: "传承班反复强调流月不直接套原局。先看大运流年是否已成局，再用流月判断同途、反吟、双合、拱合等连续触发。"
+  },
+  {
+    title: "会全与透干分开断",
+    text: "地支会全是结构成势，天干透出是格局落名。三合三会透财、官、杀、食伤时，要看原局已有格局如何被追加或改写。"
+  }
+];
+
+const luckCycleStructureSections = [
+  {
+    source: "新旧事",
+    title: "流年冲合先分对象",
+    text: "冲八字是旧事，冲大运是新事；双六合也是如此。流年同大运双六合，偏当年新起的机会；流年同八字双六合，偏旧局旧事再被打开。双合怕争合，也怕被冲，一冲就从成事变成反复。"
+  },
+  {
+    source: "四正四生四库",
+    title: "原局已有两个，岁运再来两个要警觉",
+    text: "子午卯酉、寅申巳亥、辰戌丑未，原局已经有两个，大运流年再补两个，就不是普通合冲，而是整组结构被会全。资料里说不管命高低，都容易出现连续挫败。"
+  },
+  {
+    source: "流月与大运",
+    title: "一年好坏常由三个月坐实",
+    text: "月运同途如甲子运见甲子月，反吟或双冲如甲子运见庚午月，双合如甲子运见己丑月。若一年里有三个月明显不顺，这个流年就要按坏年处理。"
+  },
+  {
+    source: "三合会透干",
+    title: "不是只看地支合成什么",
+    text: "寅午戌三合里遇丙、丁、戊、辛等流年，透出的不是同一种事。已有财格再来食伤，是财逢食伤；已有官杀再成杀局，女命可应感情对象，但成不成还要看冲合与喜忌。"
+  },
+  {
+    source: "填实与拱冲",
+    title: "拱出来的字遇填实才落地",
+    text: "命运拱午，逢午年是填实，事情容易落实；逢子年则子午冲，所想之事反成落空。拱合不是空象，要等流年把虚字填出来，或把它冲散。"
+  },
+  {
+    source: "墓库与罗网",
+    title: "库运、罗网要看月份与日柱",
+    text: "辰戌丑未月出生者，遇对应癸、丁、辛、乙大运，资料称为墓库运，常有五年停滞之象；辛巳大运见辰、酉、申等年，又会牵动罗网、羊刃与寅申巳亥。"
+  }
+];
+
+const luckCycleStructureTranslations = [
+  {
+    title: "不要只问今年好不好",
+    text: "先问今年把原局哪一组结构补齐、冲开或透出。没有结构，就只是普通岁运；结构一全，事就会变重。"
+  },
+  {
+    title: "不要把流月直接套八字",
+    text: "流月是大运的月份刻度。只有大运流年已经成势，流月才负责判断哪几个月连续发作。"
+  },
+  {
+    title: "不要把三合三会只当合",
+    text: "三合三会会带出五行和天干格局。它可能是财、官、杀、食伤的追加，不只是关系变和。"
+  },
+  {
+    title: "不要用格局高低抵消结构风险",
+    text: "四正、四生、四库会全时，资料强调命高命低都要应事。高命也可能是大事、大范围、连续性压力。"
+  }
+];
+
+const luckCycleStructureCheckpoints = [
+  "刑冲合会：先看流年同大运是否双冲、双合，再看是否引动原局。",
+  "三合三会、夹拱、冲合：散在命运岁月之间时，要拆成虚字、填实、冲散三步。",
+  "五行缺一：原局缺的五行在岁运出现，不一定直接为吉，先看它补的是病还是忌。",
+  "禄刃印比全：印比禄刃成群时，先判断自我、竞争、身体与资源压力。",
+  "日主无根、财杀当令：岁运再扶财杀，容易从机会变成压迫。",
+  "三合会透在流年：地支成局之后，透干决定这一年落到财、官、杀、食伤哪条线。",
+  "格局四见、多根：格局太多或重根，要先看混杂，再看成败。",
+  "特殊格局：不离开原局特殊结构去套普通喜忌。",
+  "统计经验：年时合、年时冲、日时冲等，可作为应事入口，但不能替代结构判断。"
+];
+
+const luckCycleStructureCaseIds = ["案例 10", "案例 15", "案例 53", "案例 55", "案例 57", "案例 63", "案例 64", "案例 78", "案例 80", "案例 81", "案例 83"];
 
 const tenGodRulePrinciples = [
   {
@@ -4479,6 +4565,7 @@ function SiteShell() {
         <Route path="/advanced/shen-sha-origin" element={<ShenShaOriginPage />} />
         <Route path="/advanced/luck-cycle" element={<LuckCyclePage />} />
         <Route path="/advanced/luck-cycle-tables" element={<LuckCycleTablesPage />} />
+        <Route path="/advanced/luck-cycle-structure" element={<LuckCycleStructurePage />} />
         <Route path="/advanced/ten-god-rules" element={<TenGodRulesPage />} />
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
         <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
@@ -4847,6 +4934,33 @@ function LuckCycleTablesPage() {
       >
         <LuckCycleTables />
         <CaseStudies detail={{ title: "流年细表" }} items={detailCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function LuckCycleStructurePage() {
+  const structureCases = luckCycleStructureCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Year Structure"
+        title="流年架构"
+        copy="承接传承班流年部分：把新旧事、四正四生四库、流月大运、三合会透干和填实拱冲拆成可复盘的判断链。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/luck-cycle-structure" })),
+          { label: "架构原则", href: "#luck-structure-principles" },
+          { label: "流年断点", href: "#luck-structure-flow" },
+          { label: "九个方面", href: "#luck-structure-checkpoints" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <LuckCycleStructure />
+        <CaseStudies detail={{ title: "流年架构" }} items={structureCases} />
       </ContentLayout>
     </main>
   );
@@ -6433,6 +6547,79 @@ function LuckCycleTables() {
             </div>
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function LuckCycleStructure() {
+  return (
+    <section className="luck-cycle-structure-section" id="luck-cycle-structure" aria-labelledby="luck-cycle-structure-title">
+      <div className="section-heading">
+        <p className="eyebrow">Year Structure</p>
+        <h2 id="luck-cycle-structure-title">把流年放进命、运、月的连锁里</h2>
+      </div>
+      <div className="rules-lead">
+        <p>传承班流年部分的重点不是多背一句吉凶，而是先分旧事新事，再看四正四生四库是否会全，最后用流月确认哪几个月连续触发。</p>
+        <a className="source-link" href={assetUrl("/content/流年架构.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看流年架构整理稿
+        </a>
+      </div>
+
+      <div className="source-matrix" id="luck-structure-principles">
+        {luckCycleStructurePrinciples.map((item) => (
+          <article className="source-matrix-card" key={item.title}>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="flow-sections luck-cycle-structure-flow" id="luck-structure-flow">
+        {luckCycleStructureSections.map((section) => (
+          <article className="flow-section" key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>把资料里的口授规则转成复盘时的入口问题。</p>
+            </div>
+            <div className="flow-items single">
+              <div className="flow-item">
+                <strong>断法</strong>
+                <p>{section.text}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="report-template-panel" id="luck-structure-checkpoints">
+        <div className="section-heading">
+          <p className="eyebrow">Nine Checks</p>
+          <h3>流年九个方面</h3>
+          <p>先把这九项过一遍，再决定该进入哪一个细表、案例或流月层。</p>
+        </div>
+        <div className="flow-checklist">
+          {luckCycleStructureCheckpoints.map((item) => (
+            <div className="flow-check" key={item}>{item}</div>
+          ))}
+        </div>
+      </div>
+
+      <div className="report-template-panel">
+        <div className="section-heading">
+          <p className="eyebrow">Translation</p>
+          <h3>落到实战时，先避开四个误区</h3>
+        </div>
+        <div className="family-rule-grid">
+          {luckCycleStructureTranslations.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h4>{item.title}</h4>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
