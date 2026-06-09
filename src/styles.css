@@ -434,6 +434,7 @@ h1 {
 .content-main > .female-chart-section,
 .content-main > .female-poem-section,
 .content-main > .pattern-use-god-section,
+.content-main > .use-god-history-section,
 .content-main > .theory-section,
 .content-main > .catalog-section,
 .content-main > .detail-panel,
@@ -533,6 +534,18 @@ h1 {
 
 .pattern-use-god-section {
   background: #fffaf2;
+}
+
+.use-god-history-section {
+  background: #fffaf2;
+}
+
+.use-god-history-flow {
+  margin-top: 34px;
+}
+
+.use-god-history-section .family-rule-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .section-heading {
@@ -2441,6 +2454,10 @@ body.modal-open {
   .case-grid,
   .steps,
   .divination-board {
+    grid-template-columns: 1fr;
+  }
+
+  .use-god-history-section .family-rule-grid {
     grid-template-columns: 1fr;
   }
 

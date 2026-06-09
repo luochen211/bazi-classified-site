@@ -258,6 +258,7 @@ const advancedDirectoryItems = [
   { label: "女命专题", href: "/advanced/female-chart" },
   { label: "女命诗诀", href: "/advanced/female-chart-poems" },
   { label: "格局用神", href: "/advanced/pattern-use-god" },
+  { label: "用神沿革", href: "/advanced/use-god-history" },
   { label: "分析框架", href: "/advanced#method" }
 ];
 
@@ -1783,6 +1784,99 @@ const patternUseGodSections = [
 ];
 
 const patternUseGodCaseIds = ["案例 2", "案例 52", "案例 56", "案例 57", "案例 63", "案例 67", "案例 75"];
+
+const useGodHistoryPrinciples = [
+  {
+    title: "先问定义",
+    text: "同样叫用神，在渊海、三命、沈氏、徐氏、拦江网里含义不同。先问它指格局、调候、扶抑，还是行运喜忌。"
+  },
+  {
+    title: "先看来源",
+    text: "子平法不是一人一时完成，而是禄命法长期累积后的系统。不同朝代保留了不同问题意识。"
+  },
+  {
+    title: "先分主次",
+    text: "月令取格是本，他柱成格是次；原局取用和大运扶成格，又是两个层面。"
+  },
+  {
+    title: "先落到问事",
+    text: "问财、问婚姻、问职业时，取用不一定指同一件事。方法论必须回到分类占落点。"
+  }
+];
+
+const useGodHistorySections = [
+  {
+    title: "用神不是万能口号",
+    source: "渊海随笔 / 导论",
+    intro: "梁湘润反复提醒，用神二字最容易把人带进含混的争执。它不是先验答案，而是一组历史定义。",
+    items: [
+      ["错觉", "把子平法等同于选用神，是清代以后逐渐形成的习惯；早期禄命法并不只靠这一个入口。"],
+      ["边界", "不能只用准与不准衡量一本书或一套法，否则任何体系都可以被神化或全盘否定。"],
+      ["合参", "渊海、拦江网、滴天髓、三命通会、神峰通考可以各别使用，不能百分之百硬合成一套。"]
+    ]
+  },
+  {
+    title: "格局即用神",
+    source: "渊海随笔 / 格局起源",
+    intro: "最早的用神和月令取格关系很近，用神不是日主弱就扶、日主强就泄的单一路径。",
+    items: [
+      ["月令", "月令是第一优先，因为它代表当时之气，也承接早期以月支取格的规则。"],
+      ["格与局", "天透地藏可为格，三合三会可为局。格局成形以后，才谈顺用、逆用、相神和行运。"],
+      ["放宽", "后来从月令取格放宽到年日时支干有一处可取，但月令仍是本，不是随意找一个有利的字。"]
+    ]
+  },
+  {
+    title: "调候扶抑只是其中一层",
+    source: "渊海随笔 / 真神假神",
+    intro: "沈氏体系里，用神先指格局之神，再分扶抑、病药、调候、专旺、通关等细节。",
+    items: [
+      ["扶日元", "日主弱而扶日元，是扶抑的一种，不足以概括全部用神。"],
+      ["扶月令", "格局弱而扶月令之神，是另一种扶抑；它解决的是格局能否成立。"],
+      ["行运", "原局喜忌与大运喜忌要分开。大运可以扶成格，也可以把原局已成的格局变掉。"]
+    ]
+  },
+  {
+    title: "支藏与生旺库是底层表",
+    source: "渊海随笔 / 支藏天干研究",
+    intro: "子平法从纳音转向河图五行后，必须把地支化为天干。支藏天干和十二生旺库，是后续格局与用神判断的底层表。",
+    items: [
+      ["支藏", "地支里藏什么，决定能否天透地藏、能否从暗处取格，也影响六亲和十神定位。"],
+      ["生旺库", "十二生旺库让一个字有状态，不只是有没有。旺、休、墓、绝会改变同一十神的可用程度。"],
+      ["版本", "不同支藏表在历史上并不完全一致，所以要把它当工具表，不要把单一表格神圣化。"]
+    ]
+  },
+  {
+    title: "明清异同要转成实务边界",
+    source: "渊海随笔 / 明清两代子平法",
+    intro: "明代更重格局、财官印食和诸家合参，清代以后用神喜忌被固定化。网站要把这种差异转成读盘边界。",
+    items: [
+      ["明代", "万育吾等更愿意保存多种系统，并承认命理不是百分之百准确。"],
+      ["清代", "用神喜忌逐渐成为入口，但容易把格局、调候、扶抑、行运混成一句话。"],
+      ["实务", "给用户看结论时，不只说用某神，还要说明这个用神解决的是气候、格局、承载，还是行运触发。"]
+    ]
+  }
+];
+
+const useGodHistoryTranslations = [
+  {
+    title: "看到多个用神不急着选边",
+    text: "先标注每个用神来自哪套逻辑：调候要暖润，格局要成格，扶抑要承载，行运要触发。"
+  },
+  {
+    title: "问事不同，答案不同",
+    text: "问事业可能取官印，问赚钱可能取食伤生财，问婚姻则要回到配偶星和夫妻宫。不要把一个用神套所有问题。"
+  },
+  {
+    title: "案例复盘要分层",
+    text: "同一案例先解释原局，再解释大运如何扶成或破掉，再看流年把哪个象引出来。"
+  },
+  {
+    title: "资料页要保留不确定性",
+    text: "梁湘润的重点不是宣布某家唯一正确，而是让读者知道体系之间的边界，减少硬背口诀造成的误判。"
+  }
+];
+
+const useGodHistoryCaseIds = ["案例 2", "案例 52", "案例 56", "案例 57", "案例 63", "案例 67", "案例 75", "案例 81"];
 
 const lifePalaceStars = [
   ["子", "天贵星", "志气不凡，富裕清吉。"],
@@ -4080,6 +4174,7 @@ function SiteShell() {
         <Route path="/advanced/female-chart" element={<FemaleChartPage />} />
         <Route path="/advanced/female-chart-poems" element={<FemalePoemsPage />} />
         <Route path="/advanced/pattern-use-god" element={<PatternUseGodPage />} />
+        <Route path="/advanced/use-god-history" element={<UseGodHistoryPage />} />
         <Route path="/cases" element={<CaseLibraryPage />} />
         <Route path="/classified" element={<ClassifiedIndexPage />} />
         <Route path="/classified/:topicKey" element={<ClassifiedTopicPage />} />
@@ -4619,6 +4714,33 @@ function PatternUseGodPage() {
       >
         <PatternUseGod />
         <CaseStudies detail={{ title: "格局用神" }} items={patternCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function UseGodHistoryPage() {
+  const historyCases = useGodHistoryCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Method"
+        title="用神沿革"
+        copy="把《渊海随笔》里的禄命史观、明清异同、格局即用神、支藏生旺库，整理成读盘时能落地的方法边界。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/use-god-history" })),
+          { label: "四个入口", href: "#use-god-history-principles" },
+          ...useGodHistorySections.map((section) => ({ label: section.title, href: `#use-god-history-${section.title}` })),
+          { label: "实务转译", href: "#use-god-history-translations" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <UseGodHistory />
+        <CaseStudies detail={{ title: "用神沿革" }} items={historyCases} />
       </ContentLayout>
     </main>
   );
@@ -6323,6 +6445,68 @@ function PatternUseGod() {
             </div>
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function UseGodHistory() {
+  return (
+    <section className="use-god-history-section" id="use-god-history" aria-labelledby="use-god-history-title">
+      <div className="section-heading">
+        <p className="eyebrow">History / Use God</p>
+        <h2 id="use-god-history-title">先把“用神”这个词说清楚</h2>
+      </div>
+      <div className="rules-lead">
+        <p>《渊海随笔》的价值，不是给出一个新的万能用神，而是让读者知道不同法脉说的“用神”并不完全是同一个东西。</p>
+        <a className="source-link" href={assetUrl("/content/用神沿革.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看用神沿革整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="use-god-history-principles">
+        {useGodHistoryPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections use-god-history-flow">
+        {useGodHistorySections.map((section) => (
+          <article className="flow-section" id={`use-god-history-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="use-god-history-translations">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Practice Translation</p>
+            <h3>把史观转成实务话</h3>
+          </div>
+          <p>用户最终要看的不是朝代考据，而是为什么这个八字不能只用一句“喜某神”结束。</p>
+        </div>
+        <div className="family-rule-grid">
+          {useGodHistoryTranslations.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
