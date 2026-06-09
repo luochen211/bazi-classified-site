@@ -433,6 +433,7 @@ h1 {
 .content-main > .peer-rob-section,
 .content-main > .food-hurt-section,
 .content-main > .partial-seal-section,
+.content-main > .indirect-wealth-section,
 .content-main > .practical-combinations-section,
 .content-main > .stem-classics-section,
 .content-main > .day-hour-classics-section,
@@ -539,6 +540,10 @@ h1 {
   background: #fffaf2;
 }
 
+.indirect-wealth-section {
+  background: #fffaf2;
+}
+
 .practical-combinations-section {
   background: #fffaf2;
 }
@@ -599,6 +604,7 @@ h1 {
 .peer-rob-flow,
 .food-hurt-flow,
 .partial-seal-flow,
+.indirect-wealth-flow,
 .pattern-foundation-flow,
 .eight-pattern-flow,
 .two-sided-use-god-flow,
@@ -613,6 +619,7 @@ h1 {
 .peer-rob-section .family-rule-grid,
 .food-hurt-section .family-rule-grid,
 .partial-seal-section .family-rule-grid,
+.indirect-wealth-section .family-rule-grid,
 .pattern-foundation-section .family-rule-grid,
 .eight-pattern-section .family-rule-grid,
 .two-sided-use-god-section .family-rule-grid,
@@ -2628,6 +2635,10 @@ body.modal-open {
   }
 
   .partial-seal-section .family-rule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .indirect-wealth-section .family-rule-grid {
     grid-template-columns: 1fr;
   }
 

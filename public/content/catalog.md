@@ -18,6 +18,7 @@
 - 比劫禄刃：`/advanced/peer-rob-wealth`，资料稿 `/content/比劫禄刃.md`
 - 食伤坐引：`/advanced/food-hurt-output`，资料稿 `/content/食伤坐引.md`
 - 偏印枭神：`/advanced/partial-seal-spirit`，资料稿 `/content/偏印枭神.md`
+- 偏财机会：`/advanced/indirect-wealth`，资料稿 `/content/偏财机会.md`
 - 学习批命：`/advanced/reading-method`，资料稿 `/content/学习批命.md`
 - 基层命学：`/advanced/grassroots-method`，资料稿 `/content/基层命学.md`
 - 女命专题：`/advanced/female-chart`，资料稿 `/content/女命专题.md`

@@ -257,6 +257,7 @@ const advancedDirectoryItems = [
   { label: "比劫禄刃", href: "/advanced/peer-rob-wealth" },
   { label: "食伤坐引", href: "/advanced/food-hurt-output" },
   { label: "偏印枭神", href: "/advanced/partial-seal-spirit" },
+  { label: "偏财机会", href: "/advanced/indirect-wealth" },
   { label: "实务组合", href: "/advanced/practical-combinations" },
   { label: "十干高级", href: "/advanced/stem-classics" },
   { label: "日时组合", href: "/advanced/day-hour-classics" },
@@ -2511,6 +2512,156 @@ const partialSealSpiritWorkflow = [
 ];
 
 const partialSealSpiritCaseIds = ["案例 5", "案例 10", "案例 13", "案例 34", "案例 35", "案例 51", "案例 58", "案例 66", "案例 69", "案例 72", "案例 84"];
+
+const indirectWealthPrinciples = [
+  {
+    title: "偏财不是横财",
+    text: "第六节把偏财讲成机会、市场、人脉、父亲、女友和流动资源。它可以带来大机会，也可以带来应酬、漏洞和财来财去。"
+  },
+  {
+    title: "年限决定六亲",
+    text: "偏财既可看父亲，也可看偏妻、女友和钱财。年柱多看父亲，月柱兼父亲和钱，日时才更贴近事业、偏缘和机会财。"
+  },
+  {
+    title: "坐引禄绝定起伏",
+    text: "偏财要看坐禄、坐绝、引到何支。财有禄旺才实，坐绝或盖头截脚时，机会有名而价值降低。"
+  },
+  {
+    title: "最怕时柱比劫刃",
+    text: "偏财格最忌比劫羊刃坐实时柱。早年可能发过财、有异性助力，但到头来容易被同辈、合伙、竞争或分利破局。"
+  }
+];
+
+const indirectWealthSections = [
+  {
+    title: "入门定位",
+    source: "第一层级第六节 / 偏财格",
+    intro: "偏财紧接偏印之后，是因为它最贴近日常问事：父亲、女友、机会、发财、异地、应酬和资源调度。",
+    items: [
+      ["教材次序", "源文反对一上来讲正官格、身强身弱和抽象喜忌，而先讲偏印、偏财等能让初学者直接理解的人生事项。"],
+      ["现实共鸣", "谁都有父亲，也多数人经历过异性关系；一朝登天的偏财运，是很多人内心最有共鸣的命理主题。"],
+      ["六项入口", "偏财要依次看性格、六亲、坐引禄绝冲、四柱年限、十神单向生克和格局富贵指标。"],
+      ["问事边界", "问财运时不能只说有偏财，而要问机会从哪里来、能否落袋、是否被比劫分走、是否能持续。"]
+    ],
+    cases: ["案例 15", "案例 33", "案例 75"]
+  },
+  {
+    title: "性格财路",
+    source: "第一层级第六节 / 偏财性格",
+    intro: "偏财多者常给人豪爽、大方、不计小节的印象。但这种宽宏背后，也可能有乐观、夸张和重大财务上的翻书感。",
+    items: [
+      ["慷慨宽宏", "偏财根重的人，小事不计较，愿意先让别人方便，吃小亏也能过去就算。"],
+      ["战略冒险", "偏财讲重点、讲实效，愿意用利息、押金、人情和资源换机会，有输得起的心胸。"],
+      ["应酬花边", "生活自由开放，多少带应酬、享用、异性缘和犬马声色；不亏待自己和家属。"],
+      ["商业边界", "日常朋友不吃小亏，但商业承诺不能尽信；偏财格重大财务时，乐观、夸张和不负责要分清。"]
+    ],
+    cases: ["案例 33", "案例 63", "案例 75"]
+  },
+  {
+    title: "六亲年限",
+    source: "第一层级第六节 / 偏财六亲",
+    intro: "偏财在六亲上最容易混：男命偏妻、女友，男女都可作父亲。正确取认，要按人生阶段区别。",
+    items: [
+      ["年柱", "一至十五岁，偏财只代表父亲和父家影响，不作女人、金钱之论。"],
+      ["月柱", "月干偏财仍重父亲，也兼带父亲的钱；月支偏财则父亲、金钱、女人三者并看。"],
+      ["日支", "与父亲关联减弱，转向偏妻、异性关系和事业上的偏财机会。"],
+      ["时柱", "五十岁后，父亲影响很少，偏财以事业机会为主，偏妻偏缘为副。"]
+    ],
+    cases: ["案例 1", "案例 15", "案例 72"]
+  },
+  {
+    title: "坐引禄绝",
+    source: "第一层级第六节 / 坐引禄绝冲刑",
+    intro: "偏财不是天干一透就算有财。要看它坐禄还是坐绝，引到别支是旺是衰，以及冲刑带来的起伏过程。",
+    items: [
+      ["坐禄", "如庚偏财坐申，庚禄在申，年柱可作父亲家运好；日支则转为自己偏财事业成功。"],
+      ["引绝", "年干偏财引到月支寅，庚绝在寅，可作父亲败落、父子不和、女子小人拖累或自身失败。"],
+      ["冲动", "寅申冲、年月冲、月日冲，超过偏财一项，但若只就偏财看，常是机会中的不愉快起伏。"],
+      ["阶段转换", "同一偏财禄位，早年看父亲，中年看自己事业，后年看偏缘和项目财，不能固定一义。"]
+    ],
+    cases: ["案例 15", "案例 64", "案例 81"]
+  },
+  {
+    title: "单向生克",
+    source: "第一层级第六节 / 十神单向生克",
+    intro: "偏财的单向生克，是财生官杀、食伤生财、财克印、比劫克财。财运页要把这四条落成现实流程。",
+    items: [
+      ["食伤生财", "能力、表达、产品、服务、销售和技术进入市场，偏财才有来源。"],
+      ["财生官杀", "资源转成职位、责任、项目管理、客户权责或压力。"],
+      ["财克印", "现实机会会冲击学习、贵人、母系保护、稳定资质；也可能让偏印术业落地。"],
+      ["比劫克财", "朋友、合伙、同业、兄弟、竞争者分财。偏财格时柱坐比劫刃，是最要紧的破局点。"]
+    ],
+    cases: ["案例 15", "案例 55", "案例 66"]
+  },
+  {
+    title: "格局喜忌",
+    source: "第一层级第六节 / 偏财格喜忌",
+    intro: "偏财格喜财透，也不怕旺藏地支；怕比劫刃、怕空亡、怕日主无根，尤其怕到晚年被比劫坐实破掉。",
+    items: [
+      ["喜透藏", "偏财喜透天干，也不怕坐旺藏支。财有根气，机会才有现实承接。"],
+      ["喜官运", "命中透官是好命；不透官，入官运也可让财转成职位、规则和结果。"],
+      ["忌比劫", "偏财非纯自己的财，最怕比劫同柱来。比劫透出时，即使入官运，成就也有限。"],
+      ["异地发财", "偏财多发自他乡，源文称别立家园三二处。女命年月偏财格，也常作孝女、关心娘家与父亲。"]
+    ],
+    cases: ["案例 33", "案例 66", "案例 75", "案例 81"]
+  },
+  {
+    title: "支藏辅助",
+    source: "第一层级第六节 / 支藏天干",
+    intro: "第六节后段解释支藏天干，是为了说明取格、日主强弱和生旺库来源。偏财页只保留和网站判断有关的入口。",
+    items: [
+      ["取格用途", "今日支藏天干常用于透干取格：月支所藏透出天干，可定伤官、正财、偏财等格。"],
+      ["古今差异", "古典支藏天干用于日主当令分日，不完全等同今日透干取格表。"],
+      ["生旺库来源", "今日藏干多从长生、临官、余气、库、本气配属而来。阳干取长生，阴干取墓库，皆取禄为正位。"],
+      ["使用边界", "支藏不是背表游戏。它决定一个财、官、印、食伤是否有根，是否能被透出并进入现实判断。"]
+    ],
+    cases: ["案例 64", "案例 75", "案例 84"]
+  }
+];
+
+const indirectWealthComparisons = [
+  {
+    title: "正财",
+    text: "稳定收入、妻星、责任、现金流和固定经营。重可持续、可管理、可积累。"
+  },
+  {
+    title: "偏财",
+    text: "机会财、项目财、人脉财、父亲、偏缘和市场资源。重弹性、应酬、异地和资源调度。"
+  },
+  {
+    title: "偏财遇食伤",
+    text: "技能、内容、表达、产品和销售进入市场，最适合讲变现路径。"
+  },
+  {
+    title: "偏财遇比劫",
+    text: "合伙、朋友、同业、投资、人情和异性缘同时增加，最容易财来财去。"
+  }
+];
+
+const indirectWealthWorkflow = [
+  {
+    title: "定阶段",
+    text: "先看偏财落年、月、日、时。早年多父亲，中年多异性与事业，晚年多项目财和偏缘。"
+  },
+  {
+    title: "查根气",
+    text: "看偏财坐禄、坐旺、坐绝，是否透干通根，是否空亡或被冲刑。"
+  },
+  {
+    title: "找来源",
+    text: "偏财要问市场、人脉、项目、销售、产品和异地资源从哪里来。"
+  },
+  {
+    title: "防分夺",
+    text: "检查比劫羊刃，尤其时柱坐实的同类力量，决定偏财能不能守住。"
+  },
+  {
+    title: "接案例",
+    text: "最后回案例：偏财可落在婚姻资源、发财机会、被骗钱、旺夫、人际圈和多段关系。"
+  }
+];
+
+const indirectWealthCaseIds = ["案例 1", "案例 15", "案例 28", "案例 33", "案例 55", "案例 63", "案例 64", "案例 66", "案例 72", "案例 75", "案例 81", "案例 84"];
 
 const peerRobWealthPrinciples = [
   {
@@ -5536,6 +5687,7 @@ function SiteShell() {
         <Route path="/advanced/peer-rob-wealth" element={<PeerRobWealthPage />} />
         <Route path="/advanced/food-hurt-output" element={<FoodHurtOutputPage />} />
         <Route path="/advanced/partial-seal-spirit" element={<PartialSealSpiritPage />} />
+        <Route path="/advanced/indirect-wealth" element={<IndirectWealthPage />} />
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
         <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
         <Route path="/advanced/day-hour-classics" element={<DayHourClassicsPage />} />
@@ -6071,6 +6223,34 @@ function PartialSealSpiritPage() {
       >
         <PartialSealSpirit />
         <CaseStudies detail={{ title: "偏印枭神" }} items={partialSealCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function IndirectWealthPage() {
+  const indirectWealthCases = indirectWealthCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Indirect Wealth"
+        title="偏财机会"
+        copy="把第六节偏财格拆成机会财、父亲偏缘、柱位年限、坐引禄绝、单向生克和偏财格喜忌。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/indirect-wealth" })),
+          { label: "判断原则", href: "#indirect-wealth-principles" },
+          ...indirectWealthSections.map((section) => ({ label: section.title, href: `#indirect-wealth-${section.title}` })),
+          { label: "四类对照", href: "#indirect-wealth-comparisons" },
+          { label: "判断流程", href: "#indirect-wealth-workflow" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <IndirectWealth />
+        <CaseStudies detail={{ title: "偏财机会" }} items={indirectWealthCases} />
       </ContentLayout>
     </main>
   );
@@ -8186,6 +8366,90 @@ function PartialSealSpirit() {
         </div>
         <div className="family-rule-grid">
           {partialSealSpiritWorkflow.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function IndirectWealth() {
+  return (
+    <section className="indirect-wealth-section" id="indirect-wealth" aria-labelledby="indirect-wealth-title">
+      <div className="section-heading">
+        <p className="eyebrow">Indirect Wealth</p>
+        <h2 id="indirect-wealth-title">偏财不是横财标签</h2>
+      </div>
+      <div className="rules-lead">
+        <p>第六节的偏财，是父亲、女友、机会、市场、人脉、异地和资源调度。判断重点不是“有没有财”，而是机会从哪里来、能不能落袋、会不会被分夺。</p>
+        <a className="source-link" href={assetUrl("/content/偏财机会.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看偏财机会整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="indirect-wealth-principles">
+        {indirectWealthPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections indirect-wealth-flow">
+        {indirectWealthSections.map((section) => (
+          <article className="flow-section" id={`indirect-wealth-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="indirect-wealth-comparisons">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Comparison</p>
+            <h3>正财、偏财、食伤、比劫四类对照</h3>
+          </div>
+          <p>偏财页的关键，是分清稳定现金流、机会资源、变现来源和分夺风险。</p>
+        </div>
+        <div className="family-rule-grid">
+          {indirectWealthComparisons.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="report-template-panel" id="indirect-wealth-workflow">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Workflow</p>
+            <h3>偏财机会五步判断</h3>
+          </div>
+          <p>先定年限和六亲，再看根气、来源、分夺和案例反馈，避免把偏财粗暴说成横财。</p>
+        </div>
+        <div className="family-rule-grid">
+          {indirectWealthWorkflow.map((item) => (
             <article className="family-rule-card" key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
