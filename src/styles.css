@@ -430,6 +430,7 @@ h1 {
 .content-main > .luck-cycle-table-section,
 .content-main > .luck-cycle-structure-section,
 .content-main > .ten-god-rules-section,
+.content-main > .peer-rob-section,
 .content-main > .practical-combinations-section,
 .content-main > .stem-classics-section,
 .content-main > .day-hour-classics-section,
@@ -524,6 +525,10 @@ h1 {
   background: #fffaf2;
 }
 
+.peer-rob-section {
+  background: #fffaf2;
+}
+
 .practical-combinations-section {
   background: #fffaf2;
 }
@@ -581,6 +586,7 @@ h1 {
 }
 
 .use-god-history-flow,
+.peer-rob-flow,
 .pattern-foundation-flow,
 .eight-pattern-flow,
 .two-sided-use-god-flow,
@@ -592,6 +598,7 @@ h1 {
 }
 
 .use-god-history-section .family-rule-grid,
+.peer-rob-section .family-rule-grid,
 .pattern-foundation-section .family-rule-grid,
 .eight-pattern-section .family-rule-grid,
 .two-sided-use-god-section .family-rule-grid,

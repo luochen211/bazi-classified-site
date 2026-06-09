@@ -254,6 +254,7 @@ const advancedDirectoryItems = [
   { label: "流年细表", href: "/advanced/luck-cycle-tables" },
   { label: "流年架构", href: "/advanced/luck-cycle-structure" },
   { label: "十神细则", href: "/advanced/ten-god-rules" },
+  { label: "比劫禄刃", href: "/advanced/peer-rob-wealth" },
   { label: "实务组合", href: "/advanced/practical-combinations" },
   { label: "十干高级", href: "/advanced/stem-classics" },
   { label: "日时组合", href: "/advanced/day-hour-classics" },
@@ -2215,6 +2216,129 @@ const femalePoemExamples = [
 ];
 
 const femalePoemCaseIds = ["案例 3", "案例 4", "案例 33", "案例 64", "案例 66", "案例 70", "案例 75", "案例 80", "案例 81"];
+
+const peerRobWealthPrinciples = [
+  {
+    title: "先看是否值得重视",
+    text: "比劫不是一见就断。天透地藏、二透一根、地支三合三会透干，才进入“过多、根深、根重”的判断。"
+  },
+  {
+    title: "比肩劫财不同性",
+    text: "比肩同阴阳，较缓和；劫财异阴阳，情切而速，利害场景里更容易迅速保护自己、争取细节。"
+  },
+  {
+    title: "禄刃是特别格入口",
+    text: "比肩在月支临官可成建禄，阳日劫财在月支帝旺可成羊刃。它们扶身克财，但喜忌不能和普通比劫混讲。"
+  },
+  {
+    title: "扶身要有实际例式",
+    text: "比劫可以扶身，但不能只说身弱喜比劫。要看印格带财、官杀压力、月令和日主是否真需要同类相助。"
+  }
+];
+
+const peerRobWealthSections = [
+  {
+    title: "劫财入式",
+    source: "第一层级第三节 / 劫财",
+    intro: "劫财是同五行、异阴阳。它的重点不是一句破财，而是阴阳相扶带来的情切、自我警觉、细节争夺和财务竞争。",
+    items: [
+      ["三种成重", "天干二见又通根、地支二见又透干，或地支三合三会劫财而天干透出，均要作重点判断。"],
+      ["静态性格", "无直接利害时，常带客气、试探、距离感和自信；别人易感到有架势。"],
+      ["动态利害", "涉及生意、承诺、借贷和分利时，先看利益，再听细节，容易抓话柄、争微小之理。"],
+      ["现实边界", "刚强精明不代表成败祸福，事业、金钱、亲属成败还要回到格局和岁运。"]
+    ],
+    cases: ["案例 9", "案例 22", "案例 66"]
+  },
+  {
+    title: "柱位年限",
+    source: "第一层级第三节 / 劫财年限",
+    intro: "劫财在不同柱位，不只是同一个性格标签，而是对应不同人生阶段和六亲财务主题。",
+    items: [
+      ["年柱", "十五岁以前多作家运不济、父缘薄、早年资源分夺看；年干年支坐透劫财尤重。"],
+      ["月柱", "十六至三十岁，自以为是、立志过高、孤注一掷，婚恋和投资都要谨慎。"],
+      ["日支", "不透出时多作家庭纠纷；若日支劫财又透月时，内外忧患加重。"],
+      ["时柱", "晚年重经济大权、房产存款和子女承接，只要资产仍在自己掌控，凶性较缓。"]
+    ],
+    cases: ["案例 10", "案例 55", "案例 78"]
+  },
+  {
+    title: "建禄与比肩",
+    source: "第一层级第三节 / 比肩建禄",
+    intro: "比肩不取比肩格，但月支为日主临官可成建禄。建禄重点在扶身、克财、祖业和财官承接。",
+    items: [
+      ["无财官", "月令建禄而四柱无财官透出，或无财官禄旺，多主祖业难靠、白手起家、与家长不和。"],
+      ["见财官", "四柱有财官透出，或财官有禄旺地支，且时干不透比劫，晚年可以主富。"],
+      ["月令建禄", "月支比肩禄位，性格任性，自我强，适合独立创业，不宜小规模一对一合伙。"],
+      ["最佳制化", "建禄宜有七杀旺支或七杀天干来制，使同类力量进入纪律和责任。"]
+    ],
+    cases: ["案例 15", "案例 22", "案例 81"]
+  },
+  {
+    title: "劫财羊刃",
+    source: "第一层级第三节 / 羊刃",
+    intro: "阳日主劫财坐月支帝旺，即是羊刃格。羊刃与伤官有相似处，重决心、防范、核算和不轻易让步。",
+    items: [
+      ["基本喜忌", "羊刃格喜七杀，忌财地；以杀制刃，强烈行动力才有方向。"],
+      ["冲刃差异", "甲、戊、庚日羊刃逢冲多有祸；丙、壬日羊刃逢冲较不作同等大祸。"],
+      ["重见刃局", "羊刃忌地支相对、重见双刃、三合、三会，性质近七杀重见。"],
+      ["年时最重", "四刃中年、时羊刃较重，月刃略轻，日刃更轻；时上羊刃再见比刃，需看疾病外灾。"]
+    ],
+    cases: ["案例 22", "案例 55", "案例 78"]
+  },
+  {
+    title: "扶身例式",
+    source: "第一层级第三节 / 比劫扶抑用神",
+    intro: "第三节特别反对空说身弱喜比劫，要求给出具体例式。比劫能扶身，必须有需要它扶的结构。",
+    items: [
+      ["印格带财", "印格被财牵动时，行比劫运可护身护印，不能只按比劫破财论。"],
+      ["官杀压力", "甲日子月透庚、丙日甲寅月见官杀、戊日午月逢官杀等，皆可用比劫帮身承压。"],
+      ["金水例式", "庚日午月见七杀、壬日酉月见官杀、癸日申月见官杀，宜比劫帮身。"],
+      ["实务判断", "先问日主是否真被官杀财食压住，再问比劫是否被官杀收束，而不是把比劫固定成吉或凶。"]
+    ],
+    cases: ["案例 2", "案例 52", "案例 56", "案例 63"]
+  },
+  {
+    title: "六亲财务",
+    source: "第一层级第三节 / 六亲征兆",
+    intro: "比劫本身可代表兄弟姐妹，但实务重点常在克财：父亲、妻星、女友、钱财和合作分配。",
+    items: [
+      ["父亲", "年柱劫财，因年限早，多作父缘、父荫、家宅资源看，最忌年干年支坐透。"],
+      ["婚姻", "男命比劫重，财星既是钱也是妻星，婚姻和财务常要一起看。"],
+      ["合作", "月柱比劫重，三十岁前合作、投资、朋友同业、人情借贷容易带后遗症。"],
+      ["女命", "女命比劫合官杀，多因任性、自我、轻视伴侣或竞争关系引发困难。"]
+    ],
+    cases: ["案例 3", "案例 4", "案例 66", "案例 70"]
+  }
+];
+
+const peerRobWealthComparisons = [
+  {
+    title: "比肩",
+    text: "有理也肯让人，除大事外较能替人设想；但也易因信人、好面子、拒绝困难而留下后遗症。"
+  },
+  {
+    title: "劫财",
+    text: "得理不肯让，小事也会争；利害场景中反应快，能防损失，也易招小人和冲突。"
+  },
+  {
+    title: "建禄",
+    text: "月令比肩临官，重自立和祖业承接。无财官多白手起家，有财官承接则可成福。"
+  },
+  {
+    title: "羊刃",
+    text: "月令劫财帝旺，重决断和防范。喜七杀来制，忌财地和冲刃，不能当普通劫财看。"
+  }
+];
+
+const peerRobWealthWorkflow = [
+  { title: "看成重", text: "先查是否天透地藏、二透一根、三合三会透干；未成重，不急着扩大解释。" },
+  { title: "分比劫", text: "比肩较缓，劫财较速；同是克财，表现方式和人情反应不同。" },
+  { title: "定禄刃", text: "月支临官为建禄，阳日帝旺为羊刃；先分格局入口，再谈普通比劫。" },
+  { title: "查制化", text: "建禄羊刃宜官杀收束，尤其羊刃喜七杀；无制时才看争财和冲动。" },
+  { title: "落问事", text: "问财看合伙投资，问婚姻看财官被争，问健康看冲刃刑伤，问事业看竞争承压。" }
+];
+
+const peerRobWealthCaseIds = ["案例 2", "案例 3", "案例 4", "案例 9", "案例 10", "案例 15", "案例 22", "案例 52", "案例 55", "案例 56", "案例 63", "案例 66", "案例 70", "案例 78", "案例 81"];
 
 const patternFoundationPrinciples = [
   {
@@ -5114,6 +5238,7 @@ function SiteShell() {
         <Route path="/advanced/luck-cycle-tables" element={<LuckCycleTablesPage />} />
         <Route path="/advanced/luck-cycle-structure" element={<LuckCycleStructurePage />} />
         <Route path="/advanced/ten-god-rules" element={<TenGodRulesPage />} />
+        <Route path="/advanced/peer-rob-wealth" element={<PeerRobWealthPage />} />
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
         <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
         <Route path="/advanced/day-hour-classics" element={<DayHourClassicsPage />} />
@@ -5565,6 +5690,34 @@ function TenGodRulesPage() {
       >
         <TenGodRules />
         <CaseStudies detail={{ title: "十神细则" }} items={ruleCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function PeerRobWealthPage() {
+  const peerCases = peerRobWealthCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Peer Wealth"
+        title="比劫禄刃"
+        copy="把第三节劫财、羊刃拆成成重标准、柱位年限、建禄羊刃、比劫扶身和六亲财务的实务判断。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/peer-rob-wealth" })),
+          { label: "判断原则", href: "#peer-rob-principles" },
+          ...peerRobWealthSections.map((section) => ({ label: section.title, href: `#peer-rob-${section.title}` })),
+          { label: "四类对照", href: "#peer-rob-comparisons" },
+          { label: "判断流程", href: "#peer-rob-workflow" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <PeerRobWealth />
+        <CaseStudies detail={{ title: "比劫禄刃" }} items={peerCases} />
       </ContentLayout>
     </main>
   );
@@ -7431,6 +7584,90 @@ function TenGodRules() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PeerRobWealth() {
+  return (
+    <section className="peer-rob-section" id="peer-rob-wealth" aria-labelledby="peer-rob-title">
+      <div className="section-heading">
+        <p className="eyebrow">Peer / Rob Wealth</p>
+        <h2 id="peer-rob-title">比劫不是只看破财</h2>
+      </div>
+      <div className="rules-lead">
+        <p>第三节的重点，是把劫财、羊刃从“自信、刚强、破财”的入门标签里拿出来，改成可判断的结构：成重、柱位、禄刃、制化、问事。</p>
+        <a className="source-link" href={assetUrl("/content/比劫禄刃.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看比劫禄刃整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="peer-rob-principles">
+        {peerRobWealthPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections peer-rob-flow">
+        {peerRobWealthSections.map((section) => (
+          <article className="flow-section" id={`peer-rob-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="peer-rob-comparisons">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Comparison</p>
+            <h3>比肩、劫财、建禄、羊刃四类对照</h3>
+          </div>
+          <p>同样是同类力量，实务里的速度、性格、喜忌和问事落点并不一样。</p>
+        </div>
+        <div className="family-rule-grid">
+          {peerRobWealthComparisons.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="report-template-panel" id="peer-rob-workflow">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Workflow</p>
+            <h3>比劫禄刃五步判断</h3>
+          </div>
+          <p>先确认是否成重，再分普通比劫与禄刃格，最后落回财、婚姻、事业、健康四类问题。</p>
+        </div>
+        <div className="family-rule-grid">
+          {peerRobWealthWorkflow.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
             </article>
           ))}
         </div>
