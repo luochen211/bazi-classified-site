@@ -259,6 +259,7 @@ const advancedDirectoryItems = [
   { label: "食伤坐引", href: "/advanced/food-hurt-output" },
   { label: "偏印枭神", href: "/advanced/partial-seal-spirit" },
   { label: "偏财机会", href: "/advanced/indirect-wealth" },
+  { label: "正印正财", href: "/advanced/seal-wealth-foundation" },
   { label: "实务组合", href: "/advanced/practical-combinations" },
   { label: "十干高级", href: "/advanced/stem-classics" },
   { label: "日时组合", href: "/advanced/day-hour-classics" },
@@ -2173,6 +2174,156 @@ const peerFoundationWorkflow = [
 ];
 
 const peerFoundationCaseIds = ["案例 1", "案例 2", "案例 6", "案例 10", "案例 13", "案例 22", "案例 26", "案例 52", "案例 56", "案例 60", "案例 78", "案例 80"];
+
+const sealWealthFoundationPrinciples = [
+  {
+    title: "先讲市民实务",
+    text: "第九节明确把十神先落到性格、六亲、年限和日常用度。正印正财不急着套格局喜忌，先能回答家庭、钱财、母亲、妻子和现实安稳。"
+  },
+  {
+    title: "财官印是平安字",
+    text: "正财、正官、正印都属阴阳相逢，重温恭、秩序、守成和平安。它们不是天然富贵，而是让普通人先达到家泰宅安。"
+  },
+  {
+    title: "财印不能混讲",
+    text: "正印重保护、学历、母亲、清高；正财重稳定现金流、妻财同宫、现实经营。财能克印，所以赚钱、资质、母亲和清名之间常有拉扯。"
+  },
+  {
+    title: "顺用也怕被破",
+    text: "正印格、财格都属顺用。正印怕财来破、伤官破清；财格怕比劫羊刃夺财，也怕格局被冲合。顺用格先看是否被反克。"
+  }
+];
+
+const sealWealthFoundationSections = [
+  {
+    title: "入手边界",
+    source: "第一层级第九节 / 十神实务",
+    intro: "第九节先把学习重心从抽象格局拉回日常：不是每个来问命的人都问富贵功名，更多人问家庭、子女、收入和日常安稳。",
+    items: [
+      ["先看三层", "十神基础先从性格、六亲、年限入手，形成可以立刻应对实务的公式。"],
+      ["不急用神", "不必硬性拘泥于格局、用神、喜忌、强弱，先从一般市民和社会性人之常情着手。"],
+      ["平安标准", "有住宅、夫妻子女平安、有流动资金和稳定寿命，在市井层面已经可称平安是福。"],
+      ["功名另看", "若问功名名气，则调候、格局、用神更急；若问家计日常，则财官印要优先。"]
+    ],
+    cases: ["案例 2", "案例 15", "案例 75"]
+  },
+  {
+    title: "正印性格",
+    source: "第一层级第九节 / 正印",
+    intro: "正印是生我、阴阳异性相生。它主保护、母亲、守成、清气和现成福，也容易变成清孤、吝财和不重现实生产。",
+    items: [
+      ["温恭守成", "正印多者聪明慈善、心地循良，身体多丰厚，少见凶横急灾，也有现成和守成之福。"],
+      ["清孤少子", "正印多者容易清孤、子女较少。女命正印旺位与偏印不利子女相近，只是正印较看得开。"],
+      ["年柱例外", "年柱正印在一至十五岁，性格不作第一优先，只重母亲、长辈和早年保护。"],
+      ["天月德", "正印在天干最喜与天德、月德同柱；正印格带贵人，清气才容易转成受人敬重的背景。"]
+    ],
+    cases: ["案例 2", "案例 67", "案例 75"]
+  },
+  {
+    title: "正印生克",
+    source: "第一层级第九节 / 正印单向生克",
+    intro: "正印的实务不是只说贵人学历，而是看印生比劫、官杀生印、印克食伤、财克印，分别落到钱、母亲、丈夫、子女和输出。",
+    items: [
+      ["印生比劫", "财务上可能因艺文、宗教、个性、清高而减少收入；六亲上关心平辈、同事、同学。"],
+      ["官杀生印", "男命可看子女更重宗教艺文而轻财；女命月柱则对丈夫有特定期待，要求苛刻。"],
+      ["印克食伤", "保护与秩序会压住表达和输出，问学业是吸收，问事业则可能行动慢。"],
+      ["财克印", "普通正印格常因不事生产而损财；佳命可表现为捐款、购买艺术品或为文化教育花钱。"]
+    ],
+    cases: ["案例 5", "案例 58", "案例 67"]
+  },
+  {
+    title: "正印格",
+    source: "第一层级第九节 / 正印格简述",
+    intro: "正印格属顺用，重清高、敦厚、保护和社会敬重。它需要官杀、职权、贵人或背景承接，否则容易只是艺文人士。",
+    items: [
+      ["顺用不可反克", "正印格不宜被财反克；若天干见财，可用比劫护印，但地支不宜再见羊刃。"],
+      ["官杀承接", "正印格宜见正官或七杀，但天干不可官杀并见；有职权随身，清气才有现实位置。"],
+      ["贵人承接", "无官杀时，天月德贵人可补清贵背景；否则多停在艺文、清高、孤困。"],
+      ["财印并存", "正印格与正财格并存，原文称言清行俗：嘴上清高，行为仍被现实利益牵引。"]
+    ],
+    cases: ["案例 2", "案例 67", "案例 75"]
+  },
+  {
+    title: "正财性格",
+    source: "第一层级第九节 / 正财",
+    intro: "正财是日主阴阳克出。它不是横财，而是稳定收入、妻财同宫、勤俭守分、现实经营和可持续生活。",
+    items: [
+      ["诚实俭约", "正财成格且不遇比劫刑冲，常见诚实、俭约、聪明、守本分，只是有些善财难舍。"],
+      ["妻财同宫", "男命以正财为妻，论妻与论钱财用同一套喜忌。财少妻难，财多妻易，但仍要看身能否担。"],
+      ["身强可福", "正财首须日干强，始可论福。身强见正财有信用、人缘、公义和平生吉祥。"],
+      ["财多身弱", "财过多而日干弱，常见惧内、妻有权、钱财压力重，不能见财多就说富。"]
+    ],
+    cases: ["案例 15", "案例 78", "案例 81"]
+  },
+  {
+    title: "正财生克",
+    source: "第一层级第九节 / 正财单向生克",
+    intro: "正财要复式论财：财生官杀、食伤生财、财克正印、比劫羊刃克财。财的成败，常在来源、保护、分夺和破印之间。",
+    items: [
+      ["财生官杀", "稳定财可转成职位、规则、名分和组织身份，女命也可看夫星承接。"],
+      ["食伤生财", "食伤两见或当令，代表间接生财，靠技能、服务、产品、表达获得稳定或发财机会。"],
+      ["财克正印", "财多会削弱文学、学历、母亲缘和清名；女命财旺可帮夫，但对文学学业不甚认真。"],
+      ["比劫夺财", "比劫或禄刃重，男命感情阻碍重，事业也容易艰辛、反复、不定型。"]
+    ],
+    cases: ["案例 15", "案例 66", "案例 78"]
+  },
+  {
+    title: "柱位年限",
+    source: "第一层级第九节 / 格局通根年限",
+    intro: "正印、正财都要按柱位和通根看时效。天干透出、地支坐实、会局成格，都会把性格和事件推到对应年龄段。",
+    items: [
+      ["年柱正印", "年柱正印重母亲、长辈、早年保护，不急着断性格。透年正印也常看出身背景。"],
+      ["月柱正印", "月柱干支正印或月支临官，性格和学习保护落在十六至三十，也可能形成正印格。"],
+      ["日时正财", "日时有财官印禄旺且无刑冲，对普通人可看中晚年家计稳定、夫妻子女平安。"],
+      ["时支通根", "格局通根时支，常代表五十岁后仍要管理、指导、承继或交付，不是真正退休。"]
+    ],
+    cases: ["案例 2", "案例 15", "案例 81"]
+  }
+];
+
+const sealWealthFoundationComparisons = [
+  {
+    title: "正印",
+    text: "生我异阴阳，主母亲、师长、学历、保护、清气和守成。为喜是保护，为忌是依赖、清孤和不事生产。"
+  },
+  {
+    title: "正财",
+    text: "我克异阴阳，主稳定财、经营、妻星和现实责任。为喜是现金流和家计，为忌是财压身、财坏印。"
+  },
+  {
+    title: "财克印",
+    text: "钱财现实会克学历、名誉、母亲缘和清气。判断时要看是为了生计牺牲学习，还是现实资源破坏保护结构。"
+  },
+  {
+    title: "官杀生印",
+    text: "规则、职位、丈夫、子女可生印。好处是名分保护，坏处是期待苛刻、表面人情或清高被权力绑定。"
+  }
+];
+
+const sealWealthFoundationWorkflow = [
+  {
+    title: "先问主题",
+    text: "问学业、母亲、贵人先看印；问钱财、妻星、家计先看财；问名位再看财官印是否流通。"
+  },
+  {
+    title: "定柱位",
+    text: "年看早年长辈，月看青年与社会入口，日看夫妻中年，时看晚年子女和持续经营。"
+  },
+  {
+    title: "查生克",
+    text: "正印查财克印、官杀生印、印克食伤；正财查食伤生财、财生官杀、比劫夺财。"
+  },
+  {
+    title: "看顺用",
+    text: "正印格、财格都属顺用，先看有没有被反克、冲合、比劫羊刃或伤官破坏。"
+  },
+  {
+    title: "接案例",
+    text: "把案例按财、印、婚姻、事业、学业、六亲分类复盘，避免只背“正印贵、正财富”的单句。"
+  }
+];
+
+const sealWealthFoundationCaseIds = ["案例 2", "案例 5", "案例 15", "案例 33", "案例 55", "案例 58", "案例 66", "案例 67", "案例 75", "案例 78", "案例 81", "案例 84"];
 
 const practicalCombinationSections = [
   {
@@ -5840,6 +5991,7 @@ function SiteShell() {
         <Route path="/advanced/food-hurt-output" element={<FoodHurtOutputPage />} />
         <Route path="/advanced/partial-seal-spirit" element={<PartialSealSpiritPage />} />
         <Route path="/advanced/indirect-wealth" element={<IndirectWealthPage />} />
+        <Route path="/advanced/seal-wealth-foundation" element={<SealWealthFoundationPage />} />
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
         <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
         <Route path="/advanced/day-hour-classics" element={<DayHourClassicsPage />} />
@@ -6431,6 +6583,34 @@ function IndirectWealthPage() {
       >
         <IndirectWealth />
         <CaseStudies detail={{ title: "偏财机会" }} items={indirectWealthCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function SealWealthFoundationPage() {
+  const sealWealthCases = sealWealthFoundationCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Seal Wealth"
+        title="正印正财"
+        copy="把第九节正印、正财拆成市民实务、母亲妻财、财印相战、顺用格局、柱位年限和案例复盘。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/seal-wealth-foundation" })),
+          { label: "判断原则", href: "#seal-wealth-principles" },
+          ...sealWealthFoundationSections.map((section) => ({ label: section.title, href: `#seal-wealth-${section.title}` })),
+          { label: "四类对照", href: "#seal-wealth-comparisons" },
+          { label: "判断流程", href: "#seal-wealth-workflow" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <SealWealthFoundation />
+        <CaseStudies detail={{ title: "正印正财" }} items={sealWealthCases} />
       </ContentLayout>
     </main>
   );
@@ -8714,6 +8894,90 @@ function IndirectWealth() {
         </div>
         <div className="family-rule-grid">
           {indirectWealthWorkflow.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SealWealthFoundation() {
+  return (
+    <section className="seal-wealth-section" id="seal-wealth-foundation" aria-labelledby="seal-wealth-title">
+      <div className="section-heading">
+        <p className="eyebrow">Seal / Wealth</p>
+        <h2 id="seal-wealth-title">正印正财要一起看财印拉扯</h2>
+      </div>
+      <div className="rules-lead">
+        <p>第九节的重点，是把正印和正财从“学历贵人、稳定钱财”的标签里拉出来，落到母亲、妻财、清高、现实经营、财克印和顺用格局。</p>
+        <a className="source-link" href={assetUrl("/content/正印正财.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看正印正财整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="seal-wealth-principles">
+        {sealWealthFoundationPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections seal-wealth-flow">
+        {sealWealthFoundationSections.map((section) => (
+          <article className="flow-section" id={`seal-wealth-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="seal-wealth-comparisons">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Comparison</p>
+            <h3>正印、正财、财克印、官杀生印四类对照</h3>
+          </div>
+          <p>正印正财页的关键，是分清保护与现实、清气与现金流、母亲与妻财、格局顺用与生克破坏。</p>
+        </div>
+        <div className="family-rule-grid">
+          {sealWealthFoundationComparisons.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="report-template-panel" id="seal-wealth-workflow">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Workflow</p>
+            <h3>正印正财五步判断</h3>
+          </div>
+          <p>先问主题，再定柱位、查生克、看顺用，最后回到案例验证，不把财印误读成两个孤立标签。</p>
+        </div>
+        <div className="family-rule-grid">
+          {sealWealthFoundationWorkflow.map((item) => (
             <article className="family-rule-card" key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
