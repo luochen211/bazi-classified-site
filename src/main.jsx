@@ -261,6 +261,7 @@ const advancedDirectoryItems = [
   { label: "基层命学", href: "/advanced/grassroots-method" },
   { label: "女命专题", href: "/advanced/female-chart" },
   { label: "女命诗诀", href: "/advanced/female-chart-poems" },
+  { label: "格局基础", href: "/advanced/pattern-foundation" },
   { label: "八格总论", href: "/advanced/eight-patterns" },
   { label: "格局用神", href: "/advanced/pattern-use-god" },
   { label: "用神沿革", href: "/advanced/use-god-history" },
@@ -2214,6 +2215,106 @@ const femalePoemExamples = [
 ];
 
 const femalePoemCaseIds = ["案例 3", "案例 4", "案例 33", "案例 64", "案例 66", "案例 70", "案例 75", "案例 80", "案例 81"];
+
+const patternFoundationPrinciples = [
+  {
+    title: "会排盘不等于会判断",
+    text: "八字、大运、十神、支藏和神煞填完，只是架子齐了。真正判断要继续看根气、透藏、刑冲合会和问事落点。"
+  },
+  {
+    title: "强弱只是入口",
+    text: "得令、得地、得党是入门权宜，不可脱离调候、格局顺逆、六亲和岁运。"
+  },
+  {
+    title: "每个十神都有根气",
+    text: "不只日主有强弱，财官印食杀伤也有得令、得地、得党。十神定位的实务，正是把每一类十神分别看。"
+  },
+  {
+    title: "用神不只一种",
+    text: "调候、格局、扶抑、专旺、对应问事，是五个不同层次。不能把扶抑中和当成唯一答案。"
+  }
+];
+
+const patternFoundationSections = [
+  {
+    title: "特别格三类",
+    source: "第一层级第四节 / 特别格",
+    intro: "特别格先当作识别表，不宜一见名称就断富贵。第四节把它分成日主临官帝旺、传统特别格、全局全生全克三类。",
+    items: [
+      ["禄刃类", "日主临官、帝旺取格，如甲日月支寅为建禄，月支卯为羊刃。重点是月支才算。"],
+      ["传统类", "魁罡、金神、三奇等属于常见传统特别格，适合作为高阶识别，不先压过格局主线。"],
+      ["从旺从势类", "全局、全印、从杀、从儿等，要看全盘是否同向，不能只凭一两个字就说从。"]
+    ],
+    cases: ["案例 22", "案例 55", "案例 78"]
+  },
+  {
+    title: "强弱瓶颈",
+    source: "第一层级第四节 / 得令得地得党",
+    intro: "资料把“得令、得地、得党”放回三命通会源流，提醒它只是入门权宜，不是论命唯一法统。",
+    items: [
+      ["原义", "三命通会原文重得时、得地。后人把得地改作地支，把得党作为个人化说法。"],
+      ["限制", "它没有概括调候喜忌、格局顺逆用，也没有区分年限。"],
+      ["转向", "日主可以这样看，正财、正官、七杀、印食同样要看自己的根气和得势。"]
+    ],
+    cases: ["案例 10", "案例 15", "案例 81"]
+  },
+  {
+    title: "通根透藏",
+    source: "第一层级第四节 / 通根",
+    intro: "通根与天透地藏是一组互相观看的术语：以天干为基准叫通根，以地支藏干为基准叫天透。",
+    items: [
+      ["通根", "天干有，地支支藏天干中也有此干，称为通根。日主、格局十神都要查。"],
+      ["天透", "地支藏干在四柱天干中透出，称为天透。格局成形常要靠天透地藏。"],
+      ["无根", "日主在地支藏干中找不到同类、长生、余气、库等承接时，要进入日主无根与从势判断。"]
+    ],
+    cases: ["案例 2", "案例 52", "案例 67"]
+  },
+  {
+    title: "十干禄绝",
+    source: "第一层级第四节 / 十干禄绝",
+    intro: "十干禄绝是判断根气和轻重的基础表。禄是临官位，绝是气尽处，但不能只论禄旺而不论绝。",
+    items: [
+      ["禄位", "甲禄寅、乙禄卯、丙戊禄巳、丁己禄午、庚禄申、辛禄酉、壬禄亥、癸禄子。"],
+      ["绝位", "甲绝申、乙绝酉、丙戊绝亥、丁己绝子、庚绝寅、辛绝卯、壬绝巳、癸绝午。"],
+      ["轻重", "禄旺为根重；长生、余气、库为根轻。日主与格局十神都可分轻重。"]
+    ],
+    cases: ["案例 57", "案例 63", "案例 75"]
+  },
+  {
+    title: "日主无根",
+    source: "第一层级第四节 / 弱不堪扶",
+    intro: "日主无根不自动等于凶，也不自动等于不能托财官。要看月令财杀伤是否成格，以及是否能从势。",
+    items: [
+      ["凶象", "日主无根，月支杀、财、伤当令却不透干、不成局，容易形成压力无出口。"],
+      ["吉象", "日主无根，月支杀、财、伤当令且透干，或三合成格，反而可能从势成局。"],
+      ["破从", "日主无根而财杀伤成格，另有劫财或比肩透出搅局，容易变成不能从又不能扶。"]
+    ],
+    cases: ["案例 52", "案例 56", "案例 84"]
+  },
+  {
+    title: "五种用神",
+    source: "第一层级第四节 / 五用神概念",
+    intro: "用神不是一个万能字。第四节把用神分成五个体系，正好可以衔接后面的格局用神、用神沿革和双边用神。",
+    items: [
+      ["调候", "以日主十干性质，对月令四时五行选取，先处理寒暖燥湿。"],
+      ["格局", "依格局顺逆，取通关用神与病药用神，先问格局是否成败。"],
+      ["扶抑", "日主过强、禄刃印俱有，或日主无根时，才进入单纯平衡取用。"],
+      ["专旺", "全木全火等从旺，或日主无根、财杀当令之从势。"],
+      ["对应", "问健康、家庭、婚姻、财运时，按具体问题选择对应落点。"]
+    ],
+    cases: ["案例 2", "案例 53", "案例 80"]
+  }
+];
+
+const patternFoundationWorkflow = [
+  { title: "先排架子", text: "八字、大运、支藏天干、十神和刑冲合会要能完整排出，但不要停在会排。" },
+  { title: "再查根气", text: "日主和每个关键十神都查通根、天透、禄绝、轻重，不只看日主强弱。" },
+  { title: "分普通与特别", text: "普通格局先走月令与天透地藏；特别格只在全局条件明显时再启用。" },
+  { title: "判能扶能从", text: "日主无根时，不急着说弱，先看财杀伤是否成格、是否能从、是否被比劫破坏。" },
+  { title: "接入问事", text: "最后按婚姻、财运、事业、健康等问题，选择对应的用神和现实语言。" }
+];
+
+const patternFoundationCaseIds = ["案例 2", "案例 10", "案例 15", "案例 22", "案例 52", "案例 53", "案例 55", "案例 56", "案例 57", "案例 63", "案例 67", "案例 75", "案例 78", "案例 80", "案例 81", "案例 84"];
 
 const eightPatternPrinciples = [
   {
@@ -5020,6 +5121,7 @@ function SiteShell() {
         <Route path="/advanced/grassroots-method" element={<GrassrootsMethodPage />} />
         <Route path="/advanced/female-chart" element={<FemaleChartPage />} />
         <Route path="/advanced/female-chart-poems" element={<FemalePoemsPage />} />
+        <Route path="/advanced/pattern-foundation" element={<PatternFoundationPage />} />
         <Route path="/advanced/eight-patterns" element={<EightPatternsPage />} />
         <Route path="/advanced/pattern-use-god" element={<PatternUseGodPage />} />
         <Route path="/advanced/use-god-history" element={<UseGodHistoryPage />} />
@@ -5646,6 +5748,33 @@ function FemalePoemsPage() {
       >
         <FemalePoems />
         <CaseStudies detail={{ title: "女命诗诀" }} items={poemCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function PatternFoundationPage() {
+  const foundationCases = patternFoundationCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Pattern Foundation"
+        title="格局基础"
+        copy="把特别格、通根透藏、十干禄绝、根轻根重和五种用神先讲清楚，避免一上来就困在身强身弱。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/pattern-foundation" })),
+          { label: "基础原则", href: "#pattern-foundation-principles" },
+          ...patternFoundationSections.map((section) => ({ label: section.title, href: `#pattern-foundation-${section.title}` })),
+          { label: "实务流程", href: "#pattern-foundation-workflow" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <PatternFoundation />
+        <CaseStudies detail={{ title: "格局基础" }} items={foundationCases} />
       </ContentLayout>
     </main>
   );
@@ -7717,6 +7846,73 @@ function FemalePoems() {
               <ul>
                 <li>{item.text}</li>
               </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PatternFoundation() {
+  return (
+    <section className="pattern-foundation-section" id="pattern-foundation" aria-labelledby="pattern-foundation-title">
+      <div className="section-heading">
+        <p className="eyebrow">Pattern Foundation</p>
+        <h2 id="pattern-foundation-title">别被“身强身弱”卡住</h2>
+      </div>
+      <div className="rules-lead">
+        <p>第四节辅助教材的价值，是让学习者从会排盘，走到会看根气、透藏、轻重和用神层次。它不是高阶玄谈，而是防止初学误判的底层检查表。</p>
+        <a className="source-link" href={assetUrl("/content/格局基础.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看格局基础整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="pattern-foundation-principles">
+        {patternFoundationPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections pattern-foundation-flow">
+        {patternFoundationSections.map((section) => (
+          <article className="flow-section" id={`pattern-foundation-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="pattern-foundation-workflow">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Workflow</p>
+            <h3>从排盘到判断的五步</h3>
+          </div>
+          <p>这五步把第四节的辅助教材转成实务检查顺序，后面再进入八格、格局用神和岁运。</p>
+        </div>
+        <div className="family-rule-grid">
+          {patternFoundationWorkflow.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
             </article>
           ))}
         </div>

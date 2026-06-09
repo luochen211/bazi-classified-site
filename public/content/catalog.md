@@ -19,6 +19,7 @@
 - 基层命学：`/advanced/grassroots-method`，资料稿 `/content/基层命学.md`
 - 女命专题：`/advanced/female-chart`，资料稿 `/content/女命专题.md`
 - 女命诗诀：`/advanced/female-chart-poems`，资料稿 `/content/女命诗诀.md`
+- 格局基础：`/advanced/pattern-foundation`，资料稿 `/content/格局基础.md`
 - 八格总论：`/advanced/eight-patterns`，资料稿 `/content/八格总论.md`
 - 格局用神：`/advanced/pattern-use-god`，资料稿 `/content/格局用神.md`
 - 用神沿革：`/advanced/use-god-history`，资料稿 `/content/用神沿革.md`

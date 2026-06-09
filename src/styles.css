@@ -437,6 +437,7 @@ h1 {
 .content-main > .grassroots-method-section,
 .content-main > .female-chart-section,
 .content-main > .female-poem-section,
+.content-main > .pattern-foundation-section,
 .content-main > .eight-pattern-section,
 .content-main > .pattern-use-god-section,
 .content-main > .use-god-history-section,
@@ -551,6 +552,10 @@ h1 {
   background: #fffaf2;
 }
 
+.pattern-foundation-section {
+  background: #fffaf2;
+}
+
 .eight-pattern-section {
   background: #fffaf2;
 }
@@ -576,6 +581,7 @@ h1 {
 }
 
 .use-god-history-flow,
+.pattern-foundation-flow,
 .eight-pattern-flow,
 .two-sided-use-god-flow,
 .favorable-pattern-flow,
@@ -586,6 +592,7 @@ h1 {
 }
 
 .use-god-history-section .family-rule-grid,
+.pattern-foundation-section .family-rule-grid,
 .eight-pattern-section .family-rule-grid,
 .two-sided-use-god-section .family-rule-grid,
 .favorable-pattern-section .family-rule-grid,
