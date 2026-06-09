@@ -256,6 +256,7 @@ const advancedDirectoryItems = [
   { label: "十神细则", href: "/advanced/ten-god-rules" },
   { label: "比劫禄刃", href: "/advanced/peer-rob-wealth" },
   { label: "食伤坐引", href: "/advanced/food-hurt-output" },
+  { label: "偏印枭神", href: "/advanced/partial-seal-spirit" },
   { label: "实务组合", href: "/advanced/practical-combinations" },
   { label: "十干高级", href: "/advanced/stem-classics" },
   { label: "日时组合", href: "/advanced/day-hour-classics" },
@@ -2372,6 +2373,144 @@ const foodHurtOutputCaseIds = [
   "案例 69",
   "案例 80"
 ];
+
+const partialSealSpiritPrinciples = [
+  {
+    title: "偏印先分术与学",
+    text: "源文把正印主学、偏印主术作为入口。偏印更靠专技、宗教、艺术、研究、谋士和非标准路径，不宜只用学历贵人来理解。"
+  },
+  {
+    title: "同性相生，扶而不亲",
+    text: "偏印能生身，但扶助不亲切，常表现为冷、缓、含蓄、反复和保留。它不是不帮，而是帮助方式不温暖。"
+  },
+  {
+    title: "枭神夺食要看距离",
+    text: "偏印克食伤，尤其贴近食神时，才进入枭神夺食。要看输出、快乐、食欲、子女、作品是否真的被压住。"
+  },
+  {
+    title: "成格要财和贵人",
+    text: "偏印格属逆用，喜财来制印，也喜天月德一类贵人提携。没有现实资源承接，偏印容易只剩孤高和多学少成。"
+  }
+];
+
+const partialSealSpiritSections = [
+  {
+    title: "入门定位",
+    source: "第一层级第五节 / 八格初论",
+    intro: "第五节先反对空谈身强用神，再把偏印、偏财放在八格里优先讲。偏印的价值，是让初学者从性格、六亲和实务问事进入格局。",
+    items: [
+      ["正偏印分野", "正印主学，偏印主术。正印偏印都有文学气质，但偏印更偏实际术业、冷门研究和非标准资源。"],
+      ["优先原因", "偏印格与偏财格最容易被现实感受到：一个是孤僻迟疑、清高自守，一个是慷慨交友、机会漏洞。"],
+      ["实务顺序", "先从十神定位、财官禄位、性格六亲下手，再延伸到格局、强弱、喜忌。"],
+      ["使用边界", "偏印不能只当抽象喜忌，必须说明它在人际、亲属、职业、子女和身心状态里的具体落点。"]
+    ],
+    cases: ["案例 5", "案例 66", "案例 84"]
+  },
+  {
+    title: "性格三层",
+    source: "第一层级第五节 / 偏印五行性",
+    intro: "偏印是生日主的同性五行。它能扶日主，但不像正印那样亲切主动，所以性格上常出现冷、含蓄和反复。",
+    items: [
+      ["对自己", "偏印过多，常有孤僻、沉默、观点间断、反复不定和有始无终；不是争利，而是内在不易流通。"],
+      ["对外人", "对外容易防范、话不说满、带简短语刺，失意时独自承压，不肯当众认错。"],
+      ["对亲属", "男命对外沉默，对自己人反而斤斤计较；女命偏印重，较宜艺术宗教，不宜大家庭复杂环境。"],
+      ["适合领域", "偏印适合宗教、艺术、专技、文艺、哲理、研究、护理、教师、中医等稳定且有专门性的路径。"]
+    ],
+    cases: ["案例 5", "案例 35", "案例 51"]
+  },
+  {
+    title: "六亲生克",
+    source: "第一层级第五节 / 单向偏印生克",
+    intro: "现代不必拘泥“偏母”旧义。偏印真正有用的，是它与比劫、官杀、食伤、财星之间的单向生克。",
+    items: [
+      ["偏印生比劫", "偏印多者，对兄弟姐妹有暗中帮助心，女命常见暗中补贴娘家兄弟姐妹。"],
+      ["官杀生偏印", "男命可以因艺文、专长、专业能力得到子息或晚辈尊重；杀印也可转成资质。"],
+      ["偏印克食伤", "女命重看子女，男命多看输出、表达、快乐感和六亲温度；这正是枭神夺食入口。"],
+      ["财克偏印", "财能制偏印，把清高、空想、冷门术业拉回现实；但身弱靠印时，财来又可能破保护。"]
+    ],
+    cases: ["案例 5", "案例 34", "案例 66", "案例 72"]
+  },
+  {
+    title: "柱位年限",
+    source: "第一层级第五节 / 四柱征兆",
+    intro: "偏印落在哪一柱，不只是同一个性格重复，而是对应不同阶段的家风、职业、家庭温度、子女与晚年。",
+    items: [
+      ["年柱", "十五岁以前，少生富贵家庭，自幼可能有宗教感、第六感、不重享乐或家风特殊。"],
+      ["月柱", "青年阶段艺术性格较重，轻视物质，有慧少福，容易选择偏门才艺、研究或精神性路径。"],
+      ["日柱", "日支偏印落夫妻宫，家庭生活易郁闷，为忌时婚姻温度不足、想得多、表达少。"],
+      ["时柱", "女命多看子息分居或子女关系；男命若五十岁前未奠定安康，晚年易孤独。"]
+    ],
+    cases: ["案例 5", "案例 35", "案例 69"]
+  },
+  {
+    title: "偏印格局",
+    source: "第一层级第五节 / 偏印格喜忌",
+    intro: "偏印天透地藏，或生我者三合三会，可成偏印格。偏印格属逆用，宜克不宜泄，最重财与贵人。",
+    items: [
+      ["成格条件", "天透地藏，或生我者三合三会成势，皆可取偏印格；但仍要看月令、透干、冲合刑和日主根气。"],
+      ["喜财贵", "偏印格天干透财，且有天月德贵人一类提携，才容易把艺文、专技、宗教、谋士之才变成名利。"],
+      ["忌无财", "偏印格无财透出，或透比劫而比劫坐时支有根，常抵消财制印之吉。"],
+      ["忌身弱", "偏印格不是正印式的纯扶身，最忌日主弱、无根、枭旺无情，容易多学少成、伶仃或破格。"]
+    ],
+    cases: ["案例 5", "案例 66", "案例 84"]
+  },
+  {
+    title: "盖头截脚",
+    source: "第一层级第五节 / 辅助教材",
+    intro: "第五节把盖头、截脚、三合三会、天干四见放进辅助教材。它们用于降低或转化某十神的现实价值。",
+    items: [
+      ["盖头截脚", "天干坐绝或地支为天干绝位时，十神价值降到低标准。比如甲申偏财，财有其名，但坐绝难称厚财。"],
+      ["三合三会", "生我者三合三会，多作偏印格；我生者三合三会，多作伤官格；我克者三合三会，多作偏财格。"],
+      ["天干四见", "同一五行透藏合计四见，常向偏格归并：印多作偏印，财多作偏财，官杀多作七杀。"],
+      ["实务价值", "这些不是冷僻名词，而是判断某个十神能否真正发挥、是否只剩低配版本的工具。"]
+    ],
+    cases: ["案例 10", "案例 13", "案例 58"]
+  }
+];
+
+const partialSealSpiritComparisons = [
+  {
+    title: "正印",
+    text: "异性相生，较温厚、承接、保护和制度化。适合学历、证书、长辈、单位、稳定贵人。"
+  },
+  {
+    title: "偏印",
+    text: "同性相生，扶而不亲，偏术业、冷门、宗教、艺术、研究、谋略和不标准路径。"
+  },
+  {
+    title: "枭神夺食",
+    text: "偏印贴食神，输出、快乐、食欲、作品、子女或表达被压住，要看距离、力量和岁运。"
+  },
+  {
+    title: "财制偏印",
+    text: "财能让偏印落地，形成商业化、资源提携或现实交换；但身弱靠印时，财也可能破保护。"
+  }
+];
+
+const partialSealSpiritWorkflow = [
+  {
+    title: "辨正偏",
+    text: "先分正印与偏印。正印偏学与保护，偏印偏术与特殊路径，不能都叫印星贵人。"
+  },
+  {
+    title: "看过多",
+    text: "偏印过多先看内向、沉默、反复、有始无终和封闭，不要直接跳到格局喜忌。"
+  },
+  {
+    title: "查夺食",
+    text: "看偏印是否贴近食神，食伤是否有力，子女、输出、食欲、作品和快乐是否被压。"
+  },
+  {
+    title: "找财贵",
+    text: "偏印格要看财能否制印、贵人能否提携。没有现实承接，冷门能力未必变成结果。"
+  },
+  {
+    title: "落问事",
+    text: "问学业看研究与非标学习，问健康写倾向提醒，问婚姻看冷淡距离，问事业看术业专长。"
+  }
+];
+
+const partialSealSpiritCaseIds = ["案例 5", "案例 10", "案例 13", "案例 34", "案例 35", "案例 51", "案例 58", "案例 66", "案例 69", "案例 72", "案例 84"];
 
 const peerRobWealthPrinciples = [
   {
@@ -5396,6 +5535,7 @@ function SiteShell() {
         <Route path="/advanced/ten-god-rules" element={<TenGodRulesPage />} />
         <Route path="/advanced/peer-rob-wealth" element={<PeerRobWealthPage />} />
         <Route path="/advanced/food-hurt-output" element={<FoodHurtOutputPage />} />
+        <Route path="/advanced/partial-seal-spirit" element={<PartialSealSpiritPage />} />
         <Route path="/advanced/practical-combinations" element={<PracticalCombinationsPage />} />
         <Route path="/advanced/stem-classics" element={<StemClassicsPage />} />
         <Route path="/advanced/day-hour-classics" element={<DayHourClassicsPage />} />
@@ -5903,6 +6043,34 @@ function FoodHurtOutputPage() {
       >
         <FoodHurtOutput />
         <CaseStudies detail={{ title: "食伤坐引" }} items={foodHurtCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function PartialSealSpiritPage() {
+  const partialSealCases = partialSealSpiritCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Partial Seal"
+        title="偏印枭神"
+        copy="把第五节偏印拆成正偏印分野、同性相生、枭神夺食、财制偏印、柱位年限和偏印格喜忌。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/partial-seal-spirit" })),
+          { label: "判断原则", href: "#partial-seal-principles" },
+          ...partialSealSpiritSections.map((section) => ({ label: section.title, href: `#partial-seal-${section.title}` })),
+          { label: "四类对照", href: "#partial-seal-comparisons" },
+          { label: "判断流程", href: "#partial-seal-workflow" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <PartialSealSpirit />
+        <CaseStudies detail={{ title: "偏印枭神" }} items={partialSealCases} />
       </ContentLayout>
     </main>
   );
@@ -7934,6 +8102,90 @@ function FoodHurtOutput() {
         </div>
         <div className="family-rule-grid">
           {foodHurtOutputWorkflow.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PartialSealSpirit() {
+  return (
+    <section className="partial-seal-section" id="partial-seal-spirit" aria-labelledby="partial-seal-title">
+      <div className="section-heading">
+        <p className="eyebrow">Partial Seal / Owl Spirit</p>
+        <h2 id="partial-seal-title">偏印不是一句阴沉</h2>
+      </div>
+      <div className="rules-lead">
+        <p>第五节的价值，是把偏印从抽象喜忌里拿出来，落实到术业、性格、人际、六亲、枭神夺食、财制偏印和偏印格成败。</p>
+        <a className="source-link" href={assetUrl("/content/偏印枭神.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看偏印枭神整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="partial-seal-principles">
+        {partialSealSpiritPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections partial-seal-flow">
+        {partialSealSpiritSections.map((section) => (
+          <article className="flow-section" id={`partial-seal-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="partial-seal-comparisons">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Comparison</p>
+            <h3>正印、偏印、夺食、制印四类对照</h3>
+          </div>
+          <p>偏印页的关键，是分清“保护、孤高、压住输出、现实承接”四种不同作用。</p>
+        </div>
+        <div className="family-rule-grid">
+          {partialSealSpiritComparisons.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="report-template-panel" id="partial-seal-workflow">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Workflow</p>
+            <h3>偏印枭神五步判断</h3>
+          </div>
+          <p>先辨正偏印，再看过多、夺食、财贵和问事落点，避免把偏印粗暴等同于负面标签。</p>
+        </div>
+        <div className="family-rule-grid">
+          {partialSealSpiritWorkflow.map((item) => (
             <article className="family-rule-card" key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
