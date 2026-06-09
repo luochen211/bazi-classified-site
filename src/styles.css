@@ -449,6 +449,7 @@ h1 {
 .content-main > .pattern-foundation-section,
 .content-main > .eight-pattern-section,
 .content-main > .three-waves-section,
+.content-main > .jin-luck-section,
 .content-main > .pattern-use-god-section,
 .content-main > .use-god-history-section,
 .content-main > .two-sided-use-god-section,
@@ -610,6 +611,10 @@ h1 {
   background: #fffaf2;
 }
 
+.jin-luck-section {
+  background: #fffaf2;
+}
+
 .pattern-use-god-section {
   background: #fffaf2;
 }
@@ -643,6 +648,7 @@ h1 {
 .pattern-foundation-flow,
 .eight-pattern-flow,
 .three-waves-flow,
+.jin-luck-flow,
 .two-sided-use-god-flow,
 .favorable-pattern-flow,
 .shen-sha-basic-flow,
@@ -664,6 +670,7 @@ h1 {
 .pattern-foundation-section .family-rule-grid,
 .eight-pattern-section .family-rule-grid,
 .three-waves-section .family-rule-grid,
+.jin-luck-section .family-rule-grid,
 .two-sided-use-god-section .family-rule-grid,
 .favorable-pattern-section .family-rule-grid,
 .shen-sha-basic-section .family-rule-grid,
@@ -2705,6 +2712,10 @@ body.modal-open {
   }
 
   .three-waves-section .family-rule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .jin-luck-section .family-rule-grid {
     grid-template-columns: 1fr;
   }
 

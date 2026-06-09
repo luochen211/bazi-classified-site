@@ -257,6 +257,7 @@ const advancedDirectoryItems = [
   { label: "命宫流年", href: "/advanced/life-palace-cycle" },
   { label: "流年细表", href: "/advanced/luck-cycle-tables" },
   { label: "流年架构", href: "/advanced/luck-cycle-structure" },
+  { label: "金氏大运", href: "/advanced/jin-luck-cycle" },
   { label: "十神细则", href: "/advanced/ten-god-rules" },
   { label: "比肩入门", href: "/advanced/peer-foundation" },
   { label: "比劫禄刃", href: "/advanced/peer-rob-wealth" },
@@ -3777,6 +3778,117 @@ const zipingThreeWavesWorkflow = [
 
 const zipingThreeWavesCaseIds = ["案例 1", "案例 2", "案例 10", "案例 15", "案例 52", "案例 56", "案例 57", "案例 63", "案例 67", "案例 75", "案例 80"];
 
+const jinLuckCyclePrinciples = [
+  {
+    title: "大运先看地支",
+    text: "金氏大运不是否定天干十神，而是把大运地支的根气、冲刑合会、墓库空亡、接角败亡先摆到台面。"
+  },
+  {
+    title: "月令决定临界",
+    text: "同一个日主行同一类运，遇不同月支并不等价。金氏以十干对十二月支校正顺逆运，不让“冲提必凶”等口诀泛化。"
+  },
+  {
+    title: "健康先于贵贱",
+    text: "摘抄2特别提醒金氏大运偏重生死健康与大阶段安危，再回头解释财官印食的成败层次。"
+  },
+  {
+    title: "只校正大运",
+    text: "金不换大运喜忌只用于判断运程地支，不能反推四柱原局；调候用神取天干时，也要用生旺库绝去比较。"
+  }
+];
+
+const jinLuckCycleSections = [
+  {
+    title: "为何重地支",
+    source: "第三阶段摘抄2 / 金氏大运",
+    intro: "资料里先列出大运重地支的原因：地支不是背景，而是根气、藏干、神煞、冲合与墓库的承载处。",
+    items: [
+      ["藏干成根", "大运地支藏干会给原局天干提供根气，决定某个十神是虚浮还是能落到现实。"],
+      ["冲刑合会", "冲提、六合、三合、三会、刑害并不是装饰，它们会改变原局主气的可用程度。"],
+      ["墓库空亡", "墓库运、空亡运、十干败亡和接角运，都属于大阶段的停滞、转折或失力信号。"],
+      ["神煞叠加", "地支还承接神煞与流年触发，所以大运不能只读天干十神的表面名目。"]
+    ],
+    cases: ["案例 10", "案例 15", "案例 55"]
+  },
+  {
+    title: "二因次不足",
+    source: "第三阶段摘抄2 / 临界释疑",
+    intro: "常规的格局顺逆、调候扶抑能解释多数情况，但碰到临界大运时，需要金氏表来补边界。",
+    items: [
+      ["冲提不全凶", "冲提大运不能一概论凶，要看日主、月令、格局和岁运是否共同触发。"],
+      ["比劫不全破财", "财格入比劫运不一定必败，有些月令组合反而需要比劫承接财气。"],
+      ["无财不拒财运", "四柱无财进入财运也可能成功，关键在于原局有没有承载财的结构。"],
+      ["表格补盲区", "金氏大运的价值，是在常法说不通时给出月令层面的校正，不是替代所有方法。"]
+    ],
+    cases: ["案例 57", "案例 61", "案例 76"]
+  },
+  {
+    title: "十干月令",
+    source: "第三阶段摘抄2 / 金氏用神表",
+    intro: "金氏把十日干放入十二月支中讨论顺逆运，例如甲生巳午未月、戊生巳月等，都有独立边界。",
+    items: [
+      ["甲生巳月", "资料举例说，甲生巳月不论具体格名，入午未申运容易转成体弱有病的读法。"],
+      ["甲生午月", "甲日午月忌官杀运，不能只说官杀为权，要先看火月见金的燥烈与承载。"],
+      ["甲生未月", "未中财与劫财同在，财格并非永远忌比劫，要看未月本身的藏干关系。"],
+      ["戊生巳月", "同一戊日巳月，顺运逆运结论不同，说明大运方向本身也是判断条件。"]
+    ],
+    cases: ["案例 63", "案例 64", "案例 80"]
+  },
+  {
+    title: "禁忌特例",
+    source: "第三阶段摘抄2 / 禁忌条件",
+    intro: "摘抄2整理出一组禁忌：官杀混杂、五行不全、财无根、日主无根、入官杀或比劫大运、冲提等。",
+    items: [
+      ["官杀混杂", "正官格、七杀格和官杀混杂不能混读，尤其在女命、事业压力和规则关系中要分清。"],
+      ["无根失承", "财无根、日主无根，不是单句凶语，而是现实资源或承载力不足。"],
+      ["伤官与官杀", "伤官格入官杀运、官杀重又无制化，要先看是否有通关、制化或调候保护。"],
+      ["冲提边界", "冲提大运作为高风险项保留，但必须回到月令和原局结构，不直接套成绝对灾断。"]
+    ],
+    cases: ["案例 15", "案例 55", "案例 83"]
+  },
+  {
+    title: "金不换校正",
+    source: "第二层次4 / 金不换大运",
+    intro: "第二层次补充了金不换大运的使用边界：调候多取天干，大运喜忌重地支，二者用生旺库绝来比较。",
+    items: [
+      ["不可反推原局", "金不换大运只判断某步运是否得力，不能反过来证明原局一定喜忌某一支。"],
+      ["天干地支分工", "调候用神可取庚，大运地支可忌寅或喜申，要看庚在寅申的生旺绝库状态。"],
+      ["财官虚实", "庚日行甲申，甲为偏财但甲绝于申，不能只按偏财名目断成发财。"],
+      ["墓库停滞", "辰月癸运、丑月辛运、未月乙运、戌月丁运等墓库运，偏向停滞不进，动则有悔。"]
+    ],
+    cases: ["案例 10", "案例 76", "案例 83"]
+  }
+];
+
+const jinLuckCycleWarnings = [
+  {
+    title: "不要把冲提写成必凶",
+    text: "冲提是高敏感信号，但资料反复强调要看日主、月令、格局与岁运是否共同触发。"
+  },
+  {
+    title: "不要只读大运天干",
+    text: "天干十神说明外显主题，地支才决定根气、成败、停滞、冲合和阶段性安危。"
+  },
+  {
+    title: "不要拿金不换反推原局",
+    text: "金不换大运是运程校正表，不是四柱原局取用表；用错方向会把喜忌讲反。"
+  },
+  {
+    title: "不要把健康词说成恐吓",
+    text: "体弱有病、生死健康在网站里要转译为风险倾向、触发条件和复盘边界。"
+  }
+];
+
+const jinLuckCycleWorkflow = [
+  { title: "先定原局", text: "先看日主、月令、格局、调候和根气，确认原局最怕什么、最需要什么。" },
+  { title: "再看运支", text: "看大运地支的藏干、冲刑合会、墓库空亡、接角败亡是否改变原局承载。" },
+  { title: "查月令表", text: "遇到常法解释不通的运，按十干对十二月令查金氏大运的顺逆边界。" },
+  { title: "分清虚实", text: "天干十神名目不能直接当结果，必须看该字在运支是否生旺、有根、入墓或绝地。" },
+  { title: "回到案例", text: "最后用现实反馈校验：这步运究竟表现为事业、财务、健康、婚姻还是家庭事件。" }
+];
+
+const jinLuckCycleCaseIds = ["案例 10", "案例 15", "案例 55", "案例 57", "案例 61", "案例 63", "案例 64", "案例 76", "案例 80", "案例 83"];
+
 const useGodHistoryPrinciples = [
   {
     title: "先问定义",
@@ -6494,6 +6606,7 @@ function SiteShell() {
         <Route path="/advanced/life-palace-cycle" element={<LifePalaceCyclePage />} />
         <Route path="/advanced/luck-cycle-tables" element={<LuckCycleTablesPage />} />
         <Route path="/advanced/luck-cycle-structure" element={<LuckCycleStructurePage />} />
+        <Route path="/advanced/jin-luck-cycle" element={<JinLuckCyclePage />} />
         <Route path="/advanced/ten-god-rules" element={<TenGodRulesPage />} />
         <Route path="/advanced/peer-foundation" element={<PeerFoundationPage />} />
         <Route path="/advanced/peer-rob-wealth" element={<PeerRobWealthPage />} />
@@ -7499,6 +7612,34 @@ function ZipingThreeWavesPage() {
       >
         <ZipingThreeWaves />
         <CaseStudies detail={{ title: "子平三波限" }} items={waveCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function JinLuckCyclePage() {
+  const jinCases = jinLuckCycleCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Luck Cycle"
+        title="金氏大运"
+        copy="把第三阶段摘抄2与第二层次金不换大运，整理成大运地支、月令临界、顺逆运和墓库停滞的判断模块。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/jin-luck-cycle" })),
+          { label: "四个原则", href: "#jin-luck-principles" },
+          ...jinLuckCycleSections.map((section) => ({ label: section.title, href: `#jin-luck-${section.title}` })),
+          { label: "误区边界", href: "#jin-luck-warnings" },
+          { label: "判断流程", href: "#jin-luck-workflow" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <JinLuckCycle />
+        <CaseStudies detail={{ title: "金氏大运" }} items={jinCases} />
       </ContentLayout>
     </main>
   );
@@ -10560,6 +10701,90 @@ function ZipingThreeWaves() {
         </div>
         <div className="family-rule-grid">
           {zipingThreeWavesWorkflow.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function JinLuckCycle() {
+  return (
+    <section className="jin-luck-section" id="jin-luck-cycle" aria-labelledby="jin-luck-title">
+      <div className="section-heading">
+        <p className="eyebrow">Jin Luck Cycle</p>
+        <h2 id="jin-luck-title">大运要先校正地支</h2>
+      </div>
+      <div className="rules-lead">
+        <p>金氏大运页解决一个问题：常规格局、调候、扶抑说不通某步运时，如何用月令、运支和金不换边界重新校正。</p>
+        <a className="source-link" href={assetUrl("/content/金氏大运.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看金氏大运整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="jin-luck-principles">
+        {jinLuckCyclePrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections jin-luck-flow">
+        {jinLuckCycleSections.map((section) => (
+          <article className="flow-section" id={`jin-luck-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="jin-luck-warnings">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Boundaries</p>
+            <h3>四个误判边界</h3>
+          </div>
+          <p>金氏大运的重点，是把“某步运为什么不按常法应验”的边界讲清楚。</p>
+        </div>
+        <div className="family-rule-grid">
+          {jinLuckCycleWarnings.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="report-template-panel" id="jin-luck-workflow">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Workflow</p>
+            <h3>金氏大运五步复盘</h3>
+          </div>
+          <p>从原局到运支，再到月令表和案例反馈。</p>
+        </div>
+        <div className="family-rule-grid">
+          {jinLuckCycleWorkflow.map((item) => (
             <article className="family-rule-card" key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.text}</p>

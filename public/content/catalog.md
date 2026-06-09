@@ -13,6 +13,7 @@
 - 大运流年：`/advanced/luck-cycle`，资料稿 `/content/大运流年.md`
 - 命宫流年：`/advanced/life-palace-cycle`，资料稿 `/content/命宫流年.md`
 - 流年架构：`/advanced/luck-cycle-structure`，资料稿 `/content/流年架构.md`
+- 金氏大运：`/advanced/jin-luck-cycle`，资料稿 `/content/金氏大运.md`
 - 比肩入门：`/advanced/peer-foundation`，资料稿 `/content/比肩入门.md`
 - 实务组合：`/advanced/practical-combinations`，资料稿 `/content/实务组合.md`
 - 四见缺一：`/advanced/four-see-missing-god`，资料稿 `/content/四见缺一.md`
