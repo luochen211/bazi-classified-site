@@ -436,6 +436,7 @@ h1 {
 .content-main > .female-poem-section,
 .content-main > .pattern-use-god-section,
 .content-main > .use-god-history-section,
+.content-main > .two-sided-use-god-section,
 .content-main > .favorable-pattern-section,
 .content-main > .theory-section,
 .content-main > .catalog-section,
@@ -546,17 +547,23 @@ h1 {
   background: #fffaf2;
 }
 
+.two-sided-use-god-section {
+  background: #fffaf2;
+}
+
 .favorable-pattern-section {
   background: #fffaf2;
 }
 
 .use-god-history-flow,
+.two-sided-use-god-flow,
 .favorable-pattern-flow,
 .shen-sha-basic-flow {
   margin-top: 34px;
 }
 
 .use-god-history-section .family-rule-grid,
+.two-sided-use-god-section .family-rule-grid,
 .favorable-pattern-section .family-rule-grid,
 .shen-sha-basic-section .family-rule-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2472,6 +2479,10 @@ body.modal-open {
   }
 
   .use-god-history-section .family-rule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .two-sided-use-god-section .family-rule-grid {
     grid-template-columns: 1fr;
   }
 

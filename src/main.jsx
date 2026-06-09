@@ -260,6 +260,7 @@ const advancedDirectoryItems = [
   { label: "女命诗诀", href: "/advanced/female-chart-poems" },
   { label: "格局用神", href: "/advanced/pattern-use-god" },
   { label: "用神沿革", href: "/advanced/use-god-history" },
+  { label: "双边用神", href: "/advanced/two-sided-use-god" },
   { label: "顺用格局", href: "/advanced/favorable-patterns" },
   { label: "分析框架", href: "/advanced#method" }
 ];
@@ -1982,6 +1983,109 @@ const useGodHistoryTranslations = [
 ];
 
 const useGodHistoryCaseIds = ["案例 2", "案例 52", "案例 56", "案例 57", "案例 63", "案例 67", "案例 75", "案例 81"];
+
+const twoSidedUseGodPrinciples = [
+  {
+    title: "两边都要看",
+    text: "双边用神先把日主与格局分开：日主要能承受，格局也要成形；只强一边，都容易落空。"
+  },
+  {
+    title: "中和只是原则",
+    text: "中和听起来正确，但细节很难量化。身格二停、略偏、偏差太远、满盘冲刑、用神被合冲，都要分开判断。"
+  },
+  {
+    title: "调停不是万能",
+    text: "某一个字可以调停日主与格局，但不代表它能解决所有问题。调候、通关、扶抑和煞限要分层。"
+  },
+  {
+    title: "失效要换层",
+    text: "用神失效不一定是取错，可能是天罗地网、冲刑、空亡、格局破损等别的系统在起作用。"
+  }
+];
+
+const twoSidedUseGodSections = [
+  {
+    title: "日主一边",
+    source: "渊海随笔 / 清代日主用神喜忌",
+    intro: "日主强弱是第一步，但不是结论。得令、得地、得党只是能不能上场，后面还要看能不能和格局形成均势。",
+    items: [
+      ["得令得地", "生旺库、临官、长生、印比扶身，都可以增强日主，但不能机械相加。"],
+      ["得党生扶", "即使地支没有强根，天干地支多方生扶，也可能转弱为强。"],
+      ["被克被泄", "日主即使临官，若克泄太多，也可能由强转弱。"],
+      ["只够上场", "日主强只是有资格承受财官食伤，不等于格局自然成就。"]
+    ],
+    cases: ["案例 52", "案例 56", "案例 84"]
+  },
+  {
+    title: "格局一边",
+    source: "渊海随笔 / 双边用神论",
+    intro: "格局也要强。日主强而格局弱，只是空旺无依；格局强而日主弱，则财官虽好而人托不住。",
+    items: [
+      ["格局成形", "有用之神要有力量，常见条件是天透地藏、月令有气或合会成局。"],
+      ["格局不强", "格局弱时，即使日主旺，也可能英雄无用武之地。"],
+      ["格局太强", "财官杀印过强而日主无力，现实容易变成压力、责任和失控。"],
+      ["破格因素", "冲、合、刑、入墓、贪合、混杂都会让格局不自由。"]
+    ],
+    cases: ["案例 57", "案例 63", "案例 67", "案例 75"]
+  },
+  {
+    title: "调停一边",
+    source: "渊海随笔 / 日主与格局调停",
+    intro: "双边用神常在日主与格局之间找一个调停之神，但这个字能不能用、会不会被冲合，是新的问题。",
+    items: [
+      ["通关", "如木日主遇金格局，金多木少，可用水承接金、再生木。"],
+      ["扶抑", "一方稍弱时可扶，一方稍强时可抑，但偏差太远就未必扶得回来。"],
+      ["调候", "寒暖燥湿失衡时，调候可能优先于强弱。"],
+      ["被合冲", "即使用神明确，如果它被合走、冲坏、入墓，也不能当成稳定答案。"]
+    ],
+    cases: ["案例 2", "案例 52", "案例 56", "案例 81"]
+  },
+  {
+    title: "六种现场",
+    source: "渊海随笔 / 双边用神六种现象",
+    intro: "梁湘润把日主与格局之间的难点拆成几种现场，提醒读者不要把所有命局都压成一个中和公式。",
+    items: [
+      ["身格二停", "本身均衡未必就是上好命；身杀两停等结构常有贵而不久的风险。"],
+      ["偏差不远", "略强略弱最容易引发争论，因为衡量标准并不精确。"],
+      ["偏差太远", "一强一弱相去太远，还没到从格，但普通扶抑也难起效。"],
+      ["满盘冲刑", "冲刑满布时，日主与格局的中和不能按安静命局处理。"]
+    ],
+    cases: ["案例 10", "案例 53", "案例 58", "案例 78"]
+  },
+  {
+    title: "用神失效",
+    source: "渊海随笔 / 用神为方法之一种",
+    intro: "用神是方法之一，不是绝对措施。遇到用神解释不了的地方，要回到其他经典系统和现实反馈。",
+    items: [
+      ["不是包医", "论命不能要求一套用神公式样样有办法、事事都能准。"],
+      ["煞限介入", "如天罗地网、四大空亡、双冲破格等，未必能靠调候用神挽救。"],
+      ["经典合参", "玉井奥诀、五行大义、玉照经、明通赋等系统，可补单一用神之不足。"],
+      ["实务复盘", "当案例反馈和用神不合时，先查格局破损、冲刑、神煞、岁运架构。"]
+    ],
+    cases: ["案例 53", "案例 57", "案例 63", "案例 80"]
+  }
+];
+
+const twoSidedUseGodTranslations = [
+  {
+    title: "不要只问喜什么",
+    text: "先问这个喜神是在扶日主、扶格局、调气候，还是在处理两边冲突。"
+  },
+  {
+    title: "不要把强弱当结论",
+    text: "身强身弱只是入口。真正要看的是日主和格局能否互相承接。"
+  },
+  {
+    title: "不要忽略破格",
+    text: "用神再清楚，被冲、被合、入墓、满盘刑冲时，也要重新评估有效性。"
+  },
+  {
+    title: "不要用一法解释全局",
+    text: "调候解释气候，扶抑解释承载，格局解释结构，岁运解释触发。不同问题要换不同层。"
+  }
+];
+
+const twoSidedUseGodCaseIds = ["案例 2", "案例 10", "案例 52", "案例 53", "案例 56", "案例 57", "案例 58", "案例 63", "案例 67", "案例 75", "案例 78", "案例 80", "案例 81", "案例 84"];
 
 const favorablePatternPrinciples = [
   {
@@ -4384,6 +4488,7 @@ function SiteShell() {
         <Route path="/advanced/female-chart-poems" element={<FemalePoemsPage />} />
         <Route path="/advanced/pattern-use-god" element={<PatternUseGodPage />} />
         <Route path="/advanced/use-god-history" element={<UseGodHistoryPage />} />
+        <Route path="/advanced/two-sided-use-god" element={<TwoSidedUseGodPage />} />
         <Route path="/advanced/favorable-patterns" element={<FavorablePatternsPage />} />
         <Route path="/cases" element={<CaseLibraryPage />} />
         <Route path="/classified" element={<ClassifiedIndexPage />} />
@@ -4978,6 +5083,33 @@ function UseGodHistoryPage() {
       >
         <UseGodHistory />
         <CaseStudies detail={{ title: "用神沿革" }} items={historyCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function TwoSidedUseGodPage() {
+  const twoSidedCases = twoSidedUseGodCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Method"
+        title="双边用神"
+        copy="把《渊海随笔》的双边用神拆成日主、格局、调停三层：一个用神不能替代所有判断。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/two-sided-use-god" })),
+          { label: "四个原则", href: "#two-sided-use-god-principles" },
+          ...twoSidedUseGodSections.map((section) => ({ label: section.title, href: `#two-sided-use-god-${section.title}` })),
+          { label: "现实转译", href: "#two-sided-use-god-translations" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <TwoSidedUseGod />
+        <CaseStudies detail={{ title: "双边用神" }} items={twoSidedCases} />
       </ContentLayout>
     </main>
   );
@@ -6832,6 +6964,73 @@ function UseGodHistory() {
         </div>
         <div className="family-rule-grid">
           {useGodHistoryTranslations.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TwoSidedUseGod() {
+  return (
+    <section className="two-sided-use-god-section" id="two-sided-use-god" aria-labelledby="two-sided-use-god-title">
+      <div className="section-heading">
+        <p className="eyebrow">Two-sided Use God</p>
+        <h2 id="two-sided-use-god-title">日主和格局要两边同时成立</h2>
+      </div>
+      <div className="rules-lead">
+        <p>双边用神不是再选一个更神秘的字，而是提醒读者：日主强弱、格局成败、调停之神，是三个不同层次。</p>
+        <a className="source-link" href={assetUrl("/content/双边用神.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看双边用神整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="two-sided-use-god-principles">
+        {twoSidedUseGodPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections two-sided-use-god-flow">
+        {twoSidedUseGodSections.map((section) => (
+          <article className="flow-section" id={`two-sided-use-god-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="two-sided-use-god-translations">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Practice Translation</p>
+            <h3>把双边用神转成判断问题</h3>
+          </div>
+          <p>每次看到“喜某神”，都要追问它解决的是哪一层问题。</p>
+        </div>
+        <div className="family-rule-grid">
+          {twoSidedUseGodTranslations.map((item) => (
             <article className="family-rule-card" key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
