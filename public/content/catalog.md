@@ -12,6 +12,7 @@
 - 健康风险：`/advanced/health-risk`，资料稿 `/content/健康风险.md`
 - 大运流年：`/advanced/luck-cycle`，资料稿 `/content/大运流年.md`
 - 流年架构：`/advanced/luck-cycle-structure`，资料稿 `/content/流年架构.md`
+- 比肩入门：`/advanced/peer-foundation`，资料稿 `/content/比肩入门.md`
 - 实务组合：`/advanced/practical-combinations`，资料稿 `/content/实务组合.md`
 - 十干高级：`/advanced/stem-classics`，资料稿 `/content/十干高级.md`
 - 日时组合：`/advanced/day-hour-classics`，资料稿 `/content/日时组合.md`

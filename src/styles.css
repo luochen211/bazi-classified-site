@@ -430,6 +430,7 @@ h1 {
 .content-main > .luck-cycle-table-section,
 .content-main > .luck-cycle-structure-section,
 .content-main > .ten-god-rules-section,
+.content-main > .peer-foundation-section,
 .content-main > .peer-rob-section,
 .content-main > .food-hurt-section,
 .content-main > .partial-seal-section,
@@ -528,6 +529,10 @@ h1 {
   background: #fffaf2;
 }
 
+.peer-foundation-section {
+  background: #fffaf2;
+}
+
 .peer-rob-section {
   background: #fffaf2;
 }
@@ -600,6 +605,7 @@ h1 {
   background: #fffaf2;
 }
 
+.peer-foundation-flow,
 .use-god-history-flow,
 .peer-rob-flow,
 .food-hurt-flow,
@@ -615,6 +621,7 @@ h1 {
   margin-top: 34px;
 }
 
+.peer-foundation-section .family-rule-grid,
 .use-god-history-section .family-rule-grid,
 .peer-rob-section .family-rule-grid,
 .food-hurt-section .family-rule-grid,
@@ -2623,6 +2630,10 @@ body.modal-open {
   }
 
   .use-god-history-section .family-rule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .peer-foundation-section .family-rule-grid {
     grid-template-columns: 1fr;
   }
 

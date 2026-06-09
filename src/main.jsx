@@ -254,6 +254,7 @@ const advancedDirectoryItems = [
   { label: "流年细表", href: "/advanced/luck-cycle-tables" },
   { label: "流年架构", href: "/advanced/luck-cycle-structure" },
   { label: "十神细则", href: "/advanced/ten-god-rules" },
+  { label: "比肩入门", href: "/advanced/peer-foundation" },
   { label: "比劫禄刃", href: "/advanced/peer-rob-wealth" },
   { label: "食伤坐引", href: "/advanced/food-hurt-output" },
   { label: "偏印枭神", href: "/advanced/partial-seal-spirit" },
@@ -2022,6 +2023,156 @@ const tenGodFamilyRules = [
 ];
 
 const tenGodRulesCaseIds = ["案例 1", "案例 3", "案例 5", "案例 10", "案例 15", "案例 22", "案例 55", "案例 66", "案例 70", "案例 78", "案例 81"];
+
+const peerFoundationPrinciples = [
+  {
+    title: "先避开过早套命",
+    text: "开章要求第一个月不要研究自己八字，第二个月不要公开研究亲友八字。先背规则、会排盘、会查十神神煞，再谈判断。"
+  },
+  {
+    title: "日主不是全部中心",
+    text: "十神以日干为主，但神煞、太岁、岁运并不完全由日干起例。初学要分清日主、年支、日支、流年各自的入口。"
+  },
+  {
+    title: "本运先给年限框架",
+    text: "年柱一至十五，月柱十六至三十，日柱三十一至四十五，时柱四十六以后。十神和神煞都要先落到年龄段。"
+  },
+  {
+    title: "比肩重在同类相斥",
+    text: "比肩不是只会帮身。它是同五行同阴阳，能扶身，也带自我否定、不耐久、克财和同辈竞争。"
+  }
+];
+
+const peerFoundationSections = [
+  {
+    title: "开章边界",
+    source: "第一层级第一节 / 开章提要",
+    intro: "第一节不是让初学者立刻断命，而是建立学习顺序：排八字、查神煞、背五行干支、理解日主和太岁。",
+    items: [
+      ["两个月禁忌", "第一个月不研究自己八字，第二个月不公开研究亲友八字；急迫问题可私下回答，不用作公开讨论。"],
+      ["不比判他书", "不要一开始判断别人批得对错。三个月后规则熟了，自然有较好的认知。"],
+      ["四组规则", "刑冲合会、十神生克、十干禄绝、六亲所属，两个月内必须背熟。会背以后不会算，才是老师要负责的部分。"],
+      ["古典底稿", "三命通会、子平真诠、滴天髓、穷通宝鉴、神峰通考是基础底稿，不宜完全只信坊本简化话。"]
+    ],
+    cases: ["案例 1", "案例 10", "案例 15"]
+  },
+  {
+    title: "神煞生克",
+    source: "第一层级第一节 / 神煞与日主",
+    intro: "开章把神煞作为入门工具，但反复强调神煞只有特性，没有决定性吉凶。要看神煞地支与日主的生克关系。",
+    items: [
+      ["神煞不是定论", "驿马只主动态，不保证因动获利；贵人只主助力，不说明助力来自谁、过程是否有后遗症。"],
+      ["桃花例式", "桃花只是私人感情现象，是否人财两得或身败名裂，要看桃花地支对日主是生、克、比和还是被日主克。"],
+      ["因祸得福", "神煞地支为日主所克，即使亡神、劫煞，也可视作因祸得福。"],
+      ["后遗症", "日主被神煞所克，即使是天乙贵人，也可能有必须不断补报对方的困扰。"]
+    ],
+    cases: ["案例 22", "案例 33", "案例 58"]
+  },
+  {
+    title: "本运太岁",
+    source: "第一层级第一节 / 本运与太岁",
+    intro: "本运让用户知道同一个十神或神煞落在不同柱位，意义会变。太岁则先作识别，不急着断吉凶。",
+    items: [
+      ["四柱年限", "年柱一至十五，月柱十六至三十，日柱三十一至四十五，时柱四十六以后，各柱主题随人生实际自动调节。"],
+      ["神煞年限", "孤辰在时柱时，当事人已五六十岁，即使配偶孤寡也不该说成骇人震惊的大事。"],
+      ["当生太岁", "出生年支就是生肖入口：子鼠、丑牛、寅虎、卯兔等，只作初学识别。"],
+      ["流年太岁", "第一课只要求认知今年、去年、明年干支，不在开章就展开太岁克合吉凶。"]
+    ],
+    cases: ["案例 10", "案例 57", "案例 80"]
+  },
+  {
+    title: "比肩性格",
+    source: "第一层级第二节 / 比肩",
+    intro: "比肩是与日主相同天干、同阴阳的十神。它能扶身，但也因同性相斥，带来不稳定和不耐久。",
+    items: [
+      ["自我否定", "对既往见解常自我否定，昨天决定今天又觉得不妥，容易不易坚持。"],
+      ["两边偏斜", "做事不是试试看，就是不管那么多，长期投资和长期承诺要谨慎。"],
+      ["三年五年", "事业形式约三年左右易变，好朋友很少维持五年，喜好易变。"],
+      ["事业建议", "适合随时可放手、变动不显奇怪的外勤或弹性事业，不宜过早押长期重资产。"]
+    ],
+    cases: ["案例 13", "案例 60", "案例 80"]
+  },
+  {
+    title: "扶身差异",
+    source: "第一层级第二节 / 比肩扶身",
+    intro: "比肩、劫财、禄、刃、印都能扶身，但现实效果不同。比肩像多块薄板并合，能托一时，却不如禄位原木耐久。",
+    items: [
+      ["扶身有效", "日主弱时，比肩可以帮助日主增强强度，入门称为得势。"],
+      ["不耐久", "比肩扶身会带来意志力撑不了多久、不长性，不能只按吉神看。"],
+      ["禄与比肩", "禄像一块原木，比肩像多块薄板。厚度相似，但比肩并合久了会变曲变形。"],
+      ["实务边界", "身弱喜比肩只是入口，仍要看官杀、财星、食伤、印星和岁运如何牵动。"]
+    ],
+    cases: ["案例 2", "案例 52", "案例 56"]
+  },
+  {
+    title: "比肩过多",
+    source: "第一层级第二节 / 天透地藏",
+    intro: "八字见比肩很平常，不能一见就断克财、性格不稳。天透地藏、二透一根或三合三会再透干，才进入重点判断。",
+    items: [
+      ["天透地藏", "天干地支各有一个比肩，已可重视。比肩劫财虽不取格，但有足够大的实际影响。"],
+      ["过多标准", "天干二比肩地支一比肩，或天干一比肩地支二比肩，可称过多。"],
+      ["两种过多", "天干两见地支一见，偏性格决定；地支三合三会再透干，偏吉凶明显。"],
+      ["地支禄位", "地支有日主禄位，即可代替天干比肩，在该柱年限内发生性格与六亲效果。"]
+    ],
+    cases: ["案例 13", "案例 26", "案例 60"]
+  },
+  {
+    title: "柱位年限",
+    source: "第一层级第二节 / 比肩年限",
+    intro: "比肩在不同柱位，要按人生实际解释。年柱不谈妻财，月柱看青年创业和父亲财源，日时才重婚财和家务。",
+    items: [
+      ["年柱", "十五岁前不谈妻财，只看家运、父缘、出身平凡、白手起家、上有兄妹等。"],
+      ["月柱", "十六至三十岁，自命不凡、操之过急、轻率投资合作，事业路径不太经由父亲。"],
+      ["日支", "三十一至四十五岁，自坐日禄，对家务有家长式领导，有理而乏情，财务辛劳且常有小损财。"],
+      ["时柱", "近五十岁后，性格成熟但本性仍在，常见与家属尤其财务意见不合而影响亲情。"]
+    ],
+    cases: ["案例 6", "案例 10", "案例 78"]
+  }
+];
+
+const peerFoundationComparisons = [
+  {
+    title: "比肩",
+    text: "同我同阴阳，扶身但同性相斥。重自我、同辈、坚持与反复，也会牵动克财和家务主导。"
+  },
+  {
+    title: "禄位",
+    text: "地支临官为禄，可代替天干比肩。禄比比肩更稳，像原木承重，不像薄板并合易变形。"
+  },
+  {
+    title: "比肩生食伤",
+    text: "女命可看子女多、爱子女超过爱丈夫；也可看同类力量转为输出和作品。"
+  },
+  {
+    title: "官杀克比肩",
+    text: "女命比肩多，常认为否定丈夫意见理所当然；官杀有力时，也能收束同类力量。"
+  }
+];
+
+const peerFoundationWorkflow = [
+  {
+    title: "先排盘",
+    text: "先会排四柱、辨日主、查十神神煞，不急着研究自己或亲友的命。"
+  },
+  {
+    title: "背规则",
+    text: "刑冲合会、十神生克、十干禄绝、六亲所属先背熟，再谈会不会判断。"
+  },
+  {
+    title: "落年限",
+    text: "十神或神煞先落年、月、日、时柱，看该年龄段是否有现实可能。"
+  },
+  {
+    title: "看比重",
+    text: "比肩要看是否天透地藏、二透一根、三合三会透干，不是一见就断。"
+  },
+  {
+    title: "接问事",
+    text: "问财看克财与合伙，问婚姻看家务主导，问事业看长期耐性，问六亲看父亲兄弟。"
+  }
+];
+
+const peerFoundationCaseIds = ["案例 1", "案例 2", "案例 6", "案例 10", "案例 13", "案例 22", "案例 26", "案例 52", "案例 56", "案例 60", "案例 78", "案例 80"];
 
 const practicalCombinationSections = [
   {
@@ -5684,6 +5835,7 @@ function SiteShell() {
         <Route path="/advanced/luck-cycle-tables" element={<LuckCycleTablesPage />} />
         <Route path="/advanced/luck-cycle-structure" element={<LuckCycleStructurePage />} />
         <Route path="/advanced/ten-god-rules" element={<TenGodRulesPage />} />
+        <Route path="/advanced/peer-foundation" element={<PeerFoundationPage />} />
         <Route path="/advanced/peer-rob-wealth" element={<PeerRobWealthPage />} />
         <Route path="/advanced/food-hurt-output" element={<FoodHurtOutputPage />} />
         <Route path="/advanced/partial-seal-spirit" element={<PartialSealSpiritPage />} />
@@ -6139,6 +6291,34 @@ function TenGodRulesPage() {
       >
         <TenGodRules />
         <CaseStudies detail={{ title: "十神细则" }} items={ruleCases} />
+      </ContentLayout>
+    </main>
+  );
+}
+
+function PeerFoundationPage() {
+  const peerFoundationCases = peerFoundationCaseIds.map((id) => caseStudies.find((item) => item.id === id)).filter(Boolean);
+
+  return (
+    <main className="page-shell">
+      <PageHeader
+        eyebrow="Advanced / Peer Foundation"
+        title="比肩入门"
+        copy="把第一、二节开章提要和比肩拆成学习边界、神煞生克、本运太岁、比肩扶身、过多和柱位年限。"
+      />
+      <ContentLayout
+        title="进阶目录"
+        items={[
+          ...advancedDirectoryItems.map((item) => ({ ...item, active: item.href === "/advanced/peer-foundation" })),
+          { label: "判断原则", href: "#peer-foundation-principles" },
+          ...peerFoundationSections.map((section) => ({ label: section.title, href: `#peer-foundation-${section.title}` })),
+          { label: "四类对照", href: "#peer-foundation-comparisons" },
+          { label: "判断流程", href: "#peer-foundation-workflow" },
+          { label: "案例复盘", href: "#case-studies" }
+        ]}
+      >
+        <PeerFoundation />
+        <CaseStudies detail={{ title: "比肩入门" }} items={peerFoundationCases} />
       </ContentLayout>
     </main>
   );
@@ -8117,6 +8297,90 @@ function TenGodRules() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PeerFoundation() {
+  return (
+    <section className="peer-foundation-section" id="peer-foundation" aria-labelledby="peer-foundation-title">
+      <div className="section-heading">
+        <p className="eyebrow">Peer Foundation</p>
+        <h2 id="peer-foundation-title">比肩先从入门边界讲起</h2>
+      </div>
+      <div className="rules-lead">
+        <p>第一、二节的价值，是先建立学习顺序，再讲比肩。它不是只说“帮身、克财”，而是把日主、神煞、本运、太岁和比肩过多一起放进实务框架。</p>
+        <a className="source-link" href={assetUrl("/content/比肩入门.md")}>
+          <ScrollText size={18} aria-hidden="true" />
+          查看比肩入门整理稿
+        </a>
+      </div>
+      <div className="source-matrix" id="peer-foundation-principles">
+        {peerFoundationPrinciples.map((principle) => (
+          <article className="source-matrix-card" key={principle.title}>
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
+      </div>
+      <div className="flow-sections peer-foundation-flow">
+        {peerFoundationSections.map((section) => (
+          <article className="flow-section" id={`peer-foundation-${section.title}`} key={section.title}>
+            <div>
+              <p className="eyebrow">{section.source}</p>
+              <h3>{section.title}</h3>
+              <p>{section.intro}</p>
+              <div className="tag-list" aria-label={`${section.title}案例`}>
+                {section.cases.map((caseId) => (
+                  <span key={caseId}>{caseId}</span>
+                ))}
+              </div>
+            </div>
+            <div className="flow-items">
+              {section.items.map(([title, text]) => (
+                <div className="flow-item" key={title}>
+                  <strong>{title}</strong>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="report-template-panel" id="peer-foundation-comparisons">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Comparison</p>
+            <h3>比肩、禄位、食伤、官杀四类对照</h3>
+          </div>
+          <p>比肩页的重点，是让初学者把同类力量、禄位承重、输出和规则收束分开看。</p>
+        </div>
+        <div className="family-rule-grid">
+          {peerFoundationComparisons.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="report-template-panel" id="peer-foundation-workflow">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Workflow</p>
+            <h3>比肩入门五步判断</h3>
+          </div>
+          <p>先排盘背规则，再落年限、看比重、接问事，不急着把比肩套成单句吉凶。</p>
+        </div>
+        <div className="family-rule-grid">
+          {peerFoundationWorkflow.map((item) => (
+            <article className="family-rule-card" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
             </article>
           ))}
         </div>
