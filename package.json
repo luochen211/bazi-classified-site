@@ -5,7 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "sync:content": "node scripts/sync-content.mjs",
+    "check:content-sync": "node scripts/check-content-sync.mjs",
+    "check:assets": "node scripts/check-assets.mjs",
+    "check:ui": "node scripts/check-ui.mjs",
+    "check": "npm run check:content-sync && npm run check:assets && npm run check:ui && npm run build",
+    "prebuild": "npm run sync:content",
+    "build": "vite build && node scripts/copy-spa-fallback.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -15,5 +21,8 @@
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.17.0",
     "vite": "^7.0.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.61.0"
   }
 }

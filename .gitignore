@@ -1,6 +1,7 @@
 node_modules/
 dist/
 tmp/
+assets/
 .DS_Store
 .env
 .env.*
