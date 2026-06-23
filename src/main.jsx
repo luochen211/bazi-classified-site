@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Navigate, NavLink, Route, Routes, useParams } from "react-router-dom";
+import { BrowserRouter, Navigate, NavLink, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { ArrowLeft, BookOpen, ChevronRight, ScrollText, Tags, X } from "lucide-react";
 import "./styles.css";
 
@@ -245,43 +245,79 @@ const basicsDirectoryItems = [
 ];
 
 const advancedDirectoryItems = [
-  { label: "状态理论诀", href: "/advanced" },
-  { label: "流通专题", href: "/advanced/flow" },
-  { label: "干支作用", href: "/advanced/stem-branch-actions" },
-  { label: "胎命身", href: "/advanced/fetal-life-body" },
-  { label: "神煞", href: "/advanced/shen-sha" },
-  { label: "神煞入门", href: "/advanced/shen-sha-basics" },
-  { label: "神煞源流", href: "/advanced/shen-sha-origin" },
-  { label: "健康风险", href: "/advanced/health-risk" },
-  { label: "大运流年", href: "/advanced/luck-cycle" },
-  { label: "命宫流年", href: "/advanced/life-palace-cycle" },
-  { label: "流年细表", href: "/advanced/luck-cycle-tables" },
-  { label: "流年架构", href: "/advanced/luck-cycle-structure" },
-  { label: "金氏大运", href: "/advanced/jin-luck-cycle" },
-  { label: "十神细则", href: "/advanced/ten-god-rules" },
-  { label: "比肩入门", href: "/advanced/peer-foundation" },
-  { label: "比劫禄刃", href: "/advanced/peer-rob-wealth" },
-  { label: "食伤坐引", href: "/advanced/food-hurt-output" },
-  { label: "偏印枭神", href: "/advanced/partial-seal-spirit" },
-  { label: "偏财机会", href: "/advanced/indirect-wealth" },
-  { label: "正印正财", href: "/advanced/seal-wealth-foundation" },
-  { label: "官杀秩序", href: "/advanced/officer-killing-order" },
-  { label: "四见缺一", href: "/advanced/four-see-missing-god" },
-  { label: "实务组合", href: "/advanced/practical-combinations" },
-  { label: "十干高级", href: "/advanced/stem-classics" },
-  { label: "日时组合", href: "/advanced/day-hour-classics" },
-  { label: "学习批命", href: "/advanced/reading-method" },
-  { label: "基层命学", href: "/advanced/grassroots-method" },
-  { label: "女命专题", href: "/advanced/female-chart" },
-  { label: "女命诗诀", href: "/advanced/female-chart-poems" },
-  { label: "格局基础", href: "/advanced/pattern-foundation" },
-  { label: "八格总论", href: "/advanced/eight-patterns" },
-  { label: "子平三波限", href: "/advanced/ziping-three-waves" },
-  { label: "格局用神", href: "/advanced/pattern-use-god" },
-  { label: "用神沿革", href: "/advanced/use-god-history" },
-  { label: "双边用神", href: "/advanced/two-sided-use-god" },
-  { label: "顺用格局", href: "/advanced/favorable-patterns" },
-  { label: "分析框架", href: "/advanced#method" }
+  {
+    label: "方法总纲",
+    href: "/advanced",
+    children: [
+      { label: "状态理论诀", href: "/advanced" },
+      { label: "流通专题", href: "/advanced/flow" },
+      { label: "干支作用", href: "/advanced/stem-branch-actions" },
+      { label: "胎命身", href: "/advanced/fetal-life-body" },
+      { label: "分析框架", href: "/advanced#method" }
+    ]
+  },
+  {
+    label: "岁运应期",
+    href: "/advanced/luck-cycle",
+    children: [
+      { label: "大运流年", href: "/advanced/luck-cycle" },
+      { label: "命宫流年", href: "/advanced/life-palace-cycle" },
+      { label: "流年架构", href: "/advanced/luck-cycle-structure" },
+      { label: "流年细表", href: "/advanced/luck-cycle-tables" },
+      { label: "金氏大运", href: "/advanced/jin-luck-cycle" }
+    ]
+  },
+  {
+    label: "神煞风险",
+    href: "/advanced/shen-sha",
+    children: [
+      { label: "神煞", href: "/advanced/shen-sha" },
+      { label: "神煞入门", href: "/advanced/shen-sha-basics" },
+      { label: "神煞源流", href: "/advanced/shen-sha-origin" },
+      { label: "健康风险", href: "/advanced/health-risk" }
+    ]
+  },
+  {
+    label: "十神深化",
+    href: "/advanced/ten-god-rules",
+    children: [
+      { label: "十神细则", href: "/advanced/ten-god-rules" },
+      { label: "比肩入门", href: "/advanced/peer-foundation" },
+      { label: "比劫禄刃", href: "/advanced/peer-rob-wealth" },
+      { label: "食伤坐引", href: "/advanced/food-hurt-output" },
+      { label: "偏印枭神", href: "/advanced/partial-seal-spirit" },
+      { label: "偏财机会", href: "/advanced/indirect-wealth" },
+      { label: "正印正财", href: "/advanced/seal-wealth-foundation" },
+      { label: "官杀秩序", href: "/advanced/officer-killing-order" }
+    ]
+  },
+  {
+    label: "古法实务",
+    href: "/advanced/four-see-missing-god",
+    children: [
+      { label: "四见缺一", href: "/advanced/four-see-missing-god" },
+      { label: "实务组合", href: "/advanced/practical-combinations" },
+      { label: "十干高级", href: "/advanced/stem-classics" },
+      { label: "日时组合", href: "/advanced/day-hour-classics" },
+      { label: "学习批命", href: "/advanced/reading-method" },
+      { label: "基层命学", href: "/advanced/grassroots-method" },
+      { label: "女命专题", href: "/advanced/female-chart" },
+      { label: "女命诗诀", href: "/advanced/female-chart-poems" }
+    ]
+  },
+  {
+    label: "格局用神",
+    href: "/advanced/pattern-foundation",
+    children: [
+      { label: "格局基础", href: "/advanced/pattern-foundation" },
+      { label: "八格总论", href: "/advanced/eight-patterns" },
+      { label: "子平三波限", href: "/advanced/ziping-three-waves" },
+      { label: "格局用神", href: "/advanced/pattern-use-god" },
+      { label: "用神沿革", href: "/advanced/use-god-history" },
+      { label: "双边用神", href: "/advanced/two-sided-use-god" },
+      { label: "顺用格局", href: "/advanced/favorable-patterns" }
+    ]
+  }
 ];
 
 const grassrootsSystems = [
@@ -7833,13 +7869,43 @@ function PageHeader({ eyebrow, title, copy }) {
 }
 
 function ContentLayout({ title, items, children }) {
+  const location = useLocation();
+  const currentHref = `${location.pathname}${location.hash}`;
+
+  const compactLocalAnchors = (directoryItems) => {
+    if (title !== "进阶目录") {
+      return directoryItems;
+    }
+
+    const localAnchors = directoryItems.filter((item) => !item.href.startsWith("/") && !item.children);
+    if (localAnchors.length < 2) {
+      return directoryItems;
+    }
+
+    return [
+      ...directoryItems.filter((item) => item.href.startsWith("/") || item.children),
+      { label: "本页内容", href: localAnchors[0].href, children: localAnchors }
+    ];
+  };
+
+  const directoryItems = compactLocalAnchors(items);
+
+  const itemMatchesCurrent = (item) =>
+    item.active ||
+    item.href === currentHref ||
+    item.href === location.pathname ||
+    item.href === location.hash;
+
   const renderDirectoryItem = (item) => {
+    const isCurrent = !item.children && itemMatchesCurrent(item);
     const link = item.href.startsWith("/") ? (
-      <NavLink className={item.active ? "is-active" : ""} to={item.href}>
+      <NavLink className={() => (isCurrent ? "is-active" : "")} end to={item.href}>
         {item.label}
       </NavLink>
     ) : (
-      <a href={item.href}>{item.label}</a>
+      <a className={isCurrent ? "is-active" : ""} href={item.href}>
+        {item.label}
+      </a>
     );
 
     return (
@@ -7849,11 +7915,16 @@ function ContentLayout({ title, items, children }) {
           <div className="directory-children">
             {item.children.map((child) =>
               child.href.startsWith("/") ? (
-                <NavLink className={child.active ? "is-active" : ""} key={child.href} to={child.href}>
+                <NavLink
+                  className={() => (itemMatchesCurrent(child) ? "is-active" : "")}
+                  end
+                  key={child.href}
+                  to={child.href}
+                >
                   {child.label}
                 </NavLink>
               ) : (
-                <a key={child.href} href={child.href}>
+                <a className={itemMatchesCurrent(child) ? "is-active" : ""} key={child.href} href={child.href}>
                   {child.label}
                 </a>
               )
@@ -7868,7 +7939,7 @@ function ContentLayout({ title, items, children }) {
     <div className="content-layout">
       <aside className="side-directory">
         <h2>{title}</h2>
-        <nav aria-label={title}>{items.map(renderDirectoryItem)}</nav>
+        <nav aria-label={title}>{directoryItems.map(renderDirectoryItem)}</nav>
       </aside>
       <div className="content-main">{children}</div>
     </div>
