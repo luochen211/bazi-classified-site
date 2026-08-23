@@ -18,7 +18,7 @@ npm run build
 ```
 
 `npm run check` verifies content sync, public asset references, key UI behavior, and production build.
-`npm run build` also creates `dist/404.html` for GitHub Pages SPA fallback.
+`npm run build` also creates `dist/404.html` for GitHub Pages SPA fallback and a real `dist/workbench/index.html` entry so the workbench opens with a successful HTTP response.
 
 ## Personal workbench
 

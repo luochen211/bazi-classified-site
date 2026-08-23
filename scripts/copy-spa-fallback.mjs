@@ -1,4 +1,4 @@
-import { copyFileSync, existsSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
@@ -10,4 +10,12 @@ if (!existsSync(index)) {
 }
 
 copyFileSync(index, fallback);
-console.log("Created dist/404.html SPA fallback.");
+
+const staticRoutes = ["workbench"];
+for (const route of staticRoutes) {
+  const routeDirectory = resolve(root, "dist", route);
+  mkdirSync(routeDirectory, { recursive: true });
+  copyFileSync(index, resolve(routeDirectory, "index.html"));
+}
+
+console.log(`Created dist/404.html SPA fallback and ${staticRoutes.length} static route entr${staticRoutes.length === 1 ? "y" : "ies"}.`);
