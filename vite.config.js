@@ -7,6 +7,17 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
+          if (
+            id.includes("/node_modules/docx/") ||
+            id.includes("/node_modules/jszip/") ||
+            id.includes("/node_modules/hash.js/") ||
+            id.includes("/node_modules/xml-js/") ||
+            id.includes("/node_modules/xml/") ||
+            id.includes("/node_modules/nanoid/")
+          ) {
+            return "word-export";
+          }
+
           if (id.includes("/node_modules/")) {
             return "vendor";
           }

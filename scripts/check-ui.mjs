@@ -121,6 +121,125 @@ const checkSourceLinkSpacing = async (browser) => {
   await context.close();
 };
 
+const checkWorkbenchFlow = async (browser) => {
+  const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+  const page = await context.newPage();
+
+  try {
+    await page.goto(`${baseUrl}/workbench`, { waitUntil: "networkidle" });
+
+    const emptyState = page.locator(".workbench-empty-state");
+    if (!(await emptyState.isVisible())) {
+      failures.push("Expected a fresh workbench browser context to open in the empty state.");
+      return;
+    }
+
+    if (!(await emptyState.getByText("从一个真实问题开始", { exact: true }).isVisible())) {
+      failures.push('Expected the workbench empty state to explain "从一个真实问题开始".');
+    }
+
+    await emptyState.getByRole("button", { name: "新建第一个命例" }).click();
+    await page.waitForSelector('.case-workspace[aria-label="命例编辑区"]');
+
+    const caseName = "UI 验收命例";
+    const pillars = ["甲子", "乙丑", "丙寅", "丁卯"];
+    const question = "未来一年的事业重心在哪里？";
+    const stageFacts = "月令丑土，日主丙火，原局子丑相合。";
+    const stageJudgment = "先核对根气和透藏，再判断格局是否成立。";
+
+    await page.getByLabel("命例名称").fill(caseName);
+    const pillarInputs = page.locator(".pillar-fields input");
+    if ((await pillarInputs.count()) !== pillars.length) {
+      failures.push(`Expected four pillar inputs; got ${await pillarInputs.count()}.`);
+    } else {
+      for (let index = 0; index < pillars.length; index += 1) {
+        await pillarInputs.nth(index).fill(pillars[index]);
+      }
+    }
+    await page.locator('.case-identity-fields input[placeholder="只写一个主要问题"]').fill(question);
+
+    await page.locator(".stage-nav button").filter({ hasText: "02" }).click();
+    await page.getByRole("heading", { name: "定格局与取用" }).waitFor();
+    const stageFields = page.locator(".stage-fields textarea");
+    await stageFields.nth(0).fill(stageFacts);
+    await stageFields.nth(1).fill(stageJudgment);
+
+    await page.waitForFunction(
+      ({ storageKey, caseName, pillars, question, stageFacts, stageJudgment }) => {
+        const cases = JSON.parse(window.localStorage.getItem(storageKey) || "[]");
+        const saved = cases.find((item) => item.name === caseName);
+        return Boolean(
+          saved
+          && pillars.every((pillar, index) => saved.pillars?.[["year", "month", "day", "hour"][index]] === pillar)
+          && saved.question === question
+          && saved.stages?.pattern?.facts === stageFacts
+          && saved.stages?.pattern?.judgment === stageJudgment
+        );
+      },
+      {
+        storageKey: "bazi-personal-workbench.v1",
+        caseName,
+        pillars,
+        question,
+        stageFacts,
+        stageJudgment,
+      },
+    );
+
+    await page.reload({ waitUntil: "networkidle" });
+    await page.getByLabel("命例名称").waitFor();
+
+    if ((await page.getByLabel("命例名称").inputValue()) !== caseName) {
+      failures.push("Expected the case name to persist after refreshing the workbench.");
+    }
+
+    const reloadedPillars = await page.locator(".pillar-fields input").evaluateAll((inputs) => inputs.map((input) => input.value));
+    if (JSON.stringify(reloadedPillars) !== JSON.stringify(pillars)) {
+      failures.push(`Expected all four pillars to persist after refresh; got ${JSON.stringify(reloadedPillars)}.`);
+    }
+
+    const reloadedQuestion = await page.locator('.case-identity-fields input[placeholder="只写一个主要问题"]').inputValue();
+    if (reloadedQuestion !== question) {
+      failures.push(`Expected the question to persist after refresh; got "${reloadedQuestion}".`);
+    }
+
+    await page.locator(".stage-nav button").filter({ hasText: "02" }).click();
+    await page.getByRole("heading", { name: "定格局与取用" }).waitFor();
+    const reloadedStageValues = await page.locator(".stage-fields textarea").evaluateAll((fields) => fields.map((field) => field.value));
+    if (reloadedStageValues[0] !== stageFacts || reloadedStageValues[1] !== stageJudgment) {
+      failures.push(`Expected stage notes to persist after refresh; got ${JSON.stringify(reloadedStageValues.slice(0, 2))}.`);
+    }
+
+    await page.getByRole("button", { name: "标记本步完成" }).click();
+    await page.getByRole("button", { name: "已完成，点击重开" }).waitFor();
+
+    const progressText = (await page.locator(".progress-readout").innerText()).replace(/\s+/g, " ").trim();
+    if (!progressText.includes("14%") || !progressText.includes("1 / 7 步完成")) {
+      failures.push(`Expected completion to advance to 14% and 1 / 7 steps; got "${progressText}".`);
+    }
+
+    const savedCompletion = await page.evaluate((storageKey) => {
+      const cases = JSON.parse(window.localStorage.getItem(storageKey) || "[]");
+      return cases[0]?.stages?.pattern?.completed;
+    }, "bazi-personal-workbench.v1");
+    if (savedCompletion !== true) {
+      failures.push("Expected the completed stage to be saved to localStorage.");
+    }
+
+    await page.setViewportSize({ width: 320, height: 740 });
+    await page.waitForTimeout(100);
+    const mobileOverflow = await page.evaluate(() => ({
+      body: document.body.scrollWidth - document.body.clientWidth,
+      document: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    }));
+    if (mobileOverflow.body > 0 || mobileOverflow.document > 0) {
+      failures.push(`Expected no workbench page-level horizontal overflow at 320px; got ${JSON.stringify(mobileOverflow)}.`);
+    }
+  } finally {
+    await context.close();
+  }
+};
+
 const main = async () => {
   const server = spawn("npm", ["run", "dev", "--", "--host", "127.0.0.1"], {
     stdio: ["ignore", "pipe", "pipe"],
@@ -139,6 +258,7 @@ const main = async () => {
       await checkModalFocus(browser);
       await checkMobileNavOverflowStrategy(browser);
       await checkSourceLinkSpacing(browser);
+      await checkWorkbenchFlow(browser);
     } finally {
       await browser.close();
     }

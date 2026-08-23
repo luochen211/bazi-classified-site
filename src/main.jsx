@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Navigate, NavLink, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { ArrowLeft, BookOpen, ChevronRight, ScrollText, Tags, X } from "lucide-react";
 import "./styles.css";
+import WorkbenchPage from "./workbench/Workbench.jsx";
 
 import {
   topics,
@@ -189,6 +190,9 @@ function App() {
 }
 
 function SiteShell() {
+  const location = useLocation();
+  const isWorkbench = location.pathname.startsWith("/workbench");
+
   return (
     <>
       <header className="site-header">
@@ -202,6 +206,7 @@ function SiteShell() {
           <NavLink to="/advanced">进阶</NavLink>
           <NavLink to="/classified">分类占</NavLink>
           <NavLink to="/cases">案例库</NavLink>
+          <NavLink to="/workbench">工作台</NavLink>
         </nav>
       </header>
 
@@ -261,11 +266,14 @@ function SiteShell() {
         <Route path="/cases" element={<CaseLibraryPage />} />
         <Route path="/classified" element={<ClassifiedIndexPage />} />
         <Route path="/classified/:topicKey" element={<ClassifiedTopicPage />} />
+        <Route path="/workbench" element={<WorkbenchPage />} />
       </Routes>
 
-      <footer className="footer">
-        <p>八字分类占内容库 · 先建基础，再进阶，最后分类占。</p>
-      </footer>
+      {!isWorkbench ? (
+        <footer className="footer">
+          <p>八字分类占内容库 · 先建基础，再进阶，最后分类占。</p>
+        </footer>
+      ) : null}
     </>
   );
 }

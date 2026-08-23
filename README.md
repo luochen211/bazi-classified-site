@@ -20,6 +20,12 @@ npm run build
 `npm run check` verifies content sync, public asset references, key UI behavior, and production build.
 `npm run build` also creates `dist/404.html` for GitHub Pages SPA fallback.
 
+## Personal workbench
+
+`/workbench` is a local-first case review and delivery surface. Case data is stored in the current browser with `localStorage`; it is not uploaded by the static site. The workbench guides manual review, links back to source documents, creates stage-specific prompts, keeps validation feedback, and exports DOCX, print/PDF, Markdown, and JSON backups.
+
+The current site does not run an Agent or a production RAG service. The prompt action only copies structured context so the user can choose where to process it. Any future model integration must preserve source citations, human review, and customer-data boundaries.
+
 ## Deployment
 
 Pushing to `main` triggers GitHub Pages deployment from `.github/workflows/deploy.yml`.
