@@ -258,10 +258,18 @@ const evidenceSnippet = (item) => (item.claim || item.exclusions || item.excerpt
   .trim()
   .slice(0, 600);
 
+const sagRuntimeLabel = (sag) => {
+  if (sag?.official) return `SAG ${sag.version || "unknown"}`;
+  if (sag?.implementation === "codex-event-entity-sql") {
+    return `个人 SQL SAG ${sag.version || "codex-sql-sag-v1"}`;
+  }
+  return `SAG ${sag?.version || "unknown"}`;
+};
+
 const evidenceToMarkdown = (evidence) => {
   if (!evidence?.groups) return "暂无已检索依据。";
   const sagLine = evidence.sag?.status === "active"
-    ? `\n\nSAG 状态：${evidence.sag.version} / ${evidence.sag.strategy} / 最深 ${evidence.sag.maxHop} 跳`
+    ? `\n\nSAG 状态：${sagRuntimeLabel(evidence.sag)} / ${evidence.sag.strategy} / 最深 ${evidence.sag.maxHop} 跳`
     : evidence.sag?.status === "fallback"
       ? "\n\nSAG 状态：未激活，本次已回退确定性基线"
       : "";
@@ -274,7 +282,12 @@ const evidenceToMarkdown = (evidence) => {
     .filter(Boolean)
     .join("\n\n");
 
-  return `检索问题：${evidence.query}\n\n检索方式：${evidence.retrievalMode}${evidence.neuralEmbeddings ? "" : "（当前为非神经基线）"}${sagLine}\n\n${groups}`;
+  const retrievalDetail = evidence.neuralEmbeddings
+    ? "（神经向量已启用）"
+    : evidence.sag?.status === "active"
+      ? "（BM25 种子 + SQL 事项实体扩展）"
+      : "（确定性词法基线）";
+  return `检索问题：${evidence.query}\n\n检索方式：${evidence.retrievalMode}${retrievalDetail}${sagLine}\n\n${groups}`;
 };
 
 const buildStagePrompt = (caseItem, stage) => {
@@ -962,9 +975,9 @@ function RagEvidencePanel({ evidence, error, includeCases, onCopy, onIncludeCase
     <section className="rag-evidence-panel" aria-label="本机知识检索">
       <div className="rag-panel-heading">
         <div>
-          <p>本机检索 · SAG 可选增强</p>
+          <p>本机检索 · 个人 SQL SAG</p>
           <h3>动态串联规则，并保留反证与原文护栏</h3>
-          <span>命例信息只发送到 127.0.0.1。SAG 用于跨卡扩展；总排除卡、原文优先级和案例隔离仍由本地规则强制。</span>
+          <span>命例信息只发送到 127.0.0.1。本地 SQL 按共享实体跨卡扩展；总排除卡、原文优先级和案例隔离仍由本地规则强制。</span>
         </div>
         <i data-state={status}>{status === "loading" ? "检索中" : status === "success" ? "已更新" : status === "error" ? "未连接" : "本机服务"}</i>
       </div>
@@ -997,12 +1010,16 @@ function RagEvidencePanel({ evidence, error, includeCases, onCopy, onIncludeCase
         <>
           <div className="rag-result-summary">
             <span>{evidence.retrievalMode}</span>
-            <span>{evidence.neuralEmbeddings ? "神经向量已启用" : "非神经检索基线"}</span>
+            <span>{evidence.neuralEmbeddings
+              ? "神经向量已启用"
+              : evidence.sag?.status === "active"
+                ? "SQL 事项实体检索"
+                : "确定性词法基线"}</span>
             <button onClick={onCopy} type="button"><Copy size={14} aria-hidden="true" />复制证据包</button>
           </div>
           {evidence.sag?.status === "active" ? (
             <p className="sag-runtime-note" data-state="active">
-              SAG {evidence.sag.version} · {evidence.sag.strategy} · 动态命中 {evidence.sag.hitCount} 个知识对象 · 最深 {evidence.sag.maxHop} 跳
+              {sagRuntimeLabel(evidence.sag)} · {evidence.sag.strategy} · 动态命中 {evidence.sag.hitCount} 个知识对象 · 最深 {evidence.sag.maxHop} 跳
             </p>
           ) : evidence.sag?.status === "fallback" ? (
             <p className="sag-runtime-note" data-state="fallback">
@@ -1037,7 +1054,7 @@ function RagEvidencePanel({ evidence, error, includeCases, onCopy, onIncludeCase
           </div>
         </>
       ) : (
-        <p className="rag-empty">先录入可核对的盘面事实，再检索。启用 SAG 后会先找语义种子，再按共享实体扩展；系统仍会强制带回总排除卡和原文。</p>
+        <p className="rag-empty">先录入可核对的盘面事实，再检索。个人 SQL SAG 会先找 BM25 种子，再按共享实体扩展；系统仍会强制带回总排除卡和原文。</p>
       )}
     </section>
   );

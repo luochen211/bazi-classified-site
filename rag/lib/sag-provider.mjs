@@ -18,6 +18,20 @@ const uniqueResults = (items, limit) => {
   return result;
 };
 
+const diversifiedSagResults = (items, limit) => {
+  const direct = items.filter((item) => (item.retrievalSignals?.hop || 0) === 0);
+  const expanded = items.filter((item) => (item.retrievalSignals?.hop || 0) > 0);
+  if (expanded.length === 0) return uniqueResults(items, limit);
+  const expandedQuota = Math.min(expanded.length, Math.max(1, Math.floor(limit / 3)));
+  const directQuota = Math.max(0, limit - expandedQuota);
+  return uniqueResults([
+    ...direct.slice(0, directQuota),
+    ...expanded.slice(0, expandedQuota),
+    ...direct.slice(directQuota),
+    ...expanded.slice(expandedQuota),
+  ], limit);
+};
+
 const normalizedSagScore = (value, index) => {
   const score = Number(value);
   if (Number.isFinite(score) && score > 0) return Math.min(1, score);
@@ -51,7 +65,17 @@ const mapSagHits = (hits, documentsById, includeCases) => (hits || [])
   })
   .filter(Boolean);
 
-const mergeHybridResult = ({ baseline, documents, sagPayload, limit, includeCases }) => {
+export const mergeSagPayload = ({
+  baseline,
+  documents,
+  sagPayload,
+  limit,
+  includeCases,
+  retrievalMode = "sag-full-expand+guarded-baseline-v1",
+  neuralEmbeddings = true,
+  implementation = "zleap-sag",
+  official = true,
+} = {}) => {
   const documentsById = new Map(documents.map((document) => [document.id, document]));
   const sourceDocuments = new Map();
   for (const document of documents) {
@@ -60,7 +84,8 @@ const mergeHybridResult = ({ baseline, documents, sagPayload, limit, includeCase
 
   const sagHits = mapSagHits(sagPayload.hits, documentsById, includeCases);
   const byKind = Map.groupBy(sagHits, (item) => item.kind);
-  const rules = uniqueResults([...(byKind.get("rule") || []), ...baseline.groups.rules], limit);
+  const sagRules = diversifiedSagResults(byKind.get("rule") || [], limit);
+  const rules = uniqueResults([...sagRules, ...baseline.groups.rules], limit);
   const generalExclusion = baseline.groups.exclusions.find((item) => item.path.endsWith("排除规则总卡.md"));
   const exclusions = uniqueResults([
     generalExclusion,
@@ -82,8 +107,8 @@ const mergeHybridResult = ({ baseline, documents, sagPayload, limit, includeCase
 
   return {
     ...baseline,
-    retrievalMode: "sag-full-expand+guarded-baseline-v1",
-    neuralEmbeddings: true,
+    retrievalMode,
+    neuralEmbeddings,
     policy: {
       ...baseline.policy,
       casesIncluded: includeCases,
@@ -92,8 +117,11 @@ const mergeHybridResult = ({ baseline, documents, sagPayload, limit, includeCase
       status: "active",
       version: sagPayload.version || "unknown",
       strategy: sagPayload.strategy || "full_expand",
+      implementation,
+      official,
       hitCount: sagHits.length,
       maxHop: sagHits.reduce((maximum, item) => Math.max(maximum, item.retrievalSignals?.hop || 0), 0),
+      matchedEntities: sagPayload.matchedEntities || [],
       graph: sagPayload.graph || { nodeCount: 0, clueCount: 0, clues: [] },
     },
     groups: { rules, exclusions, sources, cases },
@@ -130,7 +158,7 @@ export const createSagAugmentedRetriever = ({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...request, limit: Math.min(48, limit * 4), includeCases }),
       });
-      return mergeHybridResult({ baseline, documents, sagPayload, limit, includeCases });
+      return mergeSagPayload({ baseline, documents, sagPayload, limit, includeCases });
     } catch (error) {
       return {
         ...baseline,

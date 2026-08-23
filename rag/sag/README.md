@@ -69,10 +69,10 @@ Indexing `source` is substantially more expensive because the current corpus con
 
 ## Run
 
-Start the sidecar, guarded Node gateway, and Vite workbench together:
+Start the official sidecar, guarded Node gateway, and Vite workbench together:
 
 ```bash
-BAZI_SAG_ENV_FILE=.env.sag npm run dev:sag
+BAZI_SAG_ENV_FILE=.env.sag npm run dev:official-sag
 ```
 
 Local endpoints:
@@ -85,14 +85,14 @@ The bridge rejects non-loopback bind addresses. Do not expose it directly to a p
 
 ## Direct Codex use
 
-Codex can use the official SAG index through the repository's one-shot retrieval command; the workbench and a permanently running Node server are not required:
+Codex can use the official SAG index through a separate one-shot command; the workbench and a permanently running Node server are not required:
 
 ```bash
 npm run sag:doctor
-npm run sag:query -- --query "财格见印的成立与破格条件" --stage pattern --format markdown
+npm run sag:official:query -- --query "财格见印的成立与破格条件" --stage pattern --format markdown
 ```
 
-The command probes the sidecar first. If the active index and model configuration exist but the sidecar is stopped, it starts the loopback-only bridge for that query and shuts it down afterward. Strict `sag:query` refuses to return a baseline result as SAG. Use `bazi:retrieve` only when an explicitly labeled deterministic fallback is acceptable.
+The command probes the sidecar first. If the active index and model configuration exist but the sidecar is stopped, it starts the loopback-only bridge for that query and shuts it down afterward. Strict `sag:official:query` refuses to return another retrieval implementation as official SAG. Ordinary personal Codex use should use `sag:query`, which runs the model-free event-entity SQLite path documented in the root README.
 
 ## Fallback and comparison
 
@@ -102,10 +102,10 @@ Use the existing baseline alone:
 npm run dev:rag
 ```
 
-Use SAG plus the baseline guardrails:
+Use the official sidecar plus the baseline guardrails:
 
 ```bash
-BAZI_SAG_ENV_FILE=.env.sag npm run dev:sag
+BAZI_SAG_ENV_FILE=.env.sag npm run dev:official-sag
 ```
 
 The response reports one of these states:

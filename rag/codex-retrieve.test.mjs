@@ -40,7 +40,7 @@ test("SAG health distinguishes missing personal configuration and index", async 
   }
 });
 
-test("auto mode reports an honest baseline fallback", async () => {
+test("auto mode activates Codex SQL SAG without a second model endpoint", async () => {
   const directory = await mkdtemp(path.join(tmpdir(), "bazi-sag-auto-"));
   try {
     const options = parseArguments([
@@ -50,18 +50,18 @@ test("auto mode reports an honest baseline fallback", async () => {
       "--data-root", path.join(directory, "sag"),
       "--env-file", path.join(directory, ".env.sag"),
     ]);
-    const result = await retrieveEvidence(options, {
-      fetchImpl: async () => { throw new Error("connection refused"); },
-    });
-    assert.equal(result.runtime.providerUsed, "baseline");
-    assert.equal(result.sag.status, "not_configured");
+    const result = await retrieveEvidence(options);
+    assert.equal(result.runtime.providerUsed, "codex-sql-sag");
+    assert.equal(result.sag.status, "active");
+    assert.equal(result.sag.official, false);
+    assert.equal(result.sag.implementation, "codex-event-entity-sql");
     assert.equal(result.groups.exclusions[0].title, "排除规则总卡");
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
 });
 
-test("strict SAG mode rejects fallback instead of impersonating official SAG", async () => {
+test("strict SAG mode requires the Codex event-entity SQL engine", async () => {
   const directory = await mkdtemp(path.join(tmpdir(), "bazi-sag-strict-"));
   try {
     const options = parseArguments([
@@ -71,20 +71,20 @@ test("strict SAG mode rejects fallback instead of impersonating official SAG", a
       "--data-root", path.join(directory, "sag"),
       "--env-file", path.join(directory, ".env.sag"),
     ]);
-    await assert.rejects(
-      retrieveEvidence(options, { fetchImpl: async () => { throw new Error("connection refused"); } }),
-      (error) => error instanceof CliError && /Official SAG is required/.test(error.message),
-    );
+    const result = await retrieveEvidence(options);
+    assert.equal(result.sag.status, "active");
+    assert.equal(result.runtime.providerUsed, "codex-sql-sag");
+    assert.equal(result.neuralEmbeddings, false);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
 });
 
-test("an active official SAG response is exposed to Codex with graph metadata", async () => {
+test("official zleap-sag remains an explicit optional provider", async () => {
   const directory = await mkdtemp(path.join(tmpdir(), "bazi-sag-active-"));
   try {
     const options = parseArguments([
-      "query", "--provider", "sag", "--query", "月令透干怎样定格",
+      "query", "--provider", "official-sag", "--query", "月令透干怎样定格",
       "--knowledge-root", fixtureRoot,
       "--output-directory", path.join(directory, "compiled"),
       "--data-root", path.join(directory, "sag"),
@@ -110,6 +110,25 @@ test("an active official SAG response is exposed to Codex with graph metadata", 
     assert.equal(result.sag.status, "active");
     assert.equal(result.sag.graph.nodeCount, 3);
     assert.match(formatMarkdown(result), /排除与停止条件（必须先读）/);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("official zleap-sag mode rejects an unavailable sidecar", async () => {
+  const directory = await mkdtemp(path.join(tmpdir(), "bazi-official-sag-strict-"));
+  try {
+    const options = parseArguments([
+      "query", "--provider", "official-sag", "--query", "月令透干怎样定格",
+      "--knowledge-root", fixtureRoot,
+      "--output-directory", path.join(directory, "compiled"),
+      "--data-root", path.join(directory, "official-sag"),
+      "--env-file", path.join(directory, ".env.sag"),
+    ]);
+    await assert.rejects(
+      retrieveEvidence(options, { fetchImpl: async () => { throw new Error("connection refused"); } }),
+      (error) => error instanceof CliError && /Official zleap-sag is required/.test(error.message),
+    );
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

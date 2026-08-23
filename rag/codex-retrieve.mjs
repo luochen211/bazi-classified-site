@@ -8,6 +8,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { compileCorpus } from "./lib/corpus.mjs";
 import { createRetriever } from "./lib/retrieval.mjs";
 import { createSagAugmentedRetriever } from "./lib/sag-provider.mjs";
+import { createSqlSagRetriever } from "./lib/sql-sag-provider.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const defaultKnowledgeRoot = path.resolve(
@@ -15,13 +16,14 @@ const defaultKnowledgeRoot = path.resolve(
 );
 const defaultOutputDirectory = path.join(projectRoot, "rag", "generated");
 const defaultSagDataRoot = path.join(defaultOutputDirectory, "sag");
+const defaultSqlDatabase = path.join(defaultOutputDirectory, "sql-sag", "index.sqlite");
 const defaultSagUrl = process.env.BAZI_SAG_URL || "http://127.0.0.1:8766";
 const defaultEnvFile = process.env.BAZI_SAG_ENV_FILE
   ? path.resolve(process.env.BAZI_SAG_ENV_FILE)
   : path.join(projectRoot, ".env.sag");
 
 const STAGES = new Set(["intake", "pattern", "profile", "topic", "history", "timing", "delivery"]);
-const PROVIDERS = new Set(["auto", "sag", "baseline"]);
+const PROVIDERS = new Set(["auto", "sag", "official-sag", "baseline"]);
 const FORMATS = new Set(["json", "markdown"]);
 
 const redact = (value) => String(value || "")
@@ -57,6 +59,8 @@ export const parseArguments = (argv = []) => {
     autoStart: true,
     knowledgeRoot: defaultKnowledgeRoot,
     outputDirectory: defaultOutputDirectory,
+    sqlDatabase: defaultSqlDatabase,
+    sqlDatabaseExplicit: false,
     dataRoot: path.resolve(process.env.BAZI_SAG_DATA_ROOT || defaultSagDataRoot),
     envFile: defaultEnvFile,
     sagUrl: defaultSagUrl,
@@ -74,6 +78,10 @@ export const parseArguments = (argv = []) => {
     else if (argument === "--format") options.format = takeValue(args, index++, argument);
     else if (argument === "--knowledge-root") options.knowledgeRoot = path.resolve(takeValue(args, index++, argument));
     else if (argument === "--output-directory") options.outputDirectory = path.resolve(takeValue(args, index++, argument));
+    else if (argument === "--sql-database") {
+      options.sqlDatabase = path.resolve(takeValue(args, index++, argument));
+      options.sqlDatabaseExplicit = true;
+    }
     else if (argument === "--data-root") options.dataRoot = path.resolve(takeValue(args, index++, argument));
     else if (argument === "--env-file") options.envFile = path.resolve(takeValue(args, index++, argument));
     else if (argument === "--sag-url") options.sagUrl = takeValue(args, index++, argument).replace(/\/$/, "");
@@ -83,6 +91,9 @@ export const parseArguments = (argv = []) => {
   }
 
   if (!options.query && positional.length > 0) options.query = positional.join(" ");
+  if (!options.sqlDatabaseExplicit) {
+    options.sqlDatabase = path.join(options.outputDirectory, "sql-sag", "index.sqlite");
+  }
   if (!STAGES.has(options.stage)) throw new CliError(`unsupported stage: ${options.stage}`);
   if (!PROVIDERS.has(options.provider)) throw new CliError(`unsupported provider: ${options.provider}`);
   if (!FORMATS.has(options.format)) throw new CliError(`unsupported format: ${options.format}`);
@@ -275,6 +286,28 @@ export const retrieveEvidence = async (options, dependencies = {}) => {
     };
   }
 
+  if (options.provider === "auto" || options.provider === "sag") {
+    const sqlRetriever = createSqlSagRetriever({
+      baselineRetriever,
+      documents,
+      corpusPath: path.join(options.outputDirectory, "corpus.jsonl"),
+      databasePath: options.sqlDatabase,
+    });
+    const result = await sqlRetriever.retrieve(options);
+    if (options.provider === "sag" && result.sag?.status !== "active") {
+      throw new CliError(`Codex SQL SAG query failed: ${result.sag?.error || "unknown error"}`);
+    }
+    return {
+      ...result,
+      runtime: {
+        providerRequested: options.provider,
+        providerUsed: result.sag?.status === "active" ? "codex-sql-sag" : "baseline",
+        sagAutoStarted: false,
+      },
+      corpus: manifest,
+    };
+  }
+
   let sagHealth = await inspectSag({
     dataRoot: options.dataRoot,
     envFile: options.envFile,
@@ -301,18 +334,9 @@ export const retrieveEvidence = async (options, dependencies = {}) => {
 
     if (!sagHealth.officialSagActive) {
       const reason = fallbackReason(sagHealth);
-      if (options.provider === "sag") {
-        throw new CliError(
-          `Official SAG is required but unavailable: ${reason}. ${sagHealth.nextAction}`,
-        );
-      }
-      const baseline = baselineRetriever.retrieve(options);
-      return {
-        ...baseline,
-        sag: { status: "not_configured", strategy: "full_expand", error: reason },
-        runtime: { providerRequested: "auto", providerUsed: "baseline", sagAutoStarted: false },
-        corpus: manifest,
-      };
+      throw new CliError(
+        `Official zleap-sag is required but unavailable: ${reason}. ${sagHealth.nextAction}`,
+      );
     }
 
     const retriever = createSagAugmentedRetriever({
@@ -322,13 +346,13 @@ export const retrieveEvidence = async (options, dependencies = {}) => {
       fetchImpl,
     });
     const result = await retriever.retrieve(options);
-    if (options.provider === "sag" && result.sag?.status !== "active") {
-      throw new CliError(`Official SAG query failed: ${result.sag?.error || "unknown error"}`);
+    if (result.sag?.status !== "active") {
+      throw new CliError(`Official zleap-sag query failed: ${result.sag?.error || "unknown error"}`);
     }
     return {
       ...result,
       runtime: {
-        providerRequested: options.provider,
+        providerRequested: "official-sag",
         providerUsed: result.sag?.status === "active" ? "official-sag" : "baseline",
         sagAutoStarted: Boolean(managedSidecar),
       },
@@ -366,6 +390,7 @@ export const formatMarkdown = (result) => {
     `- 案例：${result.policy?.casesIncluded ? "已显式启用，仅作校准" : "未启用"}`,
   ];
   if (result.sag?.status === "active") {
+    sections.push(`- SAG 实现：${result.sag.implementation || "unknown"}${result.sag.official ? "（官方 zleap-sag）" : "（Codex 个人 SQL）"}`);
     sections.push(`- 动态图：${result.sag.graph?.nodeCount || 0} 节点，${result.sag.graph?.clueCount || 0} 条线索，最大 ${result.sag.maxHop || 0} 跳`);
   } else if (result.sag?.error) {
     sections.push(`- SAG 说明：${result.sag.error}`);
@@ -390,7 +415,8 @@ const usage = `用法：
   npm run sag:doctor
 
 选项：
-  --provider auto|sag|baseline   sag 会强制要求官方 SAG 成功
+  --provider auto|sag|official-sag|baseline
+                                sag 强制 Codex SQL SAG；official-sag 强制官方旁路
   --stage intake|pattern|profile|topic|history|timing|delivery
   --limit 1..12
   --include-cases               仅在明确需要案例校准时启用
@@ -405,11 +431,34 @@ export const run = async (argv = process.argv.slice(2), io = console) => {
     return 0;
   }
   if (options.command === "health") {
-    const health = await inspectSag(options);
+    const { documents, manifest } = await compileCorpus({
+      knowledgeRoot: options.knowledgeRoot,
+      outputDirectory: options.outputDirectory,
+    });
+    const baselineRetriever = createRetriever(documents);
+    const personalRetriever = createSqlSagRetriever({
+      baselineRetriever,
+      documents,
+      corpusPath: path.join(options.outputDirectory, "corpus.jsonl"),
+      databasePath: options.sqlDatabase,
+    });
+    const [personal, official] = await Promise.all([
+      personalRetriever.health(),
+      inspectSag(options),
+    ]);
+    const health = {
+      state: personal.status === "ok" ? "active" : "unavailable",
+      personal,
+      official,
+      corpus: manifest,
+      nextAction: personal.status === "ok"
+        ? "Codex can use event-entity SQL SAG directly; no second model is required."
+        : "Run npm run rag:compile and inspect the SQL SAG error.",
+    };
     io.log(options.format === "markdown"
-      ? `# SAG 状态\n\n- 状态：${health.state}\n- 官方 SAG 已激活：${health.officialSagActive ? "是" : "否"}\n- 配置：${health.config.llmConfigured && health.config.embeddingConfigured ? "完整" : "缺失"}\n- 索引：${health.index.active ? "可用" : "缺失"}\n- 下一步：${health.nextAction}\n`
+      ? `# SAG 状态\n\n- 个人 Codex SQL SAG：${personal.status === "ok" ? "已激活" : "不可用"}\n- 事项：${personal.eventCount || 0}\n- 实体：${personal.entityCount || 0}\n- 关系：${personal.relationCount || 0}\n- 官方 zleap-sag 旁路：${official.officialSagActive ? "已激活" : "未配置（不影响个人使用）"}\n- 下一步：${health.nextAction}\n`
       : JSON.stringify(health, null, 2));
-    return health.officialSagActive ? 0 : 1;
+    return personal.status === "ok" ? 0 : 1;
   }
   const result = await retrieveEvidence(options);
   io.log(options.format === "markdown" ? formatMarkdown(result) : JSON.stringify(result, null, 2));

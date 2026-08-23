@@ -135,12 +135,14 @@ const checkWorkbenchFlow = async (browser) => {
         body: JSON.stringify({
           query: body.query,
           stage: "pattern",
-          retrievalMode: "sag-full-expand+guarded-baseline-v1",
-          neuralEmbeddings: true,
+          retrievalMode: "sql-sag-dynamic-expand+guarded-baseline-v1",
+          neuralEmbeddings: false,
           sag: {
             status: "active",
-            version: "0.10.0",
-            strategy: "full_expand",
+            version: "codex-sql-sag-v1",
+            strategy: "dynamic_sql_expand",
+            implementation: "codex-event-entity-sql",
+            official: false,
             hitCount: 2,
             maxHop: 1,
             graph: { nodeCount: 5, clueCount: 3, clues: [] },
@@ -209,8 +211,8 @@ const checkWorkbenchFlow = async (browser) => {
       if (!(await ragPanel.getByText("排除规则总卡", { exact: true }).isVisible())) {
         failures.push("Expected RAG results to keep exclusions separate from formal rules.");
       }
-      if (!(await ragPanel.getByText(/SAG 0\.10\.0 · full_expand/).isVisible())) {
-        failures.push("Expected the workbench to disclose the active SAG version and strategy.");
+      if (!(await ragPanel.getByText(/个人 SQL SAG codex-sql-sag-v1 · dynamic_sql_expand/).isVisible())) {
+        failures.push("Expected the workbench to disclose the active personal SQL SAG implementation.");
       }
     }
 

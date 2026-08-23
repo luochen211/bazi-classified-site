@@ -45,9 +45,28 @@ The local service:
 - excludes cases unless the user explicitly enables case calibration;
 - binds only to `127.0.0.1` and does not persist queries.
 
-The first retrieval baseline uses BM25 plus Chinese character n-gram similarity. It is deliberately labeled as non-neural; BGE-M3 or another embedding model should only replace that component after the fixed evaluation set establishes a baseline.
+The first retrieval baseline uses BM25 plus Chinese character n-gram similarity. It remains the lexical seed and evidence guardrail for both SAG paths.
 
-### Optional SAG multi-hop retrieval
+### Personal Codex SQL SAG
+
+The default personal SAG path does not install or call a second LLM. Codex remains the only reasoning model. At compile time, deterministic rules turn each formal card or exclusion card into an event and extract stable entities from card tags plus a Bazi lexicon. A local SQLite recursive query then expands seed events through shared entities for up to two hops.
+
+```bash
+npm run sag:doctor
+npm run sag:query -- --query "月令透干后怎样判断用神与运岁" --stage pattern --format markdown
+npm run dev:sag
+```
+
+The response is explicit about the implementation:
+
+- `sag.status="active"` and `sag.implementation="codex-event-entity-sql"` mean the personal SQL graph was used;
+- `sag.official=false` means this implements the SAG event/entity/SQL dynamic-expansion architecture without claiming to be the official `zleap-sag` engine;
+- `neuralEmbeddings=false` means Codex handles reasoning while BM25 and exact entities provide deterministic seeds;
+- exclusions, linked original sources, and case opt-in remain enforced after graph expansion.
+
+The generated SQLite file stays under ignored `rag/generated/sql-sag/`. It is fingerprinted and rebuilt automatically when the compiled rules change.
+
+### Optional official zleap-sag sidecar
 
 The local API can now add the official `zleap-sag` engine behind the same `/v1/retrieve` contract. SAG is an enhancement layer, not a replacement for the evidence policy:
 
@@ -64,7 +83,7 @@ npm run sag:setup
 cp rag/sag/config.example.env .env.sag
 # Edit .env.sag locally; never commit keys.
 npm run sag:index -- --env-file .env.sag
-BAZI_SAG_ENV_FILE=.env.sag npm run dev:sag
+BAZI_SAG_ENV_FILE=.env.sag npm run dev:official-sag
 ```
 
 The default index intentionally includes only `rule,exclusion`. Original source slices remain in the deterministic evidence retriever, while cases remain outside SAG. To run a larger experiment, pass an explicit set such as `--kinds rule,exclusion,source`; only add `case` when you deliberately want case calibration available.
@@ -80,6 +99,7 @@ npm run check:rag
 npm run sag:setup
 npm run sag:index -- --env-file .env.sag
 npm run dev:sag
+npm run dev:official-sag
 ```
 
 ### Use SAG directly from Codex
@@ -92,9 +112,9 @@ npm run bazi:retrieve -- --query "月令透干怎样定格" --stage pattern --fo
 npm run sag:query -- --query "月令透干怎样定格" --stage pattern --format markdown
 ```
 
-`bazi:retrieve` prefers official SAG and reports an explicit baseline fallback when SAG is not configured. `sag:query` is strict: it exits with an error unless the official SAG sidecar is active and the response contains the query-time graph. If a valid local index exists but the sidecar is stopped, either command can start it for the duration of the query and stop it afterward.
+`bazi:retrieve` and strict `sag:query` use the personal event-entity SQLite graph by default. They need no API key, Ollama service, or embedding model. `sag:official:query` is the separate strict command for experiments with the official package.
 
-This keeps the roles separate: Codex is the reasoning agent, while SAG is the local event/entity retrieval engine. A Codex subscription does not itself provide the OpenAI-compatible LLM and embedding endpoints required to build the SAG index; use a local/private model server or separately configured API endpoints.
+This keeps the roles separate: Codex is the reasoning agent, while the local SQL index supplies traceable multi-hop evidence. The optional official package still needs independent OpenAI-compatible LLM and embedding endpoints because the Codex app/session is not such an endpoint.
 
 Generated corpus files stay under `rag/generated/` and are ignored by Git so the private knowledge base is not published. Any future model generation must preserve source citations, exclusion-first retrieval, human review, and customer-data boundaries.
 
