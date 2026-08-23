@@ -135,8 +135,16 @@ const checkWorkbenchFlow = async (browser) => {
         body: JSON.stringify({
           query: body.query,
           stage: "pattern",
-          retrievalMode: "bm25+character-ngram-v1",
-          neuralEmbeddings: false,
+          retrievalMode: "sag-full-expand+guarded-baseline-v1",
+          neuralEmbeddings: true,
+          sag: {
+            status: "active",
+            version: "0.10.0",
+            strategy: "full_expand",
+            hitCount: 2,
+            maxHop: 1,
+            graph: { nodeCount: 5, clueCount: 3, clues: [] },
+          },
           generatedAt: new Date().toISOString(),
           policy: {
             exclusionsRequired: true,
@@ -201,8 +209,8 @@ const checkWorkbenchFlow = async (browser) => {
       if (!(await ragPanel.getByText("排除规则总卡", { exact: true }).isVisible())) {
         failures.push("Expected RAG results to keep exclusions separate from formal rules.");
       }
-      if (!(await ragPanel.getByText("非神经检索基线", { exact: true }).isVisible())) {
-        failures.push("Expected the workbench to disclose the non-neural retrieval baseline.");
+      if (!(await ragPanel.getByText(/SAG 0\.10\.0 · full_expand/).isVisible())) {
+        failures.push("Expected the workbench to disclose the active SAG version and strategy.");
       }
     }
 
@@ -216,6 +224,7 @@ const checkWorkbenchFlow = async (browser) => {
           && saved.question === question
           && saved.stages?.pattern?.facts === stageFacts
           && saved.stages?.pattern?.judgment === stageJudgment
+          && saved.stages?.pattern?.evidence?.sag?.status === "active"
           && saved.stages?.pattern?.evidence?.groups?.exclusions?.[0]?.title === "排除规则总卡"
         );
       },

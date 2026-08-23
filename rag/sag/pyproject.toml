@@ -1,0 +1,20 @@
+[project]
+name = "bazi-sag-bridge"
+version = "0.1.0"
+description = "Loopback-only SAG bridge for the personal Bazi workbench"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "httpx[socks]>=0.28,<1",
+  "openai>=2,<3",
+  "zleap-sag==0.10.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["bazi_sag"]
+
+[tool.uv]
+package = true

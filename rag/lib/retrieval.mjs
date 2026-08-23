@@ -55,7 +55,7 @@ const cosine = (left, right) => {
   return dot / Math.sqrt(leftNorm * rightNorm);
 };
 
-const trimResult = (document, score, matchedTerms) => ({
+export const trimResult = (document, score, matchedTerms = []) => ({
   id: document.id,
   kind: document.kind,
   title: document.title,

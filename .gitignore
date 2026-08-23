@@ -3,6 +3,9 @@ dist/
 tmp/
 assets/
 rag/generated/
+rag/sag/.venv/
+__pycache__/
+*.pyc
 .DS_Store
 .env
 .env.*

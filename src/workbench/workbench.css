@@ -643,6 +643,21 @@
   color: var(--workspace-red);
 }
 
+.sag-runtime-note {
+  margin: 10px 0 0;
+  border-left: 3px solid var(--workspace-jade);
+  padding: 7px 10px;
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--workspace-jade);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.sag-runtime-note[data-state="fallback"] {
+  border-left-color: #a36f34;
+  color: #795228;
+}
+
 .rag-query-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
