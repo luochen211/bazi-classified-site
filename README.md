@@ -82,6 +82,20 @@ npm run sag:index -- --env-file .env.sag
 npm run dev:sag
 ```
 
+### Use SAG directly from Codex
+
+The repository includes a personal Codex retrieval skill under `skills/bazi-sag-retrieval/` and a one-shot CLI. Codex can retrieve evidence without opening the workbench UI:
+
+```bash
+npm run sag:doctor
+npm run bazi:retrieve -- --query "月令透干怎样定格" --stage pattern --format markdown
+npm run sag:query -- --query "月令透干怎样定格" --stage pattern --format markdown
+```
+
+`bazi:retrieve` prefers official SAG and reports an explicit baseline fallback when SAG is not configured. `sag:query` is strict: it exits with an error unless the official SAG sidecar is active and the response contains the query-time graph. If a valid local index exists but the sidecar is stopped, either command can start it for the duration of the query and stop it afterward.
+
+This keeps the roles separate: Codex is the reasoning agent, while SAG is the local event/entity retrieval engine. A Codex subscription does not itself provide the OpenAI-compatible LLM and embedding endpoints required to build the SAG index; use a local/private model server or separately configured API endpoints.
+
 Generated corpus files stay under `rag/generated/` and are ignored by Git so the private knowledge base is not published. Any future model generation must preserve source citations, exclusion-first retrieval, human review, and customer-data boundaries.
 
 ## Deployment

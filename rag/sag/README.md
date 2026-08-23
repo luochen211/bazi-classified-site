@@ -83,6 +83,17 @@ Local endpoints:
 
 The bridge rejects non-loopback bind addresses. Do not expose it directly to a public network.
 
+## Direct Codex use
+
+Codex can use the official SAG index through the repository's one-shot retrieval command; the workbench and a permanently running Node server are not required:
+
+```bash
+npm run sag:doctor
+npm run sag:query -- --query "财格见印的成立与破格条件" --stage pattern --format markdown
+```
+
+The command probes the sidecar first. If the active index and model configuration exist but the sidecar is stopped, it starts the loopback-only bridge for that query and shuts it down afterward. Strict `sag:query` refuses to return a baseline result as SAG. Use `bazi:retrieve` only when an explicitly labeled deterministic fallback is acceptable.
+
 ## Fallback and comparison
 
 Use the existing baseline alone:
