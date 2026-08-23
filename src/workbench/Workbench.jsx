@@ -20,6 +20,7 @@ import "./workbench.css";
 
 const STORAGE_KEY = "bazi-personal-workbench.v1";
 const SELECTED_CASE_KEY = "bazi-personal-workbench.selected-case.v1";
+const RAG_API_URL = import.meta.env.VITE_RAG_API_URL || "http://127.0.0.1:8765";
 
 const stageDefinitions = [
   {
@@ -146,6 +147,7 @@ const blankStage = () => ({
   facts: "",
   judgment: "",
   exclusions: "",
+  evidence: null,
   confidence: "待核",
   checks: {},
   completed: false
@@ -244,6 +246,32 @@ const copyText = async (text) => {
   }
 };
 
+const evidenceGroupLabels = {
+  rules: "正式规则",
+  exclusions: "排除与反证",
+  sources: "原文证据",
+  cases: "相似案例（仅校准）"
+};
+
+const evidenceSnippet = (item) => (item.claim || item.exclusions || item.excerpt || "暂无摘录")
+  .replace(/\s+/g, " ")
+  .trim()
+  .slice(0, 600);
+
+const evidenceToMarkdown = (evidence) => {
+  if (!evidence?.groups) return "暂无已检索依据。";
+  const groups = Object.entries(evidenceGroupLabels)
+    .map(([key, label]) => {
+      const items = evidence.groups[key] || [];
+      if (items.length === 0) return "";
+      return `### ${label}\n\n${items.map((item) => `- ${item.title}｜\`${item.path}${item.section ? `#${item.section}` : ""}\`｜${item.lineStart}-${item.lineEnd} 行\n  - 证据摘录：${evidenceSnippet(item)}`).join("\n")}`;
+    })
+    .filter(Boolean)
+    .join("\n\n");
+
+  return `检索问题：${evidence.query}\n\n检索方式：${evidence.retrievalMode}${evidence.neuralEmbeddings ? "" : "（当前为非神经基线）"}\n\n${groups}`;
+};
+
 const buildStagePrompt = (caseItem, stage) => {
   const stageValue = caseItem.stages[stage.id];
   return `# 命例分析任务：${stage.title}
@@ -267,6 +295,10 @@ ${stage.prompt}
 - 盘面事实：${stageValue.facts || "暂无"}
 - 当前判断：${stageValue.judgment || "暂无"}
 - 反证与排除：${stageValue.exclusions || "暂无"}
+
+## 已检索依据
+
+${evidenceToMarkdown(stageValue.evidence)}
 
 ## 输出要求
 
@@ -294,6 +326,10 @@ ${value.judgment || "待补充"}
 ### 反证、排除与不确定处
 
 ${value.exclusions || "待补充"}
+
+### 已检索依据
+
+${evidenceToMarkdown(value.evidence)}
 
 **信心等级：** ${value.confidence}`;
     })
@@ -337,6 +373,10 @@ function WorkbenchPage() {
   const [toast, setToast] = React.useState("");
   const [lastSavedAt, setLastSavedAt] = React.useState("");
   const [showFeedback, setShowFeedback] = React.useState(false);
+  const [ragQuery, setRagQuery] = React.useState("");
+  const [includeCases, setIncludeCases] = React.useState(false);
+  const [ragStatus, setRagStatus] = React.useState("idle");
+  const [ragError, setRagError] = React.useState("");
   const importRef = React.useRef(null);
 
   const selectedCase = cases.find((item) => item.id === selectedId) || null;
@@ -372,6 +412,13 @@ function WorkbenchPage() {
     const timer = window.setTimeout(() => setToast(""), 2200);
     return () => window.clearTimeout(timer);
   }, [toast]);
+
+  React.useEffect(() => {
+    setRagQuery(currentStageValue.evidence?.query || "");
+    setIncludeCases(Boolean(currentStageValue.evidence?.policy?.casesIncluded));
+    setRagStatus("idle");
+    setRagError("");
+  }, [selectedCase?.id, currentStage.id]);
 
   const addCase = () => {
     const next = createCase();
@@ -479,6 +526,17 @@ function WorkbenchPage() {
       children.push(new Paragraph({ text: value.judgment || "待补充" }));
       children.push(new Paragraph({ children: [new TextRun({ text: "反证、排除与不确定处", bold: true })] }));
       children.push(new Paragraph({ text: value.exclusions || "待补充" }));
+      if (value.evidence?.groups) {
+        children.push(new Paragraph({ children: [new TextRun({ text: "已检索依据", bold: true })] }));
+        for (const [key, label] of Object.entries(evidenceGroupLabels)) {
+          const evidenceItems = value.evidence.groups[key] || [];
+          if (evidenceItems.length === 0) continue;
+          children.push(new Paragraph({ text: label }));
+          for (const item of evidenceItems) {
+            children.push(new Paragraph({ text: `${item.title}｜${item.path}｜${item.lineStart}-${item.lineEnd} 行`, bullet: { level: 0 } }));
+          }
+        }
+      }
       children.push(new Paragraph({ text: `信心等级：${value.confidence}` }));
     }
 
@@ -506,6 +564,41 @@ function WorkbenchPage() {
     if (!selectedCase) return;
     await copyText(buildStagePrompt(selectedCase, currentStage));
     setToast(`已复制“${currentStage.title}”分析指令`);
+  };
+
+  const retrieveEvidence = async () => {
+    if (!selectedCase || currentStage.id !== "pattern") return;
+    const query = ragQuery.trim() || [
+      currentStageValue.facts,
+      chartText(selectedCase),
+      selectedCase.question,
+      "月令 透干 根气 旺衰 格局成败 调候 取用"
+    ].filter(Boolean).join(" ");
+
+    setRagStatus("loading");
+    setRagError("");
+    try {
+      const response = await fetch(`${RAG_API_URL}/v1/retrieve`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query, stage: "pattern", limit: 6, includeCases })
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || `检索服务返回 ${response.status}`);
+      updateStage({ evidence: payload });
+      setRagQuery(query);
+      setRagStatus("success");
+      const total = Object.values(payload.groups || {}).reduce((sum, items) => sum + items.length, 0);
+      setToast(`已取回 ${total} 条规则、反证与原文依据`);
+    } catch (error) {
+      setRagStatus("error");
+      setRagError(error.message || "无法连接本机检索服务");
+    }
+  };
+
+  const copyEvidence = async () => {
+    await copyText(evidenceToMarkdown(currentStageValue.evidence));
+    setToast("证据包已复制");
   };
 
   return (
@@ -632,6 +725,20 @@ function WorkbenchPage() {
                       <textarea onChange={(event) => updateStage({ exclusions: event.target.value })} placeholder="例：时辰存疑、流派口径冲突、过去反馈不支持……" rows="5" value={currentStageValue.exclusions} />
                     </label>
                   </div>
+
+                  {currentStage.id === "pattern" ? (
+                    <RagEvidencePanel
+                      evidence={currentStageValue.evidence}
+                      error={ragError}
+                      includeCases={includeCases}
+                      onCopy={copyEvidence}
+                      onIncludeCasesChange={setIncludeCases}
+                      onQueryChange={setRagQuery}
+                      onRetrieve={retrieveEvidence}
+                      query={ragQuery}
+                      status={ragStatus}
+                    />
+                  ) : null}
 
                   <div className="stage-checks">
                     <div className="stage-checks-title">
@@ -844,6 +951,84 @@ function FeedbackSection({ caseItem, isOpen, onChange, onToggle }) {
   );
 }
 
+function RagEvidencePanel({ evidence, error, includeCases, onCopy, onIncludeCasesChange, onQueryChange, onRetrieve, query, status }) {
+  const hasEvidence = Boolean(evidence?.groups);
+  return (
+    <section className="rag-evidence-panel" aria-label="本机知识检索">
+      <div className="rag-panel-heading">
+        <div>
+          <p>本机 RAG · 第一期</p>
+          <h3>正式规则、反证与原文分开检索</h3>
+          <span>命例信息只发送到 127.0.0.1。案例默认关闭，开启后也只能用于校准，不能替代规则。</span>
+        </div>
+        <i data-state={status}>{status === "loading" ? "检索中" : status === "success" ? "已更新" : status === "error" ? "未连接" : "本机服务"}</i>
+      </div>
+
+      <div className="rag-query-row">
+        <label>
+          <span className="sr-only">知识检索问题</span>
+          <input
+            onChange={(event) => onQueryChange(event.target.value)}
+            placeholder="留空则使用四柱、盘面事实和本次所问自动组装"
+            value={query}
+          />
+        </label>
+        <button disabled={status === "loading"} onClick={onRetrieve} type="button">
+          <Search size={16} aria-hidden="true" />
+          {status === "loading" ? "正在检索" : "检索正式规则与反证"}
+        </button>
+      </div>
+
+      <label className="rag-case-toggle">
+        <input checked={includeCases} onChange={(event) => onIncludeCasesChange(event.target.checked)} type="checkbox" />
+        <span>在规则和原文之后，再加入相似案例校准</span>
+      </label>
+
+      {error ? (
+        <p className="rag-error">无法连接本机知识库。请在项目目录运行 <code>npm run dev:rag</code>，再从本机地址打开工作台。错误：{error}</p>
+      ) : null}
+
+      {hasEvidence ? (
+        <>
+          <div className="rag-result-summary">
+            <span>{evidence.retrievalMode}</span>
+            <span>{evidence.neuralEmbeddings ? "神经向量已启用" : "非神经检索基线"}</span>
+            <button onClick={onCopy} type="button"><Copy size={14} aria-hidden="true" />复制证据包</button>
+          </div>
+          <div className="rag-result-groups">
+            {Object.entries(evidenceGroupLabels).map(([key, label]) => {
+              const items = evidence.groups[key] || [];
+              if (items.length === 0) return null;
+              return (
+                <section data-kind={key} key={key}>
+                  <h4>{label}<span>{items.length}</span></h4>
+                  <div>
+                    {items.map((item) => (
+                      <article key={`${key}-${item.id}`}>
+                        <div>
+                          <strong>{item.title}</strong>
+                          <small>{item.path}{item.section ? ` · ${item.section}` : ""}</small>
+                        </div>
+                        <p>{evidenceSnippet(item)}</p>
+                        <footer>
+                          <span>{item.lineStart}-{item.lineEnd} 行</span>
+                          <span>相关度 {Math.min(100, Math.round(item.score * 100))}</span>
+                        </footer>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <p className="rag-empty">先录入可核对的盘面事实，再检索。系统会强制带回总排除卡，并优先追溯正式规则引用的原文。</p>
+      )}
+    </section>
+  );
+}
+
 function PrintReport({ caseItem }) {
   return (
     <article className="workbench-print-report">
@@ -873,6 +1058,12 @@ function PrintReport({ caseItem }) {
             <p>{value.judgment || "待补充"}</p>
             <h3>反证、排除与不确定处</h3>
             <p>{value.exclusions || "待补充"}</p>
+            {value.evidence?.groups ? (
+              <>
+                <h3>已检索依据</h3>
+                <p>{Object.values(value.evidence.groups).flat().map((item) => `${item.title}（${item.path}）`).join("；")}</p>
+              </>
+            ) : null}
             <small>信心等级：{value.confidence}</small>
           </section>
         );

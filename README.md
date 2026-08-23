@@ -24,7 +24,38 @@ npm run build
 
 `/workbench` is a local-first case review and delivery surface. Case data is stored in the current browser with `localStorage`; it is not uploaded by the static site. The workbench guides manual review, links back to source documents, creates stage-specific prompts, keeps validation feedback, and exports DOCX, print/PDF, Markdown, and JSON backups.
 
-The current site does not run an Agent or a production RAG service. The prompt action only copies structured context so the user can choose where to process it. Any future model integration must preserve source citations, human review, and customer-data boundaries.
+The hosted site does not upload case data or bundle the private knowledge base. The pattern stage can connect to the optional local RAG service when the workbench is opened through the local Vite server.
+
+### Local evidence retrieval
+
+Run the workbench and the loopback-only retrieval service together:
+
+```bash
+npm run dev:rag
+```
+
+Then open `http://127.0.0.1:5173/bazi-classified-site/workbench`, enter the four pillars and the pattern question, switch to `02 定格局与取用`, and use `检索正式规则与反证`.
+
+The local service:
+
+- reads `../AI太牛逼了你知道吗` without copying it into the public site;
+- compiles formal rules, exclusion cards, original sources, and cases into separate retrieval objects;
+- always returns the general exclusion card;
+- follows rule cards back to original source slices;
+- excludes cases unless the user explicitly enables case calibration;
+- binds only to `127.0.0.1` and does not persist queries.
+
+The first retrieval baseline uses BM25 plus Chinese character n-gram similarity. It is deliberately labeled as non-neural; BGE-M3 or another embedding model should only replace that component after the fixed evaluation set establishes a baseline.
+
+Useful commands:
+
+```bash
+npm run rag:compile
+npm run rag:evaluate
+npm run check:rag
+```
+
+Generated corpus files stay under `rag/generated/` and are ignored by Git so the private knowledge base is not published. Any future model generation must preserve source citations, exclusion-first retrieval, human review, and customer-data boundaries.
 
 ## Deployment
 

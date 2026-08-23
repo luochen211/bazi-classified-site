@@ -126,6 +126,34 @@ const checkWorkbenchFlow = async (browser) => {
   const page = await context.newPage();
 
   try {
+    await page.route("http://127.0.0.1:8765/v1/retrieve", async (route) => {
+      const request = route.request();
+      const body = request.postDataJSON();
+      await route.fulfill({
+        contentType: "application/json",
+        status: 200,
+        body: JSON.stringify({
+          query: body.query,
+          stage: "pattern",
+          retrievalMode: "bm25+character-ngram-v1",
+          neuralEmbeddings: false,
+          generatedAt: new Date().toISOString(),
+          policy: {
+            exclusionsRequired: true,
+            casesIncluded: body.includeCases,
+            casesAreCalibrationOnly: true,
+            originalSourcesOverrideCards: true,
+          },
+          groups: {
+            rules: [{ id: "rule-1", kind: "rule", title: "格局总流程卡", path: "10-格局判断/格局总流程卡.md", section: "", lineStart: 1, lineEnd: 30, score: 1.2, claim: "先看月令与透干，再判断格局成败。", exclusions: "", excerpt: "", sourcePaths: [], flowTags: ["格局判断"], topicTags: [] }],
+            exclusions: [{ id: "exclude-1", kind: "exclusion", title: "排除规则总卡", path: "00-总索引/排除规则总卡.md", section: "", lineStart: 1, lineEnd: 40, score: 2, claim: "", exclusions: "暗藏不透不优先立格。", excerpt: "", sourcePaths: [], flowTags: ["格局判断"], topicTags: [] }],
+            sources: [{ id: "source-1", kind: "source", title: "八格总论", path: "80-原文切片精细/八格总论.md", section: "取格", lineStart: 10, lineEnd: 18, score: 0.9, claim: "", exclusions: "", excerpt: "取格先审月令。", sourcePaths: [], flowTags: [], topicTags: [] }],
+            cases: [],
+          },
+        }),
+      });
+    });
+
     await page.goto(`${baseUrl}/workbench`, { waitUntil: "networkidle" });
 
     const emptyState = page.locator(".workbench-empty-state");
@@ -164,6 +192,20 @@ const checkWorkbenchFlow = async (browser) => {
     await stageFields.nth(0).fill(stageFacts);
     await stageFields.nth(1).fill(stageJudgment);
 
+    const ragPanel = page.getByRole("region", { name: "本机知识检索" });
+    if (!(await ragPanel.isVisible())) {
+      failures.push("Expected the pattern stage to expose local evidence retrieval.");
+    } else {
+      await ragPanel.getByRole("button", { name: "检索正式规则与反证" }).click();
+      await ragPanel.getByText("格局总流程卡", { exact: true }).waitFor();
+      if (!(await ragPanel.getByText("排除规则总卡", { exact: true }).isVisible())) {
+        failures.push("Expected RAG results to keep exclusions separate from formal rules.");
+      }
+      if (!(await ragPanel.getByText("非神经检索基线", { exact: true }).isVisible())) {
+        failures.push("Expected the workbench to disclose the non-neural retrieval baseline.");
+      }
+    }
+
     await page.waitForFunction(
       ({ storageKey, caseName, pillars, question, stageFacts, stageJudgment }) => {
         const cases = JSON.parse(window.localStorage.getItem(storageKey) || "[]");
@@ -174,6 +216,7 @@ const checkWorkbenchFlow = async (browser) => {
           && saved.question === question
           && saved.stages?.pattern?.facts === stageFacts
           && saved.stages?.pattern?.judgment === stageJudgment
+          && saved.stages?.pattern?.evidence?.groups?.exclusions?.[0]?.title === "排除规则总卡"
         );
       },
       {

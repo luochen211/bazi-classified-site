@@ -1,0 +1,16 @@
+[
+  {
+    "id": "fixture-pattern-order",
+    "query": "月令透干以后怎样判断格局成败和取用",
+    "stage": "pattern",
+    "expectedRulePaths": ["10-格局判断/格局总流程卡.md"],
+    "expectedExclusionPaths": ["00-总索引/排除规则总卡.md"]
+  },
+  {
+    "id": "fixture-strength",
+    "query": "得令得地得党和根气怎样判断旺衰",
+    "stage": "pattern",
+    "expectedRulePaths": ["10-格局判断/旺衰/旺衰强弱判断卡.md"],
+    "expectedExclusionPaths": ["00-总索引/排除规则总卡.md"]
+  }
+]

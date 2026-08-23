@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check local RAG contracts
+        run: npm run check:rag
+
       - name: Build
         run: npm run build
 

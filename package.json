@@ -5,11 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:rag": "node scripts/run-local-rag.mjs",
+    "rag:compile": "node rag/compile.mjs",
+    "rag:serve": "node rag/server.mjs",
+    "rag:evaluate": "node rag/evaluate.mjs",
     "sync:content": "node scripts/sync-content.mjs",
     "check:content-sync": "node scripts/check-content-sync.mjs",
     "check:assets": "node scripts/check-assets.mjs",
     "check:ui": "node scripts/check-ui.mjs",
-    "check": "npm run check:content-sync && npm run check:assets && npm run check:ui && npm run build",
+    "check:rag": "node --test rag/*.test.mjs && node rag/evaluate.mjs --fixtures",
+    "check": "npm run check:content-sync && npm run check:assets && npm run check:rag && npm run check:ui && npm run build",
     "prebuild": "npm run sync:content",
     "build": "vite build && node scripts/copy-spa-fallback.mjs",
     "preview": "vite preview"

@@ -1,0 +1,40 @@
+[
+  {
+    "id": "pattern-order",
+    "query": "月令透干、旺衰、合会和取用应该按什么顺序判断",
+    "stage": "pattern",
+    "expectedRulePaths": ["10-格局判断/格局总流程卡.md"],
+    "expectedExclusionPaths": ["00-总索引/排除规则总卡.md"]
+  },
+  {
+    "id": "hidden-stem-exclusion",
+    "query": "只有地支暗藏一个十神但没有透干，可以直接立格吗",
+    "stage": "pattern",
+    "expectedRulePaths": ["10-格局判断/格局总流程卡.md"],
+    "expectedExclusionPaths": ["00-总索引/排除规则总卡.md"]
+  },
+  {
+    "id": "strength-order",
+    "query": "判断身强身弱时怎样检查得令得地得党和根气",
+    "stage": "pattern",
+    "expectedRulePaths": ["10-格局判断/旺衰/旺衰强弱判断卡.md"],
+    "expectedExclusionPaths": ["00-总索引/排除规则总卡.md"]
+  },
+  {
+    "id": "pattern-success",
+    "query": "格局成格破格和制化通关的优先级",
+    "stage": "pattern",
+    "expectedRulePaths": ["10-格局判断/格局成败/格局成败优先级卡.md"],
+    "expectedExclusionPaths": ["00-总索引/排除规则总卡.md"]
+  },
+  {
+    "id": "special-pattern",
+    "query": "判断特殊格局之前需要排除哪些普通格局条件",
+    "stage": "pattern",
+    "expectedRulePaths": [],
+    "expectedExclusionPaths": [
+      "00-总索引/排除规则总卡.md",
+      "10-格局判断/特殊格局/特殊格局排除卡.md"
+    ]
+  }
+]
